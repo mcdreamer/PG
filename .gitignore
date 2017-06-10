@@ -3,3 +3,7 @@ PGTestApp/PGTestApp.xcodeproj/xcuserdata
 PG/projects/PG.xcodeproj/xcuserdata
 PG/thirdparty/boost
 PG/internal/sfml
+PG/projects/.vs/
+PG/projects/x64/
+PGTestApp/x64/
+PGTests/x64/

@@ -25,9 +25,6 @@
     <Filter Include="thirdparty\jsoncpp">
       <UniqueIdentifier>{aebfc3bf-7c40-47f4-9c6f-4cfaf81c2717}</UniqueIdentifier>
     </Filter>
-    <Filter Include="thirdparty\jsoncpp\json">
-      <UniqueIdentifier>{2c38e681-6a05-4dfb-8e87-f7f93fa9320e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ui">
       <UniqueIdentifier>{4972f198-d87e-4e77-a294-595b774c5536}</UniqueIdentifier>
     </Filter>
@@ -55,6 +52,9 @@
     <Filter Include="inventory">
       <UniqueIdentifier>{163d19ca-b80d-4531-97ee-9381f2e773cb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="thirdparty\jsoncpp\src">
+      <UniqueIdentifier>{8601e7ef-4d8a-44a8-80de-7ddeb758958d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\util\JsonUtils.cpp">
@@ -71,9 +71,6 @@
     </ClCompile>
     <ClCompile Include="..\menu\MenuNode.cpp">
       <Filter>menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\thirdparty\jsoncpp\jsoncpp.cpp">
-      <Filter>thirdparty\jsoncpp</Filter>
     </ClCompile>
     <ClCompile Include="..\util\Logger.cpp">
       <Filter>util</Filter>
@@ -150,6 +147,15 @@
     <ClCompile Include="..\inventory\Inventory.cpp">
       <Filter>inventory</Filter>
     </ClCompile>
+    <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_reader.cpp">
+      <Filter>thirdparty\jsoncpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_value.cpp">
+      <Filter>thirdparty\jsoncpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_writer.cpp">
+      <Filter>thirdparty\jsoncpp\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\util\JsonUtils.h">
@@ -181,12 +187,6 @@
     </ClInclude>
     <ClInclude Include="..\menu\MenuNode.h">
       <Filter>menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\thirdparty\jsoncpp\json\json.h">
-      <Filter>thirdparty\jsoncpp\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\thirdparty\jsoncpp\json\json-forwards.h">
-      <Filter>thirdparty\jsoncpp\json</Filter>
     </ClInclude>
     <ClInclude Include="..\util\Logger.h">
       <Filter>util</Filter>

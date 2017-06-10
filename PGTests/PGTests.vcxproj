@@ -73,7 +73,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(ProjectDir)..\PG\thirdparty\boost;$(ProjectDir)..\PG\thirdparty\googletest\googlemock\include;$(ProjectDir)..\PG\thirdparty\googletest\googletest\include;$(ProjectDir)..;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\PG\internal\sfml;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)..\PG\internal\sfml\lib;$(LibraryPath)</LibraryPath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -85,7 +85,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(ProjectDir)..\PG\thirdparty\boost;$(ProjectDir)..\PG\thirdparty\googletest\googlemock\include;$(ProjectDir)..\PG\thirdparty\googletest\googletest\include;$(ProjectDir)..;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\PG\internal\sfml;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)..\PG\internal\sfml\lib;$(LibraryPath)</LibraryPath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

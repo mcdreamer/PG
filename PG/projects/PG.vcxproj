@@ -41,7 +41,9 @@
     <ClCompile Include="..\menu\MenuLayer.cpp" />
     <ClCompile Include="..\menu\MenuManager.cpp" />
     <ClCompile Include="..\menu\MenuNode.cpp" />
-    <ClCompile Include="..\thirdparty\jsoncpp\jsoncpp.cpp" />
+    <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_reader.cpp" />
+    <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_value.cpp" />
+    <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_writer.cpp" />
     <ClCompile Include="..\ui\PGButton.cpp" />
     <ClCompile Include="..\ui\PGDialog.cpp" />
     <ClCompile Include="..\ui\PGUI.cpp" />
@@ -91,8 +93,6 @@
     <ClInclude Include="..\menu\MenuLayer.h" />
     <ClInclude Include="..\menu\MenuManager.h" />
     <ClInclude Include="..\menu\MenuNode.h" />
-    <ClInclude Include="..\thirdparty\jsoncpp\json\json-forwards.h" />
-    <ClInclude Include="..\thirdparty\jsoncpp\json\json.h" />
     <ClInclude Include="..\ui\PGButton.h" />
     <ClInclude Include="..\ui\PGDialog.h" />
     <ClInclude Include="..\ui\PGUI.h" />
@@ -162,10 +162,10 @@
     <IncludePath>$(ProjectDir)..\;$(ProjectDir)..\..\boost\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)..\internal\sfml\include;$(ProjectDir)..\thirdparty\boost;$(ProjectDir)..\..;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\internal\sfml\include;$(ProjectDir)..\thirdparty\jsoncpp\include;$(ProjectDir)..\thirdparty\boost;$(ProjectDir)..\..;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(ProjectDir)..\internal\sfml\include;$(ProjectDir)..\thirdparty\boost;$(ProjectDir)..\..;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\internal\sfml\include;$(ProjectDir)..\thirdparty\jsoncpp\include;$(ProjectDir)..\thirdparty\boost;$(ProjectDir)..\..;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

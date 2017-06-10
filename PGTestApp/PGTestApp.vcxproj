@@ -71,12 +71,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(ProjectDir)..;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\PG\internal\sfml;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)..\PG\internal\sfml\lib;$(LibraryPath)</LibraryPath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(ProjectDir)..;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\PG\internal\sfml;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)..\PG\internal\sfml\lib;$(LibraryPath)</LibraryPath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
