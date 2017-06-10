@@ -230,19 +230,35 @@ public:
 };
 
 //--------------------------------------------------------
+class SFMLFontCache
+{
+public:
+	//--------------------------------------------------------
+	const sf::Font* getOrCreateFont(const std::string& fontName)
+	{
+		auto fontIt = std::find_if(m_Fonts.begin(), m_Fonts.end(), [&](const auto& font) { return font.first == fontName; });
+		if (fontIt != m_Fonts.end())
+		{
+			return &fontIt->second;
+		}
+
+		m_Fonts.emplace_back(fontName, sf::Font());
+		auto* font = &m_Fonts.back().second;
+		font->loadFromFile(fontName);
+
+		return font;
+	}
+
+private:
+	std::vector<std::pair<std::string, sf::Font>> m_Fonts;
+};
+
+//--------------------------------------------------------
 class SFMLLabelNode : public SFMLNodeBase<sf::Text>
 {
 public:
-    SFMLLabelNode(const std::string& fontName, int fontSize)
-    {
-        const auto* font = getOrCreateFont(fontName);
-        if (font)
-        {
-            m_Node = sf::Text("", *font, (unsigned int)fontSize);
-            m_Node.setFillColor(sf::Color(255, 0, 0));
-        }
-    }
-    
+    SFMLLabelNode(const std::string& fontName, int fontSize);
+
     virtual PGSize getSize() const override
     {
         return PGSize(m_Node.getGlobalBounds().width, m_Node.getGlobalBounds().height);
@@ -278,25 +294,6 @@ public:
     virtual void removeColour() override
     {
         m_Node.setFillColor(sf::Color());
-    }
-    
-private:
-    static std::vector<std::pair<std::string, sf::Font>> s_Fonts;
-    
-    //--------------------------------------------------------
-    const sf::Font* getOrCreateFont(const std::string& fontName)
-    {
-        auto fontIt = std::find_if(s_Fonts.begin(), s_Fonts.end(), [&](const auto& font) { return font.first == fontName; });
-        if (fontIt != s_Fonts.end())
-        {
-            return &fontIt->second;
-        }
-        
-        s_Fonts.emplace_back(fontName, sf::Font());
-        auto* font = &s_Fonts.back().second;
-        font->loadFromFile(fontName);
-        
-        return font;
     }
 };
 

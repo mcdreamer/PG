@@ -4,10 +4,10 @@ namespace PG {
 
 namespace Internal {
 
-int tileSize = 2;
+int g_TileSize = 2;
 
 }
 
-int GameConstants::tileSize() { return Internal::tileSize; }
+int GameConstants::tileSize() { return Internal::g_TileSize; }
 
 }

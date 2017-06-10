@@ -32,9 +32,10 @@ namespace PG {
 
 namespace Internal {
     
-extern int tileSize;
-extern IResourceHandler* resourceHandler;
-    
+extern int g_TileSize;
+extern IResourceHandler* g_ResourceHandler;
+extern SFMLFontCache* g_FontCache;
+
 }
 
 namespace
@@ -188,11 +189,13 @@ void PGAppHost::runApp(IGameController& gameController)
     
     TAppController appController;
     TResourceHandler resourceHandler;
-    
+    Internal::SFMLFontCache fontCache;
+
     Internal::SFMLViewHandle viewHandle(&window);
     
-    Internal::resourceHandler = &resourceHandler;
-    Internal::tileSize = gameController.getTileSize();
+    Internal::g_ResourceHandler = &resourceHandler;
+    Internal::g_TileSize = gameController.getTileSize();
+	Internal::g_FontCache = &fontCache;
 
     gameController.start(appController, viewHandle, resourceHandler);
     

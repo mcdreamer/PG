@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)..\PG\thirdparty\boost;$(ProjectDir)..\PG\thirdparty\googletest\googlemock\include;$(ProjectDir)..\PG\thirdparty\googletest\googletest\include;$(ProjectDir)..;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\PG\thirdparty\boost;$(ProjectDir)..\PG\thirdparty\googletest\googlemock\include;$(ProjectDir)..\PG\internal/sfml/include;$(ProjectDir)..\PG\thirdparty\googletest\googletest\include;$(ProjectDir)..;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\PG\internal\sfml\lib;$(LibraryPath)</LibraryPath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
@@ -84,7 +84,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)..\PG\thirdparty\boost;$(ProjectDir)..\PG\thirdparty\googletest\googlemock\include;$(ProjectDir)..\PG\thirdparty\googletest\googletest\include;$(ProjectDir)..;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\PG\thirdparty\boost;$(ProjectDir)..\PG\thirdparty\googletest\googlemock\include;$(ProjectDir)..\PG\internal/sfml/include;$(ProjectDir)..\PG\thirdparty\googletest\googletest\include;$(ProjectDir)..;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\PG\internal\sfml\lib;$(LibraryPath)</LibraryPath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
@@ -102,7 +102,8 @@
       <AdditionalDependencies>sfml-audio-s-d.lib;sfml-graphics-s-d.lib;sfml-network-s-d.lib;sfml-system-s-d.lib;sfml-window-s-d.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
-      <Command>copy $(ProjectDir)PGTests\testdata.json $(OutDir)</Command>
+      <Command>copy $(ProjectDir)PGTests\testdata.json $(OutDir)
+copy $(ProjectDir)PGTests\font\*.* $(OutDir)</Command>
       <Outputs>dummy</Outputs>
     </CustomBuildStep>
   </ItemDefinitionGroup>
@@ -152,7 +153,8 @@
       <AdditionalDependencies>sfml-audio-s-d.lib;sfml-graphics-s-d.lib;sfml-network-s-d.lib;sfml-system-s-d.lib;sfml-window-s-d.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
-      <Command>copy $(ProjectDir)PGTests\testdata.json $(OutDir)</Command>
+      <Command>copy $(ProjectDir)PGTests\testdata.json $(OutDir)
+copy $(ProjectDir)PGTests\font\*.* $(OutDir)</Command>
       <Outputs>dummy</Outputs>
     </CustomBuildStep>
   </ItemDefinitionGroup>

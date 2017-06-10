@@ -5,8 +5,19 @@
 namespace PG {
 namespace Internal {
 
-IResourceHandler* resourceHandler = nullptr;
-std::vector<std::pair<std::string, sf::Font>> SFMLLabelNode::s_Fonts;
+IResourceHandler* g_ResourceHandler = nullptr;
+SFMLFontCache* g_FontCache = nullptr;
+
+//--------------------------------------------------------
+SFMLLabelNode::SFMLLabelNode(const std::string& fontName, int fontSize)
+{
+	const auto* font = g_FontCache->getOrCreateFont(fontName);
+	if (font)
+	{
+		m_Node = sf::Text("", *font, (unsigned int)fontSize);
+		m_Node.setFillColor(sf::Color(255, 0, 0));
+	}
+}
 
 }
 
@@ -19,7 +30,7 @@ NodePtr NodeCreator::createNode()
 //--------------------------------------------------------
 NodePtr NodeCreator::createSpriteNode(const std::string& imageName)
 {
-    return std::make_unique<Internal::SFMLSpriteNode>(Internal::resourceHandler->getResourcePath(imageName, "png"));
+    return std::make_unique<Internal::SFMLSpriteNode>(Internal::g_ResourceHandler->getResourcePath(imageName, "png"));
 }
 
 //--------------------------------------------------------
@@ -31,7 +42,7 @@ NodePtr NodeCreator::createColourNode(unsigned char r, unsigned char g, unsigned
 //--------------------------------------------------------
 NodePtr NodeCreator::createTextNode(const std::string& fontName, double fontSize)
 {
-    return std::make_unique<Internal::SFMLLabelNode>(Internal::resourceHandler->getResourcePath(fontName, "ttf"), fontSize);
+    return std::make_unique<Internal::SFMLLabelNode>(Internal::g_ResourceHandler->getResourcePath(fontName, "ttf"), fontSize);
 }
 
 }
