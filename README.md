@@ -1,5 +1,5 @@
 # PG
-The home of the PG game engine
+PG Engine is a cross platform, open source 2D game engine.
 
 For now PG is very bare bones and just the beginning of what I hope to become a solid choice for my 2D games, as well as games of others. Almost anything could change at this stage but I hope the core structure will be relatively stable.
 
