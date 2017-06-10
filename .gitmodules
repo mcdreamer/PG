@@ -1,0 +1,6 @@
+[submodule "PG/thirdparty/googletest"]
+	path = PG/thirdparty/googletest
+	url = https://github.com/google/googletest
+[submodule "PG/thirdparty/jsoncpp"]
+	path = PG/thirdparty/jsoncpp
+	url = https://github.com/open-source-parsers/jsoncpp.git

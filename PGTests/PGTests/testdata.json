@@ -1,0 +1,25 @@
+{
+    "constants" :
+    {
+        "aConstant" : "Hello"
+    },
+    "entities" :
+    [
+     {
+         "stat" : "add1"
+     },
+     {
+         "stat" : "aConstant"
+     },
+     {
+         "name" : "base",
+         "stat1" : "123",
+         "stat2" : "234"
+     },
+     {
+         "name" : "inherited",
+         "parent" : "base",
+         "stat2" : "345"
+     }
+     ]
+}

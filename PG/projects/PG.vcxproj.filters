@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="app">
+      <UniqueIdentifier>{9e77af54-1846-42d3-b268-03b4fb7bdf47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{70743fe2-8bcf-4f9d-b137-8cfad78ea5e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics">
+      <UniqueIdentifier>{74c3eef2-b734-4ab3-ad74-3c4cdf62965a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="io">
+      <UniqueIdentifier>{1b1b07db-53bc-44cd-8c11-d0e31b37b44d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="menu">
+      <UniqueIdentifier>{ace450c5-4a7a-43b4-8558-a7f274e79b07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty">
+      <UniqueIdentifier>{d5938c23-0fa0-4046-8b5d-6271c006b45b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{1e066ec6-1e41-47b0-95fc-61a0b5908221}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\jsoncpp">
+      <UniqueIdentifier>{aebfc3bf-7c40-47f4-9c6f-4cfaf81c2717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\jsoncpp\json">
+      <UniqueIdentifier>{2c38e681-6a05-4dfb-8e87-f7f93fa9320e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ui">
+      <UniqueIdentifier>{4972f198-d87e-4e77-a294-595b774c5536}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{1243ac7f-1b5f-49eb-bf07-8e9f63318f2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="entities">
+      <UniqueIdentifier>{098dbb11-c30b-45ce-bc2a-2bc273985747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="internal">
+      <UniqueIdentifier>{4a5d72aa-cdfe-478c-b19a-b646b0cb28f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="internal\app">
+      <UniqueIdentifier>{645b1f0b-3870-45bb-abd4-1cf0f0894544}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="internal\graphics">
+      <UniqueIdentifier>{820e299b-ad4e-4b91-aa6b-1d07e7482116}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="internal\input">
+      <UniqueIdentifier>{dcad23c7-519c-40d2-89a9-73cf97a80076}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="internal\platform">
+      <UniqueIdentifier>{a62f6e00-3cf1-4c16-882e-6d60b7d8554e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inventory">
+      <UniqueIdentifier>{163d19ca-b80d-4531-97ee-9381f2e773cb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\util\JsonUtils.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\graphics\TextureMeasurer.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\menu\MenuLayer.cpp">
+      <Filter>menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\menu\MenuManager.cpp">
+      <Filter>menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\menu\MenuNode.cpp">
+      <Filter>menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thirdparty\jsoncpp\jsoncpp.cpp">
+      <Filter>thirdparty\jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\util\Logger.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\PGButton.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\PGDialog.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\PGUI.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\PGUIElement.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\PGUIMessageQueuePoster.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\PGUIUtils.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\app\PGAppHost.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\core\PGRectUtils.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\core\Point.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\core\PointUtils.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\core\Size.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\core\TileCoord.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\data\AttributeConstants.cpp">
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\data\Attributes.cpp">
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\data\DataGrid.cpp">
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\data\EntityLoader.cpp">
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\entities\Tile.cpp">
+      <Filter>entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\entities\TilePositionCalculator.cpp">
+      <Filter>entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\internal\app\GameConstants.cpp">
+      <Filter>internal\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\internal\graphics\SFMLNode.cpp">
+      <Filter>internal\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\internal\graphics\SFMLScene.cpp">
+      <Filter>internal\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\internal\graphics\SFMLTextureMeasurer.cpp">
+      <Filter>internal\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\internal\platform\WinResourceHandler.cpp">
+      <Filter>internal\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\inventory\Inventory.cpp">
+      <Filter>inventory</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\util\JsonUtils.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\graphics\NodeCreator.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\graphics\Scene.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\graphics\TextureMeasurer.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\graphics\ViewHandle.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\graphics\Node.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\io\IResourceHandler.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\menu\MenuLayer.h">
+      <Filter>menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\menu\MenuManager.h">
+      <Filter>menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\menu\MenuNode.h">
+      <Filter>menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdparty\jsoncpp\json\json.h">
+      <Filter>thirdparty\jsoncpp\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdparty\jsoncpp\json\json-forwards.h">
+      <Filter>thirdparty\jsoncpp\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\util\Logger.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\PGButton.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\PGDialog.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\PGUI.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\PGUIElement.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\PGUIMessage.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\PGUIMessageQueuePoster.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\PGUIUtils.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\app\GameConstants.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\app\IAppController.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\app\IGameController.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\app\PGAppHost.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\core\MathsUtils.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\core\PGKeyCode.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\core\PGRectUtils.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\core\Point.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\core\PointUtils.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\core\Rect.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\core\Size.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\core\TileCoord.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\core\ValueRange.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\data\AttributeConstants.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\data\Attributes.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\data\DataGrid.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\data\DataGridUtils.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\data\EntityHandle.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\data\EntityLoader.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\entities\Tile.h">
+      <Filter>entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\entities\TilePositionCalculator.h">
+      <Filter>entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\internal\graphics\SFMLNode.h">
+      <Filter>internal\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\internal\graphics\SFMLScene.h">
+      <Filter>internal\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\internal\graphics\SFMLTextureMeasurer.h">
+      <Filter>internal\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\internal\graphics\SFMLViewHandle.h">
+      <Filter>internal\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\internal\input\PGKeyCodeUtils.h">
+      <Filter>internal\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\internal\platform\WinAppController.h">
+      <Filter>internal\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\internal\platform\WinResourceHandler.h">
+      <Filter>internal\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inventory\Inventory.h">
+      <Filter>inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inventory\InventoryItem.h">
+      <Filter>inventory</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
