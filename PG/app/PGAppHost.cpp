@@ -139,8 +139,8 @@ namespace
 		sf::Font fpsFont;
 		fpsFont.loadFromFile(resourceHandler.getResourcePath(appConfig.styleSheet.uiFontName, "ttf"));
 
-		sf::Text fps("0", fpsFont, 30);
-		fps.setPosition(15, 10);
+		sf::Text fps("0", fpsFont, 20);
+		fps.setPosition(window.getSize().x - 25, window.getSize().y - 25);
 		fps.setFillColor(sf::Color(255, 255, 255));
 
 		sf::Clock clock;

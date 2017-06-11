@@ -172,8 +172,6 @@ public:
 class SFMLSpriteNode : public SFMLNodeBase<sf::Sprite>
 {
 public:
-    sf::Texture texture;
-    
     SFMLSpriteNode(const std::string& imageName)
     {
         if (texture.loadFromFile(imageName))
@@ -199,6 +197,9 @@ public:
     {
         m_Node.setColor(sf::Color());
     }
+	
+private:
+	sf::Texture texture;
 };
 
 //--------------------------------------------------------

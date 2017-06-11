@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4937522C1ED0DDC600B4F024 /* dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = 4937522B1ED0DDC600B4F024 /* dialog.png */; };
 		4937522E1ED0DDCC00B4F024 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4937522D1ED0DDCC00B4F024 /* OpenSans-Regular.ttf */; };
+		496CC9531EED8D0500A901AA /* PGlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 496CC9521EED8D0500A901AA /* PGlogo.png */; };
 		49761EC11EED76F100DD6734 /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49761EBC1EED76F100DD6734 /* sfml-audio.framework */; };
 		49761EC21EED76F100DD6734 /* sfml-graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49761EBD1EED76F100DD6734 /* sfml-graphics.framework */; };
 		49761EC31EED76F100DD6734 /* sfml-network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49761EBE1EED76F100DD6734 /* sfml-network.framework */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		4937522B1ED0DDC600B4F024 /* dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialog.png; sourceTree = "<group>"; };
 		4937522D1ED0DDCC00B4F024 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		496CC9521EED8D0500A901AA /* PGlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PGlogo.png; sourceTree = "<group>"; };
 		49761EBC1EED76F100DD6734 /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-audio.framework"; path = "../PG/internal/sfml/Frameworks/sfml-audio.framework"; sourceTree = "<group>"; };
 		49761EBD1EED76F100DD6734 /* sfml-graphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-graphics.framework"; path = "../PG/internal/sfml/Frameworks/sfml-graphics.framework"; sourceTree = "<group>"; };
 		49761EBE1EED76F100DD6734 /* sfml-network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-network.framework"; path = "../PG/internal/sfml/Frameworks/sfml-network.framework"; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		4937522A1ED0DDA700B4F024 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				496CC9521EED8D0500A901AA /* PGlogo.png */,
 				4937522B1ED0DDC600B4F024 /* dialog.png */,
 			);
 			path = images;
@@ -243,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4937522E1ED0DDCC00B4F024 /* OpenSans-Regular.ttf in Resources */,
+				496CC9531EED8D0500A901AA /* PGlogo.png in Resources */,
 				4937522C1ED0DDC600B4F024 /* dialog.png in Resources */,
 				4989D77D1EE44C6A00821078 /* AppIcon.xcassets in Resources */,
 			);

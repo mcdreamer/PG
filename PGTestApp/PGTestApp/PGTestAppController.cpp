@@ -10,39 +10,25 @@
 #include <iostream>
 
 //--------------------------------------------------------
-class TestScene : public PG::ISceneCallback, public PG::PGUIElement
+class ButtonTestScene : public PG::ISceneCallback, public PG::PGUIElement
 {
 public:
     //--------------------------------------------------------
-    TestScene(PG::IViewHandle& viewHandle)
+    ButtonTestScene(PG::IViewHandle& viewHandle)
     : m_Scene(PG::SceneCreator::createScene())
     {
 		m_Scene->presentSceneOnView(viewHandle, this);
 		m_Scene->setBackgroundColour(PG::Colour(0, 0, 0));
 
-		m_Scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(200, 100), "Test Button", 0));
-		m_Scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(200, 200), "Another Test Button", 1));
+		m_Scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(200, 100), "Main Menu", 0));
+		m_Scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(200, 200), "Test Button", 1));
+		m_Scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(200, 300), "Another Test Button", 2));
 		
-        auto n = PG::NodeCreator::createSpriteNode("dialog");
-        n->setPosition(PG::PGPoint(500, 400));
-        auto dh = m_Scene->addChild(n);
-        
-        auto colNode = PG::NodeCreator::createColourNode(PG::Colour(255, 0, 0), PG::PGSize(100, 50));
-        colNode->setPosition(PG::PGPoint(0, 0));
-        auto colHandle = dh.node->addChild(colNode);
-        
-        for (int i = 0; i < 10; i++)
-        {
-            auto colNode = PG::NodeCreator::createColourNode(PG::Colour(255, 0, 0), PG::PGSize(10, 10));
-            colNode->setPosition(PG::PGPoint(i * 10, i * 10));
-            m_Scene->addChild(colNode);
-        }
-        
         auto textNode = PG::NodeCreator::createTextNode(m_Scene->getStyleSheet().uiFontName, 30);
         textNode->setText("Hello");
         textNode->setColour(PG::Colour(0, 255, 255));
-        m_Text = colHandle.node->addChild(textNode);
-        m_Text.node->setPosition(PG::PGPoint(0, 0));
+		textNode->setPosition(PG::PGPoint(200, 400));
+        m_Text = m_Scene->addChild(textNode);
     }
     
     //--------------------------------------------------------
@@ -61,13 +47,19 @@ public:
 	virtual void init(const PG::StyleSheet& styleSheet) override {}
 	virtual void receiveTag(const int tag, PG::PGUIMessageQueuePoster& msgPoster) override
 	{
-        if (tag == 0)
-        {
-            m_Text.node->setText("Clicked!");
-        }
-        else if (tag == 1)
-        {
-            m_Text.node->setText("Another Clicked!");
+		switch (tag)
+		{
+			case 0:
+				
+				break;
+		
+			case 1:
+				m_Text.node->setText("Clicked!");
+				break;
+
+			case 2:
+				m_Text.node->setText("Another Clicked!");
+				break;
         }
 	}
     
@@ -83,26 +75,30 @@ private:
 };
 
 //--------------------------------------------------------
-class TextScene : public PG::ISceneCallback, public PG::PGUIElement
+class MainMenuScene : public PG::ISceneCallback, public PG::PGUIElement
 {
 public:
     //--------------------------------------------------------
-    TextScene(PG::IViewHandle& viewHandle, ISceneTransitionHelper& transHelper)
+    MainMenuScene(PG::IViewHandle& viewHandle, ISceneTransitionHelper& transHelper)
     : m_Scene(PG::SceneCreator::createScene()),
 	m_TransHelper(transHelper)
     {
         m_Scene->presentSceneOnView(viewHandle, this);
-        m_Scene->setBackgroundColour(PG::Colour(50, 50, 50));
+        m_Scene->setBackgroundColour(PG::Colour(5, 0, 161));
 		
 		const auto sceneSize = m_Scene->getSceneSize();
 		
+		auto logoNode = PG::NodeCreator::createSpriteNode("PGlogo");
+		logoNode->setPosition(PG::PGPoint(30 + (logoNode->getSize().width / 2.0), 30 + (logoNode->getSize().height / 2.0)));
+		m_Scene->addChild(logoNode);
+		
         auto textNode = PG::NodeCreator::createTextNode(m_Scene->getStyleSheet().uiFontName, 120);
-        textNode->setText("Hello");
+        textNode->setText("Test App");
         textNode->setColour(PG::Colour(255, 255, 255));
-        textNode->setPosition(PG::PGPoint(sceneSize.width / 2.0, sceneSize.height / 2.0));
+        textNode->setPosition(PG::PGPoint(sceneSize.width / 2.0, 45 + (textNode->getSize().height / 2.0)));
         m_Scene->addChild(textNode);
 		
-		m_Scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.75), "Go", 1));
+		m_Scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.75), "Buttons Test", 1));
     }
 	
 	virtual void init(const PG::StyleSheet& styleSheet) override {}
@@ -149,8 +145,8 @@ void PGTestAppController::initialiseConfig()
 	m_AppConfig.tileSize = 32;
 	
 	m_AppConfig.styleSheet.uiFontName = "OpenSans-Regular";
-	m_AppConfig.styleSheet.buttonBackgroundColour = PG::Colour(50, 50, 200);
-	m_AppConfig.styleSheet.buttonTextColour = PG::Colour(255, 255, 255);
+	m_AppConfig.styleSheet.buttonBackgroundColour = PG::Colour(150, 150, 200);
+	m_AppConfig.styleSheet.buttonTextColour = PG::Colour::white();
 	m_AppConfig.styleSheet.buttonPadding = 4;
 }
 
@@ -169,7 +165,7 @@ void PGTestAppController::start(PG::IAppController& appController,
     m_ViewHandle = &viewHandle;
     m_ResourceHandler = &resourceHandler;
     
-    m_SceneCallback.reset(new TextScene(*m_ViewHandle, *this));
+    m_SceneCallback.reset(new MainMenuScene(*m_ViewHandle, *this));
 }
 
 //--------------------------------------------------------
@@ -183,7 +179,7 @@ void PGTestAppController::updateFinished()
 {
 	if (m_RunNextScene)
 	{
-		m_SceneCallback.reset(new TestScene(*m_ViewHandle));
+		m_SceneCallback.reset(new ButtonTestScene(*m_ViewHandle));
 		
 		m_RunNextScene = false;
 	}
