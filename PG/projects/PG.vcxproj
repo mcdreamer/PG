@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\app\PGAppHost.cpp" />
+    <ClCompile Include="..\core\Colour.cpp" />
     <ClCompile Include="..\core\PGRectUtils.cpp" />
     <ClCompile Include="..\core\Point.cpp" />
     <ClCompile Include="..\core\PointUtils.cpp" />
@@ -54,10 +55,13 @@
     <ClCompile Include="..\util\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\app\AppConfiguration.h" />
     <ClInclude Include="..\app\GameConstants.h" />
     <ClInclude Include="..\app\IAppController.h" />
     <ClInclude Include="..\app\IGameController.h" />
     <ClInclude Include="..\app\PGAppHost.h" />
+    <ClInclude Include="..\app\StyleSheet.h" />
+    <ClInclude Include="..\core\Colour.h" />
     <ClInclude Include="..\core\MathsUtils.h" />
     <ClInclude Include="..\core\PGKeyCode.h" />
     <ClInclude Include="..\core\PGRectUtils.h" />

@@ -156,6 +156,9 @@
     <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_writer.cpp">
       <Filter>thirdparty\jsoncpp\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\core\Colour.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\util\JsonUtils.h">
@@ -301,6 +304,15 @@
     </ClInclude>
     <ClInclude Include="..\inventory\InventoryItem.h">
       <Filter>inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\core\Colour.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\app\AppConfiguration.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\app\StyleSheet.h">
+      <Filter>app</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
