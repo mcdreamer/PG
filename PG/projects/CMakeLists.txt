@@ -19,6 +19,8 @@ set(SRCS
   ../../PG/app/IGameController.h
   ../../PG/app/PGAppHost.cpp
   ../../PG/app/PGAppHost.h
+  ../../PG/app/StyleSheet.h
+  ../../PG/app/AppConfiguration.h
   ../../PG/core/MathsUtils.h
   ../../PG/core/PGKeyCode.h
   ../../PG/core/PGRectUtils.cpp
@@ -30,6 +32,8 @@ set(SRCS
   ../../PG/core/Rect.h
   ../../PG/core/Size.cpp
   ../../PG/core/Size.h
+  ../../PG/core/Colour.cpp
+  ../../PG/core/Colour.h
   ../../PG/core/TileCoord.cpp
   ../../PG/core/TileCoord.h
   ../../PG/core/ValueRange.h
