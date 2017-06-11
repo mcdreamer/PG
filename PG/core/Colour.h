@@ -20,6 +20,12 @@ public:
 	unsigned char	g;
 	unsigned char	b;
 	float			a;
+	
+	static Colour white();
+	static Colour black();
+	static Colour red();
+	static Colour green();
+	static Colour blue();
 };
 
 }

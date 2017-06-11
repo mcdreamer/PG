@@ -75,6 +75,7 @@
 		493022A81ECA45B800C143A8 /* PGKeyCodeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022A71ECA45B800C143A8 /* PGKeyCodeUtils.h */; };
 		4956B5CE1EE4582A00F6A7A4 /* Rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4956B5CD1EE4582A00F6A7A4 /* Rect.cpp */; };
 		4956B5CF1EE4582A00F6A7A4 /* Rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4956B5CD1EE4582A00F6A7A4 /* Rect.cpp */; };
+		496CC94D1EED884B00A901AA /* Colour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 496CC94C1EED884B00A901AA /* Colour.cpp */; };
 		49761EB61EED70F800DD6734 /* Colour.h in Headers */ = {isa = PBXBuildFile; fileRef = 49761EB51EED70F800DD6734 /* Colour.h */; };
 		49761EB81EED71D600DD6734 /* AppConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 49761EB71EED71D600DD6734 /* AppConfiguration.h */; };
 		49761EBA1EED71E000DD6734 /* StyleSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 49761EB91EED71E000DD6734 /* StyleSheet.h */; };
@@ -180,6 +181,7 @@
 		4930229C1ECA45AF00C143A8 /* SFMLViewHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMLViewHandle.h; sourceTree = "<group>"; };
 		493022A71ECA45B800C143A8 /* PGKeyCodeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGKeyCodeUtils.h; sourceTree = "<group>"; };
 		4956B5CD1EE4582A00F6A7A4 /* Rect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rect.cpp; sourceTree = "<group>"; };
+		496CC94C1EED884B00A901AA /* Colour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Colour.cpp; sourceTree = "<group>"; };
 		496F09FE1A5960E900DC93A8 /* libGameGraphicsLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGameGraphicsLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4974CB4F1A595F0F00E109BD /* libPGLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPGLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		49761EB51EED70F800DD6734 /* Colour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colour.h; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 				4930226E1ECA44E200C143A8 /* TileCoord.cpp */,
 				4930226F1ECA44E200C143A8 /* TileCoord.h */,
 				493022701ECA44E200C143A8 /* ValueRange.h */,
+				496CC94C1EED884B00A901AA /* Colour.cpp */,
 				49761EB51EED70F800DD6734 /* Colour.h */,
 			);
 			name = core;
@@ -677,6 +680,7 @@
 				493022291ECA449000C143A8 /* Logger.cpp in Sources */,
 				4930227A1ECA44E200C143A8 /* Size.cpp in Sources */,
 				4930223C1ECA449600C143A8 /* PGUI.cpp in Sources */,
+				496CC94D1EED884B00A901AA /* Colour.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
