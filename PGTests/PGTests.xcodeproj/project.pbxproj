@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4956B5C31EE4514100F6A7A4 /* GeometryTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4956B5C11EE4514100F6A7A4 /* GeometryTests.cpp */; };
-		4956B5D11EE4607C00F6A7A4 /* OpenSans-Regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4956B5D01EE4607300F6A7A4 /* OpenSans-Regular.ttf */; };
 		49AACB511ECCE8E4003BDC3C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AACB501ECCE8E4003BDC3C /* main.cpp */; };
 		49AACB5D1ECCE92E003BDC3C /* CoreDataTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AACB581ECCE92E003BDC3C /* CoreDataTests.cpp */; };
 		49AACB5E1ECCE92E003BDC3C /* UITests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AACB5B1ECCE92E003BDC3C /* UITests.cpp */; };
@@ -109,7 +108,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				4956B5D11EE4607C00F6A7A4 /* OpenSans-Regular.ttf in CopyFiles */,
 				49AACB9C1ECCEC14003BDC3C /* testdata.json in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,7 +117,7 @@
 /* Begin PBXFileReference section */
 		4956B5C11EE4514100F6A7A4 /* GeometryTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeometryTests.cpp; sourceTree = "<group>"; };
 		4956B5C21EE4514100F6A7A4 /* GeometryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeometryTests.h; sourceTree = "<group>"; };
-		4956B5D01EE4607300F6A7A4 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		49761EB41EED6FEC00DD6734 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "font/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		49AACB4D1ECCE8E4003BDC3C /* PGTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PGTests; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AACB501ECCE8E4003BDC3C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		49AACB581ECCE92E003BDC3C /* CoreDataTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CoreDataTests.cpp; sourceTree = "<group>"; };
@@ -154,6 +152,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49761EB31EED6FE100DD6734 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				49761EB41EED6FEC00DD6734 /* OpenSans-Regular.ttf */,
+			);
+			name = font;
+			sourceTree = "<group>";
+		};
 		49AACB441ECCE8E4003BDC3C = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +182,7 @@
 		49AACB4F1ECCE8E4003BDC3C /* PGTests */ = {
 			isa = PBXGroup;
 			children = (
+				49761EB31EED6FE100DD6734 /* font */,
 				4956B5C11EE4514100F6A7A4 /* GeometryTests.cpp */,
 				4956B5C21EE4514100F6A7A4 /* GeometryTests.h */,
 				49AACB581ECCE92E003BDC3C /* CoreDataTests.cpp */,
@@ -183,7 +190,6 @@
 				49AACB5B1ECCE92E003BDC3C /* UITests.cpp */,
 				49AACB5C1ECCE92E003BDC3C /* UITests.h */,
 				49AACB5A1ECCE92E003BDC3C /* testdata.json */,
-				4956B5D01EE4607300F6A7A4 /* OpenSans-Regular.ttf */,
 				49AACB501ECCE8E4003BDC3C /* main.cpp */,
 			);
 			path = PGTests;
@@ -491,12 +497,14 @@
 		49AACB551ECCE8E4003BDC3C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				DEVELOPMENT_TEAM = P76529Q457;
 				FRAMEWORK_SEARCH_PATHS = ../PG/internal/sfml;
 				HEADER_SEARCH_PATHS = (
 					../,
 					../PG/thirdparty/googletest/googletest/include,
 					../PG/thirdparty/boost,
+					../PG/internal/SFML/include,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -505,12 +513,14 @@
 		49AACB561ECCE8E4003BDC3C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				DEVELOPMENT_TEAM = P76529Q457;
 				FRAMEWORK_SEARCH_PATHS = ../PG/internal/sfml;
 				HEADER_SEARCH_PATHS = (
 					../,
 					../PG/thirdparty/googletest/googletest/include,
 					../PG/thirdparty/boost,
+					../PG/internal/SFML/include,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
