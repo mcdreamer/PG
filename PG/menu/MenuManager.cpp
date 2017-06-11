@@ -14,7 +14,7 @@ namespace
     {
         auto n = NodeCreator::createTextNode("OpenSans-Regular", 40);
         n->setText(menuNode.getText());
-        n->setColour(0, 255, 0, 1);
+        n->setColour(Colour(0, 255, 0));
         n->addUserDataInt(kTag, menuNode.getTag());
         return n;
     }
@@ -201,7 +201,7 @@ void MenuManager::highlightItem(const MenuNode& node)
     {
         if (itemNode->getUserDataInt(kTag) == node.getTag())
         {
-            itemNode->setColour(1, 0, 0, 1);
+            itemNode->setColour(Colour(255, 0, 0));
         }
         else
         {

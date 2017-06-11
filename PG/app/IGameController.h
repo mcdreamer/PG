@@ -7,7 +7,7 @@ namespace PG {
 class IAppController;
 class IViewHandle;
 class IResourceHandler;
-class PGSize;
+struct AppConfiguration;
 
 //--------------------------------------------------------
 class IGameController
@@ -19,11 +19,9 @@ public:
                        IViewHandle& viewHandle,
                        IResourceHandler& resourceHandler)=0;
 	
-	virtual void updateFinished()=0;
+	virtual void				updateFinished()=0;
 	
-    virtual std::string getWindowTitle()=0;
-    virtual PGSize      getWindowSize()=0;
-    virtual int         getTileSize()=0;
+    virtual AppConfiguration	getConfiguration()=0;
 };
 
 }

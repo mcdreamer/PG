@@ -3,6 +3,7 @@
 #include "PG/core/Point.h"
 #include "PG/core/Size.h"
 #include "PG/core/Rect.h"
+#include "PG/core/Colour.h"
 
 #include <memory>
 #include <string>
@@ -67,7 +68,7 @@ public:
     
     virtual void                setText(const std::string& text)=0;
     
-    virtual void                setColour(unsigned char r, unsigned char g, unsigned char b, float blendFactor)=0;
+    virtual void                setColour(const Colour& colour)=0;
     virtual void                removeColour()=0;
 };
 

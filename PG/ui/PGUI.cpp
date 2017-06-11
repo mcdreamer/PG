@@ -8,7 +8,7 @@ namespace PG {
 void PGUI::pushElement(PGUIElement* element)
 {
     m_UIStack.emplace_back(element);
-    m_UIStack.back()->show(m_Scene);
+    m_UIStack.back()->show(m_Scene, m_StyleSheet);
 }
 
 //--------------------------------------------------------
@@ -75,6 +75,18 @@ void PGUI::update()
         
         m_MessageQueue.pop();
     }
+}
+
+//--------------------------------------------------------
+void PGUI::setStyleSheet(const StyleSheet& styleSheet)
+{
+	m_StyleSheet = styleSheet;
+}
+
+//--------------------------------------------------------
+const StyleSheet& PGUI::getStyleSheet() const
+{
+	return m_StyleSheet;
 }
 
 }

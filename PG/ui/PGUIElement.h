@@ -9,6 +9,7 @@ namespace PG {
 
 class IScene;
 class PGRect;
+struct StyleSheet;
 
 class PGUIMessageQueuePoster;
 class PGUIElement;
@@ -20,18 +21,18 @@ class PGUIElement
 public:
     virtual ~PGUIElement() {}
     
-    void                show(IScene& scene);
-    void                show(NodeHandle parent);
+    void                show(IScene& scene, const StyleSheet& styleSheet);
+    void                show(NodeHandle parent, const StyleSheet& styleSheet);
     void                close();
     
-    void                addChild(PGUIElement* element);
-    void                addChild(std::unique_ptr<PGUIElement>& element);
+    void                addChild(PGUIElement* element, const StyleSheet& styleSheet);
+    void                addChild(std::unique_ptr<PGUIElement>& element, const StyleSheet& styleSheet);
     
     bool                handleClick(const PGPoint& parentRelPt, PGUIMessageQueuePoster& msgPoster);
     
     virtual PGRect      getElementRect() const;
     
-    virtual void        init()=0;
+    virtual void        init(const StyleSheet& styleSheet)=0;
     virtual void        clicked(PGUIMessageQueuePoster& msgPoster) {}
     virtual void        receiveTag(const int tag, PGUIMessageQueuePoster& msgPoster) {}
     

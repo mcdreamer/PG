@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4956B5C31EE4514100F6A7A4 /* GeometryTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4956B5C11EE4514100F6A7A4 /* GeometryTests.cpp */; };
+		496CC94B1EED87C400A901AA /* OpenSans-Regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49761EB41EED6FEC00DD6734 /* OpenSans-Regular.ttf */; };
 		49AACB511ECCE8E4003BDC3C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AACB501ECCE8E4003BDC3C /* main.cpp */; };
 		49AACB5D1ECCE92E003BDC3C /* CoreDataTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AACB581ECCE92E003BDC3C /* CoreDataTests.cpp */; };
 		49AACB5E1ECCE92E003BDC3C /* UITests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AACB5B1ECCE92E003BDC3C /* UITests.cpp */; };
@@ -108,6 +109,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				496CC94B1EED87C400A901AA /* OpenSans-Regular.ttf in CopyFiles */,
 				49AACB9C1ECCEC14003BDC3C /* testdata.json in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,7 +501,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				DEVELOPMENT_TEAM = P76529Q457;
-				FRAMEWORK_SEARCH_PATHS = ../PG/internal/sfml;
+				FRAMEWORK_SEARCH_PATHS = ../PG/internal/sfml/frameworks;
 				HEADER_SEARCH_PATHS = (
 					../,
 					../PG/thirdparty/googletest/googletest/include,
@@ -515,7 +517,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				DEVELOPMENT_TEAM = P76529Q457;
-				FRAMEWORK_SEARCH_PATHS = ../PG/internal/sfml;
+				FRAMEWORK_SEARCH_PATHS = ../PG/internal/sfml/frameworks;
 				HEADER_SEARCH_PATHS = (
 					../,
 					../PG/thirdparty/googletest/googletest/include,

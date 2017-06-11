@@ -11,9 +11,9 @@
 using namespace PG;
 
 //--------------------------------------------------------
-TEST(UITests,textNodeContains)
+TEST(UITests,nodeContains)
 {
-    auto node = NodeCreator::createColourNode(0, 0, 0, 0, PGSize(10, 10));
+    auto node = NodeCreator::createColourNode(Colour(), PGSize(10, 10));
     NodeHandle root(node.get());
     root.node->setPosition(PGPoint(10, 10));
     
@@ -35,7 +35,7 @@ TEST(UITests,testPointMapping)
     auto rootSize = root.node->getSize();
     EXPECT_EQ(PGSize(0, 0), rootSize);
 
-    auto dNode = NodeCreator::createColourNode(0, 0, 0, 0, PGSize(15, 15));
+    auto dNode = NodeCreator::createColourNode(Colour(), PGSize(15, 15));
     NodeHandle dialogRoot = root.node->addChild(dNode);
     dialogRoot.node->setPosition(PGPoint(10, 10));
 
@@ -45,7 +45,7 @@ TEST(UITests,testPointMapping)
     rootSize = root.node->getSize();
     EXPECT_EQ(PGSize(0, 0), rootSize);
 
-    auto c = NodeCreator::createColourNode(0, 0, 0, 0, PGSize(6, 6));
+    auto c = NodeCreator::createColourNode(Colour(), PGSize(6, 6));
     auto child = dialogRoot.node->addChild(c);
     child.node->setPosition(PGPoint(5, 5));
 
@@ -77,7 +77,7 @@ namespace
         : m_LastReceivedTag(-1)
         {}
     
-        virtual void init() override {}
+        virtual void init(const StyleSheet& styleSheet) override {}
 
         virtual void receiveTag(const int tag, PGUIMessageQueuePoster& msgPoster) override
         {
@@ -91,8 +91,15 @@ namespace
 //--------------------------------------------------------
 TEST(UITests,testClickHandling)
 {
-    auto scene = SceneCreator::createScene(1000, 1000);
+    auto scene = SceneCreator::createScene();
     PGUI ui(*scene);
+	
+	StyleSheet styleSheet;
+	styleSheet.uiFontName = "OpenSans-Regular";
+//	styleSheet. = PGSize(1000, 1000);
+	
+	ui.setStyleSheet(styleSheet);
+	
     TestUIElement testElement;
     
     ui.pushElement(new PGButton(testElement, PGPoint(100, 100), "Test Button", 1234, PGSize(80, 20)));

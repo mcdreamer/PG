@@ -1,6 +1,7 @@
 #include "PG/ui/PGButton.h"
 #include "PG/ui/PGUIMessage.h"
 #include "PG/ui/PGUIMessageQueuePoster.h"
+#include "PG/app/StyleSheet.h"
 #include "PG/graphics/NodeCreator.h"
 
 namespace PG {
@@ -12,15 +13,16 @@ PGButton::PGButton(PGUIElement& target, const PGPoint& point, const std::string&
 {}
 
 //--------------------------------------------------------
-void PGButton::init()
+void PGButton::init(const StyleSheet& styleSheet)
 {
-    auto text = NodeCreator::createTextNode("OpenSans-Regular", 40);
+    auto text = NodeCreator::createTextNode(styleSheet.uiFontName, 40);
     text->setText(m_Label);
+	text->setColour(styleSheet.buttonTextColour);
 	auto textSize = text->getSize();
-    textSize.width += 4;
-    textSize.height += 4;
+    textSize.width += styleSheet.buttonPadding * 2;
+    textSize.height += styleSheet.buttonPadding * 2;
     
-    auto bg = NodeCreator::createColourNode(255, 255, 0, 1, textSize);
+    auto bg = NodeCreator::createColourNode(styleSheet.buttonBackgroundColour, textSize);
     
     m_Root.node->setPosition(m_Point);
     m_Root.node->addChild(bg);

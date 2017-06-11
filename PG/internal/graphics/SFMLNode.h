@@ -2,6 +2,7 @@
 
 #include "PG/graphics/Node.h"
 #include "PG/core/Rect.h"
+#include "PG/core/Size.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -142,7 +143,7 @@ public:
     
     virtual void setText(const std::string& text) override {}
 
-    virtual void setColour(unsigned char r, unsigned char g, unsigned char b, float blendFactor) override {}
+    virtual void setColour(const Colour& colour) override {}
     virtual void removeColour() override {}
 
     virtual const bool isRemoved() const override { return m_Removed; }
@@ -189,9 +190,9 @@ public:
 
     virtual NodeType getType() const override { return NodeType::kSprite; }
 
-    virtual void setColour(unsigned char r, unsigned char g, unsigned char b, float blendFactor) override
+    virtual void setColour(const Colour& colour) override
     {
-        m_Node.setColor(sf::Color(r, g, b));
+        m_Node.setColor(sf::Color(colour.r, colour.g, colour.b));
     }
 
     virtual void removeColour() override
@@ -204,11 +205,11 @@ public:
 class SFMLColourNode : public SFMLNodeBase<sf::RectangleShape>
 {
 public:
-    SFMLColourNode(unsigned char r, unsigned char g, unsigned char b, float a, const PGSize& size)
+    SFMLColourNode(const Colour& colour, const PGSize& size)
     {
         m_Node = sf::RectangleShape(sf::Vector2f((float)size.width, (float)size.height));
         m_Node.setOrigin((float)size.width / 2.0f, (float)size.height / 2.0f);
-        setColour(r, g, b, 0);
+        setColour(colour);
     }
     
     virtual PGSize getSize() const override
@@ -218,9 +219,9 @@ public:
     
     virtual NodeType getType() const override { return NodeType::kSprite; }
     
-    virtual void setColour(unsigned char r, unsigned char g, unsigned char b, float blendFactor) override
+    virtual void setColour(const Colour& colour) override
     {
-        m_Node.setFillColor(sf::Color(r, g, b));
+        m_Node.setFillColor(sf::Color(colour.r, colour.g, colour.b));
     }
     
     virtual void removeColour() override
@@ -286,9 +287,9 @@ public:
                        m_Node.getPosition().y + m_Node.getLocalBounds().top);
     }
     
-    virtual void setColour(unsigned char r, unsigned char g, unsigned char b, float blendFactor) override
+    virtual void setColour(const Colour& colour) override
     {
-        m_Node.setFillColor(sf::Color(r, g, b));
+        m_Node.setFillColor(sf::Color(colour.r, colour.g, colour.b));
     }
     
     virtual void removeColour() override

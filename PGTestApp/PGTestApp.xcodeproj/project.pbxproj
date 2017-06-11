@@ -9,16 +9,16 @@
 /* Begin PBXBuildFile section */
 		4937522C1ED0DDC600B4F024 /* dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = 4937522B1ED0DDC600B4F024 /* dialog.png */; };
 		4937522E1ED0DDCC00B4F024 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4937522D1ED0DDCC00B4F024 /* OpenSans-Regular.ttf */; };
+		49761EC11EED76F100DD6734 /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49761EBC1EED76F100DD6734 /* sfml-audio.framework */; };
+		49761EC21EED76F100DD6734 /* sfml-graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49761EBD1EED76F100DD6734 /* sfml-graphics.framework */; };
+		49761EC31EED76F100DD6734 /* sfml-network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49761EBE1EED76F100DD6734 /* sfml-network.framework */; };
+		49761EC41EED76F100DD6734 /* sfml-system.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49761EBF1EED76F100DD6734 /* sfml-system.framework */; };
+		49761EC51EED76F100DD6734 /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49761EC01EED76F100DD6734 /* sfml-window.framework */; };
 		4989D77D1EE44C6A00821078 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4989D77C1EE44C6A00821078 /* AppIcon.xcassets */; };
 		49AACB171ECCE1ED003BDC3C /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 49AACB161ECCE1ED003BDC3C /* main.mm */; };
 		49AACB281ECCE2BD003BDC3C /* PGTestAppController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AACB261ECCE2BD003BDC3C /* PGTestAppController.cpp */; };
 		49AACB321ECCE50C003BDC3C /* libPGLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AACB2F1ECCE4F8003BDC3C /* libPGLib.a */; };
 		49AACB351ECCE582003BDC3C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AACB341ECCE582003BDC3C /* Cocoa.framework */; };
-		49AACB3B1ECCE59D003BDC3C /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AACB361ECCE59D003BDC3C /* sfml-audio.framework */; };
-		49AACB3C1ECCE59D003BDC3C /* sfml-graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AACB371ECCE59D003BDC3C /* sfml-graphics.framework */; };
-		49AACB3D1ECCE59D003BDC3C /* sfml-network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AACB381ECCE59D003BDC3C /* sfml-network.framework */; };
-		49AACB3E1ECCE59D003BDC3C /* sfml-system.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AACB391ECCE59D003BDC3C /* sfml-system.framework */; };
-		49AACB3F1ECCE59D003BDC3C /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AACB3A1ECCE59D003BDC3C /* sfml-window.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +48,11 @@
 /* Begin PBXFileReference section */
 		4937522B1ED0DDC600B4F024 /* dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialog.png; sourceTree = "<group>"; };
 		4937522D1ED0DDCC00B4F024 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		49761EBC1EED76F100DD6734 /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-audio.framework"; path = "../PG/internal/sfml/Frameworks/sfml-audio.framework"; sourceTree = "<group>"; };
+		49761EBD1EED76F100DD6734 /* sfml-graphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-graphics.framework"; path = "../PG/internal/sfml/Frameworks/sfml-graphics.framework"; sourceTree = "<group>"; };
+		49761EBE1EED76F100DD6734 /* sfml-network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-network.framework"; path = "../PG/internal/sfml/Frameworks/sfml-network.framework"; sourceTree = "<group>"; };
+		49761EBF1EED76F100DD6734 /* sfml-system.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-system.framework"; path = "../PG/internal/sfml/Frameworks/sfml-system.framework"; sourceTree = "<group>"; };
+		49761EC01EED76F100DD6734 /* sfml-window.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-window.framework"; path = "../PG/internal/sfml/Frameworks/sfml-window.framework"; sourceTree = "<group>"; };
 		4989D77C1EE44C6A00821078 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = AppIcon.xcassets; path = PGTestApp/AppIcon.xcassets; sourceTree = "<group>"; };
 		49AACB0F1ECCE1ED003BDC3C /* PG Test App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PG Test App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AACB161ECCE1ED003BDC3C /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
@@ -56,11 +61,6 @@
 		49AACB271ECCE2BD003BDC3C /* PGTestAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTestAppController.h; sourceTree = "<group>"; };
 		49AACB291ECCE4F7003BDC3C /* PG.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PG.xcodeproj; path = ../PG/projects/PG.xcodeproj; sourceTree = "<group>"; };
 		49AACB341ECCE582003BDC3C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		49AACB361ECCE59D003BDC3C /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-audio.framework"; path = "../PG/internal/sfml/sfml-audio.framework"; sourceTree = "<group>"; };
-		49AACB371ECCE59D003BDC3C /* sfml-graphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-graphics.framework"; path = "../PG/internal/sfml/sfml-graphics.framework"; sourceTree = "<group>"; };
-		49AACB381ECCE59D003BDC3C /* sfml-network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-network.framework"; path = "../PG/internal/sfml/sfml-network.framework"; sourceTree = "<group>"; };
-		49AACB391ECCE59D003BDC3C /* sfml-system.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-system.framework"; path = "../PG/internal/sfml/sfml-system.framework"; sourceTree = "<group>"; };
-		49AACB3A1ECCE59D003BDC3C /* sfml-window.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-window.framework"; path = "../PG/internal/sfml/sfml-window.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,13 +68,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49AACB3B1ECCE59D003BDC3C /* sfml-audio.framework in Frameworks */,
-				49AACB3C1ECCE59D003BDC3C /* sfml-graphics.framework in Frameworks */,
-				49AACB3D1ECCE59D003BDC3C /* sfml-network.framework in Frameworks */,
-				49AACB3E1ECCE59D003BDC3C /* sfml-system.framework in Frameworks */,
-				49AACB3F1ECCE59D003BDC3C /* sfml-window.framework in Frameworks */,
+				49761EC11EED76F100DD6734 /* sfml-audio.framework in Frameworks */,
 				49AACB351ECCE582003BDC3C /* Cocoa.framework in Frameworks */,
 				49AACB321ECCE50C003BDC3C /* libPGLib.a in Frameworks */,
+				49761EC51EED76F100DD6734 /* sfml-window.framework in Frameworks */,
+				49761EC41EED76F100DD6734 /* sfml-system.framework in Frameworks */,
+				49761EC31EED76F100DD6734 /* sfml-network.framework in Frameworks */,
+				49761EC21EED76F100DD6734 /* sfml-graphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,11 +149,11 @@
 		49AACB331ECCE581003BDC3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				49AACB361ECCE59D003BDC3C /* sfml-audio.framework */,
-				49AACB371ECCE59D003BDC3C /* sfml-graphics.framework */,
-				49AACB381ECCE59D003BDC3C /* sfml-network.framework */,
-				49AACB391ECCE59D003BDC3C /* sfml-system.framework */,
-				49AACB3A1ECCE59D003BDC3C /* sfml-window.framework */,
+				49761EBC1EED76F100DD6734 /* sfml-audio.framework */,
+				49761EBD1EED76F100DD6734 /* sfml-graphics.framework */,
+				49761EBE1EED76F100DD6734 /* sfml-network.framework */,
+				49761EBF1EED76F100DD6734 /* sfml-system.framework */,
+				49761EC01EED76F100DD6734 /* sfml-window.framework */,
 				49AACB341ECCE582003BDC3C /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -277,7 +277,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -298,7 +298,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -324,7 +323,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -345,7 +344,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -364,7 +362,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = P76529Q457;
-				FRAMEWORK_SEARCH_PATHS = ../PG/internal/sfml;
+				FRAMEWORK_SEARCH_PATHS = ../PG/internal/sfml/frameworks;
 				HEADER_SEARCH_PATHS = (
 					../,
 					../PG/thirdparty/boost,
@@ -382,7 +380,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = P76529Q457;
-				FRAMEWORK_SEARCH_PATHS = ../PG/internal/sfml;
+				FRAMEWORK_SEARCH_PATHS = ../PG/internal/sfml/frameworks;
 				HEADER_SEARCH_PATHS = (
 					../,
 					../PG/thirdparty/boost,

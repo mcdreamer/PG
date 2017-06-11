@@ -34,9 +34,9 @@ NodePtr NodeCreator::createSpriteNode(const std::string& imageName)
 }
 
 //--------------------------------------------------------
-NodePtr NodeCreator::createColourNode(unsigned char r, unsigned char g, unsigned char b, float a, const PGSize& size)
+NodePtr NodeCreator::createColourNode(const Colour& colour, const PGSize& size)
 {
-    return std::make_unique<Internal::SFMLColourNode>(r, g, b, a, size);
+    return std::make_unique<Internal::SFMLColourNode>(colour, size);
 }
 
 //--------------------------------------------------------

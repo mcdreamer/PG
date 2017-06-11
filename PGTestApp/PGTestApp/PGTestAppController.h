@@ -2,6 +2,7 @@
 
 #include "PG/core/Size.h"
 #include "PG/app/IGameController.h"
+#include "PG/app/AppConfiguration.h"
 
 #include <memory>
 
@@ -36,16 +37,17 @@ public:
 	
 	virtual void updateFinished() override;
 	
-    virtual std::string     getWindowTitle() override;
-    virtual PG::PGSize      getWindowSize() override;
-    virtual int             getTileSize() override;
+    virtual PG::AppConfiguration			getConfiguration() override;
     
 private:
     PG::IAppController*                     m_AppController;
     PG::IViewHandle*                        m_ViewHandle;
     PG::IResourceHandler*                   m_ResourceHandler;
-    
+	PG::AppConfiguration					m_AppConfig;
+	
     std::unique_ptr<PG::ISceneCallback>		m_SceneCallback;
+	
+	void									initialiseConfig();
 	
 	bool	m_RunNextScene;
 	

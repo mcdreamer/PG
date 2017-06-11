@@ -3,9 +3,9 @@
 namespace PG {
 
 //--------------------------------------------------------
-ScenePtr SceneCreator::createScene(int width, int height)
+ScenePtr SceneCreator::createScene()
 {
-    return std::make_unique<Internal::SFMLScene>(width, height);
+    return std::make_unique<Internal::SFMLScene>();
 }
 
 }

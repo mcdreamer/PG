@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "PG/app/PGAppHost.h"
+#include "PG/app/AppConfiguration.h"
 
 #ifdef __APPLE__
 
@@ -62,11 +63,11 @@ namespace
             }
             else if (event.type == sf::Event::KeyPressed)
             {
-                viewHandle.currentScene->m_Callback->keyDown(Internal::PGKeyCodeUtils::getPGKeyCode(event.key.code), PGKeyModifierNone);
+                viewHandle.currentScene->getCallback()->keyDown(Internal::PGKeyCodeUtils::getPGKeyCode(event.key.code), PGKeyModifierNone);
             }
             else if (event.type == sf::Event::KeyReleased)
             {
-                viewHandle.currentScene->m_Callback->keyUp(Internal::PGKeyCodeUtils::getPGKeyCode(event.key.code));
+                viewHandle.currentScene->getCallback()->keyUp(Internal::PGKeyCodeUtils::getPGKeyCode(event.key.code));
             }
             else if (event.type == sf::Event::MouseButtonPressed)
             {
@@ -130,12 +131,13 @@ namespace
 
 	//--------------------------------------------------------
 	void runMainLoop(IGameController& gameController,
+					 const AppConfiguration& appConfig,
 					 sf::RenderWindow& window,
 					 Internal::SFMLViewHandle& viewHandle,
 					 TResourceHandler& resourceHandler)
 	{
 		sf::Font fpsFont;
-		fpsFont.loadFromFile(resourceHandler.getResourcePath("OpenSans-Regular", "ttf"));
+		fpsFont.loadFromFile(resourceHandler.getResourcePath(appConfig.styleSheet.uiFontName, "ttf"));
 
 		sf::Text fps("0", fpsFont, 30);
 		fps.setPosition(15, 10);
@@ -150,13 +152,13 @@ namespace
             
 			if (viewHandle.currentScene)
 			{
-				auto* rootNode = dynamic_cast<Internal::ISFMLNodeProvider*>(viewHandle.currentScene->m_Root.get());
+				auto* rootNode = dynamic_cast<Internal::ISFMLNodeProvider*>(viewHandle.currentScene->getRoot().get());
 				
                 handleEvents(window, viewHandle);
 				
                 viewHandle.currentScene->update(dt);
 				
-                window.clear(viewHandle.currentScene->m_BackgroundColour);
+                window.clear(viewHandle.currentScene->getBackgroundColour());
 				
 				const bool anyNodesRemoved = draw(window, rootNode->m_ChildNodes);
 				
@@ -179,27 +181,27 @@ namespace
 //--------------------------------------------------------
 void PGAppHost::runApp(IGameController& gameController)
 {
-    const PGSize windowSize(gameController.getWindowSize().width,
-                            gameController.getWindowSize().height);
+	const auto appConfig = gameController.getConfiguration();
 
-    sf::VideoMode videoMode((unsigned int)windowSize.width, (unsigned int)windowSize.height);
+    sf::VideoMode videoMode((unsigned int)appConfig.windowSize.width,
+							(unsigned int)appConfig.windowSize.height);
     
-    sf::RenderWindow window(videoMode, gameController.getWindowTitle());
+    sf::RenderWindow window(videoMode, appConfig.windowTitle);
     window.setFramerateLimit(60);
     
     TAppController appController;
     TResourceHandler resourceHandler;
     Internal::SFMLFontCache fontCache;
 
-    Internal::SFMLViewHandle viewHandle(&window);
+    Internal::SFMLViewHandle viewHandle(&window, appConfig.styleSheet);
     
     Internal::g_ResourceHandler = &resourceHandler;
-    Internal::g_TileSize = gameController.getTileSize();
+    Internal::g_TileSize = appConfig.tileSize;
 	Internal::g_FontCache = &fontCache;
 
     gameController.start(appController, viewHandle, resourceHandler);
     
-	runMainLoop(gameController, window, viewHandle, resourceHandler);
+	runMainLoop(gameController, appConfig, window, viewHandle, resourceHandler);
 }
 
 }

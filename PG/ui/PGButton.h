@@ -15,7 +15,7 @@ public:
     PGButton(PGUIElement& target, const PGPoint& point, const std::string& label, int tag,
              const PGSize& forcedSize=PGSize());
 
-    virtual void init() override;
+    virtual void init(const StyleSheet& styleSheet) override;
     virtual void clicked(PGUIMessageQueuePoster& msgPoster) override;
     
 private:

@@ -3,7 +3,7 @@
 namespace PG {
 
 //--------------------------------------------------------
-void PGDialog::init()
+void PGDialog::init(const StyleSheet& styleSheet)
 {
     auto dialogRoot = NodeCreator::createSpriteNode("dialog");
     m_Root.node->setPosition(PGPoint(284, 160));

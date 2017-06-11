@@ -8,22 +8,22 @@
 namespace PG {
 
 //--------------------------------------------------------
-void PGUIElement::show(IScene& scene)
+void PGUIElement::show(IScene& scene, const StyleSheet& styleSheet)
 {
     auto root = NodeCreator::createNode();
     m_Root = scene.addChild(root);
     
-    init();
+    init(styleSheet);
 }
 
 //--------------------------------------------------------
-void PGUIElement::show(NodeHandle parent)
+void PGUIElement::show(NodeHandle parent, const StyleSheet& styleSheet)
 {
     auto root = NodeCreator::createNode();
     
     m_Root = parent.node->addChild(root);
     
-    init();
+    init(styleSheet);
 }
 
 //--------------------------------------------------------
@@ -33,17 +33,17 @@ void PGUIElement::close()
 }
 
 //--------------------------------------------------------
-void PGUIElement::addChild(PGUIElement* element)
+void PGUIElement::addChild(PGUIElement* element, const StyleSheet& styleSheet)
 {
-    element->show(m_Root);
+    element->show(m_Root, styleSheet);
     
     m_Children.emplace_back(element);
 }
 
 //--------------------------------------------------------
-void PGUIElement::addChild(std::unique_ptr<PGUIElement>& element)
+void PGUIElement::addChild(std::unique_ptr<PGUIElement>& element, const StyleSheet& styleSheet)
 {
-    element->show(m_Root);
+    element->show(m_Root, styleSheet);
     
     m_Children.emplace_back(element.release());
 }
