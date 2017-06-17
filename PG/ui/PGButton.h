@@ -12,18 +12,20 @@ namespace PG {
 class PGButton : public PGUIElement
 {
 public:
-    PGButton(PGUIElement& target, const PGPoint& point, const std::string& label, int tag,
+    PGButton(PGTagReciever& target, const PGPoint& point, const std::string& label, int tag,
              const PGSize& forcedSize=PGSize());
 
-    virtual void init(const StyleSheet& styleSheet) override;
+    virtual void initUIElement(const StyleSheet& styleSheet) override;
     virtual void clicked(PGUIMessageQueuePoster& msgPoster) override;
-    
+ 
+	virtual void receiveTag(const int tag, PG::PGUIMessageQueuePoster& msgPoster) override {}
+	
 private:
-    PGUIElement&        m_Target;
-    PGPoint             m_Point;
-    PGSize              m_ForcedSize;
-    std::string         m_Label;
-    int                 m_Tag;
+    PGTagReciever&	m_Target;
+    PGPoint         m_Point;
+    PGSize          m_ForcedSize;
+    std::string     m_Label;
+    int             m_Tag;
 };
 
 }

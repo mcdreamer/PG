@@ -3,10 +3,10 @@
 namespace PG {
 
 //--------------------------------------------------------
-class IAppController
+class IPlatformServices
 {
 public:
-    virtual ~IAppController() {}
+    virtual ~IPlatformServices() {}
     
     virtual void exitApp()=0;
 };

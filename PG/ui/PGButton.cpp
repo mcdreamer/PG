@@ -7,13 +7,12 @@
 namespace PG {
 
 //--------------------------------------------------------
-PGButton::PGButton(PGUIElement& target, const PGPoint& point, const std::string& label, int tag,
-                   const PGSize& forcedSize)
+PGButton::PGButton(PGTagReciever& target, const PGPoint& point, const std::string& label, int tag, const PGSize& forcedSize)
 : m_Target(target), m_Point(point), m_Label(label), m_Tag(tag), m_ForcedSize(forcedSize)
 {}
 
 //--------------------------------------------------------
-void PGButton::init(const StyleSheet& styleSheet)
+void PGButton::initUIElement(const StyleSheet& styleSheet)
 {
     auto text = NodeCreator::createTextNode(styleSheet.uiFontName, 40);
     text->setText(m_Label);

@@ -1,7 +1,7 @@
 #include "PG/ui/PGUIElement.h"
 #include "PG/ui/PGUIUtils.h"
 #include "PG/graphics/Scene.h"
-#include "PG/graphics/Node.h"
+#include "PG/graphics/NodeCreator.h"
 #include "PG/core/Rect.h"
 #include "PG/core/PGRectUtils.h"
 
@@ -13,7 +13,7 @@ void PGUIElement::show(IScene& scene, const StyleSheet& styleSheet)
     auto root = NodeCreator::createNode();
     m_Root = scene.addChild(root);
     
-    init(styleSheet);
+    initUIElement(styleSheet);
 }
 
 //--------------------------------------------------------
@@ -23,7 +23,7 @@ void PGUIElement::show(NodeHandle parent, const StyleSheet& styleSheet)
     
     m_Root = parent.node->addChild(root);
     
-    init(styleSheet);
+    initUIElement(styleSheet);
 }
 
 //--------------------------------------------------------

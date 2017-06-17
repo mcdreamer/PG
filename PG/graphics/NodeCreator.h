@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Node.h"
+#include "PG/graphics/Node.h"
 
 namespace PG {
 

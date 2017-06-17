@@ -51,8 +51,9 @@ void PGUI::update()
             case PGUIMessage::kClose:
                 if (msg.target)
                 {
-                    msg.target->close();
-                    removeElement(msg.target, m_UIStack);
+					auto* uiElement = dynamic_cast<PGUIElement*>(msg.target);
+                    uiElement->close();
+                    removeElement(uiElement, m_UIStack);
                 }
                 break;
                 
@@ -67,8 +68,8 @@ void PGUI::update()
             case PGUIMessage::kPushElement:
                 if (msg.target)
                 {
-                    PGUIMessageQueuePoster msgPoster(m_MessageQueue);
-                    pushElement(msg.target);
+					auto* uiElement = dynamic_cast<PGUIElement*>(msg.target);
+                    pushElement(uiElement);
                 }
                 break;
         }

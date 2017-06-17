@@ -96,7 +96,6 @@ TEST(UITests,testClickHandling)
 	
 	StyleSheet styleSheet;
 	styleSheet.uiFontName = "OpenSans-Regular";
-//	styleSheet. = PGSize(1000, 1000);
 	
 	ui.setStyleSheet(styleSheet);
 	
@@ -109,4 +108,29 @@ TEST(UITests,testClickHandling)
     
     ui.update();
     EXPECT_EQ(1234, testElement.m_LastReceivedTag);
+}
+
+namespace
+{
+	//--------------------------------------------------------
+	class LayoutCalculator
+	{
+		
+	};
+}
+
+//--------------------------------------------------------
+TEST(UITests,testLayoutCalculator)
+{
+	auto node = NodeCreator::createColourNode(Colour(), PGSize(10, 10));
+	NodeHandle root(node.get());
+	root.node->setPosition(PGPoint(10, 10));
+	
+	EXPECT_FALSE(PGRectUtils::containsPoint(root.node->getRect(), PGPoint(0, 0)));
+	EXPECT_TRUE(PGRectUtils::containsPoint(root.node->getRect(), PGPoint(5, 5)));
+	EXPECT_TRUE(PGRectUtils::containsPoint(root.node->getRect(), PGPoint(6, 6)));
+	EXPECT_TRUE(PGRectUtils::containsPoint(root.node->getRect(), PGPoint(10, 10)));
+	EXPECT_TRUE(PGRectUtils::containsPoint(root.node->getRect(), PGPoint(14, 14)));
+	EXPECT_TRUE(PGRectUtils::containsPoint(root.node->getRect(), PGPoint(15, 15)));
+	EXPECT_FALSE(PGRectUtils::containsPoint(root.node->getRect(), PGPoint(16, 16)));
 }

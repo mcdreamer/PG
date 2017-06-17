@@ -3,53 +3,28 @@
 #include "PG/core/Size.h"
 #include "PG/app/IGameController.h"
 #include "PG/app/AppConfiguration.h"
-
-#include <memory>
-
-namespace PG {
-    
-class IAppController;
-class IViewHandle;
-class IResourceHandler;
-class ISceneCallback;
-
-}
+#include "PG/ui/PGTagReceiver.h"
 
 //--------------------------------------------------------
-class ISceneTransitionHelper
-{
-public:
-	virtual ~ISceneTransitionHelper() {}
-	
-	virtual void scheduleScene()=0;
-};
-
-//--------------------------------------------------------
-class PGTestAppController : public PG::IGameController, public ISceneTransitionHelper
+class PGTestAppController : public PG::IGameController, public PG::PGTagReciever
 {
 public:
     PGTestAppController();
     ~PGTestAppController();
     
-    virtual void start(PG::IAppController& appController,
-                       PG::IViewHandle& viewHandle,
-                       PG::IResourceHandler& resourceHandler) override;
+    virtual void					start(PG::IPlatformServices& platformServices,
+										  PG::IView& view,
+										  PG::IResourceHandler& resourceHandler) override;	
+	virtual void					updateFinished() override;
+    virtual PG::AppConfiguration	getConfiguration() override;
 	
-	virtual void updateFinished() override;
+	virtual void					receiveTag(const int tag, PG::PGUIMessageQueuePoster& msgPoster) override;
 	
-    virtual PG::AppConfiguration			getConfiguration() override;
-    
 private:
-    PG::IAppController*                     m_AppController;
-    PG::IViewHandle*                        m_ViewHandle;
-    PG::IResourceHandler*                   m_ResourceHandler;
-	PG::AppConfiguration					m_AppConfig;
+    PG::IPlatformServices*			m_PlatformServices;
+    PG::IView*						m_View;
+    PG::IResourceHandler*           m_ResourceHandler;
+	PG::AppConfiguration			m_AppConfig;
 	
-    std::unique_ptr<PG::ISceneCallback>		m_SceneCallback;
-	
-	void									initialiseConfig();
-	
-	bool	m_RunNextScene;
-	
-	virtual void scheduleScene() override;
+	void							initialiseConfig();
 };

@@ -4,8 +4,8 @@
 
 namespace PG {
 
-class IAppController;
-class IViewHandle;
+class IPlatformServices;
+class IView;
 class IResourceHandler;
 struct AppConfiguration;
 
@@ -15,8 +15,8 @@ class IGameController
 public:
     virtual ~IGameController() {}
     
-    virtual void start(IAppController& appController,
-                       IViewHandle& viewHandle,
+    virtual void start(IPlatformServices& platformServices,
+                       IView& view,
                        IResourceHandler& resourceHandler)=0;
 	
 	virtual void				updateFinished()=0;

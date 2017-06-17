@@ -22,7 +22,7 @@ using TResourceHandler = PG::Internal::WinResourceHandler;
 #endif
 
 #include "PG/internal/graphics/SFMLScene.h"
-#include "PG/internal/graphics/SFMLViewHandle.h"
+#include "PG/internal/graphics/SFMLView.h"
 #include "PG/internal/input/PGKeyCodeUtils.h"
 
 #include "PG/app/IGameController.h"
@@ -50,10 +50,24 @@ namespace
                            point.y / ((double)windowSize.y / sceneSize.height));
         
     }
+	
+	//--------------------------------------------------------
+	sf::Color getsfColorFromPGColor(const PG::Colour& c)
+	{
+		return sf::Color(c.r, c.g, c.b, (unsigned char)c.a);
+	}
 
     //--------------------------------------------------------
-    void handleEvents(sf::RenderWindow& window, Internal::SFMLViewHandle& viewHandle)
+    void handleEvents(sf::RenderWindow& window, Internal::SFMLView& view)
     {
+		auto* scene = view.getCurrentScene();
+		auto controller = scene->getController();
+		
+		if (!scene || !controller.controller)
+		{
+			return;
+		}
+	
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -63,18 +77,18 @@ namespace
             }
             else if (event.type == sf::Event::KeyPressed)
             {
-                viewHandle.currentScene->getCallback()->keyDown(Internal::PGKeyCodeUtils::getPGKeyCode(event.key.code), PGKeyModifierNone);
+                controller.controller->keyDown(Internal::PGKeyCodeUtils::getPGKeyCode(event.key.code), PGKeyModifierNone);
             }
             else if (event.type == sf::Event::KeyReleased)
             {
-                viewHandle.currentScene->getCallback()->keyUp(Internal::PGKeyCodeUtils::getPGKeyCode(event.key.code));
+                controller.controller->keyUp(Internal::PGKeyCodeUtils::getPGKeyCode(event.key.code));
             }
             else if (event.type == sf::Event::MouseButtonPressed)
             {
                 const PG::PGPoint windowPt(event.mouseButton.x, event.mouseButton.y);
-                const auto scenePt = windowPointToScenePoint(window.getSize(), viewHandle.currentScene->getSceneSize(), windowPt);
+                const auto scenePt = windowPointToScenePoint(window.getSize(), scene->getSceneSize(), windowPt);
             
-                viewHandle.currentScene->clickInWindow(scenePt, event.mouseButton.button == sf::Mouse::Button::Right);
+                scene->clickInScene(scenePt, event.mouseButton.button == sf::Mouse::Button::Right);
             }
         }
     }
@@ -92,12 +106,12 @@ namespace
                 window.draw(*n->getNode());
                 
                 auto view = window.getView();
-                view.move((float)-child->getPosition().x, (float)-child->getPosition().y);
+                view.move((int)-child->getPosition().x, (int)-child->getPosition().y);
                 window.setView(view);
                 
                 anyNodesRemoved |= draw(window, n->m_ChildNodes);
                 
-                view.move((float)child->getPosition().x, (float)child->getPosition().y);
+                view.move((int)child->getPosition().x, (int)child->getPosition().y);
                 window.setView(view);
             }
             else
@@ -133,7 +147,7 @@ namespace
 	void runMainLoop(IGameController& gameController,
 					 const AppConfiguration& appConfig,
 					 sf::RenderWindow& window,
-					 Internal::SFMLViewHandle& viewHandle,
+					 Internal::SFMLView& view,
 					 TResourceHandler& resourceHandler)
 	{
 		sf::Font fpsFont;
@@ -149,16 +163,17 @@ namespace
 		{
 			float dt = clock.getElapsedTime().asSeconds();
 			clock.restart();
-            
-			if (viewHandle.currentScene)
+			
+			auto* scene = view.getCurrentScene();
+			if (scene)
 			{
-				auto* rootNode = dynamic_cast<Internal::ISFMLNodeProvider*>(viewHandle.currentScene->getRoot().get());
+				auto* rootNode = dynamic_cast<Internal::ISFMLNodeProvider*>(scene->getRoot().node);
 				
-                handleEvents(window, viewHandle);
+                handleEvents(window, view);
 				
-                viewHandle.currentScene->update(dt);
+                scene->update(dt);
 				
-                window.clear(viewHandle.currentScene->getBackgroundColour());
+                window.clear(getsfColorFromPGColor(scene->getBackgroundColour()));
 				
 				const bool anyNodesRemoved = draw(window, rootNode->m_ChildNodes);
 				
@@ -174,6 +189,8 @@ namespace
 			window.display();
 			
 			gameController.updateFinished();
+			
+			view.updateFinished();
 		}
 	}
 }
@@ -193,15 +210,15 @@ void PGAppHost::runApp(IGameController& gameController)
     TResourceHandler resourceHandler;
     Internal::SFMLFontCache fontCache;
 
-    Internal::SFMLViewHandle viewHandle(&window, appConfig.styleSheet);
+    Internal::SFMLView view(&window, appConfig.styleSheet);
     
     Internal::g_ResourceHandler = &resourceHandler;
     Internal::g_TileSize = appConfig.tileSize;
 	Internal::g_FontCache = &fontCache;
 
-    gameController.start(appController, viewHandle, resourceHandler);
+    gameController.start(appController, view, resourceHandler);
     
-	runMainLoop(gameController, appConfig, window, viewHandle, resourceHandler);
+	runMainLoop(gameController, appConfig, window, view, resourceHandler);
 }
 
 }

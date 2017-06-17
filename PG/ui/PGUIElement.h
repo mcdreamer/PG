@@ -1,6 +1,7 @@
 #pragma once
 
-#include "PG/graphics/NodeCreator.h"
+#include "PG/ui/PGTagReceiver.h"
+#include "PG/graphics/Node.h"
 #include "PG/core/Point.h"
 
 #include <vector>
@@ -16,7 +17,7 @@ class PGUIElement;
 using PGUIElementArray = std::vector<std::unique_ptr<PGUIElement>>;
 
 //--------------------------------------------------------
-class PGUIElement
+class PGUIElement : public PGTagReciever
 {
 public:
     virtual ~PGUIElement() {}
@@ -32,10 +33,9 @@ public:
     
     virtual PGRect      getElementRect() const;
     
-    virtual void        init(const StyleSheet& styleSheet)=0;
+    virtual void        initUIElement(const StyleSheet& styleSheet)=0;
     virtual void        clicked(PGUIMessageQueuePoster& msgPoster) {}
-    virtual void        receiveTag(const int tag, PGUIMessageQueuePoster& msgPoster) {}
-    
+	
 protected:
     NodeHandle          m_Root;
     

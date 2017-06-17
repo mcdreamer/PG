@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49045B7F1EF5A25E006ECF48 /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49045B7D1EF5A25E006ECF48 /* MainMenuScene.cpp */; };
+		49045B821EF5A26C006ECF48 /* ButtonsTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49045B801EF5A26C006ECF48 /* ButtonsTestScene.cpp */; };
+		49045B851EF5A41E006ECF48 /* AnimationsTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49045B831EF5A41E006ECF48 /* AnimationsTestScene.cpp */; };
 		4937522C1ED0DDC600B4F024 /* dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = 4937522B1ED0DDC600B4F024 /* dialog.png */; };
 		4937522E1ED0DDCC00B4F024 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4937522D1ED0DDCC00B4F024 /* OpenSans-Regular.ttf */; };
 		496CC9531EED8D0500A901AA /* PGlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 496CC9521EED8D0500A901AA /* PGlogo.png */; };
@@ -47,6 +50,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49045B7B1EF5A073006ECF48 /* TagConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagConstants.h; sourceTree = "<group>"; };
+		49045B7D1EF5A25E006ECF48 /* MainMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenuScene.cpp; sourceTree = "<group>"; };
+		49045B7E1EF5A25E006ECF48 /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuScene.h; sourceTree = "<group>"; };
+		49045B801EF5A26C006ECF48 /* ButtonsTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ButtonsTestScene.cpp; sourceTree = "<group>"; };
+		49045B811EF5A26C006ECF48 /* ButtonsTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsTestScene.h; sourceTree = "<group>"; };
+		49045B831EF5A41E006ECF48 /* AnimationsTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationsTestScene.cpp; sourceTree = "<group>"; };
+		49045B841EF5A41E006ECF48 /* AnimationsTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationsTestScene.h; sourceTree = "<group>"; };
 		4937522B1ED0DDC600B4F024 /* dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialog.png; sourceTree = "<group>"; };
 		4937522D1ED0DDCC00B4F024 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		496CC9521EED8D0500A901AA /* PGlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PGlogo.png; sourceTree = "<group>"; };
@@ -136,6 +146,13 @@
 				49AACB201ECCE1ED003BDC3C /* Info.plist */,
 				49AACB261ECCE2BD003BDC3C /* PGTestAppController.cpp */,
 				49AACB271ECCE2BD003BDC3C /* PGTestAppController.h */,
+				49045B7B1EF5A073006ECF48 /* TagConstants.h */,
+				49045B7D1EF5A25E006ECF48 /* MainMenuScene.cpp */,
+				49045B7E1EF5A25E006ECF48 /* MainMenuScene.h */,
+				49045B801EF5A26C006ECF48 /* ButtonsTestScene.cpp */,
+				49045B811EF5A26C006ECF48 /* ButtonsTestScene.h */,
+				49045B831EF5A41E006ECF48 /* AnimationsTestScene.cpp */,
+				49045B841EF5A41E006ECF48 /* AnimationsTestScene.h */,
 			);
 			path = PGTestApp;
 			sourceTree = "<group>";
@@ -260,7 +277,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				49AACB281ECCE2BD003BDC3C /* PGTestAppController.cpp in Sources */,
+				49045B7F1EF5A25E006ECF48 /* MainMenuScene.cpp in Sources */,
+				49045B821EF5A26C006ECF48 /* ButtonsTestScene.cpp in Sources */,
 				49AACB171ECCE1ED003BDC3C /* main.mm in Sources */,
+				49045B851EF5A41E006ECF48 /* AnimationsTestScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
