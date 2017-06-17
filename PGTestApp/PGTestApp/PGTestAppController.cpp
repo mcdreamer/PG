@@ -51,7 +51,7 @@ void PGTestAppController::start(PG::IPlatformServices& platformServices,
     m_ResourceHandler = &resourceHandler;
 	
 	std::unique_ptr<PG::ISceneController> mainMenu(new MainMenuScene(*this));
-	m_View->presentScene(mainMenu);
+	m_View->replaceScene(mainMenu);
 }
 
 //--------------------------------------------------------
@@ -59,22 +59,21 @@ void PGTestAppController::receiveTag(const int tag, PG::PGUIMessageQueuePoster& 
 {
 	switch (tag)
 	{
-		case TagConstants::kShowMainMenu:
+		case TagConstants::kPopScene:
 		{
-			std::unique_ptr<PG::ISceneController> buttonTest(new MainMenuScene(*this));
-			m_View->presentScene(buttonTest);
+			m_View->popScene();
 			break;
 		}
 		case TagConstants::kShowButtonsTest:
 		{
 			std::unique_ptr<PG::ISceneController> buttonTest(new ButtonTestScene(*this));
-			m_View->presentScene(buttonTest);
+			m_View->pushScene(buttonTest);
 			break;
 		}
 		case TagConstants::kShowAnimationsTest:
 		{
-			std::unique_ptr<PG::ISceneController> buttonTest(new AnimationsTestScene(*this));
-			m_View->presentScene(buttonTest);
+			std::unique_ptr<PG::ISceneController> animationsTest(new AnimationsTestScene(*this));
+			m_View->pushScene(animationsTest);
 			break;
 		}
 		case TagConstants::kExitApp:

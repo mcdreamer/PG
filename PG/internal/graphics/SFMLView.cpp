@@ -7,10 +7,27 @@ namespace PG {
 namespace Internal {
 
 //--------------------------------------------------------
-SceneControllerHandle SFMLView::presentScene(SceneControllerPtr& sceneController)
+SceneControllerHandle SFMLView::replaceScene(SceneControllerPtr& sceneController)
 {
 	m_PendingSceneController.reset(sceneController.release());
+	m_PendingSceneOperationType = PendingSceneOperationType::kReplace;
+	
 	return SceneControllerHandle(m_PendingSceneController.get());
+}
+
+//--------------------------------------------------------
+SceneControllerHandle SFMLView::pushScene(SceneControllerPtr& sceneController)
+{
+	m_PendingSceneController.reset(sceneController.release());
+	m_PendingSceneOperationType = PendingSceneOperationType::kPush;
+	
+	return SceneControllerHandle(m_PendingSceneController.get());
+}
+
+//--------------------------------------------------------
+void SFMLView::popScene()
+{
+	m_PendingSceneOperationType = PendingSceneOperationType::kPop;
 }
 
 //--------------------------------------------------------
@@ -20,24 +37,48 @@ void SFMLView::updateFinished()
 }
 
 //--------------------------------------------------------
+IScene*	SFMLView::getCurrentScene() const
+{
+	return !m_SceneStack.empty() ? m_SceneStack.top().get() : nullptr;
+}
+
+//--------------------------------------------------------
 void SFMLView::presentPendingSceneIfAny()
 {
-	if (!m_PendingSceneController)
+	if (!m_PendingSceneOperationType.is_initialized())
 	{
 		return;
 	}
 
-	const auto size = m_View->getView().getSize();
-	
-	m_CurrentScene = SceneCreator::createScene(m_PendingSceneController, PGSize(size.x, size.y), m_StyleSheet);
-	m_PendingSceneController.release();
-	
-	SceneControllerHandle controllerHandle(m_CurrentScene->getController());
-	
-	if (controllerHandle.controller)
+	if (m_PendingSceneOperationType.get() == PendingSceneOperationType::kPop)
 	{
-		controllerHandle.controller->initScene(m_CurrentScene.get());
+		if (!m_SceneStack.empty())
+		{
+			m_SceneStack.pop();
+		}
 	}
+	else if (m_PendingSceneController)
+	{
+		const auto size = m_View->getView().getSize();
+		
+		if (m_PendingSceneOperationType.get() == PendingSceneOperationType::kReplace)
+		{
+			m_SceneStack = std::stack<ScenePtr>();
+		}
+		
+		m_SceneStack.push(SceneCreator::createScene(m_PendingSceneController, PGSize(size.x, size.y), m_StyleSheet));
+		
+		auto* scene = getCurrentScene();
+		SceneControllerHandle controllerHandle(scene ? scene->getController() : nullptr);
+		
+		if (controllerHandle.controller)
+		{
+			controllerHandle.controller->initScene(scene);
+		}
+	}
+	
+	m_PendingSceneController.release();
+	m_PendingSceneOperationType.reset();
 }
 
 }

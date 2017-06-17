@@ -12,7 +12,9 @@ class IView
 public:
     virtual ~IView() {}
 	
-	virtual SceneControllerHandle presentScene(SceneControllerPtr& sceneController)=0;
+	virtual SceneControllerHandle	replaceScene(SceneControllerPtr& sceneController)=0;
+	virtual SceneControllerHandle	pushScene(SceneControllerPtr& sceneController)=0;
+	virtual void					popScene()=0;
 };
 
 }

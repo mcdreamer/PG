@@ -4,6 +4,10 @@
 #include "PG/graphics/Scene.h"
 #include "PG/app/StyleSheet.h"
 
+#include <boost/optional.hpp>
+
+#include <stack>
+
 namespace sf
 {
     class RenderWindow;
@@ -22,19 +26,30 @@ public:
     : m_View(view_), m_StyleSheet(styleSheet_)
     {}
 	
-	virtual SceneControllerHandle	presentScene(SceneControllerPtr& sceneController) override;
+	virtual SceneControllerHandle	replaceScene(SceneControllerPtr& sceneController) override;
+	virtual SceneControllerHandle	pushScene(SceneControllerPtr& sceneController) override;
+	virtual void					popScene() override;
 	
 	sf::RenderWindow*				getRenderWindow() const { return m_View; }
-	IScene*							getCurrentScene() const { return m_CurrentScene.get(); }
+	IScene*							getCurrentScene() const;
 	const StyleSheet&				getStyleSheet() const { return m_StyleSheet; }
 	
 	void							updateFinished();
 	
 private:
+	enum class PendingSceneOperationType
+	{
+		kReplace,
+		kPush,
+		kPop
+	};
+
     sf::RenderWindow*				m_View;
-	SceneControllerPtr				m_PendingSceneController;
-    ScenePtr						m_CurrentScene;
+	std::stack<ScenePtr>			m_SceneStack;
 	const StyleSheet				m_StyleSheet;
+	
+	SceneControllerPtr							m_PendingSceneController;
+	boost::optional<PendingSceneOperationType>	m_PendingSceneOperationType;
 	
 	void							presentPendingSceneIfAny();
 };

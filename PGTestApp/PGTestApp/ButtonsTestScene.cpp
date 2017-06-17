@@ -22,7 +22,7 @@ void ButtonTestScene::initScene(PG::SceneHandle scene)
 	
 	m_Scene.scene->setBackgroundColour(PG::Colour(0, 0, 0));
 	
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(200, 100), "Main Menu", TagConstants::kShowMainMenu));
+	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(200, 100), "Back", TagConstants::kPopScene));
 	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(200, 200), "Test Button", kTagTestButton));
 	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(200, 300), "Another Test Button", kTagAnotherTestButton));
 	
@@ -51,16 +51,16 @@ void ButtonTestScene::receiveTag(const int tag, PG::PGUIMessageQueuePoster& msgP
 {
 	switch (tag)
 	{
-		case TagConstants::kShowMainMenu:
-			msgPoster.postMessage(PG::PGUIMessage::sendTag(&m_AppTagTarget, TagConstants::kShowMainMenu));
-			break;
-			
 		case kTagTestButton:
 			m_Text.node->setText("Clicked!");
 			break;
 			
 		case kTagAnotherTestButton:
 			m_Text.node->setText("Another Clicked!");
+			break;
+
+		default:
+			msgPoster.postMessage(PG::PGUIMessage::sendTag(&m_AppTagTarget, TagConstants::kPopScene));
 			break;
 	}
 }

@@ -4,7 +4,7 @@
 namespace TagConstants
 {
 	enum TagConstants {
-		kShowMainMenu = 100000,
+		kPopScene = 100000,
 		kShowButtonsTest,
 		kShowAnimationsTest,
 		kExitApp

@@ -21,18 +21,13 @@ void AnimationsTestScene::initScene(PG::SceneHandle scene)
 	auto logoHandle = m_Scene.scene->addChild(logoNode);
 	m_Animations.emplace_back(new PG::MoveToAnimation(logoHandle, PG::PGPoint(500, 400), 5));
 	
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.75), "Main Menu", TagConstants::kShowMainMenu));
+	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.75), "Back", TagConstants::kPopScene));
 }
 
 //--------------------------------------------------------
 void AnimationsTestScene::receiveTag(const int tag, PG::PGUIMessageQueuePoster& msgPoster)
 {
-	switch (tag)
-	{
-		case TagConstants::kShowMainMenu:
-			msgPoster.postMessage(PG::PGUIMessage::sendTag(&m_AppTagTarget, TagConstants::kShowMainMenu));
-			break;
-	}
+	msgPoster.postMessage(PG::PGUIMessage::sendTag(&m_AppTagTarget, tag));
 }
 
 //--------------------------------------------------------
