@@ -64,8 +64,8 @@
 		493022841ECA44E800C143A8 /* IGameController.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022801ECA44E800C143A8 /* IGameController.h */; };
 		493022851ECA44E800C143A8 /* PGAppHost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493022811ECA44E800C143A8 /* PGAppHost.cpp */; };
 		493022861ECA44E800C143A8 /* PGAppHost.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022821ECA44E800C143A8 /* PGAppHost.h */; };
-		4930228D1ECA453E00C143A8 /* MacAppController.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022891ECA453E00C143A8 /* MacAppController.h */; };
-		4930228E1ECA453E00C143A8 /* MacAppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4930228A1ECA453E00C143A8 /* MacAppController.mm */; };
+		4930228D1ECA453E00C143A8 /* MacPlatformServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022891ECA453E00C143A8 /* MacPlatformServices.h */; };
+		4930228E1ECA453E00C143A8 /* MacPlatformServices.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4930228A1ECA453E00C143A8 /* MacPlatformServices.mm */; };
 		4930228F1ECA453E00C143A8 /* MacResourceHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4930228B1ECA453E00C143A8 /* MacResourceHandler.h */; };
 		493022901ECA453E00C143A8 /* MacResourceHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4930228C1ECA453E00C143A8 /* MacResourceHandler.mm */; };
 		4930229D1ECA45AF00C143A8 /* SFMLNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493022931ECA45AF00C143A8 /* SFMLNode.cpp */; };
@@ -179,8 +179,8 @@
 		493022801ECA44E800C143A8 /* IGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGameController.h; sourceTree = "<group>"; };
 		493022811ECA44E800C143A8 /* PGAppHost.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PGAppHost.cpp; sourceTree = "<group>"; };
 		493022821ECA44E800C143A8 /* PGAppHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAppHost.h; sourceTree = "<group>"; };
-		493022891ECA453E00C143A8 /* MacAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacAppController.h; sourceTree = "<group>"; };
-		4930228A1ECA453E00C143A8 /* MacAppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MacAppController.mm; sourceTree = "<group>"; };
+		493022891ECA453E00C143A8 /* MacPlatformServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacPlatformServices.h; sourceTree = "<group>"; };
+		4930228A1ECA453E00C143A8 /* MacPlatformServices.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MacPlatformServices.mm; sourceTree = "<group>"; };
 		4930228B1ECA453E00C143A8 /* MacResourceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacResourceHandler.h; sourceTree = "<group>"; };
 		4930228C1ECA453E00C143A8 /* MacResourceHandler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MacResourceHandler.mm; sourceTree = "<group>"; };
 		493022931ECA45AF00C143A8 /* SFMLNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SFMLNode.cpp; sourceTree = "<group>"; };
@@ -291,8 +291,8 @@
 		493022881ECA452700C143A8 /* platform */ = {
 			isa = PBXGroup;
 			children = (
-				493022891ECA453E00C143A8 /* MacAppController.h */,
-				4930228A1ECA453E00C143A8 /* MacAppController.mm */,
+				493022891ECA453E00C143A8 /* MacPlatformServices.h */,
+				4930228A1ECA453E00C143A8 /* MacPlatformServices.mm */,
 				4930228B1ECA453E00C143A8 /* MacResourceHandler.h */,
 				4930228C1ECA453E00C143A8 /* MacResourceHandler.mm */,
 			);
@@ -534,7 +534,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				493022791ECA44E200C143A8 /* Rect.h in Headers */,
-				4930228D1ECA453E00C143A8 /* MacAppController.h in Headers */,
+				4930228D1ECA453E00C143A8 /* MacPlatformServices.h in Headers */,
 				493022A21ECA45AF00C143A8 /* SFMLTextureMeasurer.h in Headers */,
 				4930225E1ECA44DC00C143A8 /* NodeCreator.h in Headers */,
 				49AACAE11ECCD13F003BDC3C /* DataGrid.h in Headers */,
@@ -694,7 +694,7 @@
 				49045B6F1EF581AA006ECF48 /* SFMLView.cpp in Sources */,
 				49AACAF51ECCD2FC003BDC3C /* Tile.cpp in Sources */,
 				493022511ECA44D100C143A8 /* MenuLayer.cpp in Sources */,
-				4930228E1ECA453E00C143A8 /* MacAppController.mm in Sources */,
+				4930228E1ECA453E00C143A8 /* MacPlatformServices.mm in Sources */,
 				493022A11ECA45AF00C143A8 /* SFMLTextureMeasurer.cpp in Sources */,
 				49904F2A1EEC4E18000B5F9F /* json_value.cpp in Sources */,
 				493022851ECA44E800C143A8 /* PGAppHost.cpp in Sources */,

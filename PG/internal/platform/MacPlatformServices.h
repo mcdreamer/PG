@@ -6,7 +6,7 @@ namespace PG {
 namespace Internal {
 
 //--------------------------------------------------------
-class MacAppController : public IPlatformServices
+class MacPlatformServices : public IPlatformServices
 {
 public:
     virtual void exitApp() override;
