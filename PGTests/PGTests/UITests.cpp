@@ -77,7 +77,7 @@ namespace
         : m_LastReceivedTag(-1)
         {}
     
-        virtual void init(const StyleSheet& styleSheet) override {}
+        virtual void initUIElement(const StyleSheet& styleSheet) override {}
 
         virtual void receiveTag(const int tag, PGUIMessageQueuePoster& msgPoster) override
         {
@@ -91,7 +91,8 @@ namespace
 //--------------------------------------------------------
 TEST(UITests,testClickHandling)
 {
-    auto scene = SceneCreator::createScene();
+	SceneControllerPtr sceneController;
+	auto scene = SceneCreator::createScene(sceneController, PGSize(), StyleSheet {});
     PGUI ui(*scene);
 	
 	StyleSheet styleSheet;

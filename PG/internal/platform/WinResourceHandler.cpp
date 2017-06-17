@@ -1,4 +1,4 @@
-#include "WinResourceHandler.h"
+#include "PG/internal/platform/WinResourceHandler.h"
 
 #include <boost/algorithm/string.hpp>
 

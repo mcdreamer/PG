@@ -1,5 +1,7 @@
 #include "PG/animation/MoveToAnimation.h"
 
+#include <algorithm>
+
 namespace PG {
 
 //--------------------------------------------------------

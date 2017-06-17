@@ -1,18 +1,15 @@
 #pragma once
 
-#include "PG/app/IAppController.h"
+#include "PG/app/IPlatformServices.h"
 
 namespace PG {
 namespace Internal {
 
 //--------------------------------------------------------
-class WinAppController : public IAppController
+class WinPlatformServices : public IPlatformServices
 {
 public:
-	virtual void exitApp() override
-	{
-
-	}
+	virtual void exitApp() override;
 };
 
 }

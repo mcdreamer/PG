@@ -1,6 +1,8 @@
 #include "PG/animation/AnimationUpdater.h"
 #include "PG/animation/IAnimation.h"
 
+#include <algorithm>
+
 namespace PG {
 
 //--------------------------------------------------------

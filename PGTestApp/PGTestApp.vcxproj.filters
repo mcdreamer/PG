@@ -17,9 +17,30 @@
     <ClCompile Include="PGTestApp\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PGTestApp\AnimationsTestScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PGTestApp\ButtonsTestScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PGTestApp\MainMenuScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PGTestApp\PGTestAppController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PGTestApp\AnimationsTestScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PGTestApp\ButtonsTestScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PGTestApp\MainMenuScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PGTestApp\TagConstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

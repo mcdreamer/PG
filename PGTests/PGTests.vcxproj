@@ -159,6 +159,7 @@ copy $(ProjectDir)PGTests\font\*.* $(OutDir)</Command>
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\PGTestApp\PGTestApp\MainMenuScene.h" />
     <ClInclude Include="PGTests\CoreDataTests.h" />
     <ClInclude Include="PGTests\UITests.h" />
     <ClInclude Include="stdafx.h" />

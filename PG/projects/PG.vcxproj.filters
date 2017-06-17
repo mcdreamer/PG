@@ -55,6 +55,9 @@
     <Filter Include="thirdparty\jsoncpp\src">
       <UniqueIdentifier>{8601e7ef-4d8a-44a8-80de-7ddeb758958d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="animation">
+      <UniqueIdentifier>{f3ef8fe4-ba73-4eba-9cc3-278b606e82ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\util\JsonUtils.cpp">
@@ -159,6 +162,21 @@
     <ClCompile Include="..\core\Colour.cpp">
       <Filter>core</Filter>
     </ClCompile>
+    <ClCompile Include="..\animation\AnimationUpdater.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\animation\MoveToAnimation.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\internal\graphics\SFMLView.cpp">
+      <Filter>internal\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\PGUIMessage.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\internal\app\WinPlatformServices.cpp">
+      <Filter>internal\platform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\util\JsonUtils.h">
@@ -171,9 +189,6 @@
       <Filter>graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\graphics\TextureMeasurer.h">
-      <Filter>graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\graphics\ViewHandle.h">
       <Filter>graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\graphics\Node.h">
@@ -287,14 +302,8 @@
     <ClInclude Include="..\internal\graphics\SFMLTextureMeasurer.h">
       <Filter>internal\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="..\internal\graphics\SFMLViewHandle.h">
-      <Filter>internal\graphics</Filter>
-    </ClInclude>
     <ClInclude Include="..\internal\input\PGKeyCodeUtils.h">
       <Filter>internal\input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\internal\platform\WinAppController.h">
-      <Filter>internal\platform</Filter>
     </ClInclude>
     <ClInclude Include="..\internal\platform\WinResourceHandler.h">
       <Filter>internal\platform</Filter>
@@ -313,6 +322,27 @@
     </ClInclude>
     <ClInclude Include="..\app\StyleSheet.h">
       <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\animation\AnimationUpdater.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\animation\IAnimation.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\animation\MoveToAnimation.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\graphics\View.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\internal\graphics\SFMLView.h">
+      <Filter>internal\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\PGTagReceiver.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\internal\platform\WinPlatformServices.h">
+      <Filter>internal\platform</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

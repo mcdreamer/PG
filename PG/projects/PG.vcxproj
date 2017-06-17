@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\animation\AnimationUpdater.cpp" />
+    <ClCompile Include="..\animation\MoveToAnimation.cpp" />
     <ClCompile Include="..\app\PGAppHost.cpp" />
     <ClCompile Include="..\core\Colour.cpp" />
     <ClCompile Include="..\core\PGRectUtils.cpp" />
@@ -34,9 +36,11 @@
     <ClCompile Include="..\entities\TilePositionCalculator.cpp" />
     <ClCompile Include="..\graphics\TextureMeasurer.cpp" />
     <ClCompile Include="..\internal\app\GameConstants.cpp" />
+    <ClCompile Include="..\internal\app\WinPlatformServices.cpp" />
     <ClCompile Include="..\internal\graphics\SFMLNode.cpp" />
     <ClCompile Include="..\internal\graphics\SFMLScene.cpp" />
     <ClCompile Include="..\internal\graphics\SFMLTextureMeasurer.cpp" />
+    <ClCompile Include="..\internal\graphics\SFMLView.cpp" />
     <ClCompile Include="..\internal\platform\WinResourceHandler.cpp" />
     <ClCompile Include="..\inventory\Inventory.cpp" />
     <ClCompile Include="..\menu\MenuLayer.cpp" />
@@ -49,12 +53,16 @@
     <ClCompile Include="..\ui\PGDialog.cpp" />
     <ClCompile Include="..\ui\PGUI.cpp" />
     <ClCompile Include="..\ui\PGUIElement.cpp" />
+    <ClCompile Include="..\ui\PGUIMessage.cpp" />
     <ClCompile Include="..\ui\PGUIMessageQueuePoster.cpp" />
     <ClCompile Include="..\ui\PGUIUtils.cpp" />
     <ClCompile Include="..\util\JsonUtils.cpp" />
     <ClCompile Include="..\util\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\animation\AnimationUpdater.h" />
+    <ClInclude Include="..\animation\IAnimation.h" />
+    <ClInclude Include="..\animation\MoveToAnimation.h" />
     <ClInclude Include="..\app\AppConfiguration.h" />
     <ClInclude Include="..\app\GameConstants.h" />
     <ClInclude Include="..\app\IAppController.h" />
@@ -83,13 +91,13 @@
     <ClInclude Include="..\graphics\NodeCreator.h" />
     <ClInclude Include="..\graphics\Scene.h" />
     <ClInclude Include="..\graphics\TextureMeasurer.h" />
-    <ClInclude Include="..\graphics\ViewHandle.h" />
+    <ClInclude Include="..\graphics\View.h" />
     <ClInclude Include="..\internal\graphics\SFMLNode.h" />
     <ClInclude Include="..\internal\graphics\SFMLScene.h" />
     <ClInclude Include="..\internal\graphics\SFMLTextureMeasurer.h" />
-    <ClInclude Include="..\internal\graphics\SFMLViewHandle.h" />
+    <ClInclude Include="..\internal\graphics\SFMLView.h" />
     <ClInclude Include="..\internal\input\PGKeyCodeUtils.h" />
-    <ClInclude Include="..\internal\platform\WinAppController.h" />
+    <ClInclude Include="..\internal\platform\WinPlatformServices.h" />
     <ClInclude Include="..\internal\platform\WinResourceHandler.h" />
     <ClInclude Include="..\inventory\Inventory.h" />
     <ClInclude Include="..\inventory\InventoryItem.h" />
@@ -99,6 +107,7 @@
     <ClInclude Include="..\menu\MenuNode.h" />
     <ClInclude Include="..\ui\PGButton.h" />
     <ClInclude Include="..\ui\PGDialog.h" />
+    <ClInclude Include="..\ui\PGTagReceiver.h" />
     <ClInclude Include="..\ui\PGUI.h" />
     <ClInclude Include="..\ui\PGUIElement.h" />
     <ClInclude Include="..\ui\PGUIMessage.h" />

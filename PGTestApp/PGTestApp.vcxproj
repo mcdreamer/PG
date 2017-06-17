@@ -146,11 +146,18 @@ xcopy /i /e /s /y /d $(ProjectDir)\PGTestApp\resources $(OutDir)resources
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="PGTestApp\AnimationsTestScene.cpp" />
+    <ClCompile Include="PGTestApp\ButtonsTestScene.cpp" />
     <ClCompile Include="PGTestApp\main.cpp" />
+    <ClCompile Include="PGTestApp\MainMenuScene.cpp" />
     <ClCompile Include="PGTestApp\PGTestAppController.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PGTestApp\AnimationsTestScene.h" />
+    <ClInclude Include="PGTestApp\ButtonsTestScene.h" />
+    <ClInclude Include="PGTestApp\MainMenuScene.h" />
     <ClInclude Include="PGTestApp\PGTestAppController.h" />
+    <ClInclude Include="PGTestApp\TagConstants.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PG\projects\PG.vcxproj">

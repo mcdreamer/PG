@@ -5,18 +5,18 @@
 
 #ifdef __APPLE__
 
-#include "PG/internal/platform/MacAppController.h"
+#include "PG/internal/platform/MacPlatformServices.h"
 #include "PG/internal/platform/MacResourceHandler.h"
 
-using TAppController = PG::Internal::MacAppController;
+using TPlatformServices = PG::Internal::MacPlatformServices;
 using TResourceHandler = PG::Internal::MacResourceHandler;
 
 #else
 
-#include "PG/internal/platform/WinAppController.h"
+#include "PG/internal/platform/WinPlatformServices.h"
 #include "PG/internal/platform/WinResourceHandler.h"
 
-using TAppController = PG::Internal::WinAppController;
+using TPlatformServices = PG::Internal::WinPlatformServices;
 using TResourceHandler = PG::Internal::WinResourceHandler;
 
 #endif
@@ -206,7 +206,7 @@ void PGAppHost::runApp(IGameController& gameController)
     sf::RenderWindow window(videoMode, appConfig.windowTitle);
     window.setFramerateLimit(60);
     
-    TAppController appController;
+    TPlatformServices platformServices;
     TResourceHandler resourceHandler;
     Internal::SFMLFontCache fontCache;
 
@@ -216,7 +216,7 @@ void PGAppHost::runApp(IGameController& gameController)
     Internal::g_TileSize = appConfig.tileSize;
 	Internal::g_FontCache = &fontCache;
 
-    gameController.start(appController, view, resourceHandler);
+    gameController.start(platformServices, view, resourceHandler);
     
 	runMainLoop(gameController, appConfig, window, view, resourceHandler);
 }
