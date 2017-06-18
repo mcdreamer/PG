@@ -41,6 +41,7 @@
     <ClCompile Include="..\internal\graphics\SFMLScene.cpp" />
     <ClCompile Include="..\internal\graphics\SFMLTextureMeasurer.cpp" />
     <ClCompile Include="..\internal\graphics\SFMLView.cpp" />
+    <ClCompile Include="..\internal\platform\ResourceHandler.cpp" />
     <ClCompile Include="..\internal\platform\WinResourceHandler.cpp" />
     <ClCompile Include="..\inventory\Inventory.cpp" />
     <ClCompile Include="..\menu\MenuLayer.cpp" />
@@ -97,6 +98,7 @@
     <ClInclude Include="..\internal\graphics\SFMLTextureMeasurer.h" />
     <ClInclude Include="..\internal\graphics\SFMLView.h" />
     <ClInclude Include="..\internal\input\PGKeyCodeUtils.h" />
+    <ClInclude Include="..\internal\platform\ResourceHandler.h" />
     <ClInclude Include="..\internal\platform\WinPlatformServices.h" />
     <ClInclude Include="..\internal\platform\WinResourceHandler.h" />
     <ClInclude Include="..\inventory\Inventory.h" />

@@ -148,8 +148,8 @@ xcopy /i /e /s /y /d $(ProjectDir)\PGTestApp\resources $(OutDir)resources
   <ItemGroup>
     <ClCompile Include="PGTestApp\AnimationsTestScene.cpp" />
     <ClCompile Include="PGTestApp\ButtonsTestScene.cpp" />
-    <ClCompile Include="PGTestApp\main.cpp" />
     <ClCompile Include="PGTestApp\MainMenuScene.cpp" />
+    <ClCompile Include="PGTestApp\main_win.cpp" />
     <ClCompile Include="PGTestApp\PGTestAppController.cpp" />
   </ItemGroup>
   <ItemGroup>

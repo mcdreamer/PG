@@ -14,9 +14,6 @@
     <ClCompile Include="PGTestApp\PGTestAppController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PGTestApp\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PGTestApp\AnimationsTestScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -24,6 +21,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PGTestApp\MainMenuScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PGTestApp\main_win.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

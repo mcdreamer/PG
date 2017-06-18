@@ -177,6 +177,9 @@
     <ClCompile Include="..\internal\app\WinPlatformServices.cpp">
       <Filter>internal\platform</Filter>
     </ClCompile>
+    <ClCompile Include="..\internal\platform\ResourceHandler.cpp">
+      <Filter>internal\platform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\util\JsonUtils.h">
@@ -342,6 +345,9 @@
       <Filter>ui</Filter>
     </ClInclude>
     <ClInclude Include="..\internal\platform\WinPlatformServices.h">
+      <Filter>internal\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\internal\platform\ResourceHandler.h">
       <Filter>internal\platform</Filter>
     </ClInclude>
   </ItemGroup>
