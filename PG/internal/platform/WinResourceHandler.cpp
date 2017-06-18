@@ -1,6 +1,5 @@
 #include "PG/internal/platform/WinResourceHandler.h"
-
-#include <boost/algorithm/string.hpp>
+#include "PG/internal/platform/ResourceHandler.h"
 
 #include <string>
 #include <iostream>
@@ -27,24 +26,8 @@ std::string WinResourceHandler::getResourcePath(const std::string& name, const s
 		return "";
 	}
 
-	std::string baseDir = ss.substr(0, filenameStart) + "\\resources\\";
-
-	auto nameToUse = name;
-	boost::replace_all(nameToUse, type, "");
-	boost::replace_all(nameToUse, ".", "");
-
-	if (boost::iequals(type, "png"))
-	{
-		return baseDir + "images\\" + nameToUse + ".png";
-	}
-	else if (boost::iequals(type, "ttf"))
-	{
-		return baseDir + "fonts\\" + nameToUse + ".ttf";
-	}
-	else
-	{
-		return baseDir + "data\\" + nameToUse + ".json";
-	}
+	ResourceHandler rh;
+	return rh.getResourcePath(ss.substr(0, filenameStart), name, type);
 }
 
 //--------------------------------------------------------

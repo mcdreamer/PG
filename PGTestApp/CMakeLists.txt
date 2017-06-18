@@ -1,19 +1,14 @@
 cmake_minimum_required(VERSION 2.6)
 project(PGTestApp)
 
-cmake_policy(SET CMP0015 NEW)
-
 add_subdirectory("../../PG/PG/projects" "./PG")
 
 set(CMAKE_BUILD_TYPE RELEASE)
-set(CMAKE_CXX_COMPILER "clang++")
-set(CMAKE_CXX_FLAGS "-std=c++14 -stdlib=libc++")
-
-add_definitions(-DSFML_STATIC)
+set(CMAKE_CXX_COMPILER "g++")
+set(CMAKE_CXX_FLAGS "-std=c++14")
 
 include_directories(
   "../"
-  "../PG/internal/sfml/include"
   "../PG/thirdparty/boost"
 )
 
@@ -22,7 +17,7 @@ set(SRCS
   PGTestApp/AnimationsTestScene.h
   PGTestApp/ButtonsTestScene.cpp
   PGTestApp/ButtonsTestScene.h
-  PGTestApp/main.mm
+  PGTestApp/main.cpp
   PGTestApp/MainMenuScene.cpp
   PGTestApp/MainMenuScene.h
   PGTestApp/PGTestAppController.cpp
@@ -32,7 +27,16 @@ set(SRCS
 
 add_executable(PGTestApp "${SRCS}")
 
-find_library(sfml-graphics libsfml-graphics-s.a "${PROJECT_SOURCE_DIR}/../PG/internal/sfml/lib")
-find_library(sfml-window libsfml-window-s.a "${PROJECT_SOURCE_DIR}/../PG/internal/sfml/lib")
-find_library(sfml-system libsfml-system-s.a "${PROJECT_SOURCE_DIR}/../PG/internal/sfml/lib")
-target_link_libraries(PGTestApp PG ${sfml-system} ${sfml-window} ${sfml-graphics} GL GLU GLX Xrandr X11 xcb freetype jpeg pthread)
+target_link_libraries(PGTestApp PG sfml-system sfml-graphics sfml-window)
+
+file(GLOB RESOURCES_FONTS "PGTestApp/resources/fonts/*")
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/resources/fonts")
+file(COPY ${RESOURCES_FONTS} DESTINATION "${CMAKE_BINARY_DIR}/resources/fonts/")
+
+file(GLOB RESOURCES_IMAGES "PGTestApp/resources/images/*")
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/resources/images")
+file(COPY ${RESOURCES_IMAGES} DESTINATION "${CMAKE_BINARY_DIR}/resources/images/")
+
+file(GLOB RESOURCES_DATA "PGTestApp/resources/data/*")
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/resources/data")
+file(COPY ${RESOURCES_DATA} DESTINATION "${CMAKE_BINARY_DIR}/resources/data/")

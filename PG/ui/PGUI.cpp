@@ -2,6 +2,8 @@
 #include "PG/ui/PGUIMessageQueuePoster.h"
 #include "PG/graphics/Scene.h"
 
+#include <algorithm>
+
 namespace PG {
 
 //--------------------------------------------------------
@@ -17,7 +19,7 @@ bool PGUI::handleClick(const PGPoint& screenPt)
     if (!m_UIStack.empty())
     {
         PGUIMessageQueuePoster msgPoster(m_MessageQueue);
-        
+
         for (auto elementIt = m_UIStack.rbegin(); elementIt != m_UIStack.rend(); ++elementIt)
         {
             if ((*elementIt)->handleClick(screenPt, msgPoster))
@@ -26,7 +28,7 @@ bool PGUI::handleClick(const PGPoint& screenPt)
             }
         }
     }
-    
+
     return false;
 }
 
@@ -45,7 +47,7 @@ void PGUI::update()
     while (!m_MessageQueue.empty())
     {
         auto msg = m_MessageQueue.front();
-        
+
         switch (msg.type)
         {
             case PGUIMessage::kClose:
@@ -56,7 +58,7 @@ void PGUI::update()
                     removeElement(uiElement, m_UIStack);
                 }
                 break;
-                
+
             case PGUIMessage::kSendTag:
                 if (msg.target)
                 {
@@ -64,7 +66,7 @@ void PGUI::update()
                     msg.target->receiveTag(msg.tag, msgPoster);
                 }
                 break;
-                
+
             case PGUIMessage::kPushElement:
                 if (msg.target)
                 {
@@ -73,7 +75,7 @@ void PGUI::update()
                 }
                 break;
         }
-        
+
         m_MessageQueue.pop();
     }
 }

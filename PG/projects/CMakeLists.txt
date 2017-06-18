@@ -2,10 +2,8 @@ cmake_minimum_required(VERSION 2.6)
 project(PG)
 
 set(CMAKE_BUILD_TYPE RELEASE)
-set(CMAKE_CXX_COMPILER "clang++")
-set(CMAKE_CXX_FLAGS "-std=c++14 -stdlib=libc++")
-
-add_definitions(-DSFML_STATIC)
+set(CMAKE_CXX_COMPILER "g++")
+set(CMAKE_CXX_FLAGS "-std=c++14")
 
 include_directories(
   "../.."
@@ -77,6 +75,8 @@ set(SRCS
   ../../PG/internal/platform/LinuxPlatformServices.h
   ../../PG/internal/platform/LinuxResourceHandler.cpp
   ../../PG/internal/platform/LinuxResourceHandler.h
+  ../../PG/internal/platform/ResourceHandler.cpp
+  ../../PG/internal/platform/ResourceHandler.h
   ../../PG/internal/input/PGKeyCodeUtils.h
   ../../PG/inventory/Inventory.cpp
   ../../PG/inventory/Inventory.h
