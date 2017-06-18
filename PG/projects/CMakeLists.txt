@@ -14,13 +14,20 @@ include_directories(
 )
 
 set(SRCS
+  ../../PG/animation/AnimationUpdater.cpp
+  ../../PG/animation/AnimationUpdater.h
+  ../../PG/animation/IAnimation.h
+  ../../PG/animation/MoveToAnimation.cpp
+  ../../PG/animation/MoveToAnimation.h
   ../../PG/app/GameConstants.h
-  ../../PG/app/IAppController.h
+  ../../PG/app/IPlatformServices.h
   ../../PG/app/IGameController.h
   ../../PG/app/PGAppHost.cpp
   ../../PG/app/PGAppHost.h
   ../../PG/app/StyleSheet.h
   ../../PG/app/AppConfiguration.h
+  ../../PG/core/Colour.cpp
+  ../../PG/core/Colour.h
   ../../PG/core/MathsUtils.h
   ../../PG/core/PGKeyCode.h
   ../../PG/core/PGRectUtils.cpp
@@ -56,7 +63,7 @@ set(SRCS
   ../../PG/graphics/Scene.h
   ../../PG/graphics/TextureMeasurer.cpp
   ../../PG/graphics/TextureMeasurer.h
-  ../../PG/graphics/ViewHandle.h
+  ../../PG/graphics/View.h
   ../../PG/internal/app/GameConstants.cpp
   ../../PG/internal/graphics/SFMLNode.cpp
   ../../PG/internal/graphics/SFMLNode.h
@@ -64,7 +71,12 @@ set(SRCS
   ../../PG/internal/graphics/SFMLScene.h
   ../../PG/internal/graphics/SFMLTextureMeasurer.cpp
   ../../PG/internal/graphics/SFMLTextureMeasurer.h
-  ../../PG/internal/graphics/SFMLViewHandle.h
+  ../../PG/internal/graphics/SFMLView.cpp
+  ../../PG/internal/graphics/SFMLView.h
+  ../../PG/internal/platform/LinuxPlatformServices.cpp
+  ../../PG/internal/platform/LinuxPlatformServices.h
+  ../../PG/internal/platform/LinuxResourceHandler.cpp
+  ../../PG/internal/platform/LinuxResourceHandler.h
   ../../PG/internal/input/PGKeyCodeUtils.h
   ../../PG/inventory/Inventory.cpp
   ../../PG/inventory/Inventory.h
@@ -84,7 +96,9 @@ set(SRCS
   ../../PG/ui/PGUI.h
   ../../PG/ui/PGUIElement.cpp
   ../../PG/ui/PGUIElement.h
+  ../../PG/ui/PGUIMessage.cpp
   ../../PG/ui/PGUIMessage.h
+  ../../PG/ui/PGTagReceiver.h
   ../../PG/ui/PGUIMessageQueuePoster.cpp
   ../../PG/ui/PGUIMessageQueuePoster.h
   ../../PG/ui/PGUIUtils.cpp
