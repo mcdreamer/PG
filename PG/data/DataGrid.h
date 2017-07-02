@@ -16,7 +16,7 @@ public:
     }
     
     //--------------------------------------------------------
-    const T& at(int x, int y) const
+    T at(int x, int y) const
     {
         auto i = getIndex(x, y);
         return m_Data[i];
@@ -46,7 +46,7 @@ private:
     //--------------------------------------------------------
     size_t getIndex(int x, int y) const
     {
-        size_t i = (y * m_Width) + x;
+        const auto i = static_cast<size_t>((y * m_Width) + x);
         return (i < m_Data.size() ? i : 0);
     }
 };

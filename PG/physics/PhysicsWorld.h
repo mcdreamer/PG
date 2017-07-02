@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Size.h"
+#include "PG/core/Size.h"
+#include "PG/data/DataGrid.h"
 
 namespace PG {
 
@@ -13,7 +14,7 @@ class PhysicsWorldCallback
 public:
     virtual ~PhysicsWorldCallback () {}
     
-    virtual void bodiesDidCollide(PhysicsBody* bodyOne, PhysicsBody* bodyTwo)=0;
+    virtual void bodiesDidCollide(const PhysicsBody& bodyOne, const PhysicsBody& bodyTwo)=0;
 };
 
 //--------------------------------------------------------
@@ -24,8 +25,7 @@ public:
     : m_Gravity(gravity), m_Callback(callback)
     {}
     
-    void applyPhysicsForBody(PhysicsBody* body, INode* node, INode& parent) const;
-    
+    void					applyPhysicsForBody(PhysicsBody& body, const DataGrid<bool>& levelGeometry) const;
     const PGSize&           getGravity() const { return m_Gravity; }
     
 private:

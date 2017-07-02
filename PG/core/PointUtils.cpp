@@ -1,29 +1,39 @@
-#include "PointUtils.h"
+#include "PG/core/PointUtils.h"
+#include "PG/core/Point.h"
+#include "PG/core/Size.h"
 
 namespace PG {
+namespace PointUtils {
 
 //--------------------------------------------------------
-PGPoint PGPointScale(PGPoint pt, float scale)
+PGPoint scalePoint(PGPoint pt, float scale)
 {
 	return PGPoint(pt.x * scale, pt.y * scale);
 }
 
 //--------------------------------------------------------
-PGPoint PGPointMultiply(PGPoint pt1, PGPoint pt2)
+PGPoint multiplyPoints(PGPoint pt1, PGPoint pt2)
 {
 	return PGPoint(pt1.x * pt2.x, pt1.y * pt2.y);
 }
 
 //--------------------------------------------------------
-PGPoint PGPointAdd(PGPoint pt1, PGPoint pt2)
+PGPoint addPoints(PGPoint pt1, PGPoint pt2)
 {
 	return PGPoint(pt1.x + pt2.x, pt1.y + pt2.y);
 }
 
 //--------------------------------------------------------
-PGPoint PGPointSubtract(PGPoint pt1, PGPoint pt2)
+PGPoint addToPoint(PGPoint pt, PGSize sz)
+{
+	return PGPoint(pt.x + sz.width, pt.y + sz.height);
+}
+
+//--------------------------------------------------------
+PGPoint subtractPoints(PGPoint pt1, PGPoint pt2)
 {
 	return PGPoint(pt1.x - pt2.x, pt1.y - pt2.y);
 }
 
+}
 }

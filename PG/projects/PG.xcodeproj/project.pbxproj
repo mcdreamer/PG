@@ -116,6 +116,9 @@
 		493BC8051EEDAD7D00E10C5F /* IAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 493BC8031EEDAD7D00E10C5F /* IAnimation.h */; };
 		4956B5CE1EE4582A00F6A7A4 /* Rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4956B5CD1EE4582A00F6A7A4 /* Rect.cpp */; };
 		4956B5CF1EE4582A00F6A7A4 /* Rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4956B5CD1EE4582A00F6A7A4 /* Rect.cpp */; };
+		4961A61D1F090A5F00652361 /* SizeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4961A61B1F090A5F00652361 /* SizeUtils.cpp */; };
+		4961A61E1F090A5F00652361 /* SizeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4961A61B1F090A5F00652361 /* SizeUtils.cpp */; };
+		4961A61F1F090A5F00652361 /* SizeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4961A61C1F090A5F00652361 /* SizeUtils.h */; };
 		496CC94D1EED884B00A901AA /* Colour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 496CC94C1EED884B00A901AA /* Colour.cpp */; };
 		49761EB61EED70F800DD6734 /* Colour.h in Headers */ = {isa = PBXBuildFile; fileRef = 49761EB51EED70F800DD6734 /* Colour.h */; };
 		49761EB81EED71D600DD6734 /* AppConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 49761EB71EED71D600DD6734 /* AppConfiguration.h */; };
@@ -230,6 +233,8 @@
 		493022A71ECA45B800C143A8 /* PGKeyCodeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGKeyCodeUtils.h; sourceTree = "<group>"; };
 		493BC8031EEDAD7D00E10C5F /* IAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAnimation.h; sourceTree = "<group>"; };
 		4956B5CD1EE4582A00F6A7A4 /* Rect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rect.cpp; sourceTree = "<group>"; };
+		4961A61B1F090A5F00652361 /* SizeUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SizeUtils.cpp; sourceTree = "<group>"; };
+		4961A61C1F090A5F00652361 /* SizeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeUtils.h; sourceTree = "<group>"; };
 		496CC94C1EED884B00A901AA /* Colour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Colour.cpp; sourceTree = "<group>"; };
 		496F09FE1A5960E900DC93A8 /* libGameGraphicsLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGameGraphicsLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4974CB4F1A595F0F00E109BD /* libPGLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPGLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -543,6 +548,8 @@
 				493022701ECA44E200C143A8 /* ValueRange.h */,
 				496CC94C1EED884B00A901AA /* Colour.cpp */,
 				49761EB51EED70F800DD6734 /* Colour.h */,
+				4961A61B1F090A5F00652361 /* SizeUtils.cpp */,
+				4961A61C1F090A5F00652361 /* SizeUtils.h */,
 			);
 			name = core;
 			path = ../core;
@@ -611,6 +618,7 @@
 				49045B731EF599E3006ECF48 /* PGTagReceiver.h in Headers */,
 				4930227B1ECA44E200C143A8 /* Size.h in Headers */,
 				493022711ECA44E200C143A8 /* MathsUtils.h in Headers */,
+				4961A61F1F090A5F00652361 /* SizeUtils.h in Headers */,
 				49AACAE51ECCD13F003BDC3C /* EntityLoader.h in Headers */,
 				49AACAFA1ECCD462003BDC3C /* TilePositionCalculator.h in Headers */,
 				49AACAE21ECCD13F003BDC3C /* DataGridUtils.h in Headers */,
@@ -729,6 +737,7 @@
 				493ABCBE1EFE8B10000C01E4 /* JsonUtils.cpp in Sources */,
 				493ABCA91EFE8B10000C01E4 /* Tile.cpp in Sources */,
 				493ABCB71EFE8B10000C01E4 /* PGButton.cpp in Sources */,
+				4961A61E1F090A5F00652361 /* SizeUtils.cpp in Sources */,
 				493ABCB41EFE8B10000C01E4 /* json_reader.cpp in Sources */,
 				493ABCAD1EFE8B10000C01E4 /* SFMLNode.cpp in Sources */,
 				493ABC9C1EFE8B10000C01E4 /* AnimationUpdater.cpp in Sources */,
@@ -772,6 +781,7 @@
 				493022A11ECA45AF00C143A8 /* SFMLTextureMeasurer.cpp in Sources */,
 				49904F2A1EEC4E18000B5F9F /* json_value.cpp in Sources */,
 				493022851ECA44E800C143A8 /* PGAppHost.cpp in Sources */,
+				4961A61D1F090A5F00652361 /* SizeUtils.cpp in Sources */,
 				49AACAEF1ECCD226003BDC3C /* Inventory.cpp in Sources */,
 				493022381ECA449600C143A8 /* PGButton.cpp in Sources */,
 				490A3D031EDC80A40046A552 /* PhysicsWorld.cpp in Sources */,

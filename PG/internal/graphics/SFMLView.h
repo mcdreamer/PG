@@ -30,6 +30,9 @@ public:
 	virtual SceneControllerHandle	pushScene(SceneControllerPtr& sceneController) override;
 	virtual void					popScene() override;
 	
+	virtual SceneControllerHandle	addOverlay(SceneControllerPtr& sceneController)  override;
+	virtual void					removeOverlay(const SceneControllerHandle& sceneController) override;
+	
 	sf::RenderWindow*				getRenderWindow() const { return m_View; }
 	IScene*							getCurrentScene() const;
 	const StyleSheet&				getStyleSheet() const { return m_StyleSheet; }
@@ -44,14 +47,16 @@ private:
 		kPop
 	};
 
-    sf::RenderWindow*				m_View;
-	std::stack<ScenePtr>			m_SceneStack;
-	const StyleSheet				m_StyleSheet;
+    sf::RenderWindow*							m_View;
+	std::stack<ScenePtr>						m_SceneStack;
+	const StyleSheet							m_StyleSheet;
+	
+	std::vector<ScenePtr>						m_Overlays;
 	
 	SceneControllerPtr							m_PendingSceneController;
 	boost::optional<PendingSceneOperationType>	m_PendingSceneOperationType;
 	
-	void							presentPendingSceneIfAny();
+	void										presentPendingSceneIfAny();
 };
 
 }

@@ -3,6 +3,7 @@
 #include "MainMenuScene.h"
 #include "ButtonsTestScene.h"
 #include "AnimationsTestScene.h"
+#include "PhysicsTestScene.h"
 
 #include "PG/app/AppConfiguration.h"
 #include "PG/app/IPlatformServices.h"
@@ -74,6 +75,12 @@ void PGTestAppController::receiveTag(const int tag, PG::PGUIMessageQueuePoster& 
 		{
 			std::unique_ptr<PG::ISceneController> animationsTest(new AnimationsTestScene(*this));
 			m_View->pushScene(animationsTest);
+			break;
+		}
+		case TagConstants::kShowPhysicsTest:
+		{
+			std::unique_ptr<PG::ISceneController> physicsTest(new PhysicsTestScene(*this));
+			m_View->pushScene(physicsTest);
 			break;
 		}
 		case TagConstants::kExitApp:

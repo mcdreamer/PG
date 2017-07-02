@@ -39,39 +39,39 @@ namespace
                      bPoint(r.origin.x + (r.size.width / 2.0), r.origin.y + r.size.height / 2.0));
     }
     
-//    //--------------------------------------------------------
-//    PGRect toPGRect(const bRect& r)
-//    {
-//        auto ox = r.min_corner().get<0>();
-//        auto oy = r.min_corner().get<1>();
-//        
-//        auto w = r.max_corner().get<0>() - ox;
-//        auto h = r.max_corner().get<1>() - oy;
-//        
-//        return PGRect(PGPoint(ox, oy), PGSize(w, h));
-//    }
+    //--------------------------------------------------------
+    PGRect toPGRect(const bRect& r)
+    {
+        auto ox = r.min_corner().get<0>();
+        auto oy = r.min_corner().get<1>();
+        
+        auto w = r.max_corner().get<0>() - ox;
+        auto h = r.max_corner().get<1>() - oy;
+        
+        return PGRect(PGPoint(ox, oy), PGSize(w, h));
+    }
 }
 
 //--------------------------------------------------------
 namespace PGRectUtils
 {
-//    //--------------------------------------------------------
-//    PGRect getIntersection(const PGRect& rectOne, const PGRect& rectTwo)
-//    {
-//        auto bRectOne = toBRect(rectOne);
-//        auto bRectTwo = toBRect(rectTwo);
-//    
-//        if (!boost::geometry::intersects(bRectOne, bRectTwo))
-//        {
-//            return PGRect();
-//        }
-//    
-//        bRect intersection;
-//        boost::geometry::intersection(bRectOne, bRectTwo, intersection);
-//        
-//        return toPGRect(intersection);
-//   }
-   
+    //--------------------------------------------------------
+    PGRect getIntersection(const PGRect& rectOne, const PGRect& rectTwo)
+    {
+        auto bRectOne = toBRect(rectOne);
+        auto bRectTwo = toBRect(rectTwo);
+    
+        if (!boost::geometry::intersects(bRectOne, bRectTwo))
+        {
+            return PGRect();
+        }
+    
+        bRect intersection;
+        boost::geometry::intersection(bRectOne, bRectTwo, intersection);
+        
+        return toPGRect(intersection);
+   }
+	
    //--------------------------------------------------------
    bool isEmpty(const PGRect& r)
    {

@@ -1,138 +1,130 @@
 #include "PG/physics/PhysicsWorld.h"
 #include "PG/physics/PhysicsBody.h"
+#include "PG/app/GameConstants.h"
+#include "PG/entities/TilePositionCalculator.h"
+#include "PG/core/PGRectUtils.h"
+#include "PG/core/PointUtils.h"
 
-//#include <iostream>
+#include <array>
 
 namespace PG {
 
 namespace
 {
-//    //--------------------------------------------------------
-//    void getCollisionTestPoints(PGPoint* ptsToTest, PGPoint levPt)
-//    {
-//        for (int i = 0; i < 9; ++i)
-//        {
-//            ptsToTest[i] = levPt;
-//        }
-//        
-//        // Aligned points
-//        ++ptsToTest;
-//        ptsToTest->y -= 1;
-//        
-//        ++ptsToTest;
-//        ptsToTest->y += 1;
-//        
-//        ++ptsToTest;
-//        ptsToTest->x -= 1;
-//        
-//        ++ptsToTest;
-//        ptsToTest->x += 1;
-//        
-//        // Diagonal points
-//        ++ptsToTest;
-//        ptsToTest->x -= 1;
-//        ptsToTest->y += 1;
-//        
-//        ++ptsToTest;
-//        ptsToTest->x += 1;
-//        ptsToTest->y += 1;
-//        
-//        ++ptsToTest;
-//        ptsToTest->x -= 1;
-//        ptsToTest->y -= 1;
-//        
-//        ++ptsToTest;
-//        ptsToTest->x += 1;
-//        ptsToTest->y -= 1;
-//    }
-//    
-//    //--------------------------------------------------------
-//    bool findIntersectionAndResolveForBody(PhysicsBody* body, INode* bodyNode, const PGRect& nodeRect)
-//    {
-//        auto charRect = getRectFromBounds(body->bounds, body->desiredPosition);
-//        
-//        auto intersection = PGRectUtils::getIntersection(charRect, nodeRect);
-//        if (!PGRectUtils::isEmpty(intersection))
-//        {
-//            PGPoint removeIntersectionPt;
-//            PGPoint adjustedVelocity;
-//            
-//            if (intersection.size.height < intersection.size.width)
-//            {
-//                bool collisionBelow = (nodeRect.origin.y < charRect.origin.y);
-//                if (collisionBelow)
-//                {
-//                    body->hasHitGround(true);
-//                }
-//                
-//                int dir = collisionBelow ? 1 : -1;
-//                removeIntersectionPt = PGPoint(0, dir * intersection.size.height);
-//                adjustedVelocity = PGPoint(body->velocity.x, collisionBelow ? 0 : -100); // enough force not to stick when hitting top
-//            }
-//            else
-//            {
-//                int dir = (nodeRect.origin.x < charRect.origin.x) ? 1 : -1;
-//                removeIntersectionPt = PGPoint(dir * intersection.size.width, 0);
-//                adjustedVelocity = PGPoint(0, body->velocity.y);
-//            }
-//            
-//            body->velocity = adjustedVelocity;
-//            body->desiredPosition = PGPointAdd(body->desiredPosition, removeIntersectionPt);
-//            
-//            return true;
-//        }
-//        
-//        return false;
-//    }
-//    
-//    //--------------------------------------------------------
-//    void resolveCollisionAtPoint(const PGPoint& levPtToTest, PhysicsBody* body, INode* bodyNode,
-//                                 EntityState* state, INode& parent, double levelWidth, PhysicsWorldDelegate* delegate)
-//    {
-//        for (auto* node : nodes)
-//        {
-//            if (node == bodyNode)
-//            {
-//                continue;
-//            }
-//            
-//            LevelBlock* blk = node ? LevelBlockUtils::getBlockForNode(*node) : nullptr;
-//            if (node && blk && blk->getTexture()->getBlocksPlayer())
-//            {
-//                auto containerFrameOrigin = container->getFrameOrigin();
-//                auto nodeFrameOrigin = node->getFrameOrigin();
-//                
-//                auto pt = PGPoint(containerFrameOrigin.x + nodeFrameOrigin.x, containerFrameOrigin.y + nodeFrameOrigin.y);
-//                auto nodeRect = getRectFromBounds(blk->getTexture()->getBounds(), pt);
-//                
-//                bool wasOnGround = body->onGround;
-//                if (findIntersectionAndResolveForBody(body, bodyNode, nodeRect))
-//                {
-//                    return;
-//                }
-//            }
-//        }
-//    }
+	const size_t kNumCoordsToTest = 9;
+	using TileCoordsToTest = std::array<TileCoord, kNumCoordsToTest>;
+
+    //--------------------------------------------------------
+    void getCollisionTestCoords(TileCoordsToTest& coordsToTest, const TileCoord& bodyTileCoord)
+    {
+        for (auto& coordToTest : coordsToTest)
+        {
+            coordToTest = bodyTileCoord;
+        }
+		
+		auto coordToTestIt = coordsToTest.begin();
+		
+        // Aligned points
+        ++coordToTestIt;
+        coordToTestIt->y -= 1;
+        
+        ++coordToTestIt;
+        coordToTestIt->y += 1;
+        
+        ++coordToTestIt;
+        coordToTestIt->x -= 1;
+        
+        ++coordToTestIt;
+        coordToTestIt->x += 1;
+        
+        // Diagonal points
+        ++coordToTestIt;
+        coordToTestIt->x -= 1;
+        coordToTestIt->y += 1;
+        
+        ++coordToTestIt;
+        coordToTestIt->x += 1;
+        coordToTestIt->y += 1;
+        
+        ++coordToTestIt;
+        coordToTestIt->x -= 1;
+        coordToTestIt->y -= 1;
+        
+        ++coordToTestIt;
+        coordToTestIt->x += 1;
+        coordToTestIt->y -= 1;
+    }
+    
+    //--------------------------------------------------------
+    void findIntersectionAndResolveForBody(PhysicsBody& body, const PGRect& geometryRect)
+    {
+		const PGRect desiredRect(body.desiredPosition, body.bounds.size);
+		
+		auto intersection = PGRectUtils::getIntersection(desiredRect, geometryRect);
+		if (!PGRectUtils::isEmpty(intersection))
+		{
+			PGPoint removeIntersectionPt;
+			PGPoint adjustedVelocity;
+			
+			if (intersection.size.height < intersection.size.width)
+			{
+				bool collisionBelow = (geometryRect.origin.y < desiredRect.origin.y);
+				if (collisionBelow)
+				{
+					body.hasHitGround();
+				}
+				
+				int dir = collisionBelow ? 1 : -1;
+				removeIntersectionPt = PGPoint(0, dir * intersection.size.height);
+				adjustedVelocity = PGPoint(body.velocity.x, collisionBelow ? 0 : -100); // enough force not to stick when hitting top
+			}
+			else
+			{
+				int dir = (geometryRect.origin.x < desiredRect.origin.x) ? 1 : -1;
+				removeIntersectionPt = PGPoint(dir * intersection.size.width, 0);
+				adjustedVelocity = PGPoint(0, body.velocity.y);
+			}
+			
+			body.velocity = adjustedVelocity;
+			body.desiredPosition = PointUtils::addPoints(body.desiredPosition, removeIntersectionPt);
+		}
+    }
+	
+    //--------------------------------------------------------
+    void resolveCollisionAtCoord(const TileCoord& coordToTest, const DataGrid<bool>& levelGeometry, PhysicsBody& body)
+    {
+		if (coordToTest.x < 0
+			|| coordToTest.x >= levelGeometry.getWidth()
+			|| coordToTest.y < 0
+			|| coordToTest.y >= levelGeometry.getHeight()
+			|| !levelGeometry.at(coordToTest.x, coordToTest.y))
+		{
+			return;
+		}
+	
+		TilePositionCalculator tilePosCalc;
+		const PGRect tileRect(tilePosCalc.calculatePoint(coordToTest), PGSize(GameConstants::tileSize(), GameConstants::tileSize()));
+
+		findIntersectionAndResolveForBody(body, tileRect);
+    }
 }
 
 //--------------------------------------------------------
-void PhysicsWorld::applyPhysicsForBody(PhysicsBody* body, INode* node, INode& parent) const
+void PhysicsWorld::applyPhysicsForBody(PhysicsBody& body, const DataGrid<bool>& levelGeometry) const
 {
-//    auto levPt = LevelUtils::levelPointFromPoint(body->desiredPosition);
-//    
-//    auto halfTileSize = LevelUtils::tileSize() / 2.0;
-//    
-//    // Collision detection
-//    PGPoint ptsToTest[9];
-//    getCollisionTestPoints(ptsToTest, levPt);
-//    for (int i = 0; i < 9; ++i)
-//    {
-//        resolveCollisionAtPoint(ptsToTest[i], body, node, state, parent, levelWidth, m_Delegate);
-//    }
-//    
-//    // Apply updated desired position
-//    body->desiredPosition = PGPoint(body->desiredPosition.x + halfTileSize, body->desiredPosition.y + halfTileSize);
-//    node->setPosition(body->desiredPosition.x, body->desiredPosition.y);
+	TilePositionCalculator tilePosCalc;
+	const auto bodyTileCoord = tilePosCalc.calculateTileCoord(body.desiredPosition);
+    
+    // Collision detection
+    TileCoordsToTest coordsToTest;
+    getCollisionTestCoords(coordsToTest, bodyTileCoord);
+    for (size_t i = 0; i < coordsToTest.size(); ++i)
+    {
+        resolveCollisionAtCoord(coordsToTest[i], levelGeometry, body);
+    }
+    
+    // Apply updated desired position
+    body.setPosition(body.desiredPosition);
 }
 
 }

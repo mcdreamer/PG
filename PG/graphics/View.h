@@ -15,6 +15,9 @@ public:
 	virtual SceneControllerHandle	replaceScene(SceneControllerPtr& sceneController)=0;
 	virtual SceneControllerHandle	pushScene(SceneControllerPtr& sceneController)=0;
 	virtual void					popScene()=0;
+	
+	virtual SceneControllerHandle	addOverlay(SceneControllerPtr& sceneController)=0;
+	virtual void					removeOverlay(const SceneControllerHandle& sceneController)=0;
 };
 
 }

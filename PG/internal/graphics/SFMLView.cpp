@@ -31,6 +31,29 @@ void SFMLView::popScene()
 }
 
 //--------------------------------------------------------
+SceneControllerHandle SFMLView::addOverlay(SceneControllerPtr& sceneController)
+{
+	const auto size = m_View->getView().getSize();
+
+	m_SceneStack.push(SceneCreator::createScene(m_PendingSceneController, PGSize(size.x, size.y), m_StyleSheet));
+	
+	auto* scene = getCurrentScene();
+	SceneControllerHandle controllerHandle(scene ? scene->getController() : nullptr);
+	
+	if (controllerHandle.controller)
+	{
+		controllerHandle.controller->initScene(scene);
+	}
+	
+	return controllerHandle;
+}
+
+//--------------------------------------------------------
+void SFMLView::removeOverlay(const SceneControllerHandle& sceneController)
+{
+}
+
+//--------------------------------------------------------
 void SFMLView::updateFinished()
 {
 	presentPendingSceneIfAny();
