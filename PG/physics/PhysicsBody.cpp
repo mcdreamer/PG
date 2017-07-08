@@ -25,7 +25,7 @@ void PhysicsBody::updateInWorld(const PhysicsWorld& world, float dt)
 
 	// Physics world constants
     const auto forward = PGPoint(2500, 0);
-    const auto jumpForce = PGPoint(0, 700);
+    const auto jumpForce = PGPoint(0, -70);
 
     const auto minMovement = PGPoint(-300, -4850);
     const auto maxMovement = PGPoint(300, 1000);
@@ -45,6 +45,7 @@ void PhysicsBody::updateInWorld(const PhysicsWorld& world, float dt)
     if (jumpToConsume && onGround)
     {
         velocity = PointUtils::addPoints(velocity, jumpForce);
+		jumpToConsume = false;
     }
 
     if (movingRight)

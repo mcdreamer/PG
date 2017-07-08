@@ -54,13 +54,16 @@ namespace
         coordToTestIt->x += 1;
         coordToTestIt->y -= 1;
     }
+	
+	// Don't allow passing through tiles
+	// Better detection of whether collision is above/below or left/right?
     
     //--------------------------------------------------------
     void findIntersectionAndResolveForBody(PhysicsBody& body, const PGRect& geometryRect)
     {
 		const PGRect desiredRect(body.desiredPosition, body.bounds.size);
 		
-		auto intersection = PGRectUtils::getIntersection(desiredRect, geometryRect);
+		const auto intersection = PGRectUtils::getIntersection(desiredRect, geometryRect);
 		if (!PGRectUtils::isEmpty(intersection))
 		{
 			PGPoint removeIntersectionPt;
@@ -68,19 +71,19 @@ namespace
 			
 			if (intersection.size.height < intersection.size.width)
 			{
-				bool collisionBelow = (geometryRect.origin.y < desiredRect.origin.y);
+				const bool collisionBelow = (desiredRect.origin.y <= geometryRect.origin.y);
 				if (collisionBelow)
 				{
 					body.hasHitGround();
 				}
 				
-				int dir = collisionBelow ? 1 : -1;
+				const int dir = collisionBelow ? -1 : 1;
 				removeIntersectionPt = PGPoint(0, dir * intersection.size.height);
-				adjustedVelocity = PGPoint(body.velocity.x, collisionBelow ? 0 : -100); // enough force not to stick when hitting top
+				adjustedVelocity = PGPoint(body.velocity.x, 0);
 			}
 			else
 			{
-				int dir = (geometryRect.origin.x < desiredRect.origin.x) ? 1 : -1;
+				const int dir = (desiredRect.origin.x < geometryRect.origin.x) ? -1 : 1;
 				removeIntersectionPt = PGPoint(dir * intersection.size.width, 0);
 				adjustedVelocity = PGPoint(0, body.velocity.y);
 			}

@@ -7,7 +7,7 @@ namespace PG {
 PGPoint TilePositionCalculator::calculatePoint(const TileCoord& c) const
 {
     auto halfTileSize = PG::GameConstants::tileSize() / 2;
-    return PGPoint((PG::GameConstants::tileSize() * c.x) + halfTileSize, (PG::GameConstants::tileSize() * c.y) - halfTileSize);
+    return PGPoint((PG::GameConstants::tileSize() * c.x) + halfTileSize, (PG::GameConstants::tileSize() * c.y) + halfTileSize);
 }
 
 //--------------------------------------------------------

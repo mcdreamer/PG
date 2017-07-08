@@ -20,8 +20,8 @@ public:
 	virtual void draggedWithOffset(PG::PGPoint pt) override {}
 	virtual void mouseMoved(PG::PGPoint pt) override {}
 	
-	virtual void keyUp(PG::PGKeyCode code) override {}
-	virtual void keyDown(PG::PGKeyCode code, PG::PGKeyModifier mods) override {}
+	virtual void keyUp(PG::PGKeyCode code) override;
+	virtual void keyDown(PG::PGKeyCode code, PG::PGKeyModifier mods) override;
 	
 	virtual void update(float dt) override;
 	

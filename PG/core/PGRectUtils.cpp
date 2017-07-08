@@ -81,7 +81,7 @@ namespace PGRectUtils
    //--------------------------------------------------------
    bool isEmpty(const PGSize& s)
    {
-       return s.width == 0 && s.height == 0;
+       return s.width == 0 || s.height == 0;
    }
    
    //--------------------------------------------------------

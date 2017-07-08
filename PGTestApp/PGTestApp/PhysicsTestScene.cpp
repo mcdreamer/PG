@@ -9,6 +9,7 @@
 #include "PG/app/StyleSheet.h"
 #include "PG/app/GameConstants.h"
 #include "PG/data/DataGrid.h"
+#include "PG/entities/TilePositionCalculator.h"
 
 //--------------------------------------------------------
 struct PhysicsTestScene::PhysicsState : public PG::PhysicsWorldCallback
@@ -30,7 +31,7 @@ struct PhysicsTestScene::PhysicsState : public PG::PhysicsWorldCallback
 
 //--------------------------------------------------------
 PhysicsTestScene::PhysicsTestScene(PG::PGTagReciever& appTagTarget)
-: m_AppTagTarget(appTagTarget), m_State(new PhysicsState(PG::PGRect(PG::PGPoint(100, 200), PG::PGSize(PG::GameConstants::tileSize(), PG::GameConstants::tileSize()))))
+: m_AppTagTarget(appTagTarget), m_State(new PhysicsState(PG::PGRect(PG::PGPoint(32, 0), PG::PGSize(PG::GameConstants::tileSize(), PG::GameConstants::tileSize()))))
 {}
 
 //--------------------------------------------------------
@@ -43,21 +44,33 @@ void PhysicsTestScene::initScene(PG::SceneHandle scene)
 {
 	m_Scene = scene;
 	
-	m_Scene.scene->setBackgroundColour(PG::Colour(161, 5, 5));
+	m_Scene.scene->setBackgroundColour(PG::Colour(197, 239, 247));
 	
 	const auto sceneSize = m_Scene.scene->getSceneSize();
 	
-	auto logoNode = PG::NodeCreator::createSpriteNode("PGlogo");
-	logoNode->setPosition(PG::PGPoint(30 + (logoNode->getSize().width / 2.0), 30 + (logoNode->getSize().height / 2.0)));
-	m_State->logoHandle = m_Scene.scene->addChild(logoNode);
+	auto ghostNode = PG::NodeCreator::createSpriteNode("ghost");
+	m_State->logoHandle = m_Scene.scene->addChild(ghostNode);
 	
 	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.75), "Back", TagConstants::kPopScene));
+	
+	PG::TilePositionCalculator tilePosCalc;
 	
 	for (int y = 0; y < 10; ++y)
 	{
 		for (int x = 0; x < 10; ++x)
 		{
-			m_State->levelGeometry.set(x, y, y == 9);
+			if (y == 9 || (y == 8 && x == 9) || (y == 6 && x == 7))
+			{
+				m_State->levelGeometry.set(x, y, true);
+				
+				auto blockNode = PG::NodeCreator::createSpriteNode("block");
+				blockNode->setPosition(tilePosCalc.calculatePoint(PG::TileCoord(x, y)));
+				m_Scene.scene->addChild(blockNode);
+			}
+			else
+			{
+				m_State->levelGeometry.set(x, y, false);
+			}
 		}
 	}
 }
@@ -76,4 +89,34 @@ void PhysicsTestScene::update(float dt)
 	m_State->world.applyPhysicsForBody(m_State->body, m_State->levelGeometry);
 	
 	m_State->logoHandle.node->setPosition(m_State->body.bounds.origin);
+}
+
+//--------------------------------------------------------
+void PhysicsTestScene::keyDown(PG::PGKeyCode code, PG::PGKeyModifier mods)
+{
+	if (code == PG::PGKeyCodeRight)
+	{
+		m_State->body.movingRight = true;
+	}
+	else if (code == PG::PGKeyCodeLeft)
+	{
+		m_State->body.movingLeft = true;
+	}
+	else if (code == PG::PGKeyCodeUp)
+	{
+		m_State->body.jumpToConsume = true;
+	}
+}
+
+//--------------------------------------------------------
+void PhysicsTestScene::keyUp(PG::PGKeyCode code)
+{
+	if (code == PG::PGKeyCodeRight)
+	{
+		m_State->body.movingRight = false;
+	}
+	else if (code == PG::PGKeyCodeLeft)
+	{
+		m_State->body.movingLeft = false;
+	}
 }
