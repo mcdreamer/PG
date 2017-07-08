@@ -25,6 +25,8 @@ set(SRCS
   PGTests/GeometryTests.h
   PGTests/UITests.cpp
   PGTests/UITests.h
+  PGTests/PhysicsTests.cpp
+  PGTests/PhysicsTests.h
   PGTests/main.cpp
 )
 

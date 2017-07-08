@@ -10,3 +10,6 @@ PGTests/x64/
 PG/projects/Debug/PG.idb
 PG/projects/Debug/
 PGTestApp/Debug/
+PG/projects/build/
+PGTestApp/build/
+PGTests/build/
