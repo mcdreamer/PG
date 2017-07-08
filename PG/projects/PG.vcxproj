@@ -26,7 +26,9 @@
     <ClCompile Include="..\core\PGRectUtils.cpp" />
     <ClCompile Include="..\core\Point.cpp" />
     <ClCompile Include="..\core\PointUtils.cpp" />
+    <ClCompile Include="..\core\Rect.cpp" />
     <ClCompile Include="..\core\Size.cpp" />
+    <ClCompile Include="..\core\SizeUtils.cpp" />
     <ClCompile Include="..\core\TileCoord.cpp" />
     <ClCompile Include="..\data\AttributeConstants.cpp" />
     <ClCompile Include="..\data\Attributes.cpp" />
@@ -47,6 +49,8 @@
     <ClCompile Include="..\menu\MenuLayer.cpp" />
     <ClCompile Include="..\menu\MenuManager.cpp" />
     <ClCompile Include="..\menu\MenuNode.cpp" />
+    <ClCompile Include="..\physics\PhysicsBody.cpp" />
+    <ClCompile Include="..\physics\PhysicsWorld.cpp" />
     <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_reader.cpp" />
     <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_value.cpp" />
     <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_writer.cpp" />
@@ -78,6 +82,7 @@
     <ClInclude Include="..\core\PointUtils.h" />
     <ClInclude Include="..\core\Rect.h" />
     <ClInclude Include="..\core\Size.h" />
+    <ClInclude Include="..\core\SizeUtils.h" />
     <ClInclude Include="..\core\TileCoord.h" />
     <ClInclude Include="..\core\ValueRange.h" />
     <ClInclude Include="..\data\AttributeConstants.h" />
@@ -107,6 +112,8 @@
     <ClInclude Include="..\menu\MenuLayer.h" />
     <ClInclude Include="..\menu\MenuManager.h" />
     <ClInclude Include="..\menu\MenuNode.h" />
+    <ClInclude Include="..\physics\PhysicsBody.h" />
+    <ClInclude Include="..\physics\PhysicsWorld.h" />
     <ClInclude Include="..\ui\PGButton.h" />
     <ClInclude Include="..\ui\PGDialog.h" />
     <ClInclude Include="..\ui\PGTagReceiver.h" />
