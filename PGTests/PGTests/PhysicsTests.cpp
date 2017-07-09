@@ -21,7 +21,7 @@ namespace
 	struct TestWorld
 	{
 		TestWorld()
-		: world(PGSize(0, 10), worldCallback),
+		: world(PhysicsWorldParams{}, worldCallback),
 		levelGeometry(10, 10)
 		{
 			for (int y = 0; y < 10; ++y)
@@ -49,16 +49,10 @@ TEST(PhysicsTests,testPhysicsWorld_Gravity)
 	PhysicsBody body(PGRect(tilePosCalc.calculatePoint(TileCoord(5, 0)), PGSize(GameConstants::tileSize(), GameConstants::tileSize())));
 	
 	const auto posBeforeUpdate = body.desiredPosition;
-
-	body.updateInWorld(testWorld.world, 0.1);
 	
-	const auto posAfterUpdate = body.desiredPosition;
-	EXPECT_NE(posAfterUpdate, posBeforeUpdate);
+	testWorld.world.applyPhysicsForBody(body, testWorld.levelGeometry, 0.1);
 	
-	testWorld.world.applyPhysicsForBody(body, testWorld.levelGeometry);
-	
-	EXPECT_EQ(body.bounds.origin, posAfterUpdate);
-	EXPECT_TRUE(posBeforeUpdate.y < posAfterUpdate.y);
+	EXPECT_TRUE(body.bounds.origin.y > posBeforeUpdate.y);
 }
 
 //--------------------------------------------------------
@@ -72,8 +66,7 @@ TEST(PhysicsTests,testPhysicsWorld_RestingBody)
 	
 	const auto posBeforeUpdate = body.desiredPosition;
 	
-	body.updateInWorld(testWorld.world, 0.1);
-	testWorld.world.applyPhysicsForBody(body, testWorld.levelGeometry);
+	testWorld.world.applyPhysicsForBody(body, testWorld.levelGeometry, 0.1);
 	
 	EXPECT_EQ(body.bounds.origin, posBeforeUpdate);
 }
@@ -89,18 +82,15 @@ TEST(PhysicsTests,testPhysicsWorld_BodyComingToRest)
 	PhysicsBody body(PGRect(targetPt, PGSize(GameConstants::tileSize(), GameConstants::tileSize())));
 	body.bounds.origin.y -= 0.2;
 	
-	body.updateInWorld(testWorld.world, 0.1);
-	testWorld.world.applyPhysicsForBody(body, testWorld.levelGeometry);
+	testWorld.world.applyPhysicsForBody(body, testWorld.levelGeometry, 0.1);
 	
 	EXPECT_NEAR(body.bounds.origin.y, targetPt.y - 0.1, 0.0001);
 	
-	body.updateInWorld(testWorld.world, 0.1);
-	testWorld.world.applyPhysicsForBody(body, testWorld.levelGeometry);
+	testWorld.world.applyPhysicsForBody(body, testWorld.levelGeometry, 0.1);
 	
 	EXPECT_EQ(body.bounds.origin, targetPt);
 	
-	body.updateInWorld(testWorld.world, 0.1);
-	testWorld.world.applyPhysicsForBody(body, testWorld.levelGeometry);
+	testWorld.world.applyPhysicsForBody(body, testWorld.levelGeometry, 0.1);
 	
 	EXPECT_EQ(body.bounds.origin, targetPt);
 }

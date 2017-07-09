@@ -3,6 +3,8 @@
 
 #include "PG/physics/PhysicsWorld.h"
 #include "PG/physics/PhysicsBody.h"
+#include "PG/physics/PhysicsBodyAndNode.h"
+#include "PG/physics/PhysicsBodyInputHandler.h"
 #include "PG/graphics/NodeCreator.h"
 #include "PG/ui/PGButton.h"
 #include "PG/ui/PGUIMessageQueuePoster.h"
@@ -11,17 +13,29 @@
 #include "PG/data/DataGrid.h"
 #include "PG/entities/TilePositionCalculator.h"
 
+namespace
+{
+	//--------------------------------------------------------
+	PG::PhysicsWorldParams getWorldParams()
+	{
+		PG::PhysicsWorldParams params;
+		
+		params.gravity = PG::	PGSize(0, 100);
+		
+		return params;
+	}
+}
+
 //--------------------------------------------------------
 struct PhysicsTestScene::PhysicsState : public PG::PhysicsWorldCallback
 {
 	PhysicsState(const PG::PGRect& bodyRect)
-	: world(PG::PGSize(0, 10), *this), body(bodyRect), levelGeometry(10, 10)
+	: world(getWorldParams(), *this), bodyAndNode(bodyRect), levelGeometry(10, 10)
 	{}
 
-	PG::PhysicsWorld world;
-	PG::PhysicsBody body;
-	PG::DataGrid<bool> levelGeometry;
-	PG::NodeHandle logoHandle;
+	PG::PhysicsWorld		world;
+	PG::PhysicsBodyAndNode	bodyAndNode;
+	PG::DataGrid<bool>		levelGeometry;
 	
 	//--------------------------------------------------------
 	virtual void bodiesDidCollide(const PG::PhysicsBody& bodyOne, const PG::PhysicsBody& bodyTwo) override
@@ -49,7 +63,7 @@ void PhysicsTestScene::initScene(PG::SceneHandle scene)
 	const auto sceneSize = m_Scene.scene->getSceneSize();
 	
 	auto ghostNode = PG::NodeCreator::createSpriteNode("ghost");
-	m_State->logoHandle = m_Scene.scene->addChild(ghostNode);
+	m_State->bodyAndNode.node = m_Scene.scene->addChild(ghostNode);
 	
 	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.75), "Back", TagConstants::kPopScene));
 	
@@ -84,39 +98,21 @@ void PhysicsTestScene::receiveTag(const int tag, PG::PGUIMessageQueuePoster& msg
 //--------------------------------------------------------
 void PhysicsTestScene::update(float dt)
 {
-	m_State->body.updateInWorld(m_State->world, dt);
+	m_State->world.applyPhysicsForBody(m_State->bodyAndNode.body, m_State->levelGeometry, dt);
 	
-	m_State->world.applyPhysicsForBody(m_State->body, m_State->levelGeometry);
-	
-	m_State->logoHandle.node->setPosition(m_State->body.bounds.origin);
+	m_State->bodyAndNode.node.node->setPosition(m_State->bodyAndNode.body.bounds.origin);
 }
 
 //--------------------------------------------------------
 void PhysicsTestScene::keyDown(PG::PGKeyCode code, PG::PGKeyModifier mods)
 {
-	if (code == PG::PGKeyCodeRight)
-	{
-		m_State->body.movingRight = true;
-	}
-	else if (code == PG::PGKeyCodeLeft)
-	{
-		m_State->body.movingLeft = true;
-	}
-	else if (code == PG::PGKeyCodeUp)
-	{
-		m_State->body.jumpToConsume = true;
-	}
+	PG::PhysicsBodyInputHandler inputHandler(m_State->bodyAndNode.body);
+	inputHandler.keyDown(code, mods);
 }
 
 //--------------------------------------------------------
 void PhysicsTestScene::keyUp(PG::PGKeyCode code)
 {
-	if (code == PG::PGKeyCodeRight)
-	{
-		m_State->body.movingRight = false;
-	}
-	else if (code == PG::PGKeyCodeLeft)
-	{
-		m_State->body.movingLeft = false;
-	}
+	PG::PhysicsBodyInputHandler inputHandler(m_State->bodyAndNode.body);
+	inputHandler.keyUp(code);
 }

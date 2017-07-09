@@ -2,6 +2,7 @@
 
 #include "PG/core/Size.h"
 #include "PG/data/DataGrid.h"
+#include "PG/physics/PhysicsWorldParams.h"
 
 namespace PG {
 
@@ -21,16 +22,16 @@ public:
 class PhysicsWorld
 {
 public:
-    PhysicsWorld(const PGSize& gravity, PhysicsWorldCallback& callback)
-    : m_Gravity(gravity), m_Callback(callback)
+    PhysicsWorld(const PhysicsWorldParams& params, PhysicsWorldCallback& callback)
+    : m_Params(params), m_Callback(callback)
     {}
     
-    void					applyPhysicsForBody(PhysicsBody& body, const DataGrid<bool>& levelGeometry) const;
-    const PGSize&           getGravity() const { return m_Gravity; }
+    void						applyPhysicsForBody(PhysicsBody& body, const DataGrid<bool>& levelGeometry, float dt) const;
+    const PhysicsWorldParams&   getParams() const { return m_Params; }
     
 private:
-    PGSize                  m_Gravity;
-    PhysicsWorldCallback&   m_Callback;
+    PhysicsWorldParams			m_Params;
+    PhysicsWorldCallback&		m_Callback;
 };
 
 }

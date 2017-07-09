@@ -4,6 +4,8 @@
 #include "PG/entities/TilePositionCalculator.h"
 #include "PG/core/PGRectUtils.h"
 #include "PG/core/PointUtils.h"
+#include "PG/core/SizeUtils.h"
+#include "PG/core/MathsUtils.h"
 
 #include <array>
 
@@ -110,14 +112,53 @@ namespace
 
 		findIntersectionAndResolveForBody(body, tileRect);
     }
+	
+	//--------------------------------------------------------
+	void applyForcesToBody(PhysicsBody& body, const PhysicsWorldParams& params, float dt)
+	{
+		const auto gravityStep = SizeUtils::scaleSize(params.gravity, dt);
+		const auto forwardStep = PointUtils::scalePoint(params.forward, dt);
+		
+		// Gravity and X friction
+		body.velocity = PointUtils::addToPoint(body.velocity, gravityStep);
+		body.velocity = PGPoint(body.velocity.x * params.friction, body.velocity.y);
+		
+		// Modify state
+		if (body.jumpToConsume && body.onGround)
+		{
+			body.velocity = PointUtils::addPoints(body.velocity, params.jumpForce);
+			body.jumpToConsume = false;
+		}
+		
+		if (body.movingRight)
+		{
+			body.velocity = PointUtils::addPoints(body.velocity, forwardStep);
+		}
+		
+		if (body.movingLeft)
+		{
+			body.velocity = PointUtils::subtractPoints(body.velocity, forwardStep);
+		}
+		
+		// Clamp velocity
+		auto clampedVelX = MathsUtils::clamp(body.velocity.x, params.minMovement.x, params.maxMovement.x);
+		auto clampedVelY = MathsUtils::clamp(body.velocity.y, params.minMovement.y, params.maxMovement.y);
+		body.velocity = PGPoint(clampedVelX, clampedVelY);
+		
+		// Apply velocity
+		auto velocityStep = PointUtils::scalePoint(body.velocity, dt);
+		body.desiredPosition = PointUtils::addPoints(body.bounds.origin, velocityStep);
+	}
 }
 
 //--------------------------------------------------------
-void PhysicsWorld::applyPhysicsForBody(PhysicsBody& body, const DataGrid<bool>& levelGeometry) const
+void PhysicsWorld::applyPhysicsForBody(PhysicsBody& body, const DataGrid<bool>& levelGeometry, float dt) const
 {
 	TilePositionCalculator tilePosCalc;
 	const auto bodyTileCoord = tilePosCalc.calculateTileCoord(body.desiredPosition);
-    
+	
+	applyForcesToBody(body, m_Params, dt);
+	
     // Collision detection
     TileCoordsToTest coordsToTest;
     getCollisionTestCoords(coordsToTest, bodyTileCoord);

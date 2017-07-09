@@ -2,7 +2,6 @@
 
 #include "PG/core/Point.h"
 #include "PG/core/Rect.h"
-#include "PG/graphics/Node.h"
 
 namespace PG {
 
@@ -17,8 +16,7 @@ struct PhysicsBody
 	jumpToConsume(false),
 	onGround(false),
 	movingLeft(false),
-	movingRight(false),
-	node(nullptr)
+	movingRight(false)
 	{}
 
 	void		setPosition(const PGPoint& newPosition);
@@ -33,9 +31,6 @@ struct PhysicsBody
 	bool		movingLeft;
 	bool		movingRight;
 	
-	NodeHandle	node;
-	
-    void updateInWorld(const PhysicsWorld& world, float dt);
     void hasHitGround(bool hitGround);
 };
 

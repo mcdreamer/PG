@@ -114,6 +114,9 @@
 		493ABCBE1EFE8B10000C01E4 /* JsonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493022231ECA449000C143A8 /* JsonUtils.cpp */; };
 		493ABCBF1EFE8B10000C01E4 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493022251ECA449000C143A8 /* Logger.cpp */; };
 		493BC8051EEDAD7D00E10C5F /* IAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 493BC8031EEDAD7D00E10C5F /* IAnimation.h */; };
+		495388D31F122DDD007AC45B /* PhysicsBodyInputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495388D11F122DDD007AC45B /* PhysicsBodyInputHandler.cpp */; };
+		495388D41F122DDD007AC45B /* PhysicsBodyInputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495388D11F122DDD007AC45B /* PhysicsBodyInputHandler.cpp */; };
+		495388D51F122DDD007AC45B /* PhysicsBodyInputHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 495388D21F122DDD007AC45B /* PhysicsBodyInputHandler.h */; };
 		4956B5CE1EE4582A00F6A7A4 /* Rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4956B5CD1EE4582A00F6A7A4 /* Rect.cpp */; };
 		4956B5CF1EE4582A00F6A7A4 /* Rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4956B5CD1EE4582A00F6A7A4 /* Rect.cpp */; };
 		4961A61D1F090A5F00652361 /* SizeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4961A61B1F090A5F00652361 /* SizeUtils.cpp */; };
@@ -149,6 +152,8 @@
 		49AACAFA1ECCD462003BDC3C /* TilePositionCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AACAF81ECCD462003BDC3C /* TilePositionCalculator.h */; };
 		49AACAFC1ECCD4BB003BDC3C /* GameConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AACAFB1ECCD4BB003BDC3C /* GameConstants.h */; };
 		49AACAFF1ECCD4FC003BDC3C /* GameConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AACAFE1ECCD4FC003BDC3C /* GameConstants.cpp */; };
+		49B63CC91F1219D2000B6297 /* PhysicsWorldParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B63CC81F1219D2000B6297 /* PhysicsWorldParams.h */; };
+		49B63CCB1F121D44000B6297 /* PhysicsBodyAndNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B63CCA1F121D44000B6297 /* PhysicsBodyAndNode.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -232,6 +237,8 @@
 		4930229C1ECA45AF00C143A8 /* SFMLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMLView.h; sourceTree = "<group>"; };
 		493022A71ECA45B800C143A8 /* PGKeyCodeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGKeyCodeUtils.h; sourceTree = "<group>"; };
 		493BC8031EEDAD7D00E10C5F /* IAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAnimation.h; sourceTree = "<group>"; };
+		495388D11F122DDD007AC45B /* PhysicsBodyInputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsBodyInputHandler.cpp; sourceTree = "<group>"; };
+		495388D21F122DDD007AC45B /* PhysicsBodyInputHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsBodyInputHandler.h; sourceTree = "<group>"; };
 		4956B5CD1EE4582A00F6A7A4 /* Rect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rect.cpp; sourceTree = "<group>"; };
 		4961A61B1F090A5F00652361 /* SizeUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SizeUtils.cpp; sourceTree = "<group>"; };
 		4961A61C1F090A5F00652361 /* SizeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeUtils.h; sourceTree = "<group>"; };
@@ -267,6 +274,8 @@
 		49AACAF81ECCD462003BDC3C /* TilePositionCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TilePositionCalculator.h; sourceTree = "<group>"; };
 		49AACAFB1ECCD4BB003BDC3C /* GameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConstants.h; sourceTree = "<group>"; };
 		49AACAFE1ECCD4FC003BDC3C /* GameConstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GameConstants.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		49B63CC81F1219D2000B6297 /* PhysicsWorldParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsWorldParams.h; sourceTree = "<group>"; };
+		49B63CCA1F121D44000B6297 /* PhysicsBodyAndNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsBodyAndNode.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +303,10 @@
 				490A3CFF1EDC386B0046A552 /* PhysicsBody.h */,
 				490A3D011EDC80A40046A552 /* PhysicsWorld.cpp */,
 				490A3D021EDC80A40046A552 /* PhysicsWorld.h */,
+				49B63CC81F1219D2000B6297 /* PhysicsWorldParams.h */,
+				49B63CCA1F121D44000B6297 /* PhysicsBodyAndNode.h */,
+				495388D11F122DDD007AC45B /* PhysicsBodyInputHandler.cpp */,
+				495388D21F122DDD007AC45B /* PhysicsBodyInputHandler.h */,
 			);
 			name = physics;
 			path = ../physics;
@@ -591,8 +604,10 @@
 				493022281ECA449000C143A8 /* JsonUtils.h in Headers */,
 				493022611ECA44DC00C143A8 /* TextureMeasurer.h in Headers */,
 				49AACAFC1ECCD4BB003BDC3C /* GameConstants.h in Headers */,
+				49B63CC91F1219D2000B6297 /* PhysicsWorldParams.h in Headers */,
 				493022A61ECA45AF00C143A8 /* SFMLView.h in Headers */,
 				493022421ECA449600C143A8 /* PGUIMessageQueuePoster.h in Headers */,
+				495388D51F122DDD007AC45B /* PhysicsBodyInputHandler.h in Headers */,
 				49A7A70B1EEDADC800816F2B /* MoveToAnimation.h in Headers */,
 				4930223B1ECA449600C143A8 /* PGDialog.h in Headers */,
 				493022721ECA44E200C143A8 /* PGKeyCode.h in Headers */,
@@ -624,6 +639,7 @@
 				49AACAE21ECCD13F003BDC3C /* DataGridUtils.h in Headers */,
 				493022841ECA44E800C143A8 /* IGameController.h in Headers */,
 				493022A01ECA45AF00C143A8 /* SFMLScene.h in Headers */,
+				49B63CCB1F121D44000B6297 /* PhysicsBodyAndNode.h in Headers */,
 				490A3D051EDC80A40046A552 /* PhysicsWorld.h in Headers */,
 				4930229E1ECA45AF00C143A8 /* SFMLNode.h in Headers */,
 				49AACAF61ECCD2FC003BDC3C /* Tile.h in Headers */,
@@ -754,6 +770,7 @@
 				493ABC9D1EFE8B10000C01E4 /* PGAppHost.cpp in Sources */,
 				490A3D081EDC84890046A552 /* PhysicsBody.cpp in Sources */,
 				493ABCB81EFE8B10000C01E4 /* PGDialog.cpp in Sources */,
+				495388D41F122DDD007AC45B /* PhysicsBodyInputHandler.cpp in Sources */,
 				493ABCBD1EFE8B10000C01E4 /* PGUIMessage.cpp in Sources */,
 				493ABCAC1EFE8B10000C01E4 /* GameConstants.cpp in Sources */,
 			);
@@ -778,6 +795,7 @@
 				49AACAF51ECCD2FC003BDC3C /* Tile.cpp in Sources */,
 				493022511ECA44D100C143A8 /* MenuLayer.cpp in Sources */,
 				4930228E1ECA453E00C143A8 /* MacPlatformServices.mm in Sources */,
+				495388D31F122DDD007AC45B /* PhysicsBodyInputHandler.cpp in Sources */,
 				493022A11ECA45AF00C143A8 /* SFMLTextureMeasurer.cpp in Sources */,
 				49904F2A1EEC4E18000B5F9F /* json_value.cpp in Sources */,
 				493022851ECA44E800C143A8 /* PGAppHost.cpp in Sources */,
