@@ -7,3 +7,9 @@ PG/projects/.vs/
 PG/projects/x64/
 PGTestApp/x64/
 PGTests/x64/
+PG/projects/Debug/PG.idb
+PG/projects/Debug/
+PGTestApp/Debug/
+PG/projects/build/
+PGTestApp/build/
+PGTests/build/

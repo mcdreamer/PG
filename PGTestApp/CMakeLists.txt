@@ -17,6 +17,8 @@ set(SRCS
   PGTestApp/AnimationsTestScene.h
   PGTestApp/ButtonsTestScene.cpp
   PGTestApp/ButtonsTestScene.h
+  PGTestApp/PhysicsTestScene.cpp
+  PGTestApp/PhysicsTestScene.h  
   PGTestApp/main.cpp
   PGTestApp/MainMenuScene.cpp
   PGTestApp/MainMenuScene.h

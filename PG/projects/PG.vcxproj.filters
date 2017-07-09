@@ -58,6 +58,9 @@
     <Filter Include="animation">
       <UniqueIdentifier>{f3ef8fe4-ba73-4eba-9cc3-278b606e82ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="physics">
+      <UniqueIdentifier>{d04d04fc-5c7a-4f91-88ec-6cfe5dea233a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\util\JsonUtils.cpp">
@@ -179,6 +182,18 @@
     </ClCompile>
     <ClCompile Include="..\internal\platform\ResourceHandler.cpp">
       <Filter>internal\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\core\SizeUtils.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\physics\PhysicsBody.cpp">
+      <Filter>physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\physics\PhysicsWorld.cpp">
+      <Filter>physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\core\Rect.cpp">
+      <Filter>core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -349,6 +364,15 @@
     </ClInclude>
     <ClInclude Include="..\internal\platform\ResourceHandler.h">
       <Filter>internal\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\core\SizeUtils.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\physics\PhysicsBody.h">
+      <Filter>physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\physics\PhysicsWorld.h">
+      <Filter>physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

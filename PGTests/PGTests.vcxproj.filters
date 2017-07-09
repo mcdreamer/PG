@@ -23,8 +23,11 @@
     <ClInclude Include="PGTests\UITests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\PGTestApp\PGTestApp\MainMenuScene.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="PGTests\GeometryTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PGTests\PhysicsTests.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -38,6 +41,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PGTests\CoreDataTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PGTests\GeometryTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PGTests\PhysicsTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

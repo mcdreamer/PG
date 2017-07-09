@@ -34,9 +34,12 @@ set(SRCS
   ../../PG/core/Point.h
   ../../PG/core/PointUtils.cpp
   ../../PG/core/PointUtils.h
+  ../../PG/core/Rect.cpp
   ../../PG/core/Rect.h
   ../../PG/core/Size.cpp
   ../../PG/core/Size.h
+  ../../PG/core/SizeUtils.cpp
+  ../../PG/core/SizeUtils.h
   ../../PG/core/Colour.cpp
   ../../PG/core/Colour.h
   ../../PG/core/TileCoord.cpp
@@ -88,6 +91,10 @@ set(SRCS
   ../../PG/menu/MenuManager.h
   ../../PG/menu/MenuNode.cpp
   ../../PG/menu/MenuNode.h
+  ../../PG/physics/PhysicsBody.cpp
+  ../../PG/physics/PhysicsBody.h
+  ../../PG/physics/PhysicsWorld.cpp
+  ../../PG/physics/PhysicsWorld.h
   ../../PG/ui/PGButton.cpp
   ../../PG/ui/PGButton.h
   ../../PG/ui/PGDialog.cpp

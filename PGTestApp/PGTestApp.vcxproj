@@ -151,12 +151,14 @@ xcopy /i /e /s /y /d $(ProjectDir)\PGTestApp\resources $(OutDir)resources
     <ClCompile Include="PGTestApp\MainMenuScene.cpp" />
     <ClCompile Include="PGTestApp\main_win.cpp" />
     <ClCompile Include="PGTestApp\PGTestAppController.cpp" />
+    <ClCompile Include="PGTestApp\PhysicsTestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PGTestApp\AnimationsTestScene.h" />
     <ClInclude Include="PGTestApp\ButtonsTestScene.h" />
     <ClInclude Include="PGTestApp\MainMenuScene.h" />
     <ClInclude Include="PGTestApp\PGTestAppController.h" />
+    <ClInclude Include="PGTestApp\PhysicsTestScene.h" />
     <ClInclude Include="PGTestApp\TagConstants.h" />
   </ItemGroup>
   <ItemGroup>
