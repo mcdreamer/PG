@@ -15,51 +15,55 @@ namespace
 {
 	const size_t kNumCoordsToTest = 9;
 	using TileCoordsToTest = std::array<TileCoord, kNumCoordsToTest>;
-
-    //--------------------------------------------------------
-    void getCollisionTestCoords(TileCoordsToTest& coordsToTest, const TileCoord& bodyTileCoord)
-    {
-        for (auto& coordToTest : coordsToTest)
-        {
-            coordToTest = bodyTileCoord;
-        }
+	
+	//--------------------------------------------------------
+	TileCoordsToTest getCollisionTestCoords(const TileCoord& bodyTileCoord)
+	{
+		TileCoordsToTest coordsToTest;
+		
+		for (auto& coordToTest : coordsToTest)
+		{
+			coordToTest = bodyTileCoord;
+		}
 		
 		auto coordToTestIt = coordsToTest.begin();
 		
-        // Aligned points
-        ++coordToTestIt;
-        coordToTestIt->y -= 1;
-        
-        ++coordToTestIt;
-        coordToTestIt->y += 1;
-        
-        ++coordToTestIt;
-        coordToTestIt->x -= 1;
-        
-        ++coordToTestIt;
-        coordToTestIt->x += 1;
-        
-        // Diagonal points
-        ++coordToTestIt;
-        coordToTestIt->x -= 1;
-        coordToTestIt->y += 1;
-        
-        ++coordToTestIt;
-        coordToTestIt->x += 1;
-        coordToTestIt->y += 1;
-        
-        ++coordToTestIt;
-        coordToTestIt->x -= 1;
-        coordToTestIt->y -= 1;
-        
-        ++coordToTestIt;
-        coordToTestIt->x += 1;
-        coordToTestIt->y -= 1;
-    }
-	
+		// Aligned points
+		++coordToTestIt;
+		coordToTestIt->y -= 1;
+		
+		++coordToTestIt;
+		coordToTestIt->y += 1;
+		
+		++coordToTestIt;
+		coordToTestIt->x -= 1;
+		
+		++coordToTestIt;
+		coordToTestIt->x += 1;
+		
+		// Diagonal points
+		++coordToTestIt;
+		coordToTestIt->x -= 1;
+		coordToTestIt->y += 1;
+		
+		++coordToTestIt;
+		coordToTestIt->x += 1;
+		coordToTestIt->y += 1;
+		
+		++coordToTestIt;
+		coordToTestIt->x -= 1;
+		coordToTestIt->y -= 1;
+		
+		++coordToTestIt;
+		coordToTestIt->x += 1;
+		coordToTestIt->y -= 1;
+		
+		return coordsToTest;
+	}
+
 	// Don't allow passing through tiles
 	// Better detection of whether collision is above/below or left/right?
-    
+	
     //--------------------------------------------------------
     void findIntersectionAndResolveForBody(PhysicsBody& body, const PGRect& geometryRect)
     {
@@ -154,14 +158,13 @@ namespace
 //--------------------------------------------------------
 void PhysicsWorld::applyPhysicsForBody(PhysicsBody& body, const DataGrid<bool>& levelGeometry, float dt) const
 {
+	applyForcesToBody(body, m_Params, dt);
+	
 	TilePositionCalculator tilePosCalc;
 	const auto bodyTileCoord = tilePosCalc.calculateTileCoord(body.desiredPosition);
 	
-	applyForcesToBody(body, m_Params, dt);
-	
     // Collision detection
-    TileCoordsToTest coordsToTest;
-    getCollisionTestCoords(coordsToTest, bodyTileCoord);
+    const auto coordsToTest = getCollisionTestCoords(bodyTileCoord);
     for (size_t i = 0; i < coordsToTest.size(); ++i)
     {
         resolveCollisionAtCoord(coordsToTest[i], levelGeometry, body);
@@ -169,6 +172,18 @@ void PhysicsWorld::applyPhysicsForBody(PhysicsBody& body, const DataGrid<bool>& 
     
     // Apply updated desired position
     body.setPosition(body.desiredPosition);
+}
+
+//--------------------------------------------------------
+void PhysicsWorld::findCollisionsWithItems(const PhysicsBody& body, const std::vector<PhysicsBody>& bodiesToCheck) const
+{
+	for (size_t nthBody = 0; nthBody < bodiesToCheck.size(); ++nthBody)
+	{
+		if (!PGRectUtils::isEmpty(PGRectUtils::getIntersection(body.bounds, bodiesToCheck[nthBody].bounds)))
+		{
+			m_Callback.bodiesDidCollide(body, bodiesToCheck[nthBody], nthBody);
+		}
+	}
 }
 
 }

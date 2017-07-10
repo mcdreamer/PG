@@ -12,7 +12,14 @@ using namespace PG;
 class TestPhysicsWorldCallback : public PhysicsWorldCallback
 {
 public:
-	virtual void bodiesDidCollide(const PhysicsBody& bodyOne, const PhysicsBody& bodyTwo) override {}
+	virtual void bodiesDidCollide(const PhysicsBody& body,
+								  const PhysicsBody& collidedWithBody,
+								  const size_t nthBody) override
+	{
+		collisions.push_back(nthBody);
+	}
+	
+	std::vector<size_t> collisions;
 };
 
 namespace
@@ -93,4 +100,24 @@ TEST(PhysicsTests,testPhysicsWorld_BodyComingToRest)
 	testWorld.world.applyPhysicsForBody(body, testWorld.levelGeometry, 0.1);
 	
 	EXPECT_EQ(body.bounds.origin, targetPt);
+}
+
+//--------------------------------------------------------
+TEST(PhysicsTests,testPhysicsWorld_findCollisions)
+{
+	TestWorld testWorld;
+
+	PhysicsBody body(PGRect(PGPoint(0, 0), PGSize(100, 100)));
+
+	std::vector<PhysicsBody> bodies;
+	bodies.push_back(PhysicsBody(PGRect(PGPoint(0, 0), PGSize(100, 100))));
+	bodies.push_back(PhysicsBody(PGRect(PGPoint(1000, 0), PGSize(100, 100))));
+	bodies.push_back(PhysicsBody(PGRect(PGPoint(100, 100), PGSize(100, 100))));
+	bodies.push_back(PhysicsBody(PGRect(PGPoint(80, 80), PGSize(100, 100))));
+	
+	testWorld.world.findCollisionsWithItems(body, bodies);
+	
+	ASSERT_EQ((size_t)2, testWorld.worldCallback.collisions.size());
+	EXPECT_EQ((size_t)0, testWorld.worldCallback.collisions[0]);
+	EXPECT_EQ((size_t)3, testWorld.worldCallback.collisions[1]);
 }

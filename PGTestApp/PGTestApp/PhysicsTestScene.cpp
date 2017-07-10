@@ -45,9 +45,16 @@ struct PhysicsTestScene::PhysicsState : public PG::PhysicsWorldCallback
 	PG::PhysicsBodyAndNode	bodyAndNode;
 	PG::DataGrid<bool>		levelGeometry;
 	
+	std::vector<PG::NodeHandle>		items;
+	std::vector<PG::PhysicsBody>	itemBodies;
+	std::vector<size_t>				collectedItems;
+	
 	//--------------------------------------------------------
-	virtual void bodiesDidCollide(const PG::PhysicsBody& bodyOne, const PG::PhysicsBody& bodyTwo) override
+	virtual void bodiesDidCollide(const PG::PhysicsBody& body,
+								  const PG::PhysicsBody& collidedWithBody,
+								  const size_t nthBody) override
 	{
+		collectedItems.push_back(nthBody);
 	}
 };
 
@@ -95,6 +102,20 @@ void PhysicsTestScene::initScene(PG::SceneHandle scene)
 			}
 		}
 	}
+	
+	std::vector<PG::TileCoord> itemCoords = {
+		PG::TileCoord(8, 8),
+		PG::TileCoord(7, 8),
+		PG::TileCoord(1, 6)
+	};
+	
+	for (const auto& itemCoord : itemCoords)
+	{
+		auto heartNode = PG::NodeCreator::createSpriteNode("heart");
+		heartNode->setPosition(tilePosCalc.calculatePoint(itemCoord));
+		m_State->items.push_back(m_Scene.scene->addChild(heartNode));
+		m_State->itemBodies.push_back(PG::PhysicsBody(PG::PGRect(tilePosCalc.calculatePoint(itemCoord), PG::PGSize(PG::GameConstants::tileSize(), PG::GameConstants::tileSize()))));
+	}
 }
 
 //--------------------------------------------------------
@@ -109,6 +130,25 @@ void PhysicsTestScene::update(float dt)
 	m_State->world.applyPhysicsForBody(m_State->bodyAndNode.body, m_State->levelGeometry, dt);
 	
 	m_State->bodyAndNode.node.node->setPosition(m_State->bodyAndNode.body.bounds.origin);
+	
+	m_State->world.findCollisionsWithItems(m_State->bodyAndNode.body, m_State->itemBodies);
+	
+	std::reverse(m_State->collectedItems.begin(), m_State->collectedItems.end());
+	while (!m_State->collectedItems.empty())
+	{
+		auto itemIt = m_State->items.begin();
+		auto itemBodyIt = m_State->itemBodies.begin();
+		
+		std::advance(itemIt, m_State->collectedItems.front());
+		std::advance(itemBodyIt, m_State->collectedItems.front());
+		
+		itemIt->node->removeFromParent();
+		
+		m_State->items.erase(itemIt);
+		m_State->itemBodies.erase(itemBodyIt);
+	
+		m_State->collectedItems.erase(m_State->collectedItems.begin());
+	}
 }
 
 //--------------------------------------------------------
