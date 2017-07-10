@@ -20,7 +20,15 @@ namespace
 	{
 		PG::PhysicsWorldParams params;
 		
-		params.gravity = PG::	PGSize(0, 100);
+		params.gravity = PG::PGSize(0, 1000);
+		params.jumpForce = PG::PGPoint(0, -420);
+		params.friction = 0.78;
+		
+		const double speed = 400;
+		params.minMovement = PG::PGPoint(-speed, -4850);
+		params.maxMovement = PG::PGPoint(speed, 1000);
+		
+		params.forward = PG::PGPoint(3000, 0);
 		
 		return params;
 	}
