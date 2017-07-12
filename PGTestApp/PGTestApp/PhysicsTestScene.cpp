@@ -35,6 +35,12 @@ namespace
 }
 
 //--------------------------------------------------------
+struct PhysicsTestScene::GameState
+{
+	int numHearts = 0;
+};
+
+//--------------------------------------------------------
 struct PhysicsTestScene::PhysicsState : public PG::PhysicsWorldCallback
 {
 	PhysicsState(const PG::PGRect& bodyRect)
@@ -60,7 +66,9 @@ struct PhysicsTestScene::PhysicsState : public PG::PhysicsWorldCallback
 
 //--------------------------------------------------------
 PhysicsTestScene::PhysicsTestScene(PG::PGTagReciever& appTagTarget)
-: m_AppTagTarget(appTagTarget), m_State(new PhysicsState(PG::PGRect(PG::PGPoint(32, 0), PG::PGSize(PG::GameConstants::tileSize(), PG::GameConstants::tileSize()))))
+: m_AppTagTarget(appTagTarget),
+m_State(new PhysicsState(PG::PGRect(PG::PGPoint(32, 0), PG::PGSize(PG::GameConstants::tileSize(), PG::GameConstants::tileSize())))),
+m_GameState(new GameState)
 {}
 
 //--------------------------------------------------------
@@ -79,6 +87,11 @@ void PhysicsTestScene::initScene(PG::SceneHandle scene)
 	
 	auto ghostNode = PG::NodeCreator::createSpriteNode("ghost");
 	m_State->bodyAndNode.node = m_Scene.scene->addChild(ghostNode);
+	
+	auto heartCountNode = PG::NodeCreator::createTextNode(m_Scene.scene->getStyleSheet().uiFontName, 20);
+	heartCountNode->setText("0");
+	heartCountNode->setPosition(PG::PGPoint(20, 20));
+	m_HeartCountNode = m_Scene.scene->addChild(heartCountNode);
 	
 	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.75), "Back", TagConstants::kPopScene));
 	
@@ -148,6 +161,9 @@ void PhysicsTestScene::update(float dt)
 		m_State->itemBodies.erase(itemBodyIt);
 	
 		m_State->collectedItems.erase(m_State->collectedItems.begin());
+		
+		++m_GameState->numHearts;
+		m_HeartCountNode.node->setText(std::to_string(m_GameState->numHearts));
 	}
 }
 
