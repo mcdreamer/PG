@@ -155,6 +155,7 @@
 		49B63CC91F1219D2000B6297 /* PhysicsWorldParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B63CC81F1219D2000B6297 /* PhysicsWorldParams.h */; };
 		49B63CCB1F121D44000B6297 /* PhysicsBodyAndNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B63CCA1F121D44000B6297 /* PhysicsBodyAndNode.h */; };
 		49E070431F1A52C500381C22 /* BindableValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E070421F1A52C500381C22 /* BindableValue.h */; };
+		49E070511F1A5ABC00381C22 /* UIUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E070501F1A5ABC00381C22 /* UIUtils.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -278,6 +279,7 @@
 		49B63CC81F1219D2000B6297 /* PhysicsWorldParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsWorldParams.h; sourceTree = "<group>"; };
 		49B63CCA1F121D44000B6297 /* PhysicsBodyAndNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsBodyAndNode.h; sourceTree = "<group>"; };
 		49E070421F1A52C500381C22 /* BindableValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindableValue.h; sourceTree = "<group>"; };
+		49E070501F1A5ABC00381C22 /* UIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtils.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,6 +505,7 @@
 				493022371ECA449600C143A8 /* PGUIUtils.h */,
 				49045B721EF599E3006ECF48 /* PGTagReceiver.h */,
 				49045B741EF59B3D006ECF48 /* PGUIMessage.cpp */,
+				49E070501F1A5ABC00381C22 /* UIUtils.h */,
 			);
 			name = ui;
 			path = ../ui;
@@ -622,6 +625,7 @@
 				493BC8051EEDAD7D00E10C5F /* IAnimation.h in Headers */,
 				493022761ECA44E200C143A8 /* Point.h in Headers */,
 				4930227D1ECA44E200C143A8 /* TileCoord.h in Headers */,
+				49E070511F1A5ABC00381C22 /* UIUtils.h in Headers */,
 				4930227E1ECA44E200C143A8 /* ValueRange.h in Headers */,
 				49AACAE31ECCD13F003BDC3C /* EntityHandle.h in Headers */,
 				493022401ECA449600C143A8 /* PGUIMessage.h in Headers */,

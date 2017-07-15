@@ -8,10 +8,12 @@
 #include "PG/graphics/NodeCreator.h"
 #include "PG/ui/PGButton.h"
 #include "PG/ui/PGUIMessageQueuePoster.h"
+#include "PG/ui/UIUtils.h"
 #include "PG/app/StyleSheet.h"
 #include "PG/app/GameConstants.h"
 #include "PG/data/DataGrid.h"
 #include "PG/entities/TilePositionCalculator.h"
+#include "PG/core/BindableValue.h"
 
 namespace
 {
@@ -37,7 +39,11 @@ namespace
 //--------------------------------------------------------
 struct PhysicsTestScene::GameState
 {
-	int numHearts = 0;
+	GameState()
+	: numHearts(0)
+	{}
+
+	PG::BindableValue<int> numHearts;
 };
 
 //--------------------------------------------------------
@@ -92,6 +98,7 @@ void PhysicsTestScene::initScene(PG::SceneHandle scene)
 	heartCountNode->setText("0");
 	heartCountNode->setPosition(PG::PGPoint(20, 20));
 	m_HeartCountNode = m_Scene.scene->addChild(heartCountNode);
+	PG::UIUtils::bindTextNodeToValue(m_HeartCountNode, m_GameState->numHearts);
 	
 	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.75), "Back", TagConstants::kPopScene));
 	
@@ -163,7 +170,6 @@ void PhysicsTestScene::update(float dt)
 		m_State->collectedItems.erase(m_State->collectedItems.begin());
 		
 		++m_GameState->numHearts;
-		m_HeartCountNode.node->setText(std::to_string(m_GameState->numHearts));
 	}
 }
 
