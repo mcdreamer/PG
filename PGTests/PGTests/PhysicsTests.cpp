@@ -28,7 +28,7 @@ namespace
 	struct TestWorld
 	{
 		TestWorld()
-		: world(PhysicsWorldParams{}, worldCallback),
+		: world(PhysicsWorldParams{}),
 		levelGeometry(10, 10)
 		{
 			for (int y = 0; y < 10; ++y)
@@ -115,9 +115,10 @@ TEST(PhysicsTests,testPhysicsWorld_findCollisions)
 	bodies.push_back(PhysicsBody(PGRect(PGPoint(100, 100), PGSize(100, 100))));
 	bodies.push_back(PhysicsBody(PGRect(PGPoint(80, 80), PGSize(100, 100))));
 	
-	testWorld.world.findCollisionsWithItems(body, bodies);
+	TestPhysicsWorldCallback callback;
+	testWorld.world.findCollisionsWithBody(body, bodies, callback);
 	
-	ASSERT_EQ((size_t)2, testWorld.worldCallback.collisions.size());
-	EXPECT_EQ((size_t)0, testWorld.worldCallback.collisions[0]);
-	EXPECT_EQ((size_t)3, testWorld.worldCallback.collisions[1]);
+	ASSERT_EQ((size_t)2, callback.collisions.size());
+	EXPECT_EQ((size_t)0, callback.collisions[0]);
+	EXPECT_EQ((size_t)3, callback.collisions[1]);
 }

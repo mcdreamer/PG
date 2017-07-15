@@ -25,17 +25,16 @@ public:
 class PhysicsWorld
 {
 public:
-    PhysicsWorld(const PhysicsWorldParams& params, PhysicsWorldCallback& callback)
-    : m_Params(params), m_Callback(callback)
+    PhysicsWorld(const PhysicsWorldParams& params)
+    : m_Params(params)
     {}
     
 	const PhysicsWorldParams&   getParams() const { return m_Params; }
 	void						applyPhysicsForBody(PhysicsBody& body, const DataGrid<bool>& levelGeometry, float dt) const;
-	void						findCollisionsWithItems(const PhysicsBody& body, const std::vector<PhysicsBody>& bodiesToCheck) const;
+	void						findCollisionsWithBody(const PhysicsBody& body, const std::vector<PhysicsBody>& bodiesToCheck, PhysicsWorldCallback& callback) const;
 	
 private:
     PhysicsWorldParams			m_Params;
-    PhysicsWorldCallback&		m_Callback;
 };
 
 }

@@ -6,6 +6,11 @@
 
 #include <memory>
 
+namespace PG {
+class PhysicsBodyCollection;
+struct TileCoord;
+}
+
 //--------------------------------------------------------
 class PhysicsTestScene : public PG::ISceneController, public PG::PGTagReciever
 {
@@ -32,7 +37,15 @@ public:
 private:
 	PG::SceneHandle					m_Scene;
 	PG::NodeHandle					m_HeartCountNode;
+	PG::NodeHandle					m_StarsCountNode;
 	PGTagReciever&					m_AppTagTarget;
 	std::unique_ptr<PhysicsState>	m_State;
 	std::unique_ptr<GameState>		m_GameState;
+	
+	void generateAndSetupLevelGeometry();
+	void generateAndSetupHearts();
+	void generateAndSetupStars();
+	void generateAndSetupItems(PG::PhysicsBodyCollection& bodyCollection,
+							   const std::vector<PG::TileCoord>& itemCoords,
+							   const std::string& spriteName);
 };

@@ -175,13 +175,15 @@ void PhysicsWorld::applyPhysicsForBody(PhysicsBody& body, const DataGrid<bool>& 
 }
 
 //--------------------------------------------------------
-void PhysicsWorld::findCollisionsWithItems(const PhysicsBody& body, const std::vector<PhysicsBody>& bodiesToCheck) const
+void PhysicsWorld::findCollisionsWithBody(const PhysicsBody& body,
+										  const std::vector<PhysicsBody>& bodiesToCheck,
+										  PhysicsWorldCallback& callback) const
 {
 	for (size_t nthBody = 0; nthBody < bodiesToCheck.size(); ++nthBody)
 	{
 		if (!PGRectUtils::isEmpty(PGRectUtils::getIntersection(body.bounds, bodiesToCheck[nthBody].bounds)))
 		{
-			m_Callback.bodiesDidCollide(body, bodiesToCheck[nthBody], nthBody);
+			callback.bodiesDidCollide(body, bodiesToCheck[nthBody], nthBody);
 		}
 	}
 }

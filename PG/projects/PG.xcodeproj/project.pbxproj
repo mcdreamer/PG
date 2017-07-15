@@ -156,6 +156,9 @@
 		49B63CCB1F121D44000B6297 /* PhysicsBodyAndNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B63CCA1F121D44000B6297 /* PhysicsBodyAndNode.h */; };
 		49E070431F1A52C500381C22 /* BindableValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E070421F1A52C500381C22 /* BindableValue.h */; };
 		49E070511F1A5ABC00381C22 /* UIUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E070501F1A5ABC00381C22 /* UIUtils.h */; };
+		49E070571F1A67F700381C22 /* PhysicsBodyCollection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49E070551F1A67F700381C22 /* PhysicsBodyCollection.cpp */; };
+		49E070581F1A67F700381C22 /* PhysicsBodyCollection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49E070551F1A67F700381C22 /* PhysicsBodyCollection.cpp */; };
+		49E070591F1A67F700381C22 /* PhysicsBodyCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E070561F1A67F700381C22 /* PhysicsBodyCollection.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -280,6 +283,8 @@
 		49B63CCA1F121D44000B6297 /* PhysicsBodyAndNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsBodyAndNode.h; sourceTree = "<group>"; };
 		49E070421F1A52C500381C22 /* BindableValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindableValue.h; sourceTree = "<group>"; };
 		49E070501F1A5ABC00381C22 /* UIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtils.h; sourceTree = "<group>"; };
+		49E070551F1A67F700381C22 /* PhysicsBodyCollection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsBodyCollection.cpp; sourceTree = "<group>"; };
+		49E070561F1A67F700381C22 /* PhysicsBodyCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsBodyCollection.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +316,8 @@
 				49B63CCA1F121D44000B6297 /* PhysicsBodyAndNode.h */,
 				495388D11F122DDD007AC45B /* PhysicsBodyInputHandler.cpp */,
 				495388D21F122DDD007AC45B /* PhysicsBodyInputHandler.h */,
+				49E070551F1A67F700381C22 /* PhysicsBodyCollection.cpp */,
+				49E070561F1A67F700381C22 /* PhysicsBodyCollection.h */,
 			);
 			name = physics;
 			path = ../physics;
@@ -638,6 +645,7 @@
 				493022541ECA44D100C143A8 /* MenuManager.h in Headers */,
 				49AACAF11ECCD226003BDC3C /* InventoryItem.h in Headers */,
 				49761EB61EED70F800DD6734 /* Colour.h in Headers */,
+				49E070591F1A67F700381C22 /* PhysicsBodyCollection.h in Headers */,
 				49045B731EF599E3006ECF48 /* PGTagReceiver.h in Headers */,
 				4930227B1ECA44E200C143A8 /* Size.h in Headers */,
 				493022711ECA44E200C143A8 /* MathsUtils.h in Headers */,
@@ -749,6 +757,7 @@
 				493ABCA81EFE8B10000C01E4 /* TilePositionCalculator.cpp in Sources */,
 				493ABCA41EFE8B10000C01E4 /* AttributeConstants.cpp in Sources */,
 				493ABCB51EFE8B10000C01E4 /* json_value.cpp in Sources */,
+				49E070581F1A67F700381C22 /* PhysicsBodyCollection.cpp in Sources */,
 				493ABCA71EFE8B10000C01E4 /* EntityLoader.cpp in Sources */,
 				493ABCBF1EFE8B10000C01E4 /* Logger.cpp in Sources */,
 				493ABCA61EFE8B10000C01E4 /* DataGrid.cpp in Sources */,
@@ -824,6 +833,7 @@
 				49AACAE41ECCD13F003BDC3C /* EntityLoader.cpp in Sources */,
 				49AACAFF1ECCD4FC003BDC3C /* GameConstants.cpp in Sources */,
 				493022551ECA44D100C143A8 /* MenuNode.cpp in Sources */,
+				49E070571F1A67F700381C22 /* PhysicsBodyCollection.cpp in Sources */,
 				4930223E1ECA449600C143A8 /* PGUIElement.cpp in Sources */,
 				49904F291EEC4E18000B5F9F /* json_reader.cpp in Sources */,
 				493022751ECA44E200C143A8 /* Point.cpp in Sources */,

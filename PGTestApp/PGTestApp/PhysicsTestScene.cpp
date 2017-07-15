@@ -5,6 +5,7 @@
 #include "PG/physics/PhysicsBody.h"
 #include "PG/physics/PhysicsBodyAndNode.h"
 #include "PG/physics/PhysicsBodyInputHandler.h"
+#include "PG/physics/PhysicsBodyCollection.h"
 #include "PG/graphics/NodeCreator.h"
 #include "PG/ui/PGButton.h"
 #include "PG/ui/PGUIMessageQueuePoster.h"
@@ -44,30 +45,22 @@ struct PhysicsTestScene::GameState
 	{}
 
 	PG::BindableValue<int> numHearts;
+	PG::BindableValue<int> numStars;
 };
 
 //--------------------------------------------------------
-struct PhysicsTestScene::PhysicsState : public PG::PhysicsWorldCallback
+struct PhysicsTestScene::PhysicsState
 {
 	PhysicsState(const PG::PGRect& bodyRect)
-	: world(getWorldParams(), *this), bodyAndNode(bodyRect), levelGeometry(10, 10)
+	: world(getWorldParams()), bodyAndNode(bodyRect), levelGeometry(10, 10)
 	{}
 
-	PG::PhysicsWorld		world;
-	PG::PhysicsBodyAndNode	bodyAndNode;
-	PG::DataGrid<bool>		levelGeometry;
+	PG::PhysicsWorld			world;
+	PG::PhysicsBodyAndNode		bodyAndNode;
+	PG::DataGrid<bool>			levelGeometry;
 	
-	std::vector<PG::NodeHandle>		items;
-	std::vector<PG::PhysicsBody>	itemBodies;
-	std::vector<size_t>				collectedItems;
-	
-	//--------------------------------------------------------
-	virtual void bodiesDidCollide(const PG::PhysicsBody& body,
-								  const PG::PhysicsBody& collidedWithBody,
-								  const size_t nthBody) override
-	{
-		collectedItems.push_back(nthBody);
-	}
+	PG::PhysicsBodyCollection	hearts;
+	PG::PhysicsBodyCollection	stars;
 };
 
 //--------------------------------------------------------
@@ -95,13 +88,58 @@ void PhysicsTestScene::initScene(PG::SceneHandle scene)
 	m_State->bodyAndNode.node = m_Scene.scene->addChild(ghostNode);
 	
 	auto heartCountNode = PG::NodeCreator::createTextNode(m_Scene.scene->getStyleSheet().uiFontName, 20);
-	heartCountNode->setText("0");
 	heartCountNode->setPosition(PG::PGPoint(20, 20));
+	heartCountNode->setColour(PG::Colour(255, 0, 0));
 	m_HeartCountNode = m_Scene.scene->addChild(heartCountNode);
 	PG::UIUtils::bindTextNodeToValue(m_HeartCountNode, m_GameState->numHearts);
 	
+	auto starsCountNode = PG::NodeCreator::createTextNode(m_Scene.scene->getStyleSheet().uiFontName, 20);
+	starsCountNode->setPosition(PG::PGPoint(20, 40));
+	starsCountNode->setColour(PG::Colour(0, 128, 255));
+	m_StarsCountNode = m_Scene.scene->addChild(starsCountNode);
+	PG::UIUtils::bindTextNodeToValue(m_StarsCountNode, m_GameState->numStars);
+	
 	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.75), "Back", TagConstants::kPopScene));
 	
+	generateAndSetupLevelGeometry();
+	generateAndSetupHearts();
+	generateAndSetupStars();
+}
+
+//--------------------------------------------------------
+void PhysicsTestScene::receiveTag(const int tag, PG::PGUIMessageQueuePoster& msgPoster)
+{
+	msgPoster.postMessage(PG::PGUIMessage::sendTag(&m_AppTagTarget, tag));
+}
+
+//--------------------------------------------------------
+void PhysicsTestScene::update(float dt)
+{
+	m_State->world.applyPhysicsForBody(m_State->bodyAndNode.body, m_State->levelGeometry, dt);
+	
+	m_State->bodyAndNode.node.node->setPosition(m_State->bodyAndNode.body.bounds.origin);
+	
+	m_State->hearts.findCollisionsWithBodyInWorld(m_State->bodyAndNode.body, m_State->world, [this](const int& h) { ++m_GameState->numHearts; });
+	m_State->stars.findCollisionsWithBodyInWorld(m_State->bodyAndNode.body, m_State->world, [this](const int& s) { ++m_GameState->numStars; });
+}
+
+//--------------------------------------------------------
+void PhysicsTestScene::keyDown(PG::PGKeyCode code, PG::PGKeyModifier mods)
+{
+	PG::PhysicsBodyInputHandler inputHandler(m_State->bodyAndNode.body);
+	inputHandler.keyDown(code, mods);
+}
+
+//--------------------------------------------------------
+void PhysicsTestScene::keyUp(PG::PGKeyCode code)
+{
+	PG::PhysicsBodyInputHandler inputHandler(m_State->bodyAndNode.body);
+	inputHandler.keyUp(code);
+}
+
+//--------------------------------------------------------
+void PhysicsTestScene::generateAndSetupLevelGeometry()
+{
 	PG::TilePositionCalculator tilePosCalc;
 	
 	for (int y = 0; y < 10; ++y)
@@ -122,67 +160,45 @@ void PhysicsTestScene::initScene(PG::SceneHandle scene)
 			}
 		}
 	}
-	
+}
+
+//--------------------------------------------------------
+void PhysicsTestScene::generateAndSetupHearts()
+{
 	std::vector<PG::TileCoord> itemCoords = {
 		PG::TileCoord(8, 8),
 		PG::TileCoord(7, 8),
 		PG::TileCoord(1, 6)
 	};
 	
+	generateAndSetupItems(m_State->hearts, itemCoords, "heart");
+}
+
+//--------------------------------------------------------
+void PhysicsTestScene::generateAndSetupStars()
+{
+	std::vector<PG::TileCoord> itemCoords = {
+		PG::TileCoord(8, 2),
+		PG::TileCoord(7, 3),
+		PG::TileCoord(1, 4)
+	};
+	
+	generateAndSetupItems(m_State->stars, itemCoords, "star");
+}
+
+//--------------------------------------------------------
+void PhysicsTestScene::generateAndSetupItems(PG::PhysicsBodyCollection& bodyCollection,
+											 const std::vector<PG::TileCoord>& itemCoords,
+											 const std::string& spriteName)
+{
+	PG::TilePositionCalculator tilePosCalc;
+	
 	for (const auto& itemCoord : itemCoords)
 	{
-		auto heartNode = PG::NodeCreator::createSpriteNode("heart");
-		heartNode->setPosition(tilePosCalc.calculatePoint(itemCoord));
-		m_State->items.push_back(m_Scene.scene->addChild(heartNode));
-		m_State->itemBodies.push_back(PG::PhysicsBody(PG::PGRect(tilePosCalc.calculatePoint(itemCoord), PG::PGSize(PG::GameConstants::tileSize(), PG::GameConstants::tileSize()))));
+		auto node = PG::NodeCreator::createSpriteNode(spriteName);
+		node->setPosition(tilePosCalc.calculatePoint(itemCoord));
+		bodyCollection.addItemWithBody(0,
+									   m_Scene.scene->addChild(node),
+									   PG::PhysicsBody(PG::PGRect(tilePosCalc.calculatePoint(itemCoord), PG::PGSize(PG::GameConstants::tileSize(), PG::GameConstants::tileSize()))));
 	}
-}
-
-//--------------------------------------------------------
-void PhysicsTestScene::receiveTag(const int tag, PG::PGUIMessageQueuePoster& msgPoster)
-{
-	msgPoster.postMessage(PG::PGUIMessage::sendTag(&m_AppTagTarget, tag));
-}
-
-//--------------------------------------------------------
-void PhysicsTestScene::update(float dt)
-{
-	m_State->world.applyPhysicsForBody(m_State->bodyAndNode.body, m_State->levelGeometry, dt);
-	
-	m_State->bodyAndNode.node.node->setPosition(m_State->bodyAndNode.body.bounds.origin);
-	
-	m_State->world.findCollisionsWithItems(m_State->bodyAndNode.body, m_State->itemBodies);
-	
-	std::reverse(m_State->collectedItems.begin(), m_State->collectedItems.end());
-	while (!m_State->collectedItems.empty())
-	{
-		auto itemIt = m_State->items.begin();
-		auto itemBodyIt = m_State->itemBodies.begin();
-		
-		std::advance(itemIt, m_State->collectedItems.front());
-		std::advance(itemBodyIt, m_State->collectedItems.front());
-		
-		itemIt->node->removeFromParent();
-		
-		m_State->items.erase(itemIt);
-		m_State->itemBodies.erase(itemBodyIt);
-	
-		m_State->collectedItems.erase(m_State->collectedItems.begin());
-		
-		++m_GameState->numHearts;
-	}
-}
-
-//--------------------------------------------------------
-void PhysicsTestScene::keyDown(PG::PGKeyCode code, PG::PGKeyModifier mods)
-{
-	PG::PhysicsBodyInputHandler inputHandler(m_State->bodyAndNode.body);
-	inputHandler.keyDown(code, mods);
-}
-
-//--------------------------------------------------------
-void PhysicsTestScene::keyUp(PG::PGKeyCode code)
-{
-	PG::PhysicsBodyInputHandler inputHandler(m_State->bodyAndNode.body);
-	inputHandler.keyUp(code);
 }
