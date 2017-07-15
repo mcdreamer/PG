@@ -50,6 +50,8 @@
     <ClCompile Include="..\menu\MenuManager.cpp" />
     <ClCompile Include="..\menu\MenuNode.cpp" />
     <ClCompile Include="..\physics\PhysicsBody.cpp" />
+    <ClCompile Include="..\physics\PhysicsBodyCollection.cpp" />
+    <ClCompile Include="..\physics\PhysicsBodyInputHandler.cpp" />
     <ClCompile Include="..\physics\PhysicsWorld.cpp" />
     <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_reader.cpp" />
     <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_value.cpp" />
@@ -74,6 +76,7 @@
     <ClInclude Include="..\app\IGameController.h" />
     <ClInclude Include="..\app\PGAppHost.h" />
     <ClInclude Include="..\app\StyleSheet.h" />
+    <ClInclude Include="..\core\BindableValue.h" />
     <ClInclude Include="..\core\Colour.h" />
     <ClInclude Include="..\core\MathsUtils.h" />
     <ClInclude Include="..\core\PGKeyCode.h" />
@@ -113,7 +116,11 @@
     <ClInclude Include="..\menu\MenuManager.h" />
     <ClInclude Include="..\menu\MenuNode.h" />
     <ClInclude Include="..\physics\PhysicsBody.h" />
+    <ClInclude Include="..\physics\PhysicsBodyAndNode.h" />
+    <ClInclude Include="..\physics\PhysicsBodyCollection.h" />
+    <ClInclude Include="..\physics\PhysicsBodyInputHandler.h" />
     <ClInclude Include="..\physics\PhysicsWorld.h" />
+    <ClInclude Include="..\physics\PhysicsWorldParams.h" />
     <ClInclude Include="..\ui\PGButton.h" />
     <ClInclude Include="..\ui\PGDialog.h" />
     <ClInclude Include="..\ui\PGTagReceiver.h" />
@@ -122,6 +129,7 @@
     <ClInclude Include="..\ui\PGUIMessage.h" />
     <ClInclude Include="..\ui\PGUIMessageQueuePoster.h" />
     <ClInclude Include="..\ui\PGUIUtils.h" />
+    <ClInclude Include="..\ui\UIUtils.h" />
     <ClInclude Include="..\util\JsonUtils.h" />
     <ClInclude Include="..\util\Logger.h" />
   </ItemGroup>

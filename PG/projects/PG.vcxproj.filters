@@ -195,6 +195,12 @@
     <ClCompile Include="..\core\Rect.cpp">
       <Filter>core</Filter>
     </ClCompile>
+    <ClCompile Include="..\physics\PhysicsBodyCollection.cpp">
+      <Filter>physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\physics\PhysicsBodyInputHandler.cpp">
+      <Filter>physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\util\JsonUtils.h">
@@ -373,6 +379,24 @@
     </ClInclude>
     <ClInclude Include="..\physics\PhysicsWorld.h">
       <Filter>physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\core\BindableValue.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\physics\PhysicsBodyAndNode.h">
+      <Filter>physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\physics\PhysicsBodyCollection.h">
+      <Filter>physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\physics\PhysicsBodyInputHandler.h">
+      <Filter>physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\physics\PhysicsWorldParams.h">
+      <Filter>physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\UIUtils.h">
+      <Filter>ui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
