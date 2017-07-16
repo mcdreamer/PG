@@ -8,7 +8,7 @@ namespace PG {
 
 struct PhysicsBody;
 class INode;
-class TileCoord;
+struct TileCoord;
 
 //--------------------------------------------------------
 class PhysicsWorldCallback

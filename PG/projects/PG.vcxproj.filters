@@ -201,6 +201,12 @@
     <ClCompile Include="..\physics\PhysicsBodyInputHandler.cpp">
       <Filter>physics</Filter>
     </ClCompile>
+    <ClCompile Include="..\ui\UIUtils.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\Bar.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\util\JsonUtils.h">
@@ -396,6 +402,9 @@
       <Filter>physics</Filter>
     </ClInclude>
     <ClInclude Include="..\ui\UIUtils.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\Bar.h">
       <Filter>ui</Filter>
     </ClInclude>
   </ItemGroup>

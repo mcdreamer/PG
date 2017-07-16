@@ -70,12 +70,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)..;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\PG\thirdparty\boost;$(ProjectDir)..;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\PG\internal\sfml\lib;$(LibraryPath)</LibraryPath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(ProjectDir)..;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\PG\thirdparty\boost;$(ProjectDir)..;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\PG\internal\sfml\lib;$(LibraryPath)</LibraryPath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
@@ -147,7 +147,9 @@ xcopy /i /e /s /y /d $(ProjectDir)\PGTestApp\resources $(OutDir)resources
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="PGTestApp\AnimationsTestScene.cpp" />
+    <ClCompile Include="PGTestApp\BarTestScene.cpp" />
     <ClCompile Include="PGTestApp\ButtonsTestScene.cpp" />
+    <ClCompile Include="PGTestApp\InventoryTestScene.cpp" />
     <ClCompile Include="PGTestApp\MainMenuScene.cpp" />
     <ClCompile Include="PGTestApp\main_win.cpp" />
     <ClCompile Include="PGTestApp\PGTestAppController.cpp" />
@@ -155,7 +157,9 @@ xcopy /i /e /s /y /d $(ProjectDir)\PGTestApp\resources $(OutDir)resources
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PGTestApp\AnimationsTestScene.h" />
+    <ClInclude Include="PGTestApp\BarTestScene.h" />
     <ClInclude Include="PGTestApp\ButtonsTestScene.h" />
+    <ClInclude Include="PGTestApp\InventoryTestScene.h" />
     <ClInclude Include="PGTestApp\MainMenuScene.h" />
     <ClInclude Include="PGTestApp\PGTestAppController.h" />
     <ClInclude Include="PGTestApp\PhysicsTestScene.h" />

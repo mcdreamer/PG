@@ -56,6 +56,7 @@
     <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_reader.cpp" />
     <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_value.cpp" />
     <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_writer.cpp" />
+    <ClCompile Include="..\ui\Bar.cpp" />
     <ClCompile Include="..\ui\PGButton.cpp" />
     <ClCompile Include="..\ui\PGDialog.cpp" />
     <ClCompile Include="..\ui\PGUI.cpp" />
@@ -63,6 +64,7 @@
     <ClCompile Include="..\ui\PGUIMessage.cpp" />
     <ClCompile Include="..\ui\PGUIMessageQueuePoster.cpp" />
     <ClCompile Include="..\ui\PGUIUtils.cpp" />
+    <ClCompile Include="..\ui\UIUtils.cpp" />
     <ClCompile Include="..\util\JsonUtils.cpp" />
     <ClCompile Include="..\util\Logger.cpp" />
   </ItemGroup>
@@ -121,6 +123,7 @@
     <ClInclude Include="..\physics\PhysicsBodyInputHandler.h" />
     <ClInclude Include="..\physics\PhysicsWorld.h" />
     <ClInclude Include="..\physics\PhysicsWorldParams.h" />
+    <ClInclude Include="..\ui\Bar.h" />
     <ClInclude Include="..\ui\PGButton.h" />
     <ClInclude Include="..\ui\PGDialog.h" />
     <ClInclude Include="..\ui\PGTagReceiver.h" />

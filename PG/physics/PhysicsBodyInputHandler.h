@@ -4,7 +4,7 @@
 
 namespace PG {
 
-class PhysicsBody;
+struct PhysicsBody;
 
 //--------------------------------------------------------
 class PhysicsBodyInputHandler
