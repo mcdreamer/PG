@@ -14,7 +14,7 @@ class TestPhysicsWorldCallback : public PhysicsWorldCallback
 public:
 	virtual void bodiesDidCollide(const PhysicsBody& body,
 								  const PhysicsBody& collidedWithBody,
-								  const size_t nthBody) override
+								  const int nthBody) override
 	{
 		collisions.push_back(nthBody);
 	}
