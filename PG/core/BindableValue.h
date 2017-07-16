@@ -1,6 +1,7 @@
 #pragma once
 
 #include <functional>
+#include <functional>
 
 namespace PG {
 
@@ -10,6 +11,7 @@ class BindableValue
 {
 public:
 	using callback_func = std::function<void (const T&)>;
+	using callback_func_array = std::vector<callback_func>; // Do something better than this
 
 	//--------------------------------------------------------
 	BindableValue()
@@ -34,24 +36,24 @@ public:
 	{
 		m_Value = value;
 		
-		if (m_ValueChangedFunc)
+		for (auto& valueChangedFunc : m_ValueChangedFuncs)
 		{
-			m_ValueChangedFunc(m_Value);
+			valueChangedFunc(m_Value);
 		}
 	}
 	
 	//--------------------------------------------------------
 	void setBinding(const callback_func& func)
 	{
-		m_ValueChangedFunc = func;
-		m_ValueChangedFunc(m_Value);
+		m_ValueChangedFuncs.push_back(func);
+		func(m_Value);
 	}
 
 	//--------------------------------------------------------
 	BindableValue<T>& operator++()
 	{
 		++m_Value;
-		m_ValueChangedFunc(m_Value);
+		set(m_Value);
 		return *this;
 	}
 	
@@ -59,7 +61,7 @@ public:
 	BindableValue<T>& operator--()
 	{
 		--m_Value;
-		m_ValueChangedFunc(m_Value);
+		set(m_Value);
 		return *this;
 	}
 
@@ -77,8 +79,8 @@ public:
 	}
 
 private:
-	T				m_Value;
-	callback_func	m_ValueChangedFunc;
+	T					m_Value;
+	callback_func_array	m_ValueChangedFuncs;
 };
 
 }
