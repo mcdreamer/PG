@@ -14,16 +14,16 @@ private:
 	class CollisionTracker : public PG::PhysicsWorldCallback
 	{
 	public:
-		CollisionTracker(std::vector<size_t>& collectedItems_)
+		CollisionTracker(std::vector<int>& collectedItems_)
 		: collectedItems(collectedItems_)
 		{}
 		
-		std::vector<size_t>& collectedItems;
+		std::vector<int>& collectedItems;
 		
 		//--------------------------------------------------------
 		virtual void bodiesDidCollide(const PG::PhysicsBody& body,
 									  const PG::PhysicsBody& collidedWithBody,
-									  const size_t nthBody) override
+									  const int nthBody) override
 		{
 			collectedItems.push_back(nthBody);
 		}
@@ -55,7 +55,7 @@ public:
 			auto itemNodeIt = m_ItemNodes.begin();
 			auto itemBodyIt = m_ItemBodies.begin();
 			
-			const auto itemIndex = m_CollectedItems.front();
+			const long itemIndex = m_CollectedItems.front();
 			std::advance(itemIt, itemIndex);
 			std::advance(itemNodeIt, itemIndex);
 			std::advance(itemBodyIt, itemIndex);
@@ -76,7 +76,7 @@ private:
 	std::vector<int>				m_Items;
 	std::vector<PG::NodeHandle>		m_ItemNodes;
 	std::vector<PG::PhysicsBody>	m_ItemBodies;
-	std::vector<size_t>				m_CollectedItems;
+	std::vector<int>				m_CollectedItems;
 };
 
 }

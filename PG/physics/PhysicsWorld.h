@@ -18,7 +18,7 @@ public:
     
     virtual void bodiesDidCollide(const PhysicsBody& body,
 								  const PhysicsBody& collidedWithBody,
-								  const size_t nthBody)=0;
+								  const int nthBody)=0;
 };
 
 //--------------------------------------------------------

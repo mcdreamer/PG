@@ -183,7 +183,7 @@ void PhysicsWorld::findCollisionsWithBody(const PhysicsBody& body,
 	{
 		if (!PGRectUtils::isEmpty(PGRectUtils::getIntersection(body.bounds, bodiesToCheck[nthBody].bounds)))
 		{
-			callback.bodiesDidCollide(body, bodiesToCheck[nthBody], nthBody);
+			callback.bodiesDidCollide(body, bodiesToCheck[nthBody], (int)nthBody);
 		}
 	}
 }
