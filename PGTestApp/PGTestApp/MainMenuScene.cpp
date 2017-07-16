@@ -25,9 +25,11 @@ void MainMenuScene::initScene(PG::SceneHandle scene)
 	textNode->setPosition(PG::PGPoint(sceneSize.width / 2.0, 45 + (textNode->getSize().height / 2.0)));
 	m_Scene.scene->addChild(textNode);
 	
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.50), "Buttons Test", TagConstants::kShowButtonsTest));
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.60), "Animations Test", TagConstants::kShowAnimationsTest));
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.70), "Physics Test", TagConstants::kShowPhysicsTest));
+	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.40), "Buttons Test", TagConstants::kShowButtonsTest));
+	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.50), "Animations Test", TagConstants::kShowAnimationsTest));
+	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.60), "Physics Test", TagConstants::kShowPhysicsTest));
+	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.70), "Inventory Test", TagConstants::kShowInventoryTest));
+	
 	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.90), "Exit", TagConstants::kExitApp));
 }
 

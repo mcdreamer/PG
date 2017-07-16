@@ -87,17 +87,8 @@ void PhysicsTestScene::initScene(PG::SceneHandle scene)
 	auto ghostNode = PG::NodeCreator::createSpriteNode("ghost");
 	m_State->bodyAndNode.node = m_Scene.scene->addChild(ghostNode);
 	
-	auto heartCountNode = PG::NodeCreator::createTextNode(m_Scene.scene->getStyleSheet().uiFontName, 20);
-	heartCountNode->setPosition(PG::PGPoint(20, 20));
-	heartCountNode->setColour(PG::Colour(255, 0, 0));
-	m_HeartCountNode = m_Scene.scene->addChild(heartCountNode);
-	PG::UIUtils::bindTextNodeToValue(m_HeartCountNode, m_GameState->numHearts);
-	
-	auto starsCountNode = PG::NodeCreator::createTextNode(m_Scene.scene->getStyleSheet().uiFontName, 20);
-	starsCountNode->setPosition(PG::PGPoint(20, 40));
-	starsCountNode->setColour(PG::Colour(0, 128, 255));
-	m_StarsCountNode = m_Scene.scene->addChild(starsCountNode);
-	PG::UIUtils::bindTextNodeToValue(m_StarsCountNode, m_GameState->numStars);
+	PG::UIUtils::createTextNodeForValue(PG::PGPoint(20, 20), PG::Colour(255, 0, 0), 20, m_HeartCountNode, m_Scene, m_GameState->numHearts);
+	PG::UIUtils::createTextNodeForValue(PG::PGPoint(20, 40), PG::Colour(0, 128, 255), 20, m_StarsCountNode, m_Scene, m_GameState->numStars);
 	
 	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.75), "Back", TagConstants::kPopScene));
 	

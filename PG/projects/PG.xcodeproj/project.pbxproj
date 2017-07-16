@@ -126,6 +126,8 @@
 		49761EB61EED70F800DD6734 /* Colour.h in Headers */ = {isa = PBXBuildFile; fileRef = 49761EB51EED70F800DD6734 /* Colour.h */; };
 		49761EB81EED71D600DD6734 /* AppConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 49761EB71EED71D600DD6734 /* AppConfiguration.h */; };
 		49761EBA1EED71E000DD6734 /* StyleSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 49761EB91EED71E000DD6734 /* StyleSheet.h */; };
+		497947A61F1BAC9800B01C19 /* UIUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497947A51F1BAC9800B01C19 /* UIUtils.cpp */; };
+		497947A71F1BAC9800B01C19 /* UIUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497947A51F1BAC9800B01C19 /* UIUtils.cpp */; };
 		49904F291EEC4E18000B5F9F /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49904F261EEC4E18000B5F9F /* json_reader.cpp */; };
 		49904F2A1EEC4E18000B5F9F /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49904F271EEC4E18000B5F9F /* json_value.cpp */; };
 		49904F2B1EEC4E18000B5F9F /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49904F281EEC4E18000B5F9F /* json_writer.cpp */; };
@@ -253,6 +255,7 @@
 		49761EB51EED70F800DD6734 /* Colour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colour.h; sourceTree = "<group>"; };
 		49761EB71EED71D600DD6734 /* AppConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfiguration.h; sourceTree = "<group>"; };
 		49761EB91EED71E000DD6734 /* StyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleSheet.h; sourceTree = "<group>"; };
+		497947A51F1BAC9800B01C19 /* UIUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIUtils.cpp; sourceTree = "<group>"; };
 		49904F261EEC4E18000B5F9F /* json_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_reader.cpp; path = src/lib_json/json_reader.cpp; sourceTree = "<group>"; };
 		49904F271EEC4E18000B5F9F /* json_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_value.cpp; path = src/lib_json/json_value.cpp; sourceTree = "<group>"; };
 		49904F281EEC4E18000B5F9F /* json_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_writer.cpp; path = src/lib_json/json_writer.cpp; sourceTree = "<group>"; };
@@ -512,6 +515,7 @@
 				493022371ECA449600C143A8 /* PGUIUtils.h */,
 				49045B721EF599E3006ECF48 /* PGTagReceiver.h */,
 				49045B741EF59B3D006ECF48 /* PGUIMessage.cpp */,
+				497947A51F1BAC9800B01C19 /* UIUtils.cpp */,
 				49E070501F1A5ABC00381C22 /* UIUtils.h */,
 			);
 			name = ui;
@@ -770,6 +774,7 @@
 				493ABCBE1EFE8B10000C01E4 /* JsonUtils.cpp in Sources */,
 				493ABCA91EFE8B10000C01E4 /* Tile.cpp in Sources */,
 				493ABCB71EFE8B10000C01E4 /* PGButton.cpp in Sources */,
+				497947A71F1BAC9800B01C19 /* UIUtils.cpp in Sources */,
 				4961A61E1F090A5F00652361 /* SizeUtils.cpp in Sources */,
 				493ABCB41EFE8B10000C01E4 /* json_reader.cpp in Sources */,
 				493ABCAD1EFE8B10000C01E4 /* SFMLNode.cpp in Sources */,
@@ -818,6 +823,7 @@
 				493022851ECA44E800C143A8 /* PGAppHost.cpp in Sources */,
 				4961A61D1F090A5F00652361 /* SizeUtils.cpp in Sources */,
 				49AACAEF1ECCD226003BDC3C /* Inventory.cpp in Sources */,
+				497947A61F1BAC9800B01C19 /* UIUtils.cpp in Sources */,
 				493022381ECA449600C143A8 /* PGButton.cpp in Sources */,
 				490A3D031EDC80A40046A552 /* PhysicsWorld.cpp in Sources */,
 				493022531ECA44D100C143A8 /* MenuManager.cpp in Sources */,

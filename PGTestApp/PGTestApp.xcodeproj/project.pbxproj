@@ -21,6 +21,8 @@
 		49761EC31EED76F100DD6734 /* sfml-network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49761EBE1EED76F100DD6734 /* sfml-network.framework */; };
 		49761EC41EED76F100DD6734 /* sfml-system.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49761EBF1EED76F100DD6734 /* sfml-system.framework */; };
 		49761EC51EED76F100DD6734 /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49761EC01EED76F100DD6734 /* sfml-window.framework */; };
+		497947A41F1BAA7400B01C19 /* InventoryTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497947A21F1BAA7400B01C19 /* InventoryTestScene.cpp */; };
+		497947A91F1BAFA800B01C19 /* inventorycontainer.png in Resources */ = {isa = PBXBuildFile; fileRef = 497947A81F1BAFA800B01C19 /* inventorycontainer.png */; };
 		4989D77D1EE44C6A00821078 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4989D77C1EE44C6A00821078 /* AppIcon.xcassets */; };
 		49AACB281ECCE2BD003BDC3C /* PGTestAppController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AACB261ECCE2BD003BDC3C /* PGTestAppController.cpp */; };
 		49AACB321ECCE50C003BDC3C /* libPGLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AACB2F1ECCE4F8003BDC3C /* libPGLib.a */; };
@@ -74,6 +76,9 @@
 		49761EBE1EED76F100DD6734 /* sfml-network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-network.framework"; path = "../PG/internal/sfml/Frameworks/sfml-network.framework"; sourceTree = "<group>"; };
 		49761EBF1EED76F100DD6734 /* sfml-system.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-system.framework"; path = "../PG/internal/sfml/Frameworks/sfml-system.framework"; sourceTree = "<group>"; };
 		49761EC01EED76F100DD6734 /* sfml-window.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-window.framework"; path = "../PG/internal/sfml/Frameworks/sfml-window.framework"; sourceTree = "<group>"; };
+		497947A21F1BAA7400B01C19 /* InventoryTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InventoryTestScene.cpp; sourceTree = "<group>"; };
+		497947A31F1BAA7400B01C19 /* InventoryTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryTestScene.h; sourceTree = "<group>"; };
+		497947A81F1BAFA800B01C19 /* inventorycontainer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inventorycontainer.png; sourceTree = "<group>"; };
 		4989D77C1EE44C6A00821078 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = AppIcon.xcassets; path = PGTestApp/AppIcon.xcassets; sourceTree = "<group>"; };
 		49AACB0F1ECCE1ED003BDC3C /* PG Test App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PG Test App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AACB201ECCE1ED003BDC3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -124,6 +129,7 @@
 		4937522A1ED0DDA700B4F024 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				497947A81F1BAFA800B01C19 /* inventorycontainer.png */,
 				49E070521F1A650700381C22 /* star.png */,
 				4947FEFC1F13FF1E0023FB7E /* heart.png */,
 				49B63CC31F111AB8000B6297 /* block.png */,
@@ -156,8 +162,8 @@
 		49AACB111ECCE1ED003BDC3C /* PGTestApp */ = {
 			isa = PBXGroup;
 			children = (
-				49045B861EF70F14006ECF48 /* main.cpp */,
 				493752271ED0DD9400B4F024 /* resources */,
+				49045B861EF70F14006ECF48 /* main.cpp */,
 				49AACB201ECCE1ED003BDC3C /* Info.plist */,
 				49AACB261ECCE2BD003BDC3C /* PGTestAppController.cpp */,
 				49AACB271ECCE2BD003BDC3C /* PGTestAppController.h */,
@@ -170,6 +176,8 @@
 				49045B841EF5A41E006ECF48 /* AnimationsTestScene.h */,
 				4961A6201F090CB700652361 /* PhysicsTestScene.cpp */,
 				4961A6211F090CB700652361 /* PhysicsTestScene.h */,
+				497947A21F1BAA7400B01C19 /* InventoryTestScene.cpp */,
+				497947A31F1BAA7400B01C19 /* InventoryTestScene.h */,
 			);
 			path = PGTestApp;
 			sourceTree = "<group>";
@@ -282,6 +290,7 @@
 				4937522E1ED0DDCC00B4F024 /* OpenSans-Regular.ttf in Resources */,
 				49B63CC61F111AB8000B6297 /* ghost.png in Resources */,
 				496CC9531EED8D0500A901AA /* PGlogo.png in Resources */,
+				497947A91F1BAFA800B01C19 /* inventorycontainer.png in Resources */,
 				4937522C1ED0DDC600B4F024 /* dialog.png in Resources */,
 				4947FEFD1F13FF1E0023FB7E /* heart.png in Resources */,
 				49E070531F1A650700381C22 /* star.png in Resources */,
@@ -302,6 +311,7 @@
 				49045B821EF5A26C006ECF48 /* ButtonsTestScene.cpp in Sources */,
 				49045B871EF70F14006ECF48 /* main.cpp in Sources */,
 				4961A6221F090CB700652361 /* PhysicsTestScene.cpp in Sources */,
+				497947A41F1BAA7400B01C19 /* InventoryTestScene.cpp in Sources */,
 				49045B851EF5A41E006ECF48 /* AnimationsTestScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

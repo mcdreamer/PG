@@ -8,6 +8,7 @@ namespace TagConstants
 		kShowButtonsTest,
 		kShowAnimationsTest,
 		kShowPhysicsTest,
+		kShowInventoryTest,
 		kExitApp
 	};
 };
