@@ -43,6 +43,7 @@ public:
     virtual ~INode() {}
 
 	virtual void                setPosition(PGPoint point) = 0;
+	virtual void                setSize(PGSize size) = 0;
 
     virtual NodeType            getType() const=0;
 

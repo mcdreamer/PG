@@ -9,6 +9,7 @@ namespace TagConstants
 		kShowAnimationsTest,
 		kShowPhysicsTest,
 		kShowInventoryTest,
+		kShowBarTest,
 		kExitApp
 	};
 };

@@ -128,6 +128,9 @@
 		49761EBA1EED71E000DD6734 /* StyleSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 49761EB91EED71E000DD6734 /* StyleSheet.h */; };
 		497947A61F1BAC9800B01C19 /* UIUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497947A51F1BAC9800B01C19 /* UIUtils.cpp */; };
 		497947A71F1BAC9800B01C19 /* UIUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497947A51F1BAC9800B01C19 /* UIUtils.cpp */; };
+		497947AC1F1BB8AE00B01C19 /* Bar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497947AA1F1BB8AE00B01C19 /* Bar.cpp */; };
+		497947AD1F1BB8AE00B01C19 /* Bar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497947AA1F1BB8AE00B01C19 /* Bar.cpp */; };
+		497947AE1F1BB8AE00B01C19 /* Bar.h in Headers */ = {isa = PBXBuildFile; fileRef = 497947AB1F1BB8AE00B01C19 /* Bar.h */; };
 		49904F291EEC4E18000B5F9F /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49904F261EEC4E18000B5F9F /* json_reader.cpp */; };
 		49904F2A1EEC4E18000B5F9F /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49904F271EEC4E18000B5F9F /* json_value.cpp */; };
 		49904F2B1EEC4E18000B5F9F /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49904F281EEC4E18000B5F9F /* json_writer.cpp */; };
@@ -256,6 +259,8 @@
 		49761EB71EED71D600DD6734 /* AppConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfiguration.h; sourceTree = "<group>"; };
 		49761EB91EED71E000DD6734 /* StyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleSheet.h; sourceTree = "<group>"; };
 		497947A51F1BAC9800B01C19 /* UIUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIUtils.cpp; sourceTree = "<group>"; };
+		497947AA1F1BB8AE00B01C19 /* Bar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bar.cpp; sourceTree = "<group>"; };
+		497947AB1F1BB8AE00B01C19 /* Bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bar.h; sourceTree = "<group>"; };
 		49904F261EEC4E18000B5F9F /* json_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_reader.cpp; path = src/lib_json/json_reader.cpp; sourceTree = "<group>"; };
 		49904F271EEC4E18000B5F9F /* json_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_value.cpp; path = src/lib_json/json_value.cpp; sourceTree = "<group>"; };
 		49904F281EEC4E18000B5F9F /* json_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_writer.cpp; path = src/lib_json/json_writer.cpp; sourceTree = "<group>"; };
@@ -517,6 +522,8 @@
 				49045B741EF59B3D006ECF48 /* PGUIMessage.cpp */,
 				497947A51F1BAC9800B01C19 /* UIUtils.cpp */,
 				49E070501F1A5ABC00381C22 /* UIUtils.h */,
+				497947AA1F1BB8AE00B01C19 /* Bar.cpp */,
+				497947AB1F1BB8AE00B01C19 /* Bar.h */,
 			);
 			name = ui;
 			path = ../ui;
@@ -659,6 +666,7 @@
 				49AACAE21ECCD13F003BDC3C /* DataGridUtils.h in Headers */,
 				493022841ECA44E800C143A8 /* IGameController.h in Headers */,
 				493022A01ECA45AF00C143A8 /* SFMLScene.h in Headers */,
+				497947AE1F1BB8AE00B01C19 /* Bar.h in Headers */,
 				49B63CCB1F121D44000B6297 /* PhysicsBodyAndNode.h in Headers */,
 				490A3D051EDC80A40046A552 /* PhysicsWorld.h in Headers */,
 				4930229E1ECA45AF00C143A8 /* SFMLNode.h in Headers */,
@@ -754,6 +762,7 @@
 				493ABCA21EFE8B10000C01E4 /* TileCoord.cpp in Sources */,
 				4956B5CF1EE4582A00F6A7A4 /* Rect.cpp in Sources */,
 				493ABCB11EFE8B10000C01E4 /* MenuLayer.cpp in Sources */,
+				497947AD1F1BB8AE00B01C19 /* Bar.cpp in Sources */,
 				493ABCBA1EFE8B10000C01E4 /* PGUIElement.cpp in Sources */,
 				493ABCA51EFE8B10000C01E4 /* Attributes.cpp in Sources */,
 				490A3D041EDC80A40046A552 /* PhysicsWorld.cpp in Sources */,
@@ -802,6 +811,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497947AC1F1BB8AE00B01C19 /* Bar.cpp in Sources */,
 				490A3D071EDC84890046A552 /* PhysicsBody.cpp in Sources */,
 				4930229F1ECA45AF00C143A8 /* SFMLScene.cpp in Sources */,
 				49A7A70E1EEDAF0A00816F2B /* AnimationUpdater.cpp in Sources */,

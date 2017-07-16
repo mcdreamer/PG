@@ -6,13 +6,13 @@
 #include <memory>
 
 //--------------------------------------------------------
-class InventoryTestScene : public PG::ISceneController, public PG::PGTagReciever
+class BarTestScene : public PG::ISceneController, public PG::PGTagReciever
 {
 	struct GameState;
 	
 public:
-	InventoryTestScene(PG::PGTagReciever& appTagTarget);
-	~InventoryTestScene();
+	BarTestScene(PG::PGTagReciever& appTagTarget);
+	~BarTestScene();
 	
 	virtual void initScene(PG::SceneHandle scene) override;
 	
@@ -20,8 +20,8 @@ public:
 	virtual void draggedWithOffset(PG::PGPoint pt) override {}
 	virtual void mouseMoved(PG::PGPoint pt) override {}
 	
-	virtual void keyUp(PG::PGKeyCode code) override;
-	virtual void keyDown(PG::PGKeyCode code, PG::PGKeyModifier mods) override;
+	virtual void keyUp(PG::PGKeyCode code) override {}
+	virtual void keyDown(PG::PGKeyCode code, PG::PGKeyModifier mods) override {}
 	
 	virtual void update(float dt) override;
 	
@@ -31,7 +31,4 @@ private:
 	PG::SceneHandle					m_Scene;
 	PGTagReciever&					m_AppTagTarget;
 	std::unique_ptr<GameState>		m_GameState;
-	
-	void drawInventoryBackground();
-	void updateInventory();
 };

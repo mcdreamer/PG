@@ -29,6 +29,7 @@ void MainMenuScene::initScene(PG::SceneHandle scene)
 	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.50), "Animations Test", TagConstants::kShowAnimationsTest));
 	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.60), "Physics Test", TagConstants::kShowPhysicsTest));
 	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.70), "Inventory Test", TagConstants::kShowInventoryTest));
+	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.80), "Bar Test", TagConstants::kShowBarTest));
 	
 	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.90), "Exit", TagConstants::kExitApp));
 }

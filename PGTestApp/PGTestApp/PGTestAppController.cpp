@@ -5,6 +5,7 @@
 #include "AnimationsTestScene.h"
 #include "PhysicsTestScene.h"
 #include "InventoryTestScene.h"
+#include "BarTestScene.h"
 
 #include "PG/app/AppConfiguration.h"
 #include "PG/app/IPlatformServices.h"
@@ -88,6 +89,12 @@ void PGTestAppController::receiveTag(const int tag, PG::PGUIMessageQueuePoster& 
 		{
 			std::unique_ptr<PG::ISceneController> inventoryTest(new InventoryTestScene(*this));
 			m_View->pushScene(inventoryTest);
+			break;
+		}
+		case TagConstants::kShowBarTest:
+		{
+			std::unique_ptr<PG::ISceneController> barTest(new BarTestScene(*this));
+			m_View->pushScene(barTest);
 			break;
 		}
 		case TagConstants::kExitApp:

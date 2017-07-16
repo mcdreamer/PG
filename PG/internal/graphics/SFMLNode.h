@@ -39,6 +39,10 @@ public:
     {
         m_Node.setPosition((float)point.x, (float)point.y);
     }
+	
+	virtual void setSize(PGSize size) override
+	{
+	}
     
     virtual PGPoint getPosition() const override
     {
@@ -212,6 +216,11 @@ public:
         m_Node.setOrigin((float)size.width / 2.0f, (float)size.height / 2.0f);
         setColour(colour);
     }
+	
+	virtual void setSize(PGSize size) override
+	{
+		m_Node.setSize(sf::Vector2f((float)size.width, (float)size.height));
+	}
     
     virtual PGSize getSize() const override
     {

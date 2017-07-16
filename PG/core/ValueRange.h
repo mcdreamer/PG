@@ -12,6 +12,11 @@ struct ValueRange
     
     const T start;
     const T end;
+	
+	T size() const
+	{
+		return end - start;
+	}
 };
 
 using IntRange = ValueRange<int>;
