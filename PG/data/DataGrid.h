@@ -12,7 +12,7 @@ public:
     DataGrid(int width, int height)
     : m_Width(width), m_Height(height)
     {
-        m_Data.resize(width * height);
+        m_Data.resize((size_t)(width * height));
     }
     
     //--------------------------------------------------------

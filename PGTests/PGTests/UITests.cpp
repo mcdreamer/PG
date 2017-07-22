@@ -5,6 +5,7 @@
 #include "PG/ui/PGUIUtils.h"
 #include "PG/ui/PGUI.h"
 #include "PG/ui/PGButton.h"
+#include "PG/ui/UIPositionCalculator.h"
 #include "PG/graphics/NodeCreator.h"
 #include "PG/graphics/Scene.h"
 
@@ -109,86 +110,6 @@ TEST(UITests,testClickHandling)
     
     ui.update();
     EXPECT_EQ(1234, testElement.m_LastReceivedTag);
-}
-
-namespace
-{
-	//--------------------------------------------------------
-	class UIPositionCalculator
-	{
-	public:
-		UIPositionCalculator(const PGSize& size)
-		: m_Size(size)
-		{}
-		
-		PGPoint fromTopLeftCorner(const PGSize& distance) const
-		{
-			return PGPoint(distance.width, distance.height);
-		}
-		
-		PGPoint fromTopRightCorner(const PGSize& distance) const
-		{
-			return PGPoint(m_Size.width - distance.width, distance.height);
-		}
-		
-		PGPoint fromBottomLeftCorner(const PGSize& distance) const
-		{
-			return PGPoint(distance.width, m_Size.height - distance.height);
-		}
-		
-		PGPoint fromBottomRightCorner(const PGSize& distance) const
-		{
-			return PGPoint(m_Size.width - distance.width, m_Size.height - distance.height);
-		}
-		
-		PGPoint atCentre() const
-		{
-			return PGPoint(m_Size.width / 2.0, m_Size.height / 2.0);
-		}
-		
-		std::vector<PGPoint> multipleLeftToRight(const PGPoint& startPos, const int count, const double padding) const
-		{
-			return multiplePositions(startPos,
-									 PGPoint(startPos.x + (padding * (double)count), startPos.y),
-									 count);
-		}
-		
-		std::vector<PGPoint> multipleTopToBottom(const PGPoint& startPos, const int count, const double padding) const
-		{
-			return multiplePositions(startPos,
-									 PGPoint(startPos.x, startPos.y + (padding * (double)count)),
-									 count);
-		}
-		
-		std::vector<PGPoint> multipleAcrossCentre(const double startX, const int count, const double padding) const
-		{
-			return multipleLeftToRight(PGPoint(startX, m_Size.height / 2.0), count, padding);
-		}
-		
-		std::vector<PGPoint> multipleDownCentre(const double startY, const int count, const double padding) const
-		{
-			return multipleTopToBottom(PGPoint(m_Size.width / 2.0, startY), count, padding);
-		}
-		
-		std::vector<PGPoint> multiplePositions(const PGPoint& startPos, const PGPoint& endPos, const int count) const
-		{
-			std::vector<PGPoint> pts;
-			pts.reserve(count);
-			
-			const double xDiff = (endPos.x - startPos.x) / (double)count;
-			const double yDiff = (endPos.y - startPos.y) / (double)count;
-			
-			for (int pt = 0; pt < count; ++pt)
-			{
-				pts.emplace_back(startPos.x + (xDiff * (double)pt), startPos.y + (yDiff * (double)pt));
-			}
-			
-			return pts;
-		}
-		
-	private:
-		const PGSize	m_Size;
-	};
 }
 
 //--------------------------------------------------------

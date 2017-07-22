@@ -120,6 +120,9 @@
 		4976AD2C1F23A19F0044B6FB /* GeometryLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4976AD2A1F23A19F0044B6FB /* GeometryLoader.cpp */; };
 		4976AD2D1F23A19F0044B6FB /* GeometryLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4976AD2A1F23A19F0044B6FB /* GeometryLoader.cpp */; };
 		4976AD2E1F23A19F0044B6FB /* GeometryLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 4976AD2B1F23A19F0044B6FB /* GeometryLoader.h */; };
+		4976AD341F23AB690044B6FB /* UIPositionCalculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4976AD321F23AB690044B6FB /* UIPositionCalculator.cpp */; };
+		4976AD351F23AB690044B6FB /* UIPositionCalculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4976AD321F23AB690044B6FB /* UIPositionCalculator.cpp */; };
+		4976AD361F23AB690044B6FB /* UIPositionCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4976AD331F23AB690044B6FB /* UIPositionCalculator.h */; };
 		497947A61F1BAC9800B01C19 /* UIUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497947A51F1BAC9800B01C19 /* UIUtils.cpp */; };
 		497947A71F1BAC9800B01C19 /* UIUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497947A51F1BAC9800B01C19 /* UIUtils.cpp */; };
 		497947AC1F1BB8AE00B01C19 /* Bar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497947AA1F1BB8AE00B01C19 /* Bar.cpp */; };
@@ -248,6 +251,8 @@
 		49761EB91EED71E000DD6734 /* StyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleSheet.h; sourceTree = "<group>"; };
 		4976AD2A1F23A19F0044B6FB /* GeometryLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeometryLoader.cpp; sourceTree = "<group>"; };
 		4976AD2B1F23A19F0044B6FB /* GeometryLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeometryLoader.h; sourceTree = "<group>"; };
+		4976AD321F23AB690044B6FB /* UIPositionCalculator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIPositionCalculator.cpp; sourceTree = "<group>"; };
+		4976AD331F23AB690044B6FB /* UIPositionCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPositionCalculator.h; sourceTree = "<group>"; };
 		497947A51F1BAC9800B01C19 /* UIUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIUtils.cpp; sourceTree = "<group>"; };
 		497947AA1F1BB8AE00B01C19 /* Bar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bar.cpp; sourceTree = "<group>"; };
 		497947AB1F1BB8AE00B01C19 /* Bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bar.h; sourceTree = "<group>"; };
@@ -501,6 +506,8 @@
 				49E070501F1A5ABC00381C22 /* UIUtils.h */,
 				497947AA1F1BB8AE00B01C19 /* Bar.cpp */,
 				497947AB1F1BB8AE00B01C19 /* Bar.h */,
+				4976AD321F23AB690044B6FB /* UIPositionCalculator.cpp */,
+				4976AD331F23AB690044B6FB /* UIPositionCalculator.h */,
 			);
 			name = ui;
 			path = ../ui;
@@ -632,6 +639,7 @@
 				49761EB61EED70F800DD6734 /* Colour.h in Headers */,
 				49E070591F1A67F700381C22 /* PhysicsBodyCollection.h in Headers */,
 				49045B731EF599E3006ECF48 /* PGTagReceiver.h in Headers */,
+				4976AD361F23AB690044B6FB /* UIPositionCalculator.h in Headers */,
 				4930227B1ECA44E200C143A8 /* Size.h in Headers */,
 				493022711ECA44E200C143A8 /* MathsUtils.h in Headers */,
 				4961A61F1F090A5F00652361 /* SizeUtils.h in Headers */,
@@ -752,6 +760,7 @@
 				493ABCB01EFE8B10000C01E4 /* SFMLView.cpp in Sources */,
 				493ABCAE1EFE8B10000C01E4 /* SFMLScene.cpp in Sources */,
 				493ABCAB1EFE8B10000C01E4 /* Inventory.cpp in Sources */,
+				4976AD351F23AB690044B6FB /* UIPositionCalculator.cpp in Sources */,
 				493ABC9E1EFE8B10000C01E4 /* PGRectUtils.cpp in Sources */,
 				493ABCBE1EFE8B10000C01E4 /* JsonUtils.cpp in Sources */,
 				493ABCA91EFE8B10000C01E4 /* Tile.cpp in Sources */,
@@ -812,6 +821,7 @@
 				4956B5CE1EE4582A00F6A7A4 /* Rect.cpp in Sources */,
 				49AACADE1ECCD13F003BDC3C /* Attributes.cpp in Sources */,
 				493022411ECA449600C143A8 /* PGUIMessageQueuePoster.cpp in Sources */,
+				4976AD341F23AB690044B6FB /* UIPositionCalculator.cpp in Sources */,
 				493022601ECA44DC00C143A8 /* TextureMeasurer.cpp in Sources */,
 				49AACAF91ECCD462003BDC3C /* TilePositionCalculator.cpp in Sources */,
 				49A7A70A1EEDADC800816F2B /* MoveToAnimation.cpp in Sources */,
