@@ -114,24 +114,120 @@ TEST(UITests,testClickHandling)
 namespace
 {
 	//--------------------------------------------------------
-	class LayoutCalculator
+	class UIPositionCalculator
 	{
+	public:
+		UIPositionCalculator(const PGSize& size)
+		: m_Size(size)
+		{}
 		
+		PGPoint fromTopLeftCorner(const PGSize& distance) const
+		{
+			return PGPoint(distance.width, distance.height);
+		}
+		
+		PGPoint fromTopRightCorner(const PGSize& distance) const
+		{
+			return PGPoint(m_Size.width - distance.width, distance.height);
+		}
+		
+		PGPoint fromBottomLeftCorner(const PGSize& distance) const
+		{
+			return PGPoint(distance.width, m_Size.height - distance.height);
+		}
+		
+		PGPoint fromBottomRightCorner(const PGSize& distance) const
+		{
+			return PGPoint(m_Size.width - distance.width, m_Size.height - distance.height);
+		}
+		
+		PGPoint atCentre() const
+		{
+			return PGPoint(m_Size.width / 2.0, m_Size.height / 2.0);
+		}
+		
+		std::vector<PGPoint> multipleLeftToRight(const PGPoint& startPos, const int count, const double padding) const
+		{
+			return multiplePositions(startPos,
+									 PGPoint(startPos.x + (padding * (double)count), startPos.y),
+									 count);
+		}
+		
+		std::vector<PGPoint> multipleTopToBottom(const PGPoint& startPos, const int count, const double padding) const
+		{
+			return multiplePositions(startPos,
+									 PGPoint(startPos.x, startPos.y + (padding * (double)count)),
+									 count);
+		}
+		
+		std::vector<PGPoint> multipleAcrossCentre(const double startX, const int count, const double padding) const
+		{
+			return multipleLeftToRight(PGPoint(startX, m_Size.height / 2.0), count, padding);
+		}
+		
+		std::vector<PGPoint> multipleDownCentre(const double startY, const int count, const double padding) const
+		{
+			return multipleTopToBottom(PGPoint(m_Size.width / 2.0, startY), count, padding);
+		}
+		
+		std::vector<PGPoint> multiplePositions(const PGPoint& startPos, const PGPoint& endPos, const int count) const
+		{
+			std::vector<PGPoint> pts;
+			pts.reserve(count);
+			
+			const double xDiff = (endPos.x - startPos.x) / (double)count;
+			const double yDiff = (endPos.y - startPos.y) / (double)count;
+			
+			for (int pt = 0; pt < count; ++pt)
+			{
+				pts.emplace_back(startPos.x + (xDiff * (double)pt), startPos.y + (yDiff * (double)pt));
+			}
+			
+			return pts;
+		}
+		
+	private:
+		const PGSize	m_Size;
 	};
 }
 
 //--------------------------------------------------------
-TEST(UITests,testLayoutCalculator)
+TEST(UITests,testUIPositionCalculator)
 {
-	auto node = NodeCreator::createColourNode(Colour(), PGSize(10, 10));
-	NodeHandle root(node.get());
-	root.node->setPosition(PGPoint(10, 10));
+	UIPositionCalculator posCalc(PGSize(10, 10));
 	
-	EXPECT_FALSE(PGRectUtils::containsPoint(root.node->getRect(), PGPoint(0, 0)));
-	EXPECT_TRUE(PGRectUtils::containsPoint(root.node->getRect(), PGPoint(5, 5)));
-	EXPECT_TRUE(PGRectUtils::containsPoint(root.node->getRect(), PGPoint(6, 6)));
-	EXPECT_TRUE(PGRectUtils::containsPoint(root.node->getRect(), PGPoint(10, 10)));
-	EXPECT_TRUE(PGRectUtils::containsPoint(root.node->getRect(), PGPoint(14, 14)));
-	EXPECT_TRUE(PGRectUtils::containsPoint(root.node->getRect(), PGPoint(15, 15)));
-	EXPECT_FALSE(PGRectUtils::containsPoint(root.node->getRect(), PGPoint(16, 16)));
+	EXPECT_EQ(PGPoint(1, 1), posCalc.fromTopLeftCorner(PGSize(1, 1)));
+	EXPECT_EQ(PGPoint(9, 1), posCalc.fromTopRightCorner(PGSize(1, 1)));
+	EXPECT_EQ(PGPoint(1, 9), posCalc.fromBottomLeftCorner(PGSize(1, 1)));
+	EXPECT_EQ(PGPoint(9, 9), posCalc.fromBottomRightCorner(PGSize(1, 1)));
+	EXPECT_EQ(PGPoint(5, 5), posCalc.atCentre());
+	
+	{
+		const auto pts = posCalc.multipleLeftToRight(PGPoint(0, 0), 3, 1.5);
+		ASSERT_EQ((size_t)3, pts.size());
+		EXPECT_EQ(PGPoint(0, 0), pts[0]);
+		EXPECT_EQ(PGPoint(1.5, 0), pts[1]);
+		EXPECT_EQ(PGPoint(3, 0), pts[2]);
+	}
+	{
+		const auto pts = posCalc.multipleTopToBottom(PGPoint(0, 0), 3, 1.5);
+		ASSERT_EQ((size_t)3, pts.size());
+		EXPECT_EQ(PGPoint(0, 0), pts[0]);
+		EXPECT_EQ(PGPoint(0, 1.5), pts[1]);
+		EXPECT_EQ(PGPoint(0, 3), pts[2]);
+	}
+	{
+		const auto pts = posCalc.multipleAcrossCentre(0, 3, 1.5);
+		ASSERT_EQ((size_t)3, pts.size());
+		EXPECT_EQ(PGPoint(0, 5), pts[0]);
+		EXPECT_EQ(PGPoint(1.5, 5), pts[1]);
+		EXPECT_EQ(PGPoint(3, 5), pts[2]);
+	}
+	{
+		const auto pts = posCalc.multipleDownCentre(0, 3, 1.5);
+		ASSERT_EQ((size_t)3, pts.size());
+		EXPECT_EQ(PGPoint(5, 0), pts[0]);
+		EXPECT_EQ(PGPoint(5, 1.5), pts[1]);
+		EXPECT_EQ(PGPoint(5, 3), pts[2]);
+	}
 }
