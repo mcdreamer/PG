@@ -35,6 +35,30 @@ PGPoint UIPositionCalculator::fromBottomRightCorner(const PGSize& distance) cons
 }
 
 //--------------------------------------------------------
+PGPoint UIPositionCalculator::fromLeftMid(const PGSize& distance) const
+{
+	return PGPoint(distance.width, (m_Size.height / 2.0) + distance.height);
+}
+
+//--------------------------------------------------------
+PGPoint UIPositionCalculator::fromRightMid(const PGSize& distance) const
+{
+	return PGPoint(m_Size.width - distance.width, (m_Size.height / 2.0) + distance.height);
+}
+
+//--------------------------------------------------------
+PGPoint UIPositionCalculator::fromTopMid(const PGSize& distance) const
+{
+	return PGPoint((m_Size.width / 2.0) + distance.width, distance.height);
+}
+
+//--------------------------------------------------------
+PGPoint UIPositionCalculator::fromBottomMid(const PGSize& distance) const
+{
+	return PGPoint((m_Size.width / 2.0) + distance.width, m_Size.height - distance.height);
+}
+
+//--------------------------------------------------------
 PGPoint UIPositionCalculator::atCentre() const
 {
 	return PGPoint(m_Size.width / 2.0, m_Size.height / 2.0);

@@ -16,6 +16,12 @@ public:
 	PGPoint fromTopRightCorner(const PGSize& distance) const;
 	PGPoint fromBottomLeftCorner(const PGSize& distance) const;
 	PGPoint fromBottomRightCorner(const PGSize& distance) const;
+	
+	PGPoint fromLeftMid(const PGSize& distance) const;
+	PGPoint fromRightMid(const PGSize& distance) const;
+	PGPoint fromTopMid(const PGSize& distance) const;
+	PGPoint fromBottomMid(const PGSize& distance) const;
+	
 	PGPoint atCentre() const;
 
 	std::vector<PGPoint> multipleLeftToRight(const PGPoint& startPos, const int count, const double padding) const;

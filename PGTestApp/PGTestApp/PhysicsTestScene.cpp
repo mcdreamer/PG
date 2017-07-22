@@ -10,6 +10,7 @@
 #include "PG/ui/PGButton.h"
 #include "PG/ui/PGUIMessageQueuePoster.h"
 #include "PG/ui/UIUtils.h"
+#include "PG/ui/UIPositionCalculator.h"
 #include "PG/app/StyleSheet.h"
 #include "PG/app/GameConstants.h"
 #include "PG/data/DataGrid.h"
@@ -87,10 +88,12 @@ void PhysicsTestScene::initScene(PG::SceneHandle scene)
 	auto ghostNode = PG::NodeCreator::createSpriteNode("ghost");
 	m_State->bodyAndNode.node = m_Scene.scene->addChild(ghostNode);
 	
+	PG::UIPositionCalculator uiPosCalc(sceneSize);
+	
 	PG::UIUtils::createTextNodeForValue(PG::PGPoint(20, 20), PG::Colour(255, 0, 0), 20, m_HeartCountNode, m_Scene, m_GameState->numHearts);
 	PG::UIUtils::createTextNodeForValue(PG::PGPoint(20, 40), PG::Colour(0, 128, 255), 20, m_StarsCountNode, m_Scene, m_GameState->numStars);
 	
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.75), "Back", TagConstants::kPopScene));
+	m_Scene.scene->pushUIElement(new PG::PGButton(*this, uiPosCalc.fromBottomMid(PG::PGSize(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
 	
 	generateAndSetupLevelGeometry();
 	generateAndSetupHearts();

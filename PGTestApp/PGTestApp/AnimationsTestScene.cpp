@@ -5,6 +5,7 @@
 #include "PG/graphics/NodeCreator.h"
 #include "PG/ui/PGButton.h"
 #include "PG/ui/PGUIMessageQueuePoster.h"
+#include "PG/ui/UIPositionCalculator.h"
 #include "PG/app/StyleSheet.h"
 
 //--------------------------------------------------------
@@ -21,7 +22,9 @@ void AnimationsTestScene::initScene(PG::SceneHandle scene)
 	auto logoHandle = m_Scene.scene->addChild(logoNode);
 	m_Animations.emplace_back(new PG::MoveToAnimation(logoHandle, PG::PGPoint(500, 400), 5));
 	
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.75), "Back", TagConstants::kPopScene));
+	PG::UIPositionCalculator uiPosCalc(sceneSize);
+	
+	m_Scene.scene->pushUIElement(new PG::PGButton(*this, uiPosCalc.fromBottomMid(PG::PGSize(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
 }
 
 //--------------------------------------------------------

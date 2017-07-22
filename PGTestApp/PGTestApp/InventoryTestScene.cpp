@@ -6,10 +6,10 @@
 #include "PG/ui/PGButton.h"
 #include "PG/ui/PGUIMessageQueuePoster.h"
 #include "PG/ui/UIUtils.h"
+#include "PG/ui/UIPositionCalculator.h"
 #include "PG/data/DataGrid.h"
 #include "PG/entities/TilePositionCalculator.h"
 #include "PG/core/BindableValue.h"
-
 #include "PG/inventory/Inventory.h"
 #include "PG/inventory/InventoryItem.h"
 
@@ -57,12 +57,15 @@ void InventoryTestScene::initScene(PG::SceneHandle scene)
 	
 	drawInventoryBackground();
 	
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width * 0.4, sceneSize.height * 0.75), "+ Heart", ButtonTags::kTagAddHeart));
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width * 0.6, sceneSize.height * 0.75), "- Heart", ButtonTags::kTagRemoveHeart));
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width * 0.4, sceneSize.height * 0.85), "+ Star", ButtonTags::kTagAddStar));
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width * 0.6, sceneSize.height * 0.85), "- Star", ButtonTags::kTagRemoveStar));
+	PG::UIPositionCalculator uiPosCalc(sceneSize);
+	const auto btnPts = uiPosCalc.multipleDownCentre(sceneSize.height * 0.50, 5, sceneSize.height * 0.1);
+	
+	m_Scene.scene->pushUIElement(new PG::PGButton(*this, btnPts[0], "+ Heart", ButtonTags::kTagAddHeart));
+	m_Scene.scene->pushUIElement(new PG::PGButton(*this, btnPts[1], "- Heart", ButtonTags::kTagRemoveHeart));
+	m_Scene.scene->pushUIElement(new PG::PGButton(*this, btnPts[2], "+ Star", ButtonTags::kTagAddStar));
+	m_Scene.scene->pushUIElement(new PG::PGButton(*this, btnPts[3], "- Star", ButtonTags::kTagRemoveStar));
 
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.95), "Back", TagConstants::kPopScene));
+	m_Scene.scene->pushUIElement(new PG::PGButton(*this, btnPts[4], "Back", TagConstants::kPopScene));
 }
 
 namespace
@@ -131,17 +134,15 @@ void InventoryTestScene::keyUp(PG::PGKeyCode code)
 //--------------------------------------------------------
 void InventoryTestScene::drawInventoryBackground()
 {
-	const double y = 50;
-	double x = 50;
+	PG::UIPositionCalculator uiPosCalc(m_Scene.scene->getSceneSize());
+	const auto btnPts = uiPosCalc.multipleLeftToRight(PG::PGPoint(50, 50), 5, 64);
 	
-	for (int i = 0; i < 5; ++i)
+	for (const auto& btnPt : btnPts)
 	{
 		auto itemHolderNode = PG::NodeCreator::createSpriteNode("inventorycontainer");
 		auto itemHolderNodeHandle = m_Scene.scene->addChild(itemHolderNode);
 
-		itemHolderNodeHandle.node->setPosition(PG::PGPoint(x, y));
-		
-		x += itemHolderNodeHandle.node->getSize().width;
+		itemHolderNodeHandle.node->setPosition(btnPt);
 	}
 }
 
@@ -158,22 +159,31 @@ void InventoryTestScene::updateInventory()
 	
 	m_GameState->inventoryItemNodes.clear();
 	
-	const double y = 50;
-	double x = 50;
+	PG::UIPositionCalculator uiPosCalc(m_Scene.scene->getSceneSize());
+	const auto btnPts = uiPosCalc.multipleLeftToRight(PG::PGPoint(50, 50), 5, 64);
 	
+	auto btnPtIt = btnPts.begin();
+
 	for (const auto& inventoryItem : m_GameState->inventory.getItems())
 	{
+		if (btnPtIt == btnPts.end())
+		{
+			return;
+		}
+	
+		const auto& btnPt = *btnPtIt;
+	
 		auto itemNode = PG::NodeCreator::createSpriteNode(inventoryItem.item.getImageName());
-		itemNode->setPosition(PG::PGPoint(x, y));
+		itemNode->setPosition(btnPt);
 		
 		auto labelNode = PG::NodeCreator::createTextNode(m_Scene.scene->getStyleSheet().uiFontName, 10);
 		labelNode->setText(inventoryItem.item.getName() + " (" + std::to_string(inventoryItem.count) + ")");
 		labelNode->setColour(PG::Colour(255, 255, 255));
-		labelNode->setPosition(PG::PGPoint(x, y + itemNode->getSize().height - 10));
+		labelNode->setPosition(PG::PGPoint(btnPt.x, btnPt.y + itemNode->getSize().height - 10));
 		
 		m_GameState->inventoryItemNodes.push_back(m_Scene.scene->addChild(itemNode));
 		m_GameState->inventoryItemNodes.push_back(m_Scene.scene->addChild(labelNode));
 		
-		x += 64;
+		++btnPtIt;
 	}
 }

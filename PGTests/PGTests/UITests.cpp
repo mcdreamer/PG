@@ -121,6 +121,12 @@ TEST(UITests,testUIPositionCalculator)
 	EXPECT_EQ(PGPoint(9, 1), posCalc.fromTopRightCorner(PGSize(1, 1)));
 	EXPECT_EQ(PGPoint(1, 9), posCalc.fromBottomLeftCorner(PGSize(1, 1)));
 	EXPECT_EQ(PGPoint(9, 9), posCalc.fromBottomRightCorner(PGSize(1, 1)));
+	
+	EXPECT_EQ(PGPoint(1, 6), posCalc.fromLeftMid(PGSize(1, 1)));
+	EXPECT_EQ(PGPoint(9, 6), posCalc.fromRightMid(PGSize(1, 1)));
+	EXPECT_EQ(PGPoint(6, 1), posCalc.fromTopMid(PGSize(1, 1)));
+	EXPECT_EQ(PGPoint(6, 9), posCalc.fromBottomMid(PGSize(1, 1)));
+	
 	EXPECT_EQ(PGPoint(5, 5), posCalc.atCentre());
 	
 	{
