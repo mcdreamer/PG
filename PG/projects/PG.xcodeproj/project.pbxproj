@@ -117,6 +117,9 @@
 		49761EB61EED70F800DD6734 /* Colour.h in Headers */ = {isa = PBXBuildFile; fileRef = 49761EB51EED70F800DD6734 /* Colour.h */; };
 		49761EB81EED71D600DD6734 /* AppConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 49761EB71EED71D600DD6734 /* AppConfiguration.h */; };
 		49761EBA1EED71E000DD6734 /* StyleSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 49761EB91EED71E000DD6734 /* StyleSheet.h */; };
+		4976AD2C1F23A19F0044B6FB /* GeometryLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4976AD2A1F23A19F0044B6FB /* GeometryLoader.cpp */; };
+		4976AD2D1F23A19F0044B6FB /* GeometryLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4976AD2A1F23A19F0044B6FB /* GeometryLoader.cpp */; };
+		4976AD2E1F23A19F0044B6FB /* GeometryLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 4976AD2B1F23A19F0044B6FB /* GeometryLoader.h */; };
 		497947A61F1BAC9800B01C19 /* UIUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497947A51F1BAC9800B01C19 /* UIUtils.cpp */; };
 		497947A71F1BAC9800B01C19 /* UIUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497947A51F1BAC9800B01C19 /* UIUtils.cpp */; };
 		497947AC1F1BB8AE00B01C19 /* Bar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497947AA1F1BB8AE00B01C19 /* Bar.cpp */; };
@@ -243,6 +246,8 @@
 		49761EB51EED70F800DD6734 /* Colour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colour.h; sourceTree = "<group>"; };
 		49761EB71EED71D600DD6734 /* AppConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfiguration.h; sourceTree = "<group>"; };
 		49761EB91EED71E000DD6734 /* StyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleSheet.h; sourceTree = "<group>"; };
+		4976AD2A1F23A19F0044B6FB /* GeometryLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeometryLoader.cpp; sourceTree = "<group>"; };
+		4976AD2B1F23A19F0044B6FB /* GeometryLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeometryLoader.h; sourceTree = "<group>"; };
 		497947A51F1BAC9800B01C19 /* UIUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIUtils.cpp; sourceTree = "<group>"; };
 		497947AA1F1BB8AE00B01C19 /* Bar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bar.cpp; sourceTree = "<group>"; };
 		497947AB1F1BB8AE00B01C19 /* Bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bar.h; sourceTree = "<group>"; };
@@ -436,6 +441,8 @@
 				49AACAD71ECCD13F003BDC3C /* EntityHandle.h */,
 				49AACAD81ECCD13F003BDC3C /* EntityLoader.cpp */,
 				49AACAD91ECCD13F003BDC3C /* EntityLoader.h */,
+				4976AD2A1F23A19F0044B6FB /* GeometryLoader.cpp */,
+				4976AD2B1F23A19F0044B6FB /* GeometryLoader.h */,
 			);
 			name = data;
 			path = ../data;
@@ -643,6 +650,7 @@
 				49761EBA1EED71E000DD6734 /* StyleSheet.h in Headers */,
 				4930223D1ECA449600C143A8 /* PGUI.h in Headers */,
 				490A3D001EDC386B0046A552 /* PhysicsBody.h in Headers */,
+				4976AD2E1F23A19F0044B6FB /* GeometryLoader.h in Headers */,
 				49AACADF1ECCD13F003BDC3C /* Attributes.h in Headers */,
 				493022441ECA449600C143A8 /* PGUIUtils.h in Headers */,
 				49AACAF01ECCD226003BDC3C /* Inventory.h in Headers */,
@@ -761,6 +769,7 @@
 				493ABCA31EFE8B10000C01E4 /* Colour.cpp in Sources */,
 				493ABCB91EFE8B10000C01E4 /* PGUI.cpp in Sources */,
 				493ABC9F1EFE8B10000C01E4 /* Point.cpp in Sources */,
+				4976AD2D1F23A19F0044B6FB /* GeometryLoader.cpp in Sources */,
 				493ABC9B1EFE8B10000C01E4 /* MoveToAnimation.cpp in Sources */,
 				493ABC9D1EFE8B10000C01E4 /* PGAppHost.cpp in Sources */,
 				490A3D081EDC84890046A552 /* PhysicsBody.cpp in Sources */,
@@ -777,6 +786,7 @@
 			files = (
 				497947AC1F1BB8AE00B01C19 /* Bar.cpp in Sources */,
 				490A3D071EDC84890046A552 /* PhysicsBody.cpp in Sources */,
+				4976AD2C1F23A19F0044B6FB /* GeometryLoader.cpp in Sources */,
 				4930229F1ECA45AF00C143A8 /* SFMLScene.cpp in Sources */,
 				49A7A70E1EEDAF0A00816F2B /* AnimationUpdater.cpp in Sources */,
 				49AACADC1ECCD13F003BDC3C /* AttributeConstants.cpp in Sources */,

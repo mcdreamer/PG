@@ -10,6 +10,7 @@
 		4956B5C31EE4514100F6A7A4 /* GeometryTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4956B5C11EE4514100F6A7A4 /* GeometryTests.cpp */; };
 		4961A6261F090EB200652361 /* PhysicsTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4961A6241F090EB200652361 /* PhysicsTests.cpp */; };
 		496CC94B1EED87C400A901AA /* OpenSans-Regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49761EB41EED6FEC00DD6734 /* OpenSans-Regular.ttf */; };
+		4976AD2F1F23A3A90044B6FB /* testgeometry.geometry in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4976AD201F23A09B0044B6FB /* testgeometry.geometry */; };
 		49AACB511ECCE8E4003BDC3C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AACB501ECCE8E4003BDC3C /* main.cpp */; };
 		49AACB5D1ECCE92E003BDC3C /* CoreDataTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AACB581ECCE92E003BDC3C /* CoreDataTests.cpp */; };
 		49AACB5E1ECCE92E003BDC3C /* UITests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AACB5B1ECCE92E003BDC3C /* UITests.cpp */; };
@@ -111,6 +112,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				4976AD2F1F23A3A90044B6FB /* testgeometry.geometry in CopyFiles */,
 				496CC94B1EED87C400A901AA /* OpenSans-Regular.ttf in CopyFiles */,
 				49AACB9C1ECCEC14003BDC3C /* testdata.json in CopyFiles */,
 			);
@@ -124,6 +126,7 @@
 		4961A6241F090EB200652361 /* PhysicsTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsTests.cpp; sourceTree = "<group>"; };
 		4961A6251F090EB200652361 /* PhysicsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsTests.h; sourceTree = "<group>"; };
 		49761EB41EED6FEC00DD6734 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "font/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		4976AD201F23A09B0044B6FB /* testgeometry.geometry */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = testgeometry.geometry; sourceTree = "<group>"; };
 		49AACB4D1ECCE8E4003BDC3C /* PGTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PGTests; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AACB501ECCE8E4003BDC3C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		49AACB581ECCE92E003BDC3C /* CoreDataTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CoreDataTests.cpp; sourceTree = "<group>"; };
@@ -203,6 +206,7 @@
 				49AACB501ECCE8E4003BDC3C /* main.cpp */,
 				49E070441F1A52E700381C22 /* CoreTests.cpp */,
 				49E070451F1A52E700381C22 /* CoreTests.h */,
+				4976AD201F23A09B0044B6FB /* testgeometry.geometry */,
 			);
 			path = PGTests;
 			sourceTree = "<group>";

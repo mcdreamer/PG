@@ -5,6 +5,7 @@
 #include "PG/data/Attributes.h"
 #include "PG/data/EntityLoader.h"
 #include "PG/data/EntityHandle.h"
+#include "PG/data/GeometryLoader.h"
 
 using namespace PG;
 
@@ -111,4 +112,39 @@ TEST(CoreDataTests,testEntityHandleSwap)
     handleOne.swap(handleTwo);
     ASSERT_FALSE(handleOne.getEntity());
     ASSERT_TRUE(handleTwo.getEntity());
+}
+
+
+//--------------------------------------------------------
+TEST(CoreDataTests,testGeometryLoader)
+{
+	GeometryLoader loader;
+	const auto geom = loader.loadGeometryFile("testgeometry.geometry");
+	
+	EXPECT_EQ(5, geom.getWidth());
+	EXPECT_EQ(4, geom.getHeight());
+	
+	EXPECT_EQ(false, geom.at(0, 0));
+	EXPECT_EQ(true, geom.at(1, 0));
+	EXPECT_EQ(false, geom.at(2, 0));
+	EXPECT_EQ(false, geom.at(3, 0));
+	EXPECT_EQ(true, geom.at(4, 0));
+	
+	EXPECT_EQ(true, geom.at(0, 1));
+	EXPECT_EQ(true, geom.at(1, 1));
+	EXPECT_EQ(true, geom.at(2, 1));
+	EXPECT_EQ(true, geom.at(3, 1));
+	EXPECT_EQ(true, geom.at(4, 1));
+	
+	EXPECT_EQ(false, geom.at(0, 2));
+	EXPECT_EQ(false, geom.at(1, 2));
+	EXPECT_EQ(false, geom.at(2, 2));
+	EXPECT_EQ(false, geom.at(3, 2));
+	EXPECT_EQ(false, geom.at(4, 2));
+	
+	EXPECT_EQ(true, geom.at(0, 3));
+	EXPECT_EQ(false, geom.at(1, 3));
+	EXPECT_EQ(true, geom.at(2, 3));
+	EXPECT_EQ(false, geom.at(3, 3));
+	EXPECT_EQ(false, geom.at(4, 3));
 }
