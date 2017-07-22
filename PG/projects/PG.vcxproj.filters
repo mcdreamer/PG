@@ -13,9 +13,6 @@
     <Filter Include="io">
       <UniqueIdentifier>{1b1b07db-53bc-44cd-8c11-d0e31b37b44d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="menu">
-      <UniqueIdentifier>{ace450c5-4a7a-43b4-8558-a7f274e79b07}</UniqueIdentifier>
-    </Filter>
     <Filter Include="thirdparty">
       <UniqueIdentifier>{d5938c23-0fa0-4046-8b5d-6271c006b45b}</UniqueIdentifier>
     </Filter>
@@ -68,15 +65,6 @@
     </ClCompile>
     <ClCompile Include="..\graphics\TextureMeasurer.cpp">
       <Filter>graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\menu\MenuLayer.cpp">
-      <Filter>menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\menu\MenuManager.cpp">
-      <Filter>menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\menu\MenuNode.cpp">
-      <Filter>menu</Filter>
     </ClCompile>
     <ClCompile Include="..\util\Logger.cpp">
       <Filter>util</Filter>
@@ -207,6 +195,12 @@
     <ClCompile Include="..\ui\Bar.cpp">
       <Filter>ui</Filter>
     </ClCompile>
+    <ClCompile Include="..\data\GeometryLoader.cpp">
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\UIPositionCalculator.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\util\JsonUtils.h">
@@ -226,15 +220,6 @@
     </ClInclude>
     <ClInclude Include="..\io\IResourceHandler.h">
       <Filter>io</Filter>
-    </ClInclude>
-    <ClInclude Include="..\menu\MenuLayer.h">
-      <Filter>menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\menu\MenuManager.h">
-      <Filter>menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\menu\MenuNode.h">
-      <Filter>menu</Filter>
     </ClInclude>
     <ClInclude Include="..\util\Logger.h">
       <Filter>util</Filter>
@@ -405,6 +390,12 @@
       <Filter>ui</Filter>
     </ClInclude>
     <ClInclude Include="..\ui\Bar.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\data\GeometryLoader.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\UIPositionCalculator.h">
       <Filter>ui</Filter>
     </ClInclude>
   </ItemGroup>

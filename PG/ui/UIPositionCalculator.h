@@ -2,6 +2,8 @@
 
 #include "PG/core/Size.h"
 
+#include <vector>
+
 namespace PG {
 
 class PGPoint;

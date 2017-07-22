@@ -34,6 +34,7 @@
     <ClCompile Include="..\data\Attributes.cpp" />
     <ClCompile Include="..\data\DataGrid.cpp" />
     <ClCompile Include="..\data\EntityLoader.cpp" />
+    <ClCompile Include="..\data\GeometryLoader.cpp" />
     <ClCompile Include="..\entities\Tile.cpp" />
     <ClCompile Include="..\entities\TilePositionCalculator.cpp" />
     <ClCompile Include="..\graphics\TextureMeasurer.cpp" />
@@ -46,9 +47,6 @@
     <ClCompile Include="..\internal\platform\ResourceHandler.cpp" />
     <ClCompile Include="..\internal\platform\WinResourceHandler.cpp" />
     <ClCompile Include="..\inventory\Inventory.cpp" />
-    <ClCompile Include="..\menu\MenuLayer.cpp" />
-    <ClCompile Include="..\menu\MenuManager.cpp" />
-    <ClCompile Include="..\menu\MenuNode.cpp" />
     <ClCompile Include="..\physics\PhysicsBody.cpp" />
     <ClCompile Include="..\physics\PhysicsBodyCollection.cpp" />
     <ClCompile Include="..\physics\PhysicsBodyInputHandler.cpp" />
@@ -64,6 +62,7 @@
     <ClCompile Include="..\ui\PGUIMessage.cpp" />
     <ClCompile Include="..\ui\PGUIMessageQueuePoster.cpp" />
     <ClCompile Include="..\ui\PGUIUtils.cpp" />
+    <ClCompile Include="..\ui\UIPositionCalculator.cpp" />
     <ClCompile Include="..\ui\UIUtils.cpp" />
     <ClCompile Include="..\util\JsonUtils.cpp" />
     <ClCompile Include="..\util\Logger.cpp" />
@@ -96,6 +95,7 @@
     <ClInclude Include="..\data\DataGridUtils.h" />
     <ClInclude Include="..\data\EntityHandle.h" />
     <ClInclude Include="..\data\EntityLoader.h" />
+    <ClInclude Include="..\data\GeometryLoader.h" />
     <ClInclude Include="..\entities\Tile.h" />
     <ClInclude Include="..\entities\TilePositionCalculator.h" />
     <ClInclude Include="..\graphics\Node.h" />
@@ -114,9 +114,6 @@
     <ClInclude Include="..\inventory\Inventory.h" />
     <ClInclude Include="..\inventory\InventoryItem.h" />
     <ClInclude Include="..\io\IResourceHandler.h" />
-    <ClInclude Include="..\menu\MenuLayer.h" />
-    <ClInclude Include="..\menu\MenuManager.h" />
-    <ClInclude Include="..\menu\MenuNode.h" />
     <ClInclude Include="..\physics\PhysicsBody.h" />
     <ClInclude Include="..\physics\PhysicsBodyAndNode.h" />
     <ClInclude Include="..\physics\PhysicsBodyCollection.h" />
@@ -132,6 +129,7 @@
     <ClInclude Include="..\ui\PGUIMessage.h" />
     <ClInclude Include="..\ui\PGUIMessageQueuePoster.h" />
     <ClInclude Include="..\ui\PGUIUtils.h" />
+    <ClInclude Include="..\ui\UIPositionCalculator.h" />
     <ClInclude Include="..\ui\UIUtils.h" />
     <ClInclude Include="..\util\JsonUtils.h" />
     <ClInclude Include="..\util\Logger.h" />

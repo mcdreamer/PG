@@ -1,8 +1,6 @@
 #include "PG/ui/UIPositionCalculator.h"
 #include "PG/core/Point.h"
 
-#include <vector>
-
 namespace PG {
 
 //--------------------------------------------------------

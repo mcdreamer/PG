@@ -103,6 +103,7 @@
     </Link>
     <CustomBuildStep>
       <Command>copy $(ProjectDir)PGTests\testdata.json $(OutDir)
+copy $(ProjectDir)PGTests\testgeometry.geometry $(OutDir)
 copy $(ProjectDir)PGTests\font\*.* $(OutDir)</Command>
       <Outputs>dummy</Outputs>
     </CustomBuildStep>
@@ -154,6 +155,7 @@ copy $(ProjectDir)PGTests\font\*.* $(OutDir)</Command>
     </Link>
     <CustomBuildStep>
       <Command>copy $(ProjectDir)PGTests\testdata.json $(OutDir)
+copy $(ProjectDir)PGTests\testgeometry.geometry $(OutDir)
 copy $(ProjectDir)PGTests\font\*.* $(OutDir)</Command>
       <Outputs>dummy</Outputs>
     </CustomBuildStep>

@@ -121,8 +121,8 @@ TEST(CoreDataTests,testGeometryLoader)
 	GeometryLoader loader;
 	const auto geom = loader.loadGeometryFile("testgeometry.geometry");
 	
-	EXPECT_EQ(5, geom.getWidth());
-	EXPECT_EQ(4, geom.getHeight());
+	ASSERT_EQ(5, geom.getWidth());
+	ASSERT_EQ(4, geom.getHeight());
 	
 	EXPECT_EQ(false, geom.at(0, 0));
 	EXPECT_EQ(true, geom.at(1, 0));
