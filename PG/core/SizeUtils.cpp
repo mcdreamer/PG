@@ -4,9 +4,9 @@ namespace PG {
 namespace SizeUtils {
 
 //--------------------------------------------------------
-PGSize scaleSize(PGSize sz, float scale)
+Size scaleSize(Size sz, float scale)
 {
-	return PGSize(sz.width * scale, sz.height * scale);
+	return Size(sz.width * scale, sz.height * scale);
 }
 
 }

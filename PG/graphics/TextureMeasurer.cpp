@@ -5,7 +5,7 @@ namespace PG {
 namespace TextureMeasurementUtils {
 
 //--------------------------------------------------------
-PGRect measureRGBABuffer(const unsigned char* data, int width, int height)
+Rect measureRGBABuffer(const unsigned char* data, int width, int height)
 {
 	int xMin = -1;
 	int xMax = -1;
@@ -45,7 +45,7 @@ PGRect measureRGBABuffer(const unsigned char* data, int width, int height)
 		}
 	}
 
-	return PGRect(PGPoint(xMin, height - yMax), PGSize(xMax - xMin, yMax - yMin));
+	return Rect(Point(xMin, height - yMax), Size(xMax - xMin, yMax - yMin));
 }
 	
 }

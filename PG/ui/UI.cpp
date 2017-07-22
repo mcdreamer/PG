@@ -1,5 +1,5 @@
-#include "PG/ui/PGUI.h"
-#include "PG/ui/PGUIMessageQueuePoster.h"
+#include "PG/ui/UI.h"
+#include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/graphics/Scene.h"
 
 #include <algorithm>
@@ -7,18 +7,18 @@
 namespace PG {
 
 //--------------------------------------------------------
-void PGUI::pushElement(PGUIElement* element)
+void UI::pushElement(UIElement* element)
 {
     m_UIStack.emplace_back(element);
     m_UIStack.back()->show(m_Scene, m_StyleSheet);
 }
 
 //--------------------------------------------------------
-bool PGUI::handleClick(const PGPoint& screenPt)
+bool UI::handleClick(const Point& screenPt)
 {
     if (!m_UIStack.empty())
     {
-        PGUIMessageQueuePoster msgPoster(m_MessageQueue);
+        UIMessageQueuePoster msgPoster(m_MessageQueue);
 
         for (auto elementIt = m_UIStack.rbegin(); elementIt != m_UIStack.rend(); ++elementIt)
         {
@@ -35,14 +35,14 @@ bool PGUI::handleClick(const PGPoint& screenPt)
 namespace
 {
     //--------------------------------------------------------
-    void removeElement(const PGUIElement* toRemove, PGUIElementArray& uiStack)
+    void removeElement(const UIElement* toRemove, UIElementArray& uiStack)
     {
         uiStack.erase(std::remove_if(uiStack.begin(), uiStack.end(), [&](const auto& e) { return e.get() == toRemove; }), uiStack.end());
     }
 }
 
 //--------------------------------------------------------
-void PGUI::update()
+void UI::update()
 {
     while (!m_MessageQueue.empty())
     {
@@ -50,27 +50,27 @@ void PGUI::update()
 
         switch (msg.type)
         {
-            case PGUIMessage::kClose:
+            case UIMessage::kClose:
                 if (msg.target)
                 {
-					auto* uiElement = dynamic_cast<PGUIElement*>(msg.target);
+					auto* uiElement = dynamic_cast<UIElement*>(msg.target);
                     uiElement->close();
                     removeElement(uiElement, m_UIStack);
                 }
                 break;
 
-            case PGUIMessage::kSendTag:
+            case UIMessage::kSendTag:
                 if (msg.target)
                 {
-                    PGUIMessageQueuePoster msgPoster(m_MessageQueue);
+                    UIMessageQueuePoster msgPoster(m_MessageQueue);
                     msg.target->receiveTag(msg.tag, msgPoster);
                 }
                 break;
 
-            case PGUIMessage::kPushElement:
+            case UIMessage::kPushElement:
                 if (msg.target)
                 {
-					auto* uiElement = dynamic_cast<PGUIElement*>(msg.target);
+					auto* uiElement = dynamic_cast<UIElement*>(msg.target);
                     pushElement(uiElement);
                 }
                 break;
@@ -81,13 +81,13 @@ void PGUI::update()
 }
 
 //--------------------------------------------------------
-void PGUI::setStyleSheet(const StyleSheet& styleSheet)
+void UI::setStyleSheet(const StyleSheet& styleSheet)
 {
 	m_StyleSheet = styleSheet;
 }
 
 //--------------------------------------------------------
-const StyleSheet& PGUI::getStyleSheet() const
+const StyleSheet& UI::getStyleSheet() const
 {
 	return m_StyleSheet;
 }

@@ -6,14 +6,14 @@
 
 namespace PG {
 
-class PGPoint;
+class Point;
 
 //--------------------------------------------------------
 class MoveToAnimation : public IAnimation
 {
 public:
 	MoveToAnimation(const NodeHandle& handle,
-					const PGPoint& destination,
+					const Point& destination,
 					const float duration)
 	: m_Handle(handle),
 	m_XRange(destination.x - m_Handle.node->getPosition().x),

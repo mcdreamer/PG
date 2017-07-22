@@ -11,7 +11,7 @@ namespace PG {
 struct AppConfiguration
 {
 	std::string	windowTitle;
-	PGSize		windowSize;
+	Size		windowSize;
 	
 	int			tileSize = 32;
 	

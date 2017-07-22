@@ -5,7 +5,7 @@
 
 namespace PG {
 
-class PGRect;
+class Rect;
 
 //--------------------------------------------------------
 class ITextureMeasurer
@@ -13,7 +13,7 @@ class ITextureMeasurer
 public:
     virtual ~ITextureMeasurer() {}
 
-    virtual PGRect getVisibleBoundsForTexture(const std::string& textureName)=0;
+    virtual Rect getVisibleBoundsForTexture(const std::string& textureName)=0;
 };
 
 //--------------------------------------------------------
@@ -26,7 +26,7 @@ public:
 //--------------------------------------------------------
 namespace TextureMeasurementUtils {
 
-PGRect measureRGBABuffer(const unsigned char* data, int width, int height);
+Rect measureRGBABuffer(const unsigned char* data, int width, int height);
 
 }
 

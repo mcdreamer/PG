@@ -6,36 +6,36 @@
 
 namespace PG {
 
-class PGPoint;
+class Point;
 
 //--------------------------------------------------------
 class UIPositionCalculator
 {
 public:
-	UIPositionCalculator(const PGSize& size);
+	UIPositionCalculator(const Size& size);
 	
-	PGPoint fromTopLeftCorner(const PGSize& distance) const;
-	PGPoint fromTopRightCorner(const PGSize& distance) const;
-	PGPoint fromBottomLeftCorner(const PGSize& distance) const;
-	PGPoint fromBottomRightCorner(const PGSize& distance) const;
+	Point fromTopLeftCorner(const Size& distance) const;
+	Point fromTopRightCorner(const Size& distance) const;
+	Point fromBottomLeftCorner(const Size& distance) const;
+	Point fromBottomRightCorner(const Size& distance) const;
 	
-	PGPoint fromLeftMid(const PGSize& distance) const;
-	PGPoint fromRightMid(const PGSize& distance) const;
-	PGPoint fromTopMid(const PGSize& distance) const;
-	PGPoint fromBottomMid(const PGSize& distance) const;
+	Point fromLeftMid(const Size& distance) const;
+	Point fromRightMid(const Size& distance) const;
+	Point fromTopMid(const Size& distance) const;
+	Point fromBottomMid(const Size& distance) const;
 	
-	PGPoint atCentre() const;
+	Point atCentre() const;
 
-	std::vector<PGPoint> multipleLeftToRight(const PGPoint& startPos, const int count, const double padding) const;
-	std::vector<PGPoint> multipleTopToBottom(const PGPoint& startPos, const int count, const double padding) const;
+	std::vector<Point> multipleLeftToRight(const Point& startPos, const int count, const double padding) const;
+	std::vector<Point> multipleTopToBottom(const Point& startPos, const int count, const double padding) const;
 
-	std::vector<PGPoint> multipleAcrossCentre(const double startX, const int count, const double padding) const;
-	std::vector<PGPoint> multipleDownCentre(const double startY, const int count, const double padding) const;
+	std::vector<Point> multipleAcrossCentre(const double startX, const int count, const double padding) const;
+	std::vector<Point> multipleDownCentre(const double startY, const int count, const double padding) const;
 	
-	std::vector<PGPoint> multiplePositions(const PGPoint& startPos, const PGPoint& endPos, const int count) const;
+	std::vector<Point> multiplePositions(const Point& startPos, const Point& endPos, const int count) const;
 	
 private:
-	const PGSize m_Size;
+	const Size m_Size;
 };
 
 }

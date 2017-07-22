@@ -4,7 +4,7 @@
 namespace PG {
 
 //--------------------------------------------------------
-void PhysicsBodyInputHandler::keyDown(PG::PGKeyCode code, PG::PGKeyModifier mods)
+void PhysicsBodyInputHandler::keyDown(PG::KeyCode code, PG::PGKeyModifier mods)
 {
 	if (code == PG::PGKeyCodeRight)
 	{
@@ -21,7 +21,7 @@ void PhysicsBodyInputHandler::keyDown(PG::PGKeyCode code, PG::PGKeyModifier mods
 }
 
 //--------------------------------------------------------
-void PhysicsBodyInputHandler::keyUp(PG::PGKeyCode code)
+void PhysicsBodyInputHandler::keyUp(PG::KeyCode code)
 {
 	if (code == PG::PGKeyCodeRight)
 	{

@@ -28,7 +28,7 @@ PGTestAppController::~PGTestAppController()
 void PGTestAppController::initialiseConfig()
 {
 	m_AppConfig.windowTitle = "PG Test App";
-	m_AppConfig.windowSize = PG::PGSize(800, 600);
+	m_AppConfig.windowSize = PG::Size(800, 600);
 	
 	m_AppConfig.tileSize = 32;
 	
@@ -58,7 +58,7 @@ void PGTestAppController::start(PG::IPlatformServices& platformServices,
 }
 
 //--------------------------------------------------------
-void PGTestAppController::receiveTag(const int tag, PG::PGUIMessageQueuePoster& msgPoster)
+void PGTestAppController::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
 {
 	switch (tag)
 	{

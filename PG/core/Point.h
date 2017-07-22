@@ -5,14 +5,14 @@
 namespace PG {
 
 //--------------------------------------------------------
-class PGPoint
+class Point
 {
 public:
-    PGPoint()
+    Point()
     : x(0), y(0)
     {}
 
-    PGPoint(double x_, double y_)
+    Point(double x_, double y_)
     : x(x_), y(y_)
     {}
     
@@ -20,8 +20,8 @@ public:
     double y;
 };
 
-bool operator==(const PGPoint& p1, const PGPoint& p2);
-bool operator!=(const PGPoint& p1, const PGPoint& p2);
-std::ostream& operator<<(std::ostream& os, const PGPoint& p);
+bool operator==(const Point& p1, const Point& p2);
+bool operator!=(const Point& p1, const Point& p2);
+std::ostream& operator<<(std::ostream& os, const Point& p);
 
 }

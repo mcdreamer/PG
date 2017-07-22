@@ -69,29 +69,8 @@
     <ClCompile Include="..\util\Logger.cpp">
       <Filter>util</Filter>
     </ClCompile>
-    <ClCompile Include="..\ui\PGButton.cpp">
-      <Filter>ui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ui\PGDialog.cpp">
-      <Filter>ui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ui\PGUI.cpp">
-      <Filter>ui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ui\PGUIElement.cpp">
-      <Filter>ui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ui\PGUIMessageQueuePoster.cpp">
-      <Filter>ui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ui\PGUIUtils.cpp">
-      <Filter>ui</Filter>
-    </ClCompile>
     <ClCompile Include="..\app\PGAppHost.cpp">
       <Filter>app</Filter>
-    </ClCompile>
-    <ClCompile Include="..\core\PGRectUtils.cpp">
-      <Filter>core</Filter>
     </ClCompile>
     <ClCompile Include="..\core\Point.cpp">
       <Filter>core</Filter>
@@ -162,9 +141,6 @@
     <ClCompile Include="..\internal\graphics\SFMLView.cpp">
       <Filter>internal\graphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\ui\PGUIMessage.cpp">
-      <Filter>ui</Filter>
-    </ClCompile>
     <ClCompile Include="..\internal\app\WinPlatformServices.cpp">
       <Filter>internal\platform</Filter>
     </ClCompile>
@@ -201,6 +177,27 @@
     <ClCompile Include="..\ui\UIPositionCalculator.cpp">
       <Filter>ui</Filter>
     </ClCompile>
+    <ClCompile Include="..\core\RectUtils.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\UIMessageQueuePoster.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\UIMessage.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\UIElement.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\UI.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\Dialog.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\Button.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\util\JsonUtils.h">
@@ -224,27 +221,6 @@
     <ClInclude Include="..\util\Logger.h">
       <Filter>util</Filter>
     </ClInclude>
-    <ClInclude Include="..\ui\PGButton.h">
-      <Filter>ui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ui\PGDialog.h">
-      <Filter>ui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ui\PGUI.h">
-      <Filter>ui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ui\PGUIElement.h">
-      <Filter>ui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ui\PGUIMessage.h">
-      <Filter>ui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ui\PGUIMessageQueuePoster.h">
-      <Filter>ui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ui\PGUIUtils.h">
-      <Filter>ui</Filter>
-    </ClInclude>
     <ClInclude Include="..\app\GameConstants.h">
       <Filter>app</Filter>
     </ClInclude>
@@ -258,12 +234,6 @@
       <Filter>app</Filter>
     </ClInclude>
     <ClInclude Include="..\core\MathsUtils.h">
-      <Filter>core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\core\PGKeyCode.h">
-      <Filter>core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\core\PGRectUtils.h">
       <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="..\core\Point.h">
@@ -353,9 +323,6 @@
     <ClInclude Include="..\internal\graphics\SFMLView.h">
       <Filter>internal\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="..\ui\PGTagReceiver.h">
-      <Filter>ui</Filter>
-    </ClInclude>
     <ClInclude Include="..\internal\platform\WinPlatformServices.h">
       <Filter>internal\platform</Filter>
     </ClInclude>
@@ -396,6 +363,33 @@
       <Filter>data</Filter>
     </ClInclude>
     <ClInclude Include="..\ui\UIPositionCalculator.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\core\KeyCode.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\core\RectUtils.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\UIMessageQueuePoster.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\UIMessage.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\UIElement.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\UI.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\TagReceiver.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\Dialog.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ui\Button.h">
       <Filter>ui</Filter>
     </ClInclude>
   </ItemGroup>

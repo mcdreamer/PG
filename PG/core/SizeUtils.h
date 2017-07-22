@@ -5,7 +5,7 @@
 namespace PG {
 namespace SizeUtils {
 
-PGSize scaleSize(PGSize sz, float scale);
+Size scaleSize(Size sz, float scale);
 
 }
 }

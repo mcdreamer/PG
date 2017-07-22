@@ -5,14 +5,14 @@
 namespace PG {
 
 //--------------------------------------------------------
-class PGSize
+class Size
 {
 public:
-    PGSize()
+    Size()
     : width(0), height(0)
     {}
     
-    PGSize(double width_, double height_)
+    Size(double width_, double height_)
     : width(width_), height(height_)
     {}
     
@@ -20,8 +20,8 @@ public:
     double height;
 };
 
-bool operator==(const PGSize& s1, const PGSize& s2);
-bool operator!=(const PGSize& s1, const PGSize& s2);
-std::ostream& operator<<(std::ostream& os, const PGSize& s);
+bool operator==(const Size& s1, const Size& s2);
+bool operator!=(const Size& s1, const Size& s2);
+std::ostream& operator<<(std::ostream& os, const Size& s);
 
 }

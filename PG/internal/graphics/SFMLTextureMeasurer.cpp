@@ -32,7 +32,7 @@ namespace
     {
     public:
         //--------------------------------------------------------
-        virtual PGRect getVisibleBoundsForTexture(const std::string& textureName) override
+        virtual Rect getVisibleBoundsForTexture(const std::string& textureName) override
         {
             //NSString* nsTextureName = StringUtils::stdStringToNSString(textureName);
             //
@@ -61,7 +61,7 @@ namespace
             //
             //return TextureMeasurementUtils::measureRGBABuffer((const unsigned char*)CGBitmapContextGetData(ctx), width, height);
 
-			return PGRect();
+			return Rect();
         }
     };
 }

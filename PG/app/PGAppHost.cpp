@@ -50,11 +50,11 @@ extern SFMLFontCache* g_FontCache;
 namespace
 {
     //--------------------------------------------------------
-    PG::PGPoint windowPointToScenePoint(const sf::Vector2u& windowSize,
-                                        const PG::PGSize& sceneSize,
-                                        const PG::PGPoint& point)
+    PG::Point windowPointToScenePoint(const sf::Vector2u& windowSize,
+                                        const PG::Size& sceneSize,
+                                        const PG::Point& point)
     {
-        return PG::PGPoint(point.x / ((double)windowSize.x / sceneSize.width),
+        return PG::Point(point.x / ((double)windowSize.x / sceneSize.width),
                            point.y / ((double)windowSize.y / sceneSize.height));
 
     }
@@ -93,7 +93,7 @@ namespace
             }
             else if (event.type == sf::Event::MouseButtonPressed)
             {
-                const PG::PGPoint windowPt(event.mouseButton.x, event.mouseButton.y);
+                const PG::Point windowPt(event.mouseButton.x, event.mouseButton.y);
                 const auto scenePt = windowPointToScenePoint(window.getSize(), scene->getSceneSize(), windowPt);
 
                 scene->clickInScene(scenePt, event.mouseButton.button == sf::Mouse::Button::Right);

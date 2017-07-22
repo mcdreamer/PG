@@ -35,7 +35,7 @@ SceneControllerHandle SFMLView::addOverlay(SceneControllerPtr& sceneController)
 {
 	const auto size = m_View->getView().getSize();
 
-	m_SceneStack.push(SceneCreator::createScene(m_PendingSceneController, PGSize(size.x, size.y), m_StyleSheet));
+	m_SceneStack.push(SceneCreator::createScene(m_PendingSceneController, Size(size.x, size.y), m_StyleSheet));
 	
 	auto* scene = getCurrentScene();
 	SceneControllerHandle controllerHandle(scene ? scene->getController() : nullptr);
@@ -89,7 +89,7 @@ void SFMLView::presentPendingSceneIfAny()
 			m_SceneStack = std::stack<ScenePtr>();
 		}
 		
-		m_SceneStack.push(SceneCreator::createScene(m_PendingSceneController, PGSize(size.x, size.y), m_StyleSheet));
+		m_SceneStack.push(SceneCreator::createScene(m_PendingSceneController, Size(size.x, size.y), m_StyleSheet));
 		
 		auto* scene = getCurrentScene();
 		SceneControllerHandle controllerHandle(scene ? scene->getController() : nullptr);

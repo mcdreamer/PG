@@ -1,20 +1,20 @@
 #pragma once
 
-#include "PG/ui/PGUIMessage.h"
+#include "PG/ui/UIMessage.h"
 
 namespace PG {
 
-struct PGUIMessage;
+struct UIMessage;
 
 //--------------------------------------------------------
-class PGUIMessageQueuePoster
+class UIMessageQueuePoster
 {
 public:
-    PGUIMessageQueuePoster(PGUIMessageQueue& queue)
+    UIMessageQueuePoster(PGUIMessageQueue& queue)
     : m_Queue(queue)
     {}
     
-    void postMessage(const PGUIMessage& msg);
+    void postMessage(const UIMessage& msg);
     
 private:
     PGUIMessageQueue& m_Queue;

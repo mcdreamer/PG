@@ -35,23 +35,23 @@ public:
 
     virtual sf::Drawable* getNode() override { return &m_Node; }
     
-    virtual void setPosition(PGPoint point) override
+    virtual void setPosition(Point point) override
     {
         m_Node.setPosition((float)point.x, (float)point.y);
     }
 	
-	virtual void setSize(PGSize size) override
+	virtual void setSize(Size size) override
 	{
 	}
     
-    virtual PGPoint getPosition() const override
+    virtual Point getPosition() const override
     {
-        return PGPoint(m_Node.getPosition().x, m_Node.getPosition().y);
+        return Point(m_Node.getPosition().x, m_Node.getPosition().y);
     }
     
-    virtual PGRect getRect() const override
+    virtual Rect getRect() const override
     {
-        return PGRect(getPosition(), getSize());
+        return Rect(getPosition(), getSize());
     }
     
     virtual NodeHandle addChild(std::unique_ptr<INode>& node) override
@@ -166,9 +166,9 @@ class SFMLNode : public SFMLNodeBase<sf::Sprite>
 public:
     virtual NodeType getType() const override { return NodeType::kNode; }
     
-    virtual PGSize getSize() const override
+    virtual Size getSize() const override
     {
-        return PGSize(0, 0);
+        return Size(0, 0);
     }
 };
 
@@ -185,9 +185,9 @@ public:
         }
     }
     
-    virtual PGSize getSize() const override
+    virtual Size getSize() const override
     {
-        return PGSize(m_Node.getTextureRect().width, m_Node.getTextureRect().height);
+        return Size(m_Node.getTextureRect().width, m_Node.getTextureRect().height);
     }
 
     virtual NodeType getType() const override { return NodeType::kSprite; }
@@ -210,21 +210,21 @@ private:
 class SFMLColourNode : public SFMLNodeBase<sf::RectangleShape>
 {
 public:
-    SFMLColourNode(const Colour& colour, const PGSize& size)
+    SFMLColourNode(const Colour& colour, const Size& size)
     {
         m_Node = sf::RectangleShape(sf::Vector2f((float)size.width, (float)size.height));
         m_Node.setOrigin((float)size.width / 2.0f, (float)size.height / 2.0f);
         setColour(colour);
     }
 	
-	virtual void setSize(PGSize size) override
+	virtual void setSize(Size size) override
 	{
 		m_Node.setSize(sf::Vector2f((float)size.width, (float)size.height));
 	}
     
-    virtual PGSize getSize() const override
+    virtual Size getSize() const override
     {
-        return PGSize(m_Node.getSize().x, m_Node.getSize().y);
+        return Size(m_Node.getSize().x, m_Node.getSize().y);
     }
     
     virtual NodeType getType() const override { return NodeType::kSprite; }
@@ -270,9 +270,9 @@ class SFMLLabelNode : public SFMLNodeBase<sf::Text>
 public:
     SFMLLabelNode(const std::string& fontName, int fontSize);
 
-    virtual PGSize getSize() const override
+    virtual Size getSize() const override
     {
-        return PGSize(m_Node.getGlobalBounds().width, m_Node.getGlobalBounds().height);
+        return Size(m_Node.getGlobalBounds().width, m_Node.getGlobalBounds().height);
     }
     
     virtual NodeType getType() const override { return NodeType::kText; }
@@ -285,15 +285,15 @@ public:
         m_Node.setOrigin((float)getSize().width / 2.0f, (float)getSize().height / 2.0f);
     }
     
-    virtual void setPosition(PGPoint point) override
+    virtual void setPosition(Point point) override
     {
         m_Node.setPosition((float)point.x - m_Node.getLocalBounds().left,
                            (float)point.y - m_Node.getLocalBounds().top);
     }
     
-    virtual PGPoint getPosition() const override
+    virtual Point getPosition() const override
     {
-        return PGPoint(m_Node.getPosition().x + m_Node.getLocalBounds().left,
+        return Point(m_Node.getPosition().x + m_Node.getLocalBounds().left,
                        m_Node.getPosition().y + m_Node.getLocalBounds().top);
     }
     

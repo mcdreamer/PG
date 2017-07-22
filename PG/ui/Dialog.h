@@ -1,11 +1,11 @@
 #pragma once
 
-#include "PG/ui/PGUIElement.h"
+#include "PG/ui/UIElement.h"
 
 namespace PG {
 
 //--------------------------------------------------------
-class PGDialog : public PGUIElement
+class Dialog : public UIElement
 {
 public:
     virtual void initUIElement(const StyleSheet& styleSheet) override final;

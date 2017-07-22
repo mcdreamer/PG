@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PG/core/PGKeyCode.h"
+#include "PG/core/KeyCode.h"
 
 namespace PG {
 
@@ -14,8 +14,8 @@ public:
 	: m_Body(body)
 	{}
 	
-	void keyDown(PG::PGKeyCode code, PG::PGKeyModifier mods);
-	void keyUp(PG::PGKeyCode code);
+	void keyDown(PG::KeyCode code, PG::PGKeyModifier mods);
+	void keyUp(PG::KeyCode code);
 	
 private:
 	PhysicsBody& m_Body;

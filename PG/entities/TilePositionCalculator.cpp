@@ -4,20 +4,20 @@
 namespace PG {
 
 //--------------------------------------------------------
-PGPoint TilePositionCalculator::calculatePoint(const TileCoord& c) const
+Point TilePositionCalculator::calculatePoint(const TileCoord& c) const
 {
     auto halfTileSize = PG::GameConstants::tileSize() / 2;
-    return PGPoint((PG::GameConstants::tileSize() * c.x) + halfTileSize, (PG::GameConstants::tileSize() * c.y) + halfTileSize);
+    return Point((PG::GameConstants::tileSize() * c.x) + halfTileSize, (PG::GameConstants::tileSize() * c.y) + halfTileSize);
 }
 
 //--------------------------------------------------------
-PGPoint TilePositionCalculator::calculatePoint(const int x, const int y) const
+Point TilePositionCalculator::calculatePoint(const int x, const int y) const
 {
     return calculatePoint(TileCoord(x, y));
 }
 
 //--------------------------------------------------------
-TileCoord TilePositionCalculator::calculateTileCoord(const PGPoint& pt) const
+TileCoord TilePositionCalculator::calculateTileCoord(const Point& pt) const
 {
     return TileCoord { (int)pt.x / PG::GameConstants::tileSize(), (int)pt.y / PG::GameConstants::tileSize() };
 }

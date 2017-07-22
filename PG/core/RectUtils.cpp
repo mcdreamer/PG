@@ -1,4 +1,4 @@
-#include "PGRectUtils.h"
+#include "PG/core/RectUtils.h"
 
 #include <cmath>
 
@@ -27,20 +27,20 @@ namespace
     using bRect = boost::geometry::model::box<bPoint>;
 
     //--------------------------------------------------------
-    bPoint toBPoint(const PGPoint& pt)
+    bPoint toBPoint(const Point& pt)
     {
         return bPoint(pt.x, pt.y);
     }
 
     //--------------------------------------------------------
-    bRect toBRect(const PGRect& r)
+    bRect toBRect(const Rect& r)
     {
         return bRect(bPoint(r.origin.x - (r.size.width / 2.0), r.origin.y - (r.size.height / 2.0)),
                      bPoint(r.origin.x + (r.size.width / 2.0), r.origin.y + r.size.height / 2.0));
     }
     
     //--------------------------------------------------------
-    PGRect toPGRect(const bRect& r)
+    Rect toPGRect(const bRect& r)
     {
         auto ox = r.min_corner().get<0>();
         auto oy = r.min_corner().get<1>();
@@ -48,22 +48,22 @@ namespace
         auto w = r.max_corner().get<0>() - ox;
         auto h = r.max_corner().get<1>() - oy;
         
-        return PGRect(PGPoint(ox, oy), PGSize(w, h));
+        return Rect(Point(ox, oy), Size(w, h));
     }
 }
 
 //--------------------------------------------------------
-namespace PGRectUtils
+namespace RectUtils
 {
     //--------------------------------------------------------
-    PGRect getIntersection(const PGRect& rectOne, const PGRect& rectTwo)
+    Rect getIntersection(const Rect& rectOne, const Rect& rectTwo)
     {
         auto bRectOne = toBRect(rectOne);
         auto bRectTwo = toBRect(rectTwo);
     
         if (!boost::geometry::intersects(bRectOne, bRectTwo))
         {
-            return PGRect();
+            return Rect();
         }
     
         bRect intersection;
@@ -73,25 +73,25 @@ namespace PGRectUtils
    }
 	
    //--------------------------------------------------------
-   bool isEmpty(const PGRect& r)
+   bool isEmpty(const Rect& r)
    {
        return isEmpty(r.size);
    }
    
    //--------------------------------------------------------
-   bool isEmpty(const PGSize& s)
+   bool isEmpty(const Size& s)
    {
        return s.width == 0 || s.height == 0;
    }
    
    //--------------------------------------------------------
-   bool containsPoint(const PGRect& r, const PGPoint& pt)
+   bool containsPoint(const Rect& r, const Point& pt)
    {
         return boost::geometry::covered_by(toBPoint(pt), toBRect(r));
    }
    
    //--------------------------------------------------------
-   PGRect combineRects(const PGRect& r1, const PGRect& r2)
+   Rect combineRects(const Rect& r1, const Rect& r2)
    {
        if (isEmpty(r1))
        {
@@ -108,10 +108,10 @@ namespace PGRectUtils
        auto minTop = std::min(r1.top(), r2.top());
        auto maxBottom = std::max(r1.bottom(), r2.bottom());
        
-       PGSize combinedSize(maxRight - minLeft, maxBottom - minTop);
-       PGPoint newOrigin(minLeft + (combinedSize.width / 2.0), maxBottom - (combinedSize.height / 2.0));
+       Size combinedSize(maxRight - minLeft, maxBottom - minTop);
+       Point newOrigin(minLeft + (combinedSize.width / 2.0), maxBottom - (combinedSize.height / 2.0));
     
-       return PGRect(newOrigin, combinedSize);
+       return Rect(newOrigin, combinedSize);
    }
 }
 

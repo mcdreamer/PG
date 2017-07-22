@@ -5,41 +5,41 @@
 #include "PG/graphics/Scene.h"
 #include "PG/graphics/Node.h"
 #include "PG/graphics/NodeCreator.h"
-#include "PG/ui/PGUI.h"
-#include "PG/ui/PGTagReceiver.h"
+#include "PG/ui/UI.h"
+#include "PG/ui/TagReceiver.h"
 #include "PG/app/StyleSheet.h"
 
 namespace PG {
 namespace Internal {
 
 //--------------------------------------------------------
-class SFMLScene : public IScene, public PG::PGTagReciever
+class SFMLScene : public IScene, public PG::TagReciever
 {
 public:
-    SFMLScene(SceneControllerPtr& controller, const PGSize& size, const StyleSheet& styleSheet);
+    SFMLScene(SceneControllerPtr& controller, const Size& size, const StyleSheet& styleSheet);
 	
     virtual NodeHandle				addChild(std::unique_ptr<INode>& node) override;
-	virtual	void					pushUIElement(PGUIElement* uiElement) override;
+	virtual	void					pushUIElement(UIElement* uiElement) override;
 	virtual void					setBackgroundColour(const Colour& colour) override;
 	
-	virtual PGSize					getSceneSize() const override;
+	virtual Size					getSceneSize() const override;
 	virtual const StyleSheet&		getStyleSheet() const override;
 	virtual	SceneControllerHandle	getController() const override { return m_SceneController.get(); }
 	virtual NodeHandle				getRoot() const override { return m_Root.get(); }
 	virtual const Colour			getBackgroundColour() const override { return m_BackgroundColour; }
-	virtual PGPoint					getWindowPointAsScenePoint(const PGPoint& windowPt, INode* layer) const override;
+	virtual Point					getWindowPointAsScenePoint(const Point& windowPt, INode* layer) const override;
 	
-    virtual void					receiveTag(const int tag, PG::PGUIMessageQueuePoster& msgPoster) override {}
+    virtual void					receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster) override {}
 	
-	virtual void					clickInScene(PG::PGPoint pt, bool isRightClick) override;
+	virtual void					clickInScene(PG::Point pt, bool isRightClick) override;
     virtual void					update(float dt) override;
 	
 private:
-    PGSize							m_SceneSize;
+    Size							m_SceneSize;
     NodePtr							m_Root;
     SceneControllerPtr				m_SceneController;
     Colour							m_BackgroundColour;
-    std::unique_ptr<PG::PGUI>		m_UI;
+    std::unique_ptr<PG::UI>		m_UI;
 };
 
 }

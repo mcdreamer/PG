@@ -53,7 +53,7 @@ TEST(PhysicsTests,testPhysicsWorld_Gravity)
 	
 	TilePositionCalculator tilePosCalc;
 	
-	PhysicsBody body(PGRect(tilePosCalc.calculatePoint(TileCoord(5, 0)), PGSize(GameConstants::tileSize(), GameConstants::tileSize())));
+	PhysicsBody body(Rect(tilePosCalc.calculatePoint(TileCoord(5, 0)), Size(GameConstants::tileSize(), GameConstants::tileSize())));
 	
 	const auto posBeforeUpdate = body.desiredPosition;
 	
@@ -69,7 +69,7 @@ TEST(PhysicsTests,testPhysicsWorld_RestingBody)
 	
 	TilePositionCalculator tilePosCalc;
 	
-	PhysicsBody body(PGRect(tilePosCalc.calculatePoint(TileCoord(5, 4)), PGSize(GameConstants::tileSize(), GameConstants::tileSize())));
+	PhysicsBody body(Rect(tilePosCalc.calculatePoint(TileCoord(5, 4)), Size(GameConstants::tileSize(), GameConstants::tileSize())));
 	
 	const auto posBeforeUpdate = body.desiredPosition;
 	
@@ -86,7 +86,7 @@ TEST(PhysicsTests,testPhysicsWorld_BodyComingToRest)
 	TilePositionCalculator tilePosCalc;
 	
 	const auto targetPt = tilePosCalc.calculatePoint(TileCoord(5, 4));
-	PhysicsBody body(PGRect(targetPt, PGSize(GameConstants::tileSize(), GameConstants::tileSize())));
+	PhysicsBody body(Rect(targetPt, Size(GameConstants::tileSize(), GameConstants::tileSize())));
 	body.bounds.origin.y -= 0.2;
 	
 	testWorld.world.applyPhysicsForBody(body, testWorld.levelGeometry, 0.1);
@@ -107,13 +107,13 @@ TEST(PhysicsTests,testPhysicsWorld_findCollisions)
 {
 	TestWorld testWorld;
 
-	PhysicsBody body(PGRect(PGPoint(0, 0), PGSize(100, 100)));
+	PhysicsBody body(Rect(Point(0, 0), Size(100, 100)));
 
 	std::vector<PhysicsBody> bodies;
-	bodies.push_back(PhysicsBody(PGRect(PGPoint(0, 0), PGSize(100, 100))));
-	bodies.push_back(PhysicsBody(PGRect(PGPoint(1000, 0), PGSize(100, 100))));
-	bodies.push_back(PhysicsBody(PGRect(PGPoint(100, 100), PGSize(100, 100))));
-	bodies.push_back(PhysicsBody(PGRect(PGPoint(80, 80), PGSize(100, 100))));
+	bodies.push_back(PhysicsBody(Rect(Point(0, 0), Size(100, 100))));
+	bodies.push_back(PhysicsBody(Rect(Point(1000, 0), Size(100, 100))));
+	bodies.push_back(PhysicsBody(Rect(Point(100, 100), Size(100, 100))));
+	bodies.push_back(PhysicsBody(Rect(Point(80, 80), Size(100, 100))));
 	
 	TestPhysicsWorldCallback callback;
 	testWorld.world.findCollisionsWithBody(body, bodies, callback);

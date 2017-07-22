@@ -4,96 +4,96 @@
 namespace PG {
 
 //--------------------------------------------------------
-UIPositionCalculator::UIPositionCalculator(const PGSize& size)
+UIPositionCalculator::UIPositionCalculator(const Size& size)
 : m_Size(size)
 {}
 
 //--------------------------------------------------------
-PGPoint UIPositionCalculator::fromTopLeftCorner(const PGSize& distance) const
+Point UIPositionCalculator::fromTopLeftCorner(const Size& distance) const
 {
-	return PGPoint(distance.width, distance.height);
+	return Point(distance.width, distance.height);
 }
 
 //--------------------------------------------------------
-PGPoint UIPositionCalculator::fromTopRightCorner(const PGSize& distance) const
+Point UIPositionCalculator::fromTopRightCorner(const Size& distance) const
 {
-	return PGPoint(m_Size.width - distance.width, distance.height);
+	return Point(m_Size.width - distance.width, distance.height);
 }
 
 //--------------------------------------------------------
-PGPoint UIPositionCalculator::fromBottomLeftCorner(const PGSize& distance) const
+Point UIPositionCalculator::fromBottomLeftCorner(const Size& distance) const
 {
-	return PGPoint(distance.width, m_Size.height - distance.height);
+	return Point(distance.width, m_Size.height - distance.height);
 }
 
 //--------------------------------------------------------
-PGPoint UIPositionCalculator::fromBottomRightCorner(const PGSize& distance) const
+Point UIPositionCalculator::fromBottomRightCorner(const Size& distance) const
 {
-	return PGPoint(m_Size.width - distance.width, m_Size.height - distance.height);
+	return Point(m_Size.width - distance.width, m_Size.height - distance.height);
 }
 
 //--------------------------------------------------------
-PGPoint UIPositionCalculator::fromLeftMid(const PGSize& distance) const
+Point UIPositionCalculator::fromLeftMid(const Size& distance) const
 {
-	return PGPoint(distance.width, (m_Size.height / 2.0) + distance.height);
+	return Point(distance.width, (m_Size.height / 2.0) + distance.height);
 }
 
 //--------------------------------------------------------
-PGPoint UIPositionCalculator::fromRightMid(const PGSize& distance) const
+Point UIPositionCalculator::fromRightMid(const Size& distance) const
 {
-	return PGPoint(m_Size.width - distance.width, (m_Size.height / 2.0) + distance.height);
+	return Point(m_Size.width - distance.width, (m_Size.height / 2.0) + distance.height);
 }
 
 //--------------------------------------------------------
-PGPoint UIPositionCalculator::fromTopMid(const PGSize& distance) const
+Point UIPositionCalculator::fromTopMid(const Size& distance) const
 {
-	return PGPoint((m_Size.width / 2.0) + distance.width, distance.height);
+	return Point((m_Size.width / 2.0) + distance.width, distance.height);
 }
 
 //--------------------------------------------------------
-PGPoint UIPositionCalculator::fromBottomMid(const PGSize& distance) const
+Point UIPositionCalculator::fromBottomMid(const Size& distance) const
 {
-	return PGPoint((m_Size.width / 2.0) + distance.width, m_Size.height - distance.height);
+	return Point((m_Size.width / 2.0) + distance.width, m_Size.height - distance.height);
 }
 
 //--------------------------------------------------------
-PGPoint UIPositionCalculator::atCentre() const
+Point UIPositionCalculator::atCentre() const
 {
-	return PGPoint(m_Size.width / 2.0, m_Size.height / 2.0);
+	return Point(m_Size.width / 2.0, m_Size.height / 2.0);
 }
 
 //--------------------------------------------------------
-std::vector<PGPoint> UIPositionCalculator::multipleLeftToRight(const PGPoint& startPos, const int count, const double padding) const
+std::vector<Point> UIPositionCalculator::multipleLeftToRight(const Point& startPos, const int count, const double padding) const
 {
 	return multiplePositions(startPos,
-							 PGPoint(startPos.x + (padding * (double)count), startPos.y),
+							 Point(startPos.x + (padding * (double)count), startPos.y),
 							 count);
 }
 
 //--------------------------------------------------------
-std::vector<PGPoint> UIPositionCalculator::multipleTopToBottom(const PGPoint& startPos, const int count, const double padding) const
+std::vector<Point> UIPositionCalculator::multipleTopToBottom(const Point& startPos, const int count, const double padding) const
 {
 	return multiplePositions(startPos,
-							 PGPoint(startPos.x, startPos.y + (padding * (double)count)),
+							 Point(startPos.x, startPos.y + (padding * (double)count)),
 							 count);
 }
 
 //--------------------------------------------------------
-std::vector<PGPoint> UIPositionCalculator::multipleAcrossCentre(const double startX, const int count, const double padding) const
+std::vector<Point> UIPositionCalculator::multipleAcrossCentre(const double startX, const int count, const double padding) const
 {
-	return multipleLeftToRight(PGPoint(startX, m_Size.height / 2.0), count, padding);
+	return multipleLeftToRight(Point(startX, m_Size.height / 2.0), count, padding);
 }
 
 //--------------------------------------------------------
-std::vector<PGPoint> UIPositionCalculator::multipleDownCentre(const double startY, const int count, const double padding) const
+std::vector<Point> UIPositionCalculator::multipleDownCentre(const double startY, const int count, const double padding) const
 {
-	return multipleTopToBottom(PGPoint(m_Size.width / 2.0, startY), count, padding);
+	return multipleTopToBottom(Point(m_Size.width / 2.0, startY), count, padding);
 }
 
 //--------------------------------------------------------
-std::vector<PGPoint> UIPositionCalculator::multiplePositions(const PGPoint& startPos, const PGPoint& endPos, const int count) const
+std::vector<Point> UIPositionCalculator::multiplePositions(const Point& startPos, const Point& endPos, const int count) const
 {
-	std::vector<PGPoint> pts;
+	std::vector<Point> pts;
 	pts.reserve((size_t)count);
 	
 	const double xDiff = (endPos.x - startPos.x) / (double)count;

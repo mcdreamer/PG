@@ -3,8 +3,8 @@
 
 #include "PG/graphics/NodeCreator.h"
 #include "PG/app/StyleSheet.h"
-#include "PG/ui/PGButton.h"
-#include "PG/ui/PGUIMessageQueuePoster.h"
+#include "PG/ui/Button.h"
+#include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/ui/UIUtils.h"
 #include "PG/ui/UIPositionCalculator.h"
 #include "PG/data/DataGrid.h"
@@ -36,7 +36,7 @@ struct InventoryTestScene::GameState
 };
 
 //--------------------------------------------------------
-InventoryTestScene::InventoryTestScene(PG::PGTagReciever& appTagTarget)
+InventoryTestScene::InventoryTestScene(PG::TagReciever& appTagTarget)
 : m_AppTagTarget(appTagTarget), 
 m_GameState(new GameState)
 {}
@@ -60,12 +60,12 @@ void InventoryTestScene::initScene(PG::SceneHandle scene)
 	PG::UIPositionCalculator uiPosCalc(sceneSize);
 	const auto btnPts = uiPosCalc.multipleDownCentre(sceneSize.height * 0.50, 5, sceneSize.height * 0.1);
 	
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, btnPts[0], "+ Heart", ButtonTags::kTagAddHeart));
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, btnPts[1], "- Heart", ButtonTags::kTagRemoveHeart));
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, btnPts[2], "+ Star", ButtonTags::kTagAddStar));
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, btnPts[3], "- Star", ButtonTags::kTagRemoveStar));
+	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[0], "+ Heart", ButtonTags::kTagAddHeart));
+	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[1], "- Heart", ButtonTags::kTagRemoveHeart));
+	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[2], "+ Star", ButtonTags::kTagAddStar));
+	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[3], "- Star", ButtonTags::kTagRemoveStar));
 
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, btnPts[4], "Back", TagConstants::kPopScene));
+	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[4], "Back", TagConstants::kPopScene));
 }
 
 namespace
@@ -87,7 +87,7 @@ namespace
 }
 
 //--------------------------------------------------------
-void InventoryTestScene::receiveTag(const int tag, PG::PGUIMessageQueuePoster& msgPoster)
+void InventoryTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
 {
 	switch (tag)
 	{
@@ -112,7 +112,7 @@ void InventoryTestScene::receiveTag(const int tag, PG::PGUIMessageQueuePoster& m
 			break;
 
 		default:
-			msgPoster.postMessage(PG::PGUIMessage::sendTag(&m_AppTagTarget, tag));
+			msgPoster.postMessage(PG::UIMessage::sendTag(&m_AppTagTarget, tag));
 	}
 }
 
@@ -122,12 +122,12 @@ void InventoryTestScene::update(float dt)
 }
 
 //--------------------------------------------------------
-void InventoryTestScene::keyDown(PG::PGKeyCode code, PG::PGKeyModifier mods)
+void InventoryTestScene::keyDown(PG::KeyCode code, PG::PGKeyModifier mods)
 {
 }
 
 //--------------------------------------------------------
-void InventoryTestScene::keyUp(PG::PGKeyCode code)
+void InventoryTestScene::keyUp(PG::KeyCode code)
 {
 }
 
@@ -135,7 +135,7 @@ void InventoryTestScene::keyUp(PG::PGKeyCode code)
 void InventoryTestScene::drawInventoryBackground()
 {
 	PG::UIPositionCalculator uiPosCalc(m_Scene.scene->getSceneSize());
-	const auto btnPts = uiPosCalc.multipleLeftToRight(PG::PGPoint(50, 50), 5, 64);
+	const auto btnPts = uiPosCalc.multipleLeftToRight(PG::Point(50, 50), 5, 64);
 	
 	for (const auto& btnPt : btnPts)
 	{
@@ -160,7 +160,7 @@ void InventoryTestScene::updateInventory()
 	m_GameState->inventoryItemNodes.clear();
 	
 	PG::UIPositionCalculator uiPosCalc(m_Scene.scene->getSceneSize());
-	const auto btnPts = uiPosCalc.multipleLeftToRight(PG::PGPoint(50, 50), 5, 64);
+	const auto btnPts = uiPosCalc.multipleLeftToRight(PG::Point(50, 50), 5, 64);
 	
 	auto btnPtIt = btnPts.begin();
 
@@ -179,7 +179,7 @@ void InventoryTestScene::updateInventory()
 		auto labelNode = PG::NodeCreator::createTextNode(m_Scene.scene->getStyleSheet().uiFontName, 10);
 		labelNode->setText(inventoryItem.item.getName() + " (" + std::to_string(inventoryItem.count) + ")");
 		labelNode->setColour(PG::Colour(255, 255, 255));
-		labelNode->setPosition(PG::PGPoint(btnPt.x, btnPt.y + itemNode->getSize().height - 10));
+		labelNode->setPosition(PG::Point(btnPt.x, btnPt.y + itemNode->getSize().height - 10));
 		
 		m_GameState->inventoryItemNodes.push_back(m_Scene.scene->addChild(itemNode));
 		m_GameState->inventoryItemNodes.push_back(m_Scene.scene->addChild(labelNode));

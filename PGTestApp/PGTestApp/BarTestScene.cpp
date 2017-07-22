@@ -3,8 +3,8 @@
 
 #include "PG/graphics/NodeCreator.h"
 #include "PG/app/StyleSheet.h"
-#include "PG/ui/PGButton.h"
-#include "PG/ui/PGUIMessageQueuePoster.h"
+#include "PG/ui/Button.h"
+#include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/ui/UIUtils.h"
 #include "PG/ui/UIPositionCalculator.h"
 #include "PG/data/DataGrid.h"
@@ -32,7 +32,7 @@ struct BarTestScene::GameState
 };
 
 //--------------------------------------------------------
-BarTestScene::BarTestScene(PG::PGTagReciever& appTagTarget)
+BarTestScene::BarTestScene(PG::TagReciever& appTagTarget)
 : m_AppTagTarget(appTagTarget),
 m_GameState(new GameState)
 {}
@@ -54,26 +54,26 @@ void BarTestScene::initScene(PG::SceneHandle scene)
 	PG::UIPositionCalculator uiPosCalc(sceneSize);
 	const auto btnPts = uiPosCalc.multipleDownCentre(sceneSize.height * 0.40, 4, sceneSize.height * 0.1);
 
-	m_Scene.scene->pushUIElement(new PG::Bar(btnPts[0], PG::PGSize(50, 40),
+	m_Scene.scene->pushUIElement(new PG::Bar(btnPts[0], PG::Size(50, 40),
 											 PG::BarStyle::kBasic, PG::ValueRange<int>(0, 100), m_GameState->value));
 
-	m_Scene.scene->pushUIElement(new PG::Bar(btnPts[1], PG::PGSize(300, 20),
+	m_Scene.scene->pushUIElement(new PG::Bar(btnPts[1], PG::Size(300, 20),
 											 PG::BarStyle::kBasic, PG::ValueRange<int>(0, 100), m_GameState->value));
 	
-	m_Scene.scene->pushUIElement(new PG::Bar(btnPts[2], PG::PGSize(100, 5),
+	m_Scene.scene->pushUIElement(new PG::Bar(btnPts[2], PG::Size(100, 5),
 											 PG::BarStyle::kBasic, PG::ValueRange<int>(0, 100), m_GameState->value));
 	
-	m_Scene.scene->pushUIElement(new PG::Bar(btnPts[3], PG::PGSize(200, 10),
+	m_Scene.scene->pushUIElement(new PG::Bar(btnPts[3], PG::Size(200, 10),
 											 PG::BarStyle::kBasic, PG::ValueRange<int>(0, 100), m_GameState->value));
 	
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width * 0.4, sceneSize.height * 0.8), "+", ButtonTags::kTagIncrease));
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width * 0.6, sceneSize.height * 0.8), "-", ButtonTags::kTagDecrease));
+	m_Scene.scene->pushUIElement(new PG::Button(*this, PG::Point(sceneSize.width * 0.4, sceneSize.height * 0.8), "+", ButtonTags::kTagIncrease));
+	m_Scene.scene->pushUIElement(new PG::Button(*this, PG::Point(sceneSize.width * 0.6, sceneSize.height * 0.8), "-", ButtonTags::kTagDecrease));
 	
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, PG::PGPoint(sceneSize.width / 2.0, sceneSize.height * 0.95), "Back", TagConstants::kPopScene));
+	m_Scene.scene->pushUIElement(new PG::Button(*this, PG::Point(sceneSize.width / 2.0, sceneSize.height * 0.95), "Back", TagConstants::kPopScene));
 }
 
 //--------------------------------------------------------
-void BarTestScene::receiveTag(const int tag, PG::PGUIMessageQueuePoster& msgPoster)
+void BarTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
 {
 	switch (tag)
 	{
@@ -86,7 +86,7 @@ void BarTestScene::receiveTag(const int tag, PG::PGUIMessageQueuePoster& msgPost
 			break;
 			
 		default:
-			msgPoster.postMessage(PG::PGUIMessage::sendTag(&m_AppTagTarget, tag));
+			msgPoster.postMessage(PG::UIMessage::sendTag(&m_AppTagTarget, tag));
 	}
 }
 

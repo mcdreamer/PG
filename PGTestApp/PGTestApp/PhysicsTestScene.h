@@ -2,7 +2,7 @@
 
 #include "PG/graphics/Node.h"
 #include "PG/graphics/Scene.h"
-#include "PG/ui/PGTagReceiver.h"
+#include "PG/ui/TagReceiver.h"
 
 #include <memory>
 
@@ -12,33 +12,33 @@ struct TileCoord;
 }
 
 //--------------------------------------------------------
-class PhysicsTestScene : public PG::ISceneController, public PG::PGTagReciever
+class PhysicsTestScene : public PG::ISceneController, public PG::TagReciever
 {
 	struct PhysicsState;
 	struct GameState;
 	
 public:
-	PhysicsTestScene(PG::PGTagReciever& appTagTarget);
+	PhysicsTestScene(PG::TagReciever& appTagTarget);
 	~PhysicsTestScene();
 	
 	virtual void initScene(PG::SceneHandle scene) override;
 	
-	virtual void clickInScene(PG::PGPoint pt, bool isRightClick) override {}
-	virtual void draggedWithOffset(PG::PGPoint pt) override {}
-	virtual void mouseMoved(PG::PGPoint pt) override {}
+	virtual void clickInScene(PG::Point pt, bool isRightClick) override {}
+	virtual void draggedWithOffset(PG::Point pt) override {}
+	virtual void mouseMoved(PG::Point pt) override {}
 	
-	virtual void keyUp(PG::PGKeyCode code) override;
-	virtual void keyDown(PG::PGKeyCode code, PG::PGKeyModifier mods) override;
+	virtual void keyUp(PG::KeyCode code) override;
+	virtual void keyDown(PG::KeyCode code, PG::PGKeyModifier mods) override;
 	
 	virtual void update(float dt) override;
 	
-	virtual void receiveTag(const int tag, PG::PGUIMessageQueuePoster& msgPoster) override;
+	virtual void receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster) override;
 	
 private:
 	PG::SceneHandle					m_Scene;
 	PG::NodeHandle					m_HeartCountNode;
 	PG::NodeHandle					m_StarsCountNode;
-	PGTagReciever&					m_AppTagTarget;
+	TagReciever&					m_AppTagTarget;
 	std::unique_ptr<PhysicsState>	m_State;
 	std::unique_ptr<GameState>		m_GameState;
 	

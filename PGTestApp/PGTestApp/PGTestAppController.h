@@ -3,10 +3,10 @@
 #include "PG/core/Size.h"
 #include "PG/app/IGameController.h"
 #include "PG/app/AppConfiguration.h"
-#include "PG/ui/PGTagReceiver.h"
+#include "PG/ui/TagReceiver.h"
 
 //--------------------------------------------------------
-class PGTestAppController : public PG::IGameController, public PG::PGTagReciever
+class PGTestAppController : public PG::IGameController, public PG::TagReciever
 {
 public:
     PGTestAppController();
@@ -18,7 +18,7 @@ public:
 	virtual void					updateFinished() override;
     virtual PG::AppConfiguration	getConfiguration() override;
 	
-	virtual void					receiveTag(const int tag, PG::PGUIMessageQueuePoster& msgPoster) override;
+	virtual void					receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster) override;
 	
 private:
     PG::IPlatformServices*			m_PlatformServices;

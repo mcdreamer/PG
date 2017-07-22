@@ -1,18 +1,18 @@
-#include "PG/ui/PGButton.h"
-#include "PG/ui/PGUIMessage.h"
-#include "PG/ui/PGUIMessageQueuePoster.h"
+#include "PG/ui/Button.h"
+#include "PG/ui/UIMessage.h"
+#include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/app/StyleSheet.h"
 #include "PG/graphics/NodeCreator.h"
 
 namespace PG {
 
 //--------------------------------------------------------
-PGButton::PGButton(PGTagReciever& target, const PGPoint& point, const std::string& label, int tag, const PGSize& forcedSize)
+Button::Button(TagReciever& target, const Point& point, const std::string& label, int tag, const Size& forcedSize)
 : m_Target(target), m_Point(point), m_Label(label), m_Tag(tag), m_ForcedSize(forcedSize)
 {}
 
 //--------------------------------------------------------
-void PGButton::initUIElement(const StyleSheet& styleSheet)
+void Button::initUIElement(const StyleSheet& styleSheet)
 {
     auto text = NodeCreator::createTextNode(styleSheet.uiFontName, 40);
     text->setText(m_Label);
@@ -29,9 +29,9 @@ void PGButton::initUIElement(const StyleSheet& styleSheet)
 }
 
 //--------------------------------------------------------
-void PGButton::clicked(PGUIMessageQueuePoster& msgPoster)
+void Button::clicked(UIMessageQueuePoster& msgPoster)
 {
-    msgPoster.postMessage(PGUIMessage::sendTag(&m_Target, m_Tag));
+    msgPoster.postMessage(UIMessage::sendTag(&m_Target, m_Tag));
 }
 
 }

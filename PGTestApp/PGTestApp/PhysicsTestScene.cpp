@@ -7,8 +7,8 @@
 #include "PG/physics/PhysicsBodyInputHandler.h"
 #include "PG/physics/PhysicsBodyCollection.h"
 #include "PG/graphics/NodeCreator.h"
-#include "PG/ui/PGButton.h"
-#include "PG/ui/PGUIMessageQueuePoster.h"
+#include "PG/ui/Button.h"
+#include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/ui/UIUtils.h"
 #include "PG/ui/UIPositionCalculator.h"
 #include "PG/app/StyleSheet.h"
@@ -24,15 +24,15 @@ namespace
 	{
 		PG::PhysicsWorldParams params;
 		
-		params.gravity = PG::PGSize(0, 1000);
-		params.jumpForce = PG::PGPoint(0, -420);
+		params.gravity = PG::Size(0, 1000);
+		params.jumpForce = PG::Point(0, -420);
 		params.friction = 0.78;
 		
 		const double speed = 400;
-		params.minMovement = PG::PGPoint(-speed, -4850);
-		params.maxMovement = PG::PGPoint(speed, 1000);
+		params.minMovement = PG::Point(-speed, -4850);
+		params.maxMovement = PG::Point(speed, 1000);
 		
-		params.forward = PG::PGPoint(3000, 0);
+		params.forward = PG::Point(3000, 0);
 		
 		return params;
 	}
@@ -52,7 +52,7 @@ struct PhysicsTestScene::GameState
 //--------------------------------------------------------
 struct PhysicsTestScene::PhysicsState
 {
-	PhysicsState(const PG::PGRect& bodyRect)
+	PhysicsState(const PG::Rect& bodyRect)
 	: world(getWorldParams()), bodyAndNode(bodyRect), levelGeometry(10, 10)
 	{}
 
@@ -65,9 +65,9 @@ struct PhysicsTestScene::PhysicsState
 };
 
 //--------------------------------------------------------
-PhysicsTestScene::PhysicsTestScene(PG::PGTagReciever& appTagTarget)
+PhysicsTestScene::PhysicsTestScene(PG::TagReciever& appTagTarget)
 : m_AppTagTarget(appTagTarget),
-m_State(new PhysicsState(PG::PGRect(PG::PGPoint(32, 0), PG::PGSize(PG::GameConstants::tileSize(), PG::GameConstants::tileSize())))),
+m_State(new PhysicsState(PG::Rect(PG::Point(32, 0), PG::Size(PG::GameConstants::tileSize(), PG::GameConstants::tileSize())))),
 m_GameState(new GameState)
 {}
 
@@ -90,10 +90,10 @@ void PhysicsTestScene::initScene(PG::SceneHandle scene)
 	
 	PG::UIPositionCalculator uiPosCalc(sceneSize);
 	
-	PG::UIUtils::createTextNodeForValue(PG::PGPoint(20, 20), PG::Colour(255, 0, 0), 20, m_HeartCountNode, m_Scene, m_GameState->numHearts);
-	PG::UIUtils::createTextNodeForValue(PG::PGPoint(20, 40), PG::Colour(0, 128, 255), 20, m_StarsCountNode, m_Scene, m_GameState->numStars);
+	PG::UIUtils::createTextNodeForValue(PG::Point(20, 20), PG::Colour(255, 0, 0), 20, m_HeartCountNode, m_Scene, m_GameState->numHearts);
+	PG::UIUtils::createTextNodeForValue(PG::Point(20, 40), PG::Colour(0, 128, 255), 20, m_StarsCountNode, m_Scene, m_GameState->numStars);
 	
-	m_Scene.scene->pushUIElement(new PG::PGButton(*this, uiPosCalc.fromBottomMid(PG::PGSize(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
+	m_Scene.scene->pushUIElement(new PG::Button(*this, uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
 	
 	generateAndSetupLevelGeometry();
 	generateAndSetupHearts();
@@ -101,9 +101,9 @@ void PhysicsTestScene::initScene(PG::SceneHandle scene)
 }
 
 //--------------------------------------------------------
-void PhysicsTestScene::receiveTag(const int tag, PG::PGUIMessageQueuePoster& msgPoster)
+void PhysicsTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
 {
-	msgPoster.postMessage(PG::PGUIMessage::sendTag(&m_AppTagTarget, tag));
+	msgPoster.postMessage(PG::UIMessage::sendTag(&m_AppTagTarget, tag));
 }
 
 //--------------------------------------------------------
@@ -118,14 +118,14 @@ void PhysicsTestScene::update(float dt)
 }
 
 //--------------------------------------------------------
-void PhysicsTestScene::keyDown(PG::PGKeyCode code, PG::PGKeyModifier mods)
+void PhysicsTestScene::keyDown(PG::KeyCode code, PG::PGKeyModifier mods)
 {
 	PG::PhysicsBodyInputHandler inputHandler(m_State->bodyAndNode.body);
 	inputHandler.keyDown(code, mods);
 }
 
 //--------------------------------------------------------
-void PhysicsTestScene::keyUp(PG::PGKeyCode code)
+void PhysicsTestScene::keyUp(PG::KeyCode code)
 {
 	PG::PhysicsBodyInputHandler inputHandler(m_State->bodyAndNode.body);
 	inputHandler.keyUp(code);
@@ -193,6 +193,6 @@ void PhysicsTestScene::generateAndSetupItems(PG::PhysicsBodyCollection& bodyColl
 		node->setPosition(tilePosCalc.calculatePoint(itemCoord));
 		bodyCollection.addItemWithBody(0,
 									   m_Scene.scene->addChild(node),
-									   PG::PhysicsBody(PG::PGRect(tilePosCalc.calculatePoint(itemCoord), PG::PGSize(PG::GameConstants::tileSize(), PG::GameConstants::tileSize()))));
+									   PG::PhysicsBody(PG::Rect(tilePosCalc.calculatePoint(itemCoord), PG::Size(PG::GameConstants::tileSize(), PG::GameConstants::tileSize()))));
 	}
 }

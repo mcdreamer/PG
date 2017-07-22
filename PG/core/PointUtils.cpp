@@ -6,33 +6,33 @@ namespace PG {
 namespace PointUtils {
 
 //--------------------------------------------------------
-PGPoint scalePoint(PGPoint pt, float scale)
+Point scalePoint(Point pt, float scale)
 {
-	return PGPoint(pt.x * scale, pt.y * scale);
+	return Point(pt.x * scale, pt.y * scale);
 }
 
 //--------------------------------------------------------
-PGPoint multiplyPoints(PGPoint pt1, PGPoint pt2)
+Point multiplyPoints(Point pt1, Point pt2)
 {
-	return PGPoint(pt1.x * pt2.x, pt1.y * pt2.y);
+	return Point(pt1.x * pt2.x, pt1.y * pt2.y);
 }
 
 //--------------------------------------------------------
-PGPoint addPoints(PGPoint pt1, PGPoint pt2)
+Point addPoints(Point pt1, Point pt2)
 {
-	return PGPoint(pt1.x + pt2.x, pt1.y + pt2.y);
+	return Point(pt1.x + pt2.x, pt1.y + pt2.y);
 }
 
 //--------------------------------------------------------
-PGPoint addToPoint(PGPoint pt, PGSize sz)
+Point addToPoint(Point pt, Size sz)
 {
-	return PGPoint(pt.x + sz.width, pt.y + sz.height);
+	return Point(pt.x + sz.width, pt.y + sz.height);
 }
 
 //--------------------------------------------------------
-PGPoint subtractPoints(PGPoint pt1, PGPoint pt2)
+Point subtractPoints(Point pt1, Point pt2)
 {
-	return PGPoint(pt1.x - pt2.x, pt1.y - pt2.y);
+	return Point(pt1.x - pt2.x, pt1.y - pt2.y);
 }
 
 }

@@ -8,13 +8,13 @@ namespace PG {
 //--------------------------------------------------------
 struct PhysicsWorldParams
 {
-	PGSize gravity = PGSize(0, 10);
+	Size gravity = Size(0, 10);
 
-	PGPoint forward = PGPoint(2500, 0);
-	PGPoint jumpForce = PGPoint(0, -100);
+	Point forward = Point(2500, 0);
+	Point jumpForce = Point(0, -100);
 
-	PGPoint minMovement = PGPoint(-300, -4850);
-	PGPoint maxMovement = PGPoint(300, 1000);
+	Point minMovement = Point(-300, -4850);
+	Point maxMovement = Point(300, 1000);
 
 	double friction = 0.84;
 };

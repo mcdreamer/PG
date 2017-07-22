@@ -3,7 +3,7 @@
 namespace PG {
 
 //--------------------------------------------------------
-void PhysicsBody::setPosition(const PGPoint& newPosition)
+void PhysicsBody::setPosition(const Point& newPosition)
 {
 	bounds.origin = newPosition;
 }

@@ -9,9 +9,9 @@ namespace PG {
 class TilePositionCalculator
 {
 public:
-    PGPoint     calculatePoint(const TileCoord& c) const;
-    PGPoint     calculatePoint(const int x, const int y) const;
-    TileCoord   calculateTileCoord(const PGPoint& pt) const;
+    Point     calculatePoint(const TileCoord& c) const;
+    Point     calculatePoint(const int x, const int y) const;
+    TileCoord   calculateTileCoord(const Point& pt) const;
 };
 
 }

@@ -38,18 +38,18 @@ namespace JsonUtils
     }
     
     //--------------------------------------------------------
-    PGPoint getChildPointWithKey(const Json::Value& val, const std::string& key)
+    Point getChildPointWithKey(const Json::Value& val, const std::string& key)
     {
         auto pt = val.get(key, Json::Value());
     
         double x = getChildDoubleWithKey(pt, "x");
         double y = getChildDoubleWithKey(pt, "y");
         
-        return PGPoint(x, y);
+        return Point(x, y);
     }
     
     //--------------------------------------------------------
-    Json::Value valueWithPoint(const PGPoint& pt)
+    Json::Value valueWithPoint(const Point& pt)
     {
         Json::Value jsonPt;
         jsonPt["x"] = pt.x;

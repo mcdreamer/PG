@@ -5,8 +5,8 @@
 namespace PG {
 
 //--------------------------------------------------------
-Bar::Bar(const PGPoint& position,
-		 const PGSize& size,
+Bar::Bar(const Point& position,
+		 const Size& size,
 		 const BarStyle& barStyle,
 		 const ValueRange<int>& range,
 		 BindableValue<int>& value)
@@ -25,7 +25,7 @@ void Bar::initUIElement(const StyleSheet& styleSheet)
 	auto bg = NodeCreator::createColourNode(PG::Colour(255, 255, 255), m_Size);
 	bg->setPosition(m_Position);
 	
-	auto fg = NodeCreator::createColourNode(PG::Colour(0, 128, 255), PGSize(m_Size.width - 2, m_Size.height - 2));
+	auto fg = NodeCreator::createColourNode(PG::Colour(0, 128, 255), Size(m_Size.width - 2, m_Size.height - 2));
 	fg->setPosition(m_Position);
 	
 	m_Root.node->addChild(bg);
@@ -46,7 +46,7 @@ void Bar::valueChanged()
 	
 	const auto widthPerUnit = m_Size.width / (float)m_Range.size();
 	
-	m_Bar.node->setSize(PGSize((widthPerUnit * value) - 2, m_Size.height - 2));
+	m_Bar.node->setSize(Size((widthPerUnit * value) - 2, m_Size.height - 2));
 }
 
 }

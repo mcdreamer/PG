@@ -42,14 +42,14 @@ class INode
 public:
     virtual ~INode() {}
 
-	virtual void                setPosition(PGPoint point) = 0;
-	virtual void                setSize(PGSize size) = 0;
+	virtual void                setPosition(Point point) = 0;
+	virtual void                setSize(Size size) = 0;
 
     virtual NodeType            getType() const=0;
 
-    virtual PGPoint             getPosition() const=0;
-    virtual PGSize              getSize() const=0;
-    virtual PGRect              getRect() const=0;
+    virtual Point             getPosition() const=0;
+    virtual Size              getSize() const=0;
+    virtual Rect              getRect() const=0;
     
     virtual NodeHandle          addChild(std::unique_ptr<INode>& node)=0;
     virtual std::vector<INode*> getChildren()=0;

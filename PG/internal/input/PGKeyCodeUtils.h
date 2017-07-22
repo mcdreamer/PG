@@ -2,14 +2,14 @@
 
 #include <SFML/Window.hpp>
 
-#include "PG/core/PGKeyCode.h"
+#include "PG/core/KeyCode.h"
 
 namespace PG {
 namespace Internal {
 namespace PGKeyCodeUtils {
 
 //--------------------------------------------------------
-PGKeyCode getPGKeyCode(const sf::Keyboard::Key& key)
+KeyCode getPGKeyCode(const sf::Keyboard::Key& key)
 {
 	switch (key)
 	{

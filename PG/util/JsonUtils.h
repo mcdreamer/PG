@@ -6,7 +6,7 @@
 
 namespace PG {
 
-class PGPoint;
+class Point;
 
 namespace JsonUtils
 {
@@ -14,9 +14,9 @@ namespace JsonUtils
     double              getChildDoubleWithKey(const Json::Value& val, const std::string& key);
     int                 getChildIntWithKey(const Json::Value& val, const std::string& key);
     bool                getChildBoolWithKey(const Json::Value& val, const std::string& key);
-    PGPoint             getChildPointWithKey(const Json::Value& val, const std::string& key);
+    Point             getChildPointWithKey(const Json::Value& val, const std::string& key);
     
-    Json::Value         valueWithPoint(const PGPoint& pt);
+    Json::Value         valueWithPoint(const Point& pt);
     
     bool                hasChildWithKey(const Json::Value& val, const std::string& key);
 }

@@ -5,7 +5,7 @@
 #include "PG/core/Point.h"
 #include "PG/core/Size.h"
 #include "PG/core/BindableValue.h"
-#include "PG/ui/PGUIElement.h"
+#include "PG/ui/UIElement.h"
 
 namespace PG {
 
@@ -16,21 +16,21 @@ enum class BarStyle
 };
 
 //--------------------------------------------------------
-class Bar : public PGUIElement
+class Bar : public UIElement
 {
 public:
-	Bar(const PGPoint& position,
-		const PGSize& size,
+	Bar(const Point& position,
+		const Size& size,
 		const BarStyle& barStyle,
 		const ValueRange<int>& range,
 		BindableValue<int>& value);
 
 	virtual void	initUIElement(const StyleSheet& styleSheet) override;
-	virtual void	receiveTag(const int tag, PGUIMessageQueuePoster& msgPoster) override {}
+	virtual void	receiveTag(const int tag, UIMessageQueuePoster& msgPoster) override {}
 
 private:
-	PGPoint					m_Position;
-	PGSize					m_Size;
+	Point					m_Position;
+	Size					m_Size;
 	const BarStyle			m_BarStyle;
 	const ValueRange<int>	m_Range;
 	BindableValue<int>&		m_Value;

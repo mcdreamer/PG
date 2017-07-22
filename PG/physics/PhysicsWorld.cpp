@@ -2,7 +2,7 @@
 #include "PG/physics/PhysicsBody.h"
 #include "PG/app/GameConstants.h"
 #include "PG/entities/TilePositionCalculator.h"
-#include "PG/core/PGRectUtils.h"
+#include "PG/core/RectUtils.h"
 #include "PG/core/PointUtils.h"
 #include "PG/core/SizeUtils.h"
 #include "PG/core/MathsUtils.h"
@@ -65,15 +65,15 @@ namespace
 	// Better detection of whether collision is above/below or left/right?
 	
     //--------------------------------------------------------
-    void findIntersectionAndResolveForBody(PhysicsBody& body, const PGRect& geometryRect)
+    void findIntersectionAndResolveForBody(PhysicsBody& body, const Rect& geometryRect)
     {
-		const PGRect desiredRect(body.desiredPosition, body.bounds.size);
+		const Rect desiredRect(body.desiredPosition, body.bounds.size);
 		
-		const auto intersection = PGRectUtils::getIntersection(desiredRect, geometryRect);
-		if (!PGRectUtils::isEmpty(intersection))
+		const auto intersection = RectUtils::getIntersection(desiredRect, geometryRect);
+		if (!RectUtils::isEmpty(intersection))
 		{
-			PGPoint removeIntersectionPt;
-			PGPoint adjustedVelocity;
+			Point removeIntersectionPt;
+			Point adjustedVelocity;
 			
 			if (intersection.size.height < intersection.size.width)
 			{
@@ -84,14 +84,14 @@ namespace
 				}
 				
 				const int dir = collisionBelow ? -1 : 1;
-				removeIntersectionPt = PGPoint(0, dir * intersection.size.height);
-				adjustedVelocity = PGPoint(body.velocity.x, 0);
+				removeIntersectionPt = Point(0, dir * intersection.size.height);
+				adjustedVelocity = Point(body.velocity.x, 0);
 			}
 			else
 			{
 				const int dir = (desiredRect.origin.x < geometryRect.origin.x) ? -1 : 1;
-				removeIntersectionPt = PGPoint(dir * intersection.size.width, 0);
-				adjustedVelocity = PGPoint(0, body.velocity.y);
+				removeIntersectionPt = Point(dir * intersection.size.width, 0);
+				adjustedVelocity = Point(0, body.velocity.y);
 			}
 			
 			body.velocity = adjustedVelocity;
@@ -112,7 +112,7 @@ namespace
 		}
 	
 		TilePositionCalculator tilePosCalc;
-		const PGRect tileRect(tilePosCalc.calculatePoint(coordToTest), PGSize(GameConstants::tileSize(), GameConstants::tileSize()));
+		const Rect tileRect(tilePosCalc.calculatePoint(coordToTest), Size(GameConstants::tileSize(), GameConstants::tileSize()));
 
 		findIntersectionAndResolveForBody(body, tileRect);
     }
@@ -125,7 +125,7 @@ namespace
 		
 		// Gravity and X friction
 		body.velocity = PointUtils::addToPoint(body.velocity, gravityStep);
-		body.velocity = PGPoint(body.velocity.x * params.friction, body.velocity.y);
+		body.velocity = Point(body.velocity.x * params.friction, body.velocity.y);
 		
 		// Modify state
 		if (body.jumpToConsume && body.onGround)
@@ -147,7 +147,7 @@ namespace
 		// Clamp velocity
 		auto clampedVelX = MathsUtils::clamp(body.velocity.x, params.minMovement.x, params.maxMovement.x);
 		auto clampedVelY = MathsUtils::clamp(body.velocity.y, params.minMovement.y, params.maxMovement.y);
-		body.velocity = PGPoint(clampedVelX, clampedVelY);
+		body.velocity = Point(clampedVelX, clampedVelY);
 		
 		// Apply velocity
 		auto velocityStep = PointUtils::scalePoint(body.velocity, dt);
@@ -181,7 +181,7 @@ void PhysicsWorld::findCollisionsWithBody(const PhysicsBody& body,
 {
 	for (size_t nthBody = 0; nthBody < bodiesToCheck.size(); ++nthBody)
 	{
-		if (!PGRectUtils::isEmpty(PGRectUtils::getIntersection(body.bounds, bodiesToCheck[nthBody].bounds)))
+		if (!RectUtils::isEmpty(RectUtils::getIntersection(body.bounds, bodiesToCheck[nthBody].bounds)))
 		{
 			callback.bodiesDidCollide(body, bodiesToCheck[nthBody], (int)nthBody);
 		}

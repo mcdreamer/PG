@@ -10,7 +10,7 @@ class PhysicsWorld;
 //--------------------------------------------------------
 struct PhysicsBody
 {
-	PhysicsBody(const PGRect bounds_)
+	PhysicsBody(const Rect bounds_)
 	: bounds(bounds_),
 	desiredPosition(bounds_.origin),
 	jumpToConsume(false),
@@ -19,12 +19,12 @@ struct PhysicsBody
 	movingRight(false)
 	{}
 
-	void		setPosition(const PGPoint& newPosition);
+	void		setPosition(const Point& newPosition);
 	void		hasHitGround();
 
-    PGRect      bounds;
-    PGPoint     velocity;
-    PGPoint     desiredPosition;
+    Rect      bounds;
+    Point     velocity;
+    Point     desiredPosition;
 	
 	bool		jumpToConsume;
 	bool		onGround;

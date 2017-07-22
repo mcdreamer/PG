@@ -8,18 +8,18 @@
 namespace PG {
 
 //--------------------------------------------------------
-class PGRect
+class Rect
 {
 public:
-    PGRect()
+    Rect()
     {}
 
-    PGRect(PGPoint pt, PGSize sz)
+    Rect(Point pt, Size sz)
     : origin(pt), size(sz)
     {}
     
-    PGPoint origin;
-    PGSize  size;
+    Point origin;
+    Size  size;
     
     double left() const { return origin.x - (size.width / 2.0); }
     double right() const { return origin.x + (size.width / 2.0); }
@@ -27,7 +27,7 @@ public:
     double bottom() const { return origin.y + (size.height / 2.0); }
 };
 
-bool operator==(const PGRect& r1, const PGRect& r2);
-std::ostream& operator<<(std::ostream& os, const PGRect& r);
+bool operator==(const Rect& r1, const Rect& r2);
+std::ostream& operator<<(std::ostream& os, const Rect& r);
 
 }

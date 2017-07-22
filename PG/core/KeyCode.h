@@ -2,7 +2,7 @@
 
 namespace PG {
 
-enum PGKeyCode
+enum KeyCode
 {
     PGKeyCodeNone,
     PGKeyCodeUp,

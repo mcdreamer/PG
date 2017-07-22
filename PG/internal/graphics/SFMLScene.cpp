@@ -3,7 +3,7 @@
 namespace PG {
 
 //--------------------------------------------------------
-ScenePtr SceneCreator::createScene(SceneControllerPtr& controller, const PGSize& size, const StyleSheet& styleSheet)
+ScenePtr SceneCreator::createScene(SceneControllerPtr& controller, const Size& size, const StyleSheet& styleSheet)
 {
     return std::make_unique<Internal::SFMLScene>(controller, size, styleSheet);
 }
@@ -11,11 +11,11 @@ ScenePtr SceneCreator::createScene(SceneControllerPtr& controller, const PGSize&
 namespace Internal {
 
 //--------------------------------------------------------
-SFMLScene::SFMLScene(SceneControllerPtr& controller, const PGSize& size, const StyleSheet& styleSheet)
+SFMLScene::SFMLScene(SceneControllerPtr& controller, const Size& size, const StyleSheet& styleSheet)
 : m_SceneController(controller.release()), m_SceneSize(size)
 {
 	m_Root = NodeCreator::createNode();
-	m_UI.reset(new PG::PGUI(*this));
+	m_UI.reset(new PG::UI(*this));
 	m_UI->setStyleSheet(styleSheet);
 }
 
@@ -32,13 +32,13 @@ NodeHandle SFMLScene::addChild(std::unique_ptr<INode>& node)
 }
 
 //--------------------------------------------------------
-PGSize SFMLScene::getSceneSize() const
+Size SFMLScene::getSceneSize() const
 {
-	return PGSize(m_SceneSize.width, m_SceneSize.height);
+	return Size(m_SceneSize.width, m_SceneSize.height);
 }
 
 //--------------------------------------------------------
-PGPoint SFMLScene::getWindowPointAsScenePoint(const PGPoint& windowPt, INode* layer) const
+Point SFMLScene::getWindowPointAsScenePoint(const Point& windowPt, INode* layer) const
 {
 	return windowPt;
 }
@@ -50,7 +50,7 @@ const StyleSheet& SFMLScene::getStyleSheet() const
 }
 
 //--------------------------------------------------------
-void SFMLScene::clickInScene(PG::PGPoint pt, bool isRightClick)
+void SFMLScene::clickInScene(PG::Point pt, bool isRightClick)
 {
 	if (!m_UI->handleClick(pt) && m_SceneController)
 	{
@@ -58,7 +58,7 @@ void SFMLScene::clickInScene(PG::PGPoint pt, bool isRightClick)
 	}
 }
 //--------------------------------------------------------
-void SFMLScene::pushUIElement(PGUIElement* uiElement)
+void SFMLScene::pushUIElement(UIElement* uiElement)
 {
 	m_UI->pushElement(uiElement);
 }

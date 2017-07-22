@@ -1,14 +1,14 @@
-#include "PG/ui/PGUIElement.h"
-#include "PG/ui/PGUIUtils.h"
+#include "PG/ui/UIElement.h"
+#include "PG/ui/UIUtils.h"
 #include "PG/graphics/Scene.h"
 #include "PG/graphics/NodeCreator.h"
 #include "PG/core/Rect.h"
-#include "PG/core/PGRectUtils.h"
+#include "PG/core/RectUtils.h"
 
 namespace PG {
 
 //--------------------------------------------------------
-void PGUIElement::show(IScene& scene, const StyleSheet& styleSheet)
+void UIElement::show(IScene& scene, const StyleSheet& styleSheet)
 {
     auto root = NodeCreator::createNode();
     m_Root = scene.addChild(root);
@@ -17,7 +17,7 @@ void PGUIElement::show(IScene& scene, const StyleSheet& styleSheet)
 }
 
 //--------------------------------------------------------
-void PGUIElement::show(NodeHandle parent, const StyleSheet& styleSheet)
+void UIElement::show(NodeHandle parent, const StyleSheet& styleSheet)
 {
     auto root = NodeCreator::createNode();
     
@@ -27,13 +27,13 @@ void PGUIElement::show(NodeHandle parent, const StyleSheet& styleSheet)
 }
 
 //--------------------------------------------------------
-void PGUIElement::close()
+void UIElement::close()
 {
     m_Root.node->removeFromParent();
 }
 
 //--------------------------------------------------------
-void PGUIElement::addChild(PGUIElement* element, const StyleSheet& styleSheet)
+void UIElement::addChild(UIElement* element, const StyleSheet& styleSheet)
 {
     element->show(m_Root, styleSheet);
     
@@ -41,7 +41,7 @@ void PGUIElement::addChild(PGUIElement* element, const StyleSheet& styleSheet)
 }
 
 //--------------------------------------------------------
-void PGUIElement::addChild(std::unique_ptr<PGUIElement>& element, const StyleSheet& styleSheet)
+void UIElement::addChild(std::unique_ptr<UIElement>& element, const StyleSheet& styleSheet)
 {
     element->show(m_Root, styleSheet);
     
@@ -49,28 +49,28 @@ void PGUIElement::addChild(std::unique_ptr<PGUIElement>& element, const StyleShe
 }
 
 //--------------------------------------------------------
-PGRect PGUIElement::getElementRect() const
+Rect UIElement::getElementRect() const
 {
-    PGRect combinedChildNodeRect;
+    Rect combinedChildNodeRect;
     for (const auto* childNode : m_Root.node->getChildren())
     {
-        combinedChildNodeRect = PGRectUtils::combineRects(combinedChildNodeRect, childNode->getRect());
+        combinedChildNodeRect = RectUtils::combineRects(combinedChildNodeRect, childNode->getRect());
     }
 
-    combinedChildNodeRect = PGRect(PGPoint(0, 0), combinedChildNodeRect.size);
+    combinedChildNodeRect = Rect(Point(0, 0), combinedChildNodeRect.size);
 
     return combinedChildNodeRect;
 }
 
 //--------------------------------------------------------
-bool PGUIElement::handleClick(const PGPoint& parentRelPt, PGUIMessageQueuePoster& msgPoster)
+bool UIElement::handleClick(const Point& parentRelPt, UIMessageQueuePoster& msgPoster)
 {
-    auto elementLocalPt = PGUIUtils::calculateNodeRelativePoint(parentRelPt, m_Root);
+    auto elementLocalPt = UIUtils::calculateNodeRelativePoint(parentRelPt, m_Root);
     
     const auto elementRect = getElementRect();
-    const bool elementRootIsInvisible = PGRectUtils::isEmpty(elementRect.size);
+    const bool elementRootIsInvisible = RectUtils::isEmpty(elementRect.size);
 
-    if (elementRootIsInvisible || PGRectUtils::containsPoint(elementRect, elementLocalPt))
+    if (elementRootIsInvisible || RectUtils::containsPoint(elementRect, elementLocalPt))
     {
         for (auto& childElement : m_Children)
         {

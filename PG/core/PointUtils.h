@@ -2,16 +2,16 @@
 
 namespace PG {
 
-class PGPoint;
-class PGSize;
+class Point;
+class Size;
 
 namespace PointUtils {
 
-PGPoint scalePoint(PGPoint pt, float scale);
-PGPoint multiplyPoints(PGPoint pt1, PGPoint pt2);
-PGPoint addPoints(PGPoint pt1, PGPoint pt2);
-PGPoint addToPoint(PGPoint pt, PGSize sz);
-PGPoint subtractPoints(PGPoint pt1, PGPoint pt2);
+Point scalePoint(Point pt, float scale);
+Point multiplyPoints(Point pt1, Point pt2);
+Point addPoints(Point pt1, Point pt2);
+Point addToPoint(Point pt, Size sz);
+Point subtractPoints(Point pt1, Point pt2);
 
 }
 }

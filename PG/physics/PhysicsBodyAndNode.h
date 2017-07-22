@@ -8,7 +8,7 @@ namespace PG {
 //--------------------------------------------------------
 struct PhysicsBodyAndNode
 {
-	PhysicsBodyAndNode(const PGRect& bodyRect)
+	PhysicsBodyAndNode(const Rect& bodyRect)
 	: body(bodyRect)
 	{}
 
