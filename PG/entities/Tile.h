@@ -20,7 +20,6 @@ public:
     
     const std::string&  getName() const { return m_Name; }
     const std::string&  getImageName() const { return m_ImageName; }
-    bool                isBlocking() const;
     
 private:
     std::string         m_Name;

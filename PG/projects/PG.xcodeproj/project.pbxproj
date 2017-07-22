@@ -34,12 +34,6 @@
 		493022421ECA449600C143A8 /* PGUIMessageQueuePoster.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022351ECA449600C143A8 /* PGUIMessageQueuePoster.h */; };
 		493022431ECA449600C143A8 /* PGUIUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493022361ECA449600C143A8 /* PGUIUtils.cpp */; };
 		493022441ECA449600C143A8 /* PGUIUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022371ECA449600C143A8 /* PGUIUtils.h */; };
-		493022511ECA44D100C143A8 /* MenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4930224B1ECA44D100C143A8 /* MenuLayer.cpp */; };
-		493022521ECA44D100C143A8 /* MenuLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4930224C1ECA44D100C143A8 /* MenuLayer.h */; };
-		493022531ECA44D100C143A8 /* MenuManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4930224D1ECA44D100C143A8 /* MenuManager.cpp */; };
-		493022541ECA44D100C143A8 /* MenuManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4930224E1ECA44D100C143A8 /* MenuManager.h */; };
-		493022551ECA44D100C143A8 /* MenuNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4930224F1ECA44D100C143A8 /* MenuNode.cpp */; };
-		493022561ECA44D100C143A8 /* MenuNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022501ECA44D100C143A8 /* MenuNode.h */; };
 		4930225D1ECA44DC00C143A8 /* Node.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022571ECA44DC00C143A8 /* Node.h */; };
 		4930225E1ECA44DC00C143A8 /* NodeCreator.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022581ECA44DC00C143A8 /* NodeCreator.h */; };
 		4930225F1ECA44DC00C143A8 /* Scene.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022591ECA44DC00C143A8 /* Scene.h */; };
@@ -98,9 +92,6 @@
 		493ABCAE1EFE8B10000C01E4 /* SFMLScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493022951ECA45AF00C143A8 /* SFMLScene.cpp */; };
 		493ABCAF1EFE8B10000C01E4 /* SFMLTextureMeasurer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493022971ECA45AF00C143A8 /* SFMLTextureMeasurer.cpp */; };
 		493ABCB01EFE8B10000C01E4 /* SFMLView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49045B6E1EF581AA006ECF48 /* SFMLView.cpp */; };
-		493ABCB11EFE8B10000C01E4 /* MenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4930224B1ECA44D100C143A8 /* MenuLayer.cpp */; };
-		493ABCB21EFE8B10000C01E4 /* MenuManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4930224D1ECA44D100C143A8 /* MenuManager.cpp */; };
-		493ABCB31EFE8B10000C01E4 /* MenuNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4930224F1ECA44D100C143A8 /* MenuNode.cpp */; };
 		493ABCB41EFE8B10000C01E4 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49904F261EEC4E18000B5F9F /* json_reader.cpp */; };
 		493ABCB51EFE8B10000C01E4 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49904F271EEC4E18000B5F9F /* json_value.cpp */; };
 		493ABCB61EFE8B10000C01E4 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49904F281EEC4E18000B5F9F /* json_writer.cpp */; };
@@ -204,12 +195,6 @@
 		493022351ECA449600C143A8 /* PGUIMessageQueuePoster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGUIMessageQueuePoster.h; sourceTree = "<group>"; };
 		493022361ECA449600C143A8 /* PGUIUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PGUIUtils.cpp; sourceTree = "<group>"; };
 		493022371ECA449600C143A8 /* PGUIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGUIUtils.h; sourceTree = "<group>"; };
-		4930224B1ECA44D100C143A8 /* MenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuLayer.cpp; sourceTree = "<group>"; };
-		4930224C1ECA44D100C143A8 /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
-		4930224D1ECA44D100C143A8 /* MenuManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuManager.cpp; sourceTree = "<group>"; };
-		4930224E1ECA44D100C143A8 /* MenuManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuManager.h; sourceTree = "<group>"; };
-		4930224F1ECA44D100C143A8 /* MenuNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuNode.cpp; sourceTree = "<group>"; };
-		493022501ECA44D100C143A8 /* MenuNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuNode.h; sourceTree = "<group>"; };
 		493022571ECA44DC00C143A8 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		493022581ECA44DC00C143A8 /* NodeCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeCreator.h; sourceTree = "<group>"; };
 		493022591ECA44DC00C143A8 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
@@ -422,7 +407,6 @@
 				49AACAEB1ECCD1FD003BDC3C /* inventory */,
 				49CEB4051AD99D1400447477 /* io */,
 				493022871ECA450000C143A8 /* internal */,
-				499A2E471B03E972000F7E1B /* menu */,
 				490A3CFE1EDC382C0046A552 /* physics */,
 				4929DE691ADAC315006A6BB3 /* thirdparty */,
 				49AE44BD1C653B5500DAF439 /* ui */,
@@ -437,20 +421,6 @@
 				496F09FE1A5960E900DC93A8 /* libGameGraphicsLib.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		499A2E471B03E972000F7E1B /* menu */ = {
-			isa = PBXGroup;
-			children = (
-				4930224B1ECA44D100C143A8 /* MenuLayer.cpp */,
-				4930224C1ECA44D100C143A8 /* MenuLayer.h */,
-				4930224D1ECA44D100C143A8 /* MenuManager.cpp */,
-				4930224E1ECA44D100C143A8 /* MenuManager.h */,
-				4930224F1ECA44D100C143A8 /* MenuNode.cpp */,
-				493022501ECA44D100C143A8 /* MenuNode.h */,
-			);
-			name = menu;
-			path = ../menu;
 			sourceTree = "<group>";
 		};
 		49AACACF1ECCD126003BDC3C /* data */ = {
@@ -623,8 +593,6 @@
 				493022831ECA44E800C143A8 /* IPlatformServices.h in Headers */,
 				4930225D1ECA44DC00C143A8 /* Node.h in Headers */,
 				4930222A1ECA449000C143A8 /* Logger.h in Headers */,
-				493022521ECA44D100C143A8 /* MenuLayer.h in Headers */,
-				493022561ECA44D100C143A8 /* MenuNode.h in Headers */,
 				493022281ECA449000C143A8 /* JsonUtils.h in Headers */,
 				493022611ECA44DC00C143A8 /* TextureMeasurer.h in Headers */,
 				49AACAFC1ECCD4BB003BDC3C /* GameConstants.h in Headers */,
@@ -653,7 +621,6 @@
 				493022741ECA44E200C143A8 /* PGRectUtils.h in Headers */,
 				493022861ECA44E800C143A8 /* PGAppHost.h in Headers */,
 				493022391ECA449600C143A8 /* PGButton.h in Headers */,
-				493022541ECA44D100C143A8 /* MenuManager.h in Headers */,
 				49AACAF11ECCD226003BDC3C /* InventoryItem.h in Headers */,
 				49761EB61EED70F800DD6734 /* Colour.h in Headers */,
 				49E070591F1A67F700381C22 /* PhysicsBodyCollection.h in Headers */,
@@ -761,7 +728,6 @@
 			files = (
 				493ABCA21EFE8B10000C01E4 /* TileCoord.cpp in Sources */,
 				4956B5CF1EE4582A00F6A7A4 /* Rect.cpp in Sources */,
-				493ABCB11EFE8B10000C01E4 /* MenuLayer.cpp in Sources */,
 				497947AD1F1BB8AE00B01C19 /* Bar.cpp in Sources */,
 				493ABCBA1EFE8B10000C01E4 /* PGUIElement.cpp in Sources */,
 				493ABCA51EFE8B10000C01E4 /* Attributes.cpp in Sources */,
@@ -778,7 +744,6 @@
 				493ABCB01EFE8B10000C01E4 /* SFMLView.cpp in Sources */,
 				493ABCAE1EFE8B10000C01E4 /* SFMLScene.cpp in Sources */,
 				493ABCAB1EFE8B10000C01E4 /* Inventory.cpp in Sources */,
-				493ABCB31EFE8B10000C01E4 /* MenuNode.cpp in Sources */,
 				493ABC9E1EFE8B10000C01E4 /* PGRectUtils.cpp in Sources */,
 				493ABCBE1EFE8B10000C01E4 /* JsonUtils.cpp in Sources */,
 				493ABCA91EFE8B10000C01E4 /* Tile.cpp in Sources */,
@@ -796,7 +761,6 @@
 				493ABCA31EFE8B10000C01E4 /* Colour.cpp in Sources */,
 				493ABCB91EFE8B10000C01E4 /* PGUI.cpp in Sources */,
 				493ABC9F1EFE8B10000C01E4 /* Point.cpp in Sources */,
-				493ABCB21EFE8B10000C01E4 /* MenuManager.cpp in Sources */,
 				493ABC9B1EFE8B10000C01E4 /* MoveToAnimation.cpp in Sources */,
 				493ABC9D1EFE8B10000C01E4 /* PGAppHost.cpp in Sources */,
 				490A3D081EDC84890046A552 /* PhysicsBody.cpp in Sources */,
@@ -825,7 +789,6 @@
 				49AACAE01ECCD13F003BDC3C /* DataGrid.cpp in Sources */,
 				49045B6F1EF581AA006ECF48 /* SFMLView.cpp in Sources */,
 				49AACAF51ECCD2FC003BDC3C /* Tile.cpp in Sources */,
-				493022511ECA44D100C143A8 /* MenuLayer.cpp in Sources */,
 				4930228E1ECA453E00C143A8 /* MacPlatformServices.mm in Sources */,
 				495388D31F122DDD007AC45B /* PhysicsBodyInputHandler.cpp in Sources */,
 				493022A11ECA45AF00C143A8 /* SFMLTextureMeasurer.cpp in Sources */,
@@ -836,7 +799,6 @@
 				497947A61F1BAC9800B01C19 /* UIUtils.cpp in Sources */,
 				493022381ECA449600C143A8 /* PGButton.cpp in Sources */,
 				490A3D031EDC80A40046A552 /* PhysicsWorld.cpp in Sources */,
-				493022531ECA44D100C143A8 /* MenuManager.cpp in Sources */,
 				4956B5CE1EE4582A00F6A7A4 /* Rect.cpp in Sources */,
 				49AACADE1ECCD13F003BDC3C /* Attributes.cpp in Sources */,
 				493022411ECA449600C143A8 /* PGUIMessageQueuePoster.cpp in Sources */,
@@ -848,7 +810,6 @@
 				493022771ECA44E200C143A8 /* PointUtils.cpp in Sources */,
 				49AACAE41ECCD13F003BDC3C /* EntityLoader.cpp in Sources */,
 				49AACAFF1ECCD4FC003BDC3C /* GameConstants.cpp in Sources */,
-				493022551ECA44D100C143A8 /* MenuNode.cpp in Sources */,
 				49E070571F1A67F700381C22 /* PhysicsBodyCollection.cpp in Sources */,
 				4930223E1ECA449600C143A8 /* PGUIElement.cpp in Sources */,
 				49904F291EEC4E18000B5F9F /* json_reader.cpp in Sources */,
