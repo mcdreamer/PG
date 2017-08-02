@@ -47,6 +47,8 @@ struct PhysicsTestScene::GameState
 
 	PG::BindableValue<int> numHearts;
 	PG::BindableValue<int> numStars;
+	
+	PG::BindableValue<std::string> value;
 };
 
 //--------------------------------------------------------
@@ -93,6 +95,8 @@ void PhysicsTestScene::initScene(PG::SceneHandle scene)
 	PG::UIUtils::createTextNodeForValue(PG::Point(20, 20), PG::Colour(255, 0, 0), 20, m_HeartCountNode, m_Scene, m_GameState->numHearts);
 	PG::UIUtils::createTextNodeForValue(PG::Point(20, 40), PG::Colour(0, 128, 255), 20, m_StarsCountNode, m_Scene, m_GameState->numStars);
 	
+	PG::UIUtils::createTextNodeForValue(PG::Point(20, 60), PG::Colour(0, 0, 0), 20, m_LabelNode, m_Scene, m_GameState->value);
+	
 	m_Scene.scene->pushUIElement(new PG::Button(*this, uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
 	
 	generateAndSetupLevelGeometry();
@@ -117,11 +121,67 @@ void PhysicsTestScene::update(float dt)
 	m_State->stars.findCollisionsWithBodyInWorld(m_State->bodyAndNode.body, m_State->world, [this](const int& s) { ++m_GameState->numStars; });
 }
 
+namespace
+{
+	//--------------------------------------------------------
+	void addCharacterForKeyCode(const PG::KeyCode& code,
+								std::string& str)
+	{
+		switch (code)
+		{
+			case PG::KeyCode::kA: str += "a"; break;
+			case PG::KeyCode::kB: str += "b"; break;
+			case PG::KeyCode::kC: str += "c"; break;
+			case PG::KeyCode::kD: str += "d"; break;
+			case PG::KeyCode::kE: str += "e"; break;
+			case PG::KeyCode::kF: str += "f"; break;
+			case PG::KeyCode::kG: str += "g"; break;
+			case PG::KeyCode::kH: str += "h"; break;
+			case PG::KeyCode::kI: str += "i"; break;
+			case PG::KeyCode::kJ: str += "j"; break;
+			case PG::KeyCode::kK: str += "k"; break;
+			case PG::KeyCode::kL: str += "l"; break;
+			case PG::KeyCode::kM: str += "m"; break;
+			case PG::KeyCode::kN: str += "n"; break;
+			case PG::KeyCode::kO: str += "o"; break;
+			case PG::KeyCode::kP: str += "p"; break;
+			case PG::KeyCode::kQ: str += "q"; break;
+			case PG::KeyCode::kR: str += "r"; break;
+			case PG::KeyCode::kS: str += "s"; break;
+			case PG::KeyCode::kT: str += "t"; break;
+			case PG::KeyCode::kU: str += "u"; break;
+			case PG::KeyCode::kV: str += "v"; break;
+			case PG::KeyCode::kW: str += "w"; break;
+			case PG::KeyCode::kX: str += "x"; break;
+			case PG::KeyCode::kY: str += "y"; break;
+			case PG::KeyCode::kZ: str += "z"; break;
+				
+			default:
+				break;
+		}
+	}
+
+	//--------------------------------------------------------
+	void handleBackspace(const PG::KeyCode& code,
+						 std::string& str)
+	{
+		if (code == PG::KeyCode::kBackspace && !str.empty())
+		{
+			str.pop_back();
+		}
+	}
+}
+
 //--------------------------------------------------------
 void PhysicsTestScene::keyDown(PG::KeyCode code, PG::KeyModifier mods)
 {
 	PG::PhysicsBodyInputHandler inputHandler(m_State->bodyAndNode.body);
 	inputHandler.keyDown(code, mods);
+	
+	auto existingValue = m_GameState->value.get();
+	addCharacterForKeyCode(code, existingValue);
+	handleBackspace(code, existingValue);
+	m_GameState->value.set(existingValue);
 }
 
 //--------------------------------------------------------

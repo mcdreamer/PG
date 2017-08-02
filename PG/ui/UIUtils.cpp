@@ -17,6 +17,12 @@ Point calculateNodeRelativePoint(const Point& parentRelPt, const NodeHandle& nod
 }
 
 //--------------------------------------------------------
+void bindTextNodeToValue(NodeHandle& nodeHandle, BindableValue<std::string>& value)
+{
+	value.setBinding([&](const auto& newVal) { nodeHandle.node->setText(newVal); });
+}
+
+//--------------------------------------------------------
 NodeHandle createTextNode(const Point& pos, const Colour& colour, const int fontSize, SceneHandle& scene)
 {
 	auto textNode = NodeCreator::createTextNode(scene.scene->getStyleSheet().uiFontName, fontSize);

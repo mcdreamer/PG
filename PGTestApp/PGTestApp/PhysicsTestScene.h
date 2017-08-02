@@ -38,6 +38,7 @@ private:
 	PG::SceneHandle					m_Scene;
 	PG::NodeHandle					m_HeartCountNode;
 	PG::NodeHandle					m_StarsCountNode;
+	PG::NodeHandle					m_LabelNode;
 	TagReciever&					m_AppTagTarget;
 	std::unique_ptr<PhysicsState>	m_State;
 	std::unique_ptr<GameState>		m_GameState;

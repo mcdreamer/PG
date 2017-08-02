@@ -12,6 +12,8 @@ namespace UIUtils {
 
 Point calculateNodeRelativePoint(const Point& parentRelPt, const NodeHandle& node);
 
+void bindTextNodeToValue(NodeHandle& nodeHandle, BindableValue<std::string>& value);
+
 //--------------------------------------------------------
 template <typename T>
 void bindTextNodeToValue(NodeHandle& nodeHandle, BindableValue<T>& value)
