@@ -1,12 +1,12 @@
 #include "PG/console/InputParser.h"
-#include "PG/console/ConsoleCommand.h"
+#include "PG/console/RawConsoleCommand.h"
 
 #include <boost/tokenizer.hpp>
 
 namespace PG {
 
 //--------------------------------------------------------
-boost::optional<ConsoleCommand> InputParser::parseInput(const std::string& input) const
+boost::optional<RawConsoleCommand> InputParser::parseInput(const std::string& input) const
 {
 	typedef boost::tokenizer<boost::char_separator<char>> cmd_tokenizer;
 	boost::char_separator<char> sep{" "};
@@ -32,7 +32,7 @@ boost::optional<ConsoleCommand> InputParser::parseInput(const std::string& input
 		return boost::none;
 	}
 	
-	return ConsoleCommand(commandName, arguments);
+	return RawConsoleCommand(commandName, arguments);
 }
 
 }

@@ -2,7 +2,7 @@
 #include "gtest/gtest.h"
 
 #include "PG/console/InputParser.h"
-#include "PG/console/ConsoleCommand.h"
+#include "PG/console/RawConsoleCommand.h"
 #include "PG/console/ConsoleCommandArgument.h"
 #include "PG/console/ConsoleCommandArgumentType.h"
 #include "PG/console/ConsoleCommandRegistry.h"
@@ -66,7 +66,7 @@ TEST(ConsoleTests,testConsoleCommandRegistry)
 	registry.setNArgumentsString(argsString);
 	registry.setErrorString(errorString);
 	
-	ConsoleCommand cmd("test", {});
+	RawConsoleCommand cmd("test", {});
 	auto response = registry.handleCommand(cmd);
 	EXPECT_EQ(notFoundString, response);
 	
@@ -82,15 +82,15 @@ TEST(ConsoleTests,testConsoleCommandRegistry)
 	ConsoleCommandArgumentType::kInt
 	});
 	
-	cmd = ConsoleCommand("test", { "1", "2" });
+	cmd = RawConsoleCommand("test", { "1", "2" });
 	response = registry.handleCommand(cmd);
 	EXPECT_EQ(std::string("3"), response);
 	
-	cmd = ConsoleCommand("test", { "1", "2", "3" });
+	cmd = RawConsoleCommand("test", { "1", "2", "3" });
 	response = registry.handleCommand(cmd);
 	EXPECT_EQ(argsString + " 2", response);
 	
-	cmd = ConsoleCommand("test", { "1", "sdg" });
+	cmd = RawConsoleCommand("test", { "1", "sdg" });
 	response = registry.handleCommand(cmd);
 	EXPECT_EQ(errorString, response);
 	

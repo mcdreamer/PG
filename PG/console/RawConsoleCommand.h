@@ -6,11 +6,11 @@
 namespace PG {
 
 //--------------------------------------------------------
-class ConsoleCommand
+class RawConsoleCommand
 {
 public:
-	ConsoleCommand(const std::string& commandName,
-				   const std::vector<std::string>& arguments)
+	RawConsoleCommand(const std::string& commandName,
+					  const std::vector<std::string>& arguments)
 	: m_CommandName(commandName),
 	m_Arguments(arguments)
 	{}

@@ -6,13 +6,13 @@
 
 namespace PG {
 
-class ConsoleCommand;
+class RawConsoleCommand;
 
 //--------------------------------------------------------
 class InputParser
 {
 public:
-	boost::optional<ConsoleCommand> parseInput(const std::string& input) const;
+	boost::optional<RawConsoleCommand> parseInput(const std::string& input) const;
 };
 
 }

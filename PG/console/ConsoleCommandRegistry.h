@@ -7,7 +7,7 @@
 
 namespace PG {
 
-class ConsoleCommand;
+class RawConsoleCommand;
 class ConsoleCommandArgument;
 enum class ConsoleCommandArgumentType;
 
@@ -30,7 +30,7 @@ public:
 						   const ConsoleCommandHandlerFunc& handlerFunc,
 						   const std::vector<ConsoleCommandArgumentType>& argumentTypes);
 	
-	std::string	handleCommand(const ConsoleCommand& command);
+	std::string	handleCommand(const RawConsoleCommand& command);
 
 	void		setNotFoundString(const std::string& str) { m_NotFoundString = str; }
 	void		setNArgumentsString(const std::string& str) { m_NArgumentsString = str; }

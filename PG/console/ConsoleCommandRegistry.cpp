@@ -1,7 +1,7 @@
 #include "PG/console/ConsoleCommandRegistry.h"
 #include "PG/console/ConsoleCommandArgument.h"
 #include "PG/console/ConsoleCommandArgumentType.h"
-#include "PG/console/ConsoleCommand.h"
+#include "PG/console/RawConsoleCommand.h"
 
 #include <boost/lexical_cast.hpp>
 
@@ -57,7 +57,7 @@ namespace
 }
 
 //--------------------------------------------------------
-std::string ConsoleCommandRegistry::handleCommand(const ConsoleCommand& command)
+std::string ConsoleCommandRegistry::handleCommand(const RawConsoleCommand& command)
 {
 	auto handlerIt = m_Handlers.find(command.getCommandName());
 	if (handlerIt != m_Handlers.end())

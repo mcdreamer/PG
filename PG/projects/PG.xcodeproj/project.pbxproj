@@ -147,7 +147,7 @@
 		49BECD6C1F3252B300778059 /* InputParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49BECD6A1F3252B300778059 /* InputParser.cpp */; };
 		49BECD6D1F3252B300778059 /* InputParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49BECD6A1F3252B300778059 /* InputParser.cpp */; };
 		49BECD6E1F3252B300778059 /* InputParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BECD6B1F3252B300778059 /* InputParser.h */; };
-		49BECD7C1F32536E00778059 /* ConsoleCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BECD7B1F32536E00778059 /* ConsoleCommand.h */; };
+		49BECD7C1F32536E00778059 /* RawConsoleCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BECD7B1F32536E00778059 /* RawConsoleCommand.h */; };
 		49BECD7F1F3259EA00778059 /* ConsoleCommandRegistry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49BECD7D1F3259EA00778059 /* ConsoleCommandRegistry.cpp */; };
 		49BECD801F3259EA00778059 /* ConsoleCommandRegistry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49BECD7D1F3259EA00778059 /* ConsoleCommandRegistry.cpp */; };
 		49BECD811F3259EA00778059 /* ConsoleCommandRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BECD7E1F3259EA00778059 /* ConsoleCommandRegistry.h */; };
@@ -281,7 +281,7 @@
 		49B63CCA1F121D44000B6297 /* PhysicsBodyAndNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsBodyAndNode.h; sourceTree = "<group>"; };
 		49BECD6A1F3252B300778059 /* InputParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputParser.cpp; sourceTree = "<group>"; };
 		49BECD6B1F3252B300778059 /* InputParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputParser.h; sourceTree = "<group>"; };
-		49BECD7B1F32536E00778059 /* ConsoleCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleCommand.h; sourceTree = "<group>"; };
+		49BECD7B1F32536E00778059 /* RawConsoleCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RawConsoleCommand.h; sourceTree = "<group>"; };
 		49BECD7D1F3259EA00778059 /* ConsoleCommandRegistry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConsoleCommandRegistry.cpp; sourceTree = "<group>"; };
 		49BECD7E1F3259EA00778059 /* ConsoleCommandRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleCommandRegistry.h; sourceTree = "<group>"; };
 		49BECD821F325E2B00778059 /* ConsoleCommandArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleCommandArgument.h; sourceTree = "<group>"; };
@@ -518,7 +518,7 @@
 			children = (
 				49BECD6A1F3252B300778059 /* InputParser.cpp */,
 				49BECD6B1F3252B300778059 /* InputParser.h */,
-				49BECD7B1F32536E00778059 /* ConsoleCommand.h */,
+				49BECD7B1F32536E00778059 /* RawConsoleCommand.h */,
 				49BECD7D1F3259EA00778059 /* ConsoleCommandRegistry.cpp */,
 				49BECD7E1F3259EA00778059 /* ConsoleCommandRegistry.h */,
 				49BECD821F325E2B00778059 /* ConsoleCommandArgument.h */,
@@ -645,7 +645,7 @@
 				493BC8051EEDAD7D00E10C5F /* IAnimation.h in Headers */,
 				493022761ECA44E200C143A8 /* Point.h in Headers */,
 				4930227D1ECA44E200C143A8 /* TileCoord.h in Headers */,
-				49BECD7C1F32536E00778059 /* ConsoleCommand.h in Headers */,
+				49BECD7C1F32536E00778059 /* RawConsoleCommand.h in Headers */,
 				4930227E1ECA44E200C143A8 /* ValueRange.h in Headers */,
 				49669EEA1F23C848008488BB /* UIUtils.h in Headers */,
 				49AACAE31ECCD13F003BDC3C /* EntityHandle.h in Headers */,
