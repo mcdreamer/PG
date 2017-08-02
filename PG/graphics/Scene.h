@@ -56,7 +56,7 @@ public:
     virtual void    update(float dt)=0;
     
 	virtual void    keyUp(KeyCode code)=0;
-    virtual void    keyDown(KeyCode code, PGKeyModifier mods)=0;
+    virtual void    keyDown(KeyCode code, KeyModifier mods)=0;
 	
 	virtual void    clickInScene(Point pt, bool isRightClick)=0;
     virtual void    draggedWithOffset(Point pt)=0;

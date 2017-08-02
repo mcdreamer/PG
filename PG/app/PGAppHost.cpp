@@ -31,7 +31,7 @@ using TResourceHandler = PG::Internal::WinResourceHandler;
 
 #include "PG/internal/graphics/SFMLScene.h"
 #include "PG/internal/graphics/SFMLView.h"
-#include "PG/internal/input/PGKeyCodeUtils.h"
+#include "PG/internal/input/KeyCodeUtils.h"
 
 #include "PG/app/IGameController.h"
 
@@ -85,11 +85,11 @@ namespace
             }
             else if (event.type == sf::Event::KeyPressed)
             {
-                controller.controller->keyDown(Internal::PGKeyCodeUtils::getPGKeyCode(event.key.code), PGKeyModifierNone);
+                controller.controller->keyDown(Internal::KeyCodeUtils::getKeyCode(event.key.code), KeyModifier::kNone);
             }
             else if (event.type == sf::Event::KeyReleased)
             {
-                controller.controller->keyUp(Internal::PGKeyCodeUtils::getPGKeyCode(event.key.code));
+                controller.controller->keyUp(Internal::KeyCodeUtils::getKeyCode(event.key.code));
             }
             else if (event.type == sf::Event::MouseButtonPressed)
             {

@@ -34,13 +34,13 @@ void ButtonTestScene::initScene(PG::SceneHandle scene)
 }
 
 //--------------------------------------------------------
-void ButtonTestScene::keyDown(PG::KeyCode code, PG::PGKeyModifier mods)
+void ButtonTestScene::keyDown(PG::KeyCode code, PG::KeyModifier mods)
 {
-	if (code == PG::KeyCode::PGKeyCodeUp)
+	if (code == PG::KeyCode::kUp)
 	{
 		m_Text.node->setPosition(PG::Point(m_Text.node->getPosition().x, m_Text.node->getPosition().y - 1));
 	}
-	else if (code == PG::KeyCode::PGKeyCodeDown)
+	else if (code == PG::KeyCode::kDown)
 	{
 		m_Text.node->setPosition(PG::Point(m_Text.node->getPosition().x, m_Text.node->getPosition().y + 1));
 	}

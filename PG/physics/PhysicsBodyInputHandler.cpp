@@ -4,17 +4,17 @@
 namespace PG {
 
 //--------------------------------------------------------
-void PhysicsBodyInputHandler::keyDown(PG::KeyCode code, PG::PGKeyModifier mods)
+void PhysicsBodyInputHandler::keyDown(PG::KeyCode code, PG::KeyModifier mods)
 {
-	if (code == PG::PGKeyCodeRight)
+	if (code == PG::KeyCode::kRight)
 	{
 		m_Body.movingRight = true;
 	}
-	else if (code == PG::PGKeyCodeLeft)
+	else if (code == PG::KeyCode::kLeft)
 	{
 		m_Body.movingLeft = true;
 	}
-	else if (code == PG::PGKeyCodeUp)
+	else if (code == PG::KeyCode::kUp)
 	{
 		m_Body.jumpToConsume = true;
 	}
@@ -23,11 +23,11 @@ void PhysicsBodyInputHandler::keyDown(PG::KeyCode code, PG::PGKeyModifier mods)
 //--------------------------------------------------------
 void PhysicsBodyInputHandler::keyUp(PG::KeyCode code)
 {
-	if (code == PG::PGKeyCodeRight)
+	if (code == PG::KeyCode::kRight)
 	{
 		m_Body.movingRight = false;
 	}
-	else if (code == PG::PGKeyCodeLeft)
+	else if (code == PG::KeyCode::kLeft)
 	{
 		m_Body.movingLeft = false;
 	}

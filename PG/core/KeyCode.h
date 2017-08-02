@@ -2,33 +2,59 @@
 
 namespace PG {
 
-enum KeyCode
+enum class KeyCode
 {
-    PGKeyCodeNone,
-    PGKeyCodeUp,
-    PGKeyCodeDown,
-    PGKeyCodeLeft,
-    PGKeyCodeRight,
-    PGKeyCodeMinus,
-    PGKeyCodeEquals,
-    PGKeyCodeD,
-    PGKeyCodeLeftBrace,
-    PGKeyCodeRightBrace,
-    PGKeyCode9,
-    PGKeyCode0,
-    PGKeyCodeSpeechMark,
-    PGKeyCodeBackSlash,
-	PGKeyCodeTab,
-	PGKeyCodeBackspace,
-    PGKeyCodeEscape,
-    PGKeyCodeEnter
+    kNone,
+    kUp,
+    kDown,
+    kLeft,
+    kRight,
+    kMinus,
+    kEquals,
+    kLeftBrace,
+    kRightBrace,
+    k9,
+    k0,
+    kSpeechMark,
+    kBackSlash,
+	kTab,
+	kBackspace,
+    kEscape,
+    kEnter,
+
+	kA,
+	kB,
+	kC,
+	kD,
+	kE,
+	kF,
+	kG,
+	kH,
+	kI,
+	kJ,
+	kK,
+	kL,
+	kM,
+	kN,
+	kO,
+	kP,
+	kQ,
+	kR,
+	kS,
+	kT,
+	kU,
+	kV,
+	kW,
+	kX,
+	kY,
+	kZ
 };
 
-enum PGKeyModifier
+enum class KeyModifier
 {
-	PGKeyModifierNone  = 0,
-	PGKeyModifierShift = 1 << 0,
-	PGKeyModifierCmd = 1 << 1,
+	kNone  = 0,
+	kShift = 1 << 0,
+	kCmd = 1 << 1,
 };
 
 }

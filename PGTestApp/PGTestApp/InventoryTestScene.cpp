@@ -122,7 +122,7 @@ void InventoryTestScene::update(float dt)
 }
 
 //--------------------------------------------------------
-void InventoryTestScene::keyDown(PG::KeyCode code, PG::PGKeyModifier mods)
+void InventoryTestScene::keyDown(PG::KeyCode code, PG::KeyModifier mods)
 {
 }
 

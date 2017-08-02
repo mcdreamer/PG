@@ -51,7 +51,7 @@
 		493022A11ECA45AF00C143A8 /* SFMLTextureMeasurer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493022971ECA45AF00C143A8 /* SFMLTextureMeasurer.cpp */; };
 		493022A21ECA45AF00C143A8 /* SFMLTextureMeasurer.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022981ECA45AF00C143A8 /* SFMLTextureMeasurer.h */; };
 		493022A61ECA45AF00C143A8 /* SFMLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4930229C1ECA45AF00C143A8 /* SFMLView.h */; };
-		493022A81ECA45B800C143A8 /* PGKeyCodeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022A71ECA45B800C143A8 /* PGKeyCodeUtils.h */; };
+		493022A81ECA45B800C143A8 /* KeyCodeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022A71ECA45B800C143A8 /* KeyCodeUtils.h */; };
 		493ABC9B1EFE8B10000C01E4 /* MoveToAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A7081EEDADC800816F2B /* MoveToAnimation.cpp */; };
 		493ABC9C1EFE8B10000C01E4 /* AnimationUpdater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A70C1EEDAF0A00816F2B /* AnimationUpdater.cpp */; };
 		493ABC9D1EFE8B10000C01E4 /* PGAppHost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493022811ECA44E800C143A8 /* PGAppHost.cpp */; };
@@ -214,7 +214,7 @@
 		493022971ECA45AF00C143A8 /* SFMLTextureMeasurer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SFMLTextureMeasurer.cpp; sourceTree = "<group>"; };
 		493022981ECA45AF00C143A8 /* SFMLTextureMeasurer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMLTextureMeasurer.h; sourceTree = "<group>"; };
 		4930229C1ECA45AF00C143A8 /* SFMLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMLView.h; sourceTree = "<group>"; };
-		493022A71ECA45B800C143A8 /* PGKeyCodeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGKeyCodeUtils.h; sourceTree = "<group>"; };
+		493022A71ECA45B800C143A8 /* KeyCodeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyCodeUtils.h; sourceTree = "<group>"; };
 		493BC8031EEDAD7D00E10C5F /* IAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAnimation.h; sourceTree = "<group>"; };
 		495388D11F122DDD007AC45B /* PhysicsBodyInputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsBodyInputHandler.cpp; sourceTree = "<group>"; };
 		495388D21F122DDD007AC45B /* PhysicsBodyInputHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsBodyInputHandler.h; sourceTree = "<group>"; };
@@ -387,7 +387,7 @@
 		493022921ECA459600C143A8 /* input */ = {
 			isa = PBXGroup;
 			children = (
-				493022A71ECA45B800C143A8 /* PGKeyCodeUtils.h */,
+				493022A71ECA45B800C143A8 /* KeyCodeUtils.h */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -650,7 +650,7 @@
 				49669EEA1F23C848008488BB /* UIUtils.h in Headers */,
 				49AACAE31ECCD13F003BDC3C /* EntityHandle.h in Headers */,
 				49BECD6E1F3252B300778059 /* InputParser.h in Headers */,
-				493022A81ECA45B800C143A8 /* PGKeyCodeUtils.h in Headers */,
+				493022A81ECA45B800C143A8 /* KeyCodeUtils.h in Headers */,
 				4930228F1ECA453E00C143A8 /* MacResourceHandler.h in Headers */,
 				49AACADD1ECCD13F003BDC3C /* AttributeConstants.h in Headers */,
 				49669EE41F23C848008488BB /* UIMessage.h in Headers */,

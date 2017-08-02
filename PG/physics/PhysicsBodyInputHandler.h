@@ -14,7 +14,7 @@ public:
 	: m_Body(body)
 	{}
 	
-	void keyDown(PG::KeyCode code, PG::PGKeyModifier mods);
+	void keyDown(PG::KeyCode code, PG::KeyModifier mods);
 	void keyUp(PG::KeyCode code);
 	
 private:

@@ -118,7 +118,7 @@ void PhysicsTestScene::update(float dt)
 }
 
 //--------------------------------------------------------
-void PhysicsTestScene::keyDown(PG::KeyCode code, PG::PGKeyModifier mods)
+void PhysicsTestScene::keyDown(PG::KeyCode code, PG::KeyModifier mods)
 {
 	PG::PhysicsBodyInputHandler inputHandler(m_State->bodyAndNode.body);
 	inputHandler.keyDown(code, mods);
