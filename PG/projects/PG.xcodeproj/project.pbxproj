@@ -144,6 +144,10 @@
 		49AACAFF1ECCD4FC003BDC3C /* GameConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AACAFE1ECCD4FC003BDC3C /* GameConstants.cpp */; };
 		49B63CC91F1219D2000B6297 /* PhysicsWorldParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B63CC81F1219D2000B6297 /* PhysicsWorldParams.h */; };
 		49B63CCB1F121D44000B6297 /* PhysicsBodyAndNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B63CCA1F121D44000B6297 /* PhysicsBodyAndNode.h */; };
+		49BECD6C1F3252B300778059 /* InputParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49BECD6A1F3252B300778059 /* InputParser.cpp */; };
+		49BECD6D1F3252B300778059 /* InputParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49BECD6A1F3252B300778059 /* InputParser.cpp */; };
+		49BECD6E1F3252B300778059 /* InputParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BECD6B1F3252B300778059 /* InputParser.h */; };
+		49BECD7C1F32536E00778059 /* ConsoleCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BECD7B1F32536E00778059 /* ConsoleCommand.h */; };
 		49E070431F1A52C500381C22 /* BindableValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E070421F1A52C500381C22 /* BindableValue.h */; };
 		49E070571F1A67F700381C22 /* PhysicsBodyCollection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49E070551F1A67F700381C22 /* PhysicsBodyCollection.cpp */; };
 		49E070581F1A67F700381C22 /* PhysicsBodyCollection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49E070551F1A67F700381C22 /* PhysicsBodyCollection.cpp */; };
@@ -270,6 +274,9 @@
 		49AACAFE1ECCD4FC003BDC3C /* GameConstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GameConstants.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		49B63CC81F1219D2000B6297 /* PhysicsWorldParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsWorldParams.h; sourceTree = "<group>"; };
 		49B63CCA1F121D44000B6297 /* PhysicsBodyAndNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsBodyAndNode.h; sourceTree = "<group>"; };
+		49BECD6A1F3252B300778059 /* InputParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputParser.cpp; sourceTree = "<group>"; };
+		49BECD6B1F3252B300778059 /* InputParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputParser.h; sourceTree = "<group>"; };
+		49BECD7B1F32536E00778059 /* ConsoleCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleCommand.h; sourceTree = "<group>"; };
 		49E070421F1A52C500381C22 /* BindableValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindableValue.h; sourceTree = "<group>"; };
 		49E070551F1A67F700381C22 /* PhysicsBodyCollection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsBodyCollection.cpp; sourceTree = "<group>"; };
 		49E070561F1A67F700381C22 /* PhysicsBodyCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsBodyCollection.h; sourceTree = "<group>"; };
@@ -396,6 +403,7 @@
 				493BC8011EEDAD5A00E10C5F /* animation */,
 				49F804981BEE514D006EEC2B /* app */,
 				49CEB4081AD99EFA00447477 /* core */,
+				49BECD691F32528100778059 /* console */,
 				49AACACF1ECCD126003BDC3C /* data */,
 				49AACAF21ECCD2D6003BDC3C /* entities */,
 				49CEB4061AD99DE000447477 /* graphics */,
@@ -494,6 +502,17 @@
 			);
 			name = ui;
 			path = ../ui;
+			sourceTree = "<group>";
+		};
+		49BECD691F32528100778059 /* console */ = {
+			isa = PBXGroup;
+			children = (
+				49BECD6A1F3252B300778059 /* InputParser.cpp */,
+				49BECD6B1F3252B300778059 /* InputParser.h */,
+				49BECD7B1F32536E00778059 /* ConsoleCommand.h */,
+			);
+			name = console;
+			path = ../console;
 			sourceTree = "<group>";
 		};
 		49CEB4051AD99D1400447477 /* io */ = {
@@ -610,9 +629,11 @@
 				493BC8051EEDAD7D00E10C5F /* IAnimation.h in Headers */,
 				493022761ECA44E200C143A8 /* Point.h in Headers */,
 				4930227D1ECA44E200C143A8 /* TileCoord.h in Headers */,
+				49BECD7C1F32536E00778059 /* ConsoleCommand.h in Headers */,
 				4930227E1ECA44E200C143A8 /* ValueRange.h in Headers */,
 				49669EEA1F23C848008488BB /* UIUtils.h in Headers */,
 				49AACAE31ECCD13F003BDC3C /* EntityHandle.h in Headers */,
+				49BECD6E1F3252B300778059 /* InputParser.h in Headers */,
 				493022A81ECA45B800C143A8 /* PGKeyCodeUtils.h in Headers */,
 				4930228F1ECA453E00C143A8 /* MacResourceHandler.h in Headers */,
 				49AACADD1ECCD13F003BDC3C /* AttributeConstants.h in Headers */,
@@ -745,6 +766,7 @@
 				493ABCAD1EFE8B10000C01E4 /* SFMLNode.cpp in Sources */,
 				493ABC9C1EFE8B10000C01E4 /* AnimationUpdater.cpp in Sources */,
 				493ABCA11EFE8B10000C01E4 /* Size.cpp in Sources */,
+				49BECD6D1F3252B300778059 /* InputParser.cpp in Sources */,
 				493ABCB61EFE8B10000C01E4 /* json_writer.cpp in Sources */,
 				493ABCAF1EFE8B10000C01E4 /* SFMLTextureMeasurer.cpp in Sources */,
 				493ABCAA1EFE8B10000C01E4 /* TextureMeasurer.cpp in Sources */,
@@ -773,6 +795,7 @@
 				49669EDF1F23C848008488BB /* UI.cpp in Sources */,
 				49669EE31F23C848008488BB /* UIMessage.cpp in Sources */,
 				49669ED81F23C848008488BB /* Bar.cpp in Sources */,
+				49BECD6C1F3252B300778059 /* InputParser.cpp in Sources */,
 				4930229D1ECA45AF00C143A8 /* SFMLNode.cpp in Sources */,
 				49904F2B1EEC4E18000B5F9F /* json_writer.cpp in Sources */,
 				493022901ECA453E00C143A8 /* MacResourceHandler.mm in Sources */,

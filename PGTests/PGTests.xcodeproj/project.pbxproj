@@ -22,6 +22,7 @@
 		49AACB791ECCEA34003BDC3C /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AACB741ECCEA34003BDC3C /* sfml-window.framework */; };
 		49AACB9A1ECCEB82003BDC3C /* libgtest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AACB8D1ECCEB71003BDC3C /* libgtest.a */; };
 		49AACB9C1ECCEC14003BDC3C /* testdata.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49AACB5A1ECCE92E003BDC3C /* testdata.json */; };
+		49BECD711F3252C600778059 /* ConsoleTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49BECD6F1F3252C600778059 /* ConsoleTests.cpp */; };
 		49E070461F1A52E700381C22 /* CoreTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49E070441F1A52E700381C22 /* CoreTests.cpp */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,8 @@
 		49AACB731ECCEA34003BDC3C /* sfml-system.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-system.framework"; path = "../PG/internal/sfml/sfml-system.framework"; sourceTree = "<group>"; };
 		49AACB741ECCEA34003BDC3C /* sfml-window.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-window.framework"; path = "../PG/internal/sfml/sfml-window.framework"; sourceTree = "<group>"; };
 		49AACB7E1ECCEB71003BDC3C /* gtest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = gtest.xcodeproj; path = ../PG/thirdparty/googletest/googletest/xcode/gtest.xcodeproj; sourceTree = "<group>"; };
+		49BECD6F1F3252C600778059 /* ConsoleTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConsoleTests.cpp; sourceTree = "<group>"; };
+		49BECD701F3252C600778059 /* ConsoleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleTests.h; sourceTree = "<group>"; };
 		49E070441F1A52E700381C22 /* CoreTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CoreTests.cpp; sourceTree = "<group>"; };
 		49E070451F1A52E700381C22 /* CoreTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTests.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -207,6 +210,8 @@
 				49E070441F1A52E700381C22 /* CoreTests.cpp */,
 				49E070451F1A52E700381C22 /* CoreTests.h */,
 				4976AD201F23A09B0044B6FB /* testgeometry.geometry */,
+				49BECD6F1F3252C600778059 /* ConsoleTests.cpp */,
+				49BECD701F3252C600778059 /* ConsoleTests.h */,
 			);
 			path = PGTests;
 			sourceTree = "<group>";
@@ -401,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49E070461F1A52E700381C22 /* CoreTests.cpp in Sources */,
+				49BECD711F3252C600778059 /* ConsoleTests.cpp in Sources */,
 				49AACB5D1ECCE92E003BDC3C /* CoreDataTests.cpp in Sources */,
 				4956B5C31EE4514100F6A7A4 /* GeometryTests.cpp in Sources */,
 				4961A6261F090EB200652361 /* PhysicsTests.cpp in Sources */,
