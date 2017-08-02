@@ -6,7 +6,7 @@
 
 namespace PG {
 
-struct ConsoleCommand;
+class ConsoleCommand;
 
 //--------------------------------------------------------
 class InputParser

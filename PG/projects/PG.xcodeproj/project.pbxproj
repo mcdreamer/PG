@@ -148,6 +148,11 @@
 		49BECD6D1F3252B300778059 /* InputParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49BECD6A1F3252B300778059 /* InputParser.cpp */; };
 		49BECD6E1F3252B300778059 /* InputParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BECD6B1F3252B300778059 /* InputParser.h */; };
 		49BECD7C1F32536E00778059 /* ConsoleCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BECD7B1F32536E00778059 /* ConsoleCommand.h */; };
+		49BECD7F1F3259EA00778059 /* ConsoleCommandRegistry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49BECD7D1F3259EA00778059 /* ConsoleCommandRegistry.cpp */; };
+		49BECD801F3259EA00778059 /* ConsoleCommandRegistry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49BECD7D1F3259EA00778059 /* ConsoleCommandRegistry.cpp */; };
+		49BECD811F3259EA00778059 /* ConsoleCommandRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BECD7E1F3259EA00778059 /* ConsoleCommandRegistry.h */; };
+		49BECD831F325E2B00778059 /* ConsoleCommandArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BECD821F325E2B00778059 /* ConsoleCommandArgument.h */; };
+		49BECD851F3263CC00778059 /* ConsoleCommandArgumentType.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BECD841F3263CC00778059 /* ConsoleCommandArgumentType.h */; };
 		49E070431F1A52C500381C22 /* BindableValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E070421F1A52C500381C22 /* BindableValue.h */; };
 		49E070571F1A67F700381C22 /* PhysicsBodyCollection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49E070551F1A67F700381C22 /* PhysicsBodyCollection.cpp */; };
 		49E070581F1A67F700381C22 /* PhysicsBodyCollection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49E070551F1A67F700381C22 /* PhysicsBodyCollection.cpp */; };
@@ -277,6 +282,10 @@
 		49BECD6A1F3252B300778059 /* InputParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputParser.cpp; sourceTree = "<group>"; };
 		49BECD6B1F3252B300778059 /* InputParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputParser.h; sourceTree = "<group>"; };
 		49BECD7B1F32536E00778059 /* ConsoleCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleCommand.h; sourceTree = "<group>"; };
+		49BECD7D1F3259EA00778059 /* ConsoleCommandRegistry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConsoleCommandRegistry.cpp; sourceTree = "<group>"; };
+		49BECD7E1F3259EA00778059 /* ConsoleCommandRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleCommandRegistry.h; sourceTree = "<group>"; };
+		49BECD821F325E2B00778059 /* ConsoleCommandArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleCommandArgument.h; sourceTree = "<group>"; };
+		49BECD841F3263CC00778059 /* ConsoleCommandArgumentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleCommandArgumentType.h; sourceTree = "<group>"; };
 		49E070421F1A52C500381C22 /* BindableValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindableValue.h; sourceTree = "<group>"; };
 		49E070551F1A67F700381C22 /* PhysicsBodyCollection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsBodyCollection.cpp; sourceTree = "<group>"; };
 		49E070561F1A67F700381C22 /* PhysicsBodyCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsBodyCollection.h; sourceTree = "<group>"; };
@@ -510,6 +519,10 @@
 				49BECD6A1F3252B300778059 /* InputParser.cpp */,
 				49BECD6B1F3252B300778059 /* InputParser.h */,
 				49BECD7B1F32536E00778059 /* ConsoleCommand.h */,
+				49BECD7D1F3259EA00778059 /* ConsoleCommandRegistry.cpp */,
+				49BECD7E1F3259EA00778059 /* ConsoleCommandRegistry.h */,
+				49BECD821F325E2B00778059 /* ConsoleCommandArgument.h */,
+				49BECD841F3263CC00778059 /* ConsoleCommandArgumentType.h */,
 			);
 			name = console;
 			path = ../console;
@@ -617,14 +630,17 @@
 				49B63CC91F1219D2000B6297 /* PhysicsWorldParams.h in Headers */,
 				493022A61ECA45AF00C143A8 /* SFMLView.h in Headers */,
 				495388D51F122DDD007AC45B /* PhysicsBodyInputHandler.h in Headers */,
+				49BECD851F3263CC00778059 /* ConsoleCommandArgumentType.h in Headers */,
 				49A7A70B1EEDADC800816F2B /* MoveToAnimation.h in Headers */,
 				493022211ECA441100C143A8 /* IResourceHandler.h in Headers */,
 				493022781ECA44E200C143A8 /* PointUtils.h in Headers */,
 				49669ED91F23C848008488BB /* Bar.h in Headers */,
 				49669EF01F23C855008488BB /* RectUtils.h in Headers */,
+				49BECD831F325E2B00778059 /* ConsoleCommandArgument.h in Headers */,
 				49A7A70F1EEDAF0A00816F2B /* AnimationUpdater.h in Headers */,
 				493022621ECA44DC00C143A8 /* View.h in Headers */,
 				49E070431F1A52C500381C22 /* BindableValue.h in Headers */,
+				49BECD811F3259EA00778059 /* ConsoleCommandRegistry.h in Headers */,
 				49669EDD1F23C848008488BB /* Dialog.h in Headers */,
 				493BC8051EEDAD7D00E10C5F /* IAnimation.h in Headers */,
 				493022761ECA44E200C143A8 /* Point.h in Headers */,
@@ -745,6 +761,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49BECD801F3259EA00778059 /* ConsoleCommandRegistry.cpp in Sources */,
 				493ABCA21EFE8B10000C01E4 /* TileCoord.cpp in Sources */,
 				4956B5CF1EE4582A00F6A7A4 /* Rect.cpp in Sources */,
 				493ABCA51EFE8B10000C01E4 /* Attributes.cpp in Sources */,
@@ -798,6 +815,7 @@
 				49BECD6C1F3252B300778059 /* InputParser.cpp in Sources */,
 				4930229D1ECA45AF00C143A8 /* SFMLNode.cpp in Sources */,
 				49904F2B1EEC4E18000B5F9F /* json_writer.cpp in Sources */,
+				49BECD7F1F3259EA00778059 /* ConsoleCommandRegistry.cpp in Sources */,
 				493022901ECA453E00C143A8 /* MacResourceHandler.mm in Sources */,
 				49669EDC1F23C848008488BB /* Dialog.cpp in Sources */,
 				4930227C1ECA44E200C143A8 /* TileCoord.cpp in Sources */,

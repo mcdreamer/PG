@@ -3,6 +3,9 @@
 
 #include "PG/console/InputParser.h"
 #include "PG/console/ConsoleCommand.h"
+#include "PG/console/ConsoleCommandArgument.h"
+#include "PG/console/ConsoleCommandArgumentType.h"
+#include "PG/console/ConsoleCommandRegistry.h"
 
 #include <string>
 
@@ -49,4 +52,46 @@ TEST(ConsoleTests,testInputParser)
 	ASSERT_EQ((size_t)2, cmd->getArguments().size());
 	EXPECT_EQ(std::string("true"), cmd->getArguments()[0]);
 	EXPECT_EQ(std::string("200"), cmd->getArguments()[1]);
+}
+
+//--------------------------------------------------------
+TEST(ConsoleTests,testConsoleCommandRegistry)
+{
+	const std::string notFoundString("no command");
+	const std::string argsString("arg count required =");
+	const std::string errorString("error");
+
+	ConsoleCommandRegistry registry;
+	registry.setNotFoundString(notFoundString);
+	registry.setNArgumentsString(argsString);
+	registry.setErrorString(errorString);
+	
+	ConsoleCommand cmd("test", {});
+	auto response = registry.handleCommand(cmd);
+	EXPECT_EQ(notFoundString, response);
+	
+	registry.addHandler("test", [](const std::vector<ConsoleCommandArgument>& args) { return "hi"; }, {});
+	response = registry.handleCommand(cmd);
+	EXPECT_EQ(std::string("hi"), response);
+	
+	registry.addHandler("test", [](const std::vector<ConsoleCommandArgument>& args)
+	{
+		return std::to_string(args[0].getValueAsInt() + args[1].getValueAsInt());
+	},
+	{ ConsoleCommandArgumentType::kInt,
+	ConsoleCommandArgumentType::kInt
+	});
+	
+	cmd = ConsoleCommand("test", { "1", "2" });
+	response = registry.handleCommand(cmd);
+	EXPECT_EQ(std::string("3"), response);
+	
+	cmd = ConsoleCommand("test", { "1", "2", "3" });
+	response = registry.handleCommand(cmd);
+	EXPECT_EQ(argsString + " 2", response);
+	
+	cmd = ConsoleCommand("test", { "1", "sdg" });
+	response = registry.handleCommand(cmd);
+	EXPECT_EQ(errorString, response);
+	
 }
