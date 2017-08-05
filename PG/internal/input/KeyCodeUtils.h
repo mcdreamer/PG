@@ -15,6 +15,8 @@ KeyCode getKeyCode(const sf::Keyboard::Key& key)
 	{
 	case sf::Keyboard::Escape: return KeyCode::kEscape;
 	case sf::Keyboard::BackSpace: return KeyCode::kBackspace;
+	case sf::Keyboard::Space: return KeyCode::kSpace;
+	case sf::Keyboard::Return: return KeyCode::kEnter;
 
 	case sf::Keyboard::Up: return KeyCode::kUp;
 	case sf::Keyboard::Down: return KeyCode::kDown;

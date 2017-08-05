@@ -113,7 +113,7 @@
     <ClInclude Include="..\internal\graphics\SFMLScene.h" />
     <ClInclude Include="..\internal\graphics\SFMLTextureMeasurer.h" />
     <ClInclude Include="..\internal\graphics\SFMLView.h" />
-    <ClInclude Include="..\internal\input\PGKeyCodeUtils.h" />
+    <ClInclude Include="..\internal\input\KeyCodeUtils.h" />
     <ClInclude Include="..\internal\platform\ResourceHandler.h" />
     <ClInclude Include="..\internal\platform\WinPlatformServices.h" />
     <ClInclude Include="..\internal\platform\WinResourceHandler.h" />

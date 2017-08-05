@@ -296,9 +296,6 @@
     <ClInclude Include="..\internal\graphics\SFMLTextureMeasurer.h">
       <Filter>internal\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="..\internal\input\PGKeyCodeUtils.h">
-      <Filter>internal\input</Filter>
-    </ClInclude>
     <ClInclude Include="..\internal\platform\WinResourceHandler.h">
       <Filter>internal\platform</Filter>
     </ClInclude>
@@ -415,6 +412,9 @@
     </ClInclude>
     <ClInclude Include="..\console\RawConsoleCommand.h">
       <Filter>console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\internal\input\KeyCodeUtils.h">
+      <Filter>internal\input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -14,7 +14,7 @@ Button::Button(TagReciever& target, const Point& point, const std::string& label
 //--------------------------------------------------------
 void Button::initUIElement(const StyleSheet& styleSheet)
 {
-    auto text = NodeCreator::createTextNode(styleSheet.uiFontName, 40);
+    auto text = NodeCreator::createTextNode(styleSheet.uiFontName, styleSheet.buttonFontSize);
     text->setText(m_Label);
 	text->setColour(styleSheet.buttonTextColour);
 	auto textSize = text->getSize();

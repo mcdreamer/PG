@@ -17,6 +17,11 @@
 #include "PG/entities/TilePositionCalculator.h"
 #include "PG/core/BindableValue.h"
 
+#include "PG/console/ConsoleCommandRegistry.h"
+#include "PG/console/ConsoleCommandArgument.h"
+#include "PG/console/RawConsoleCommand.h"
+#include "PG/console/InputParser.h"
+
 namespace
 {
 	//--------------------------------------------------------
@@ -155,6 +160,7 @@ namespace
 			case PG::KeyCode::kX: str += "x"; break;
 			case PG::KeyCode::kY: str += "y"; break;
 			case PG::KeyCode::kZ: str += "z"; break;
+			case PG::KeyCode::kSpace: str += " "; break;
 				
 			default:
 				break;
@@ -170,6 +176,45 @@ namespace
 			str.pop_back();
 		}
 	}
+
+	//--------------------------------------------------------
+	void handleEscape(const PG::KeyCode& code,
+						std::string& str)
+	{
+		if (code == PG::KeyCode::kEscape && !str.empty())
+		{
+			str.clear();
+		}
+	}
+
+	//--------------------------------------------------------
+	class Console
+	{
+	public:
+		Console(PG::BindableValue<int>& numStars)
+		: m_NumStars(numStars)
+		{
+			m_CommandRegistry.addHandler("showFPS", [](const std::vector<PG::ConsoleCommandArgument>& args) { return "hi"; }, {});
+			m_CommandRegistry.addHandler("addstar", [this](const std::vector<PG::ConsoleCommandArgument>& args) { ++m_NumStars; return "+1"; }, {});
+		}
+
+		std::string handleInputAndGetOutput(const std::string& input)
+		{
+			PG::InputParser parser;
+			const auto cmd = parser.parseInput(input);
+			if (cmd.is_initialized())
+			{
+				m_CommandRegistry.handleCommand(cmd.get());
+			}
+
+			return "";
+		}
+
+	private:
+		PG::ConsoleCommandRegistry	m_CommandRegistry;
+
+		PG::BindableValue<int>&		m_NumStars;
+	};
 }
 
 //--------------------------------------------------------
@@ -178,9 +223,33 @@ void PhysicsTestScene::keyDown(PG::KeyCode code, PG::KeyModifier mods)
 	PG::PhysicsBodyInputHandler inputHandler(m_State->bodyAndNode.body);
 	inputHandler.keyDown(code, mods);
 	
+	if (code == PG::KeyCode::kEnter)
+	{
+		auto input = m_GameState->value.get();
+		if (input.length() > 0)
+		{
+			input = input.substr(0, input.length() - 1);
+		}
+
+		Console c(m_GameState->numStars);
+		c.handleInputAndGetOutput(input);
+
+		m_GameState->value.set("");
+	}
+
 	auto existingValue = m_GameState->value.get();
+	
+	if (!existingValue.empty())
+	{
+		existingValue = existingValue.substr(0, existingValue.length() - 1);
+	}
+
 	addCharacterForKeyCode(code, existingValue);
 	handleBackspace(code, existingValue);
+	handleEscape(code, existingValue);
+
+	existingValue += "|";
+
 	m_GameState->value.set(existingValue);
 }
 
