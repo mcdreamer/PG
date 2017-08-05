@@ -161,6 +161,7 @@ copy $(ProjectDir)PGTests\font\*.* $(OutDir)</Command>
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="PGTests\ConsoleTests.h" />
     <ClInclude Include="PGTests\CoreDataTests.h" />
     <ClInclude Include="PGTests\CoreTests.h" />
     <ClInclude Include="PGTests\GeometryTests.h" />
@@ -170,6 +171,7 @@ copy $(ProjectDir)PGTests\font\*.* $(OutDir)</Command>
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="PGTests\ConsoleTests.cpp" />
     <ClCompile Include="PGTests\CoreDataTests.cpp" />
     <ClCompile Include="PGTests\CoreTests.cpp" />
     <ClCompile Include="PGTests\GeometryTests.cpp" />

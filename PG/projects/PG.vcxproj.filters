@@ -58,6 +58,9 @@
     <Filter Include="physics">
       <UniqueIdentifier>{d04d04fc-5c7a-4f91-88ec-6cfe5dea233a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="console">
+      <UniqueIdentifier>{87bf2e87-f165-4499-b35a-b8af8848a726}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\util\JsonUtils.cpp">
@@ -197,6 +200,12 @@
     </ClCompile>
     <ClCompile Include="..\ui\Button.cpp">
       <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\console\ConsoleCommandRegistry.cpp">
+      <Filter>console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\console\InputParser.cpp">
+      <Filter>console</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -391,6 +400,21 @@
     </ClInclude>
     <ClInclude Include="..\ui\Button.h">
       <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\console\ConsoleCommandArgument.h">
+      <Filter>console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\console\ConsoleCommandArgumentType.h">
+      <Filter>console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\console\ConsoleCommandRegistry.h">
+      <Filter>console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\console\InputParser.h">
+      <Filter>console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\console\RawConsoleCommand.h">
+      <Filter>console</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

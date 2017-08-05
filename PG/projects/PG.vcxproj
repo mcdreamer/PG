@@ -22,6 +22,8 @@
     <ClCompile Include="..\animation\AnimationUpdater.cpp" />
     <ClCompile Include="..\animation\MoveToAnimation.cpp" />
     <ClCompile Include="..\app\PGAppHost.cpp" />
+    <ClCompile Include="..\console\ConsoleCommandRegistry.cpp" />
+    <ClCompile Include="..\console\InputParser.cpp" />
     <ClCompile Include="..\core\Colour.cpp" />
     <ClCompile Include="..\core\RectUtils.cpp" />
     <ClCompile Include="..\core\Point.cpp" />
@@ -76,6 +78,11 @@
     <ClInclude Include="..\app\IGameController.h" />
     <ClInclude Include="..\app\PGAppHost.h" />
     <ClInclude Include="..\app\StyleSheet.h" />
+    <ClInclude Include="..\console\ConsoleCommandArgument.h" />
+    <ClInclude Include="..\console\ConsoleCommandArgumentType.h" />
+    <ClInclude Include="..\console\ConsoleCommandRegistry.h" />
+    <ClInclude Include="..\console\InputParser.h" />
+    <ClInclude Include="..\console\RawConsoleCommand.h" />
     <ClInclude Include="..\core\BindableValue.h" />
     <ClInclude Include="..\core\Colour.h" />
     <ClInclude Include="..\core\MathsUtils.h" />
