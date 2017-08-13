@@ -62,16 +62,16 @@ TEST(ConsoleTests,testConsoleCommandRegistry)
 	const std::string errorString("error");
 
 	ConsoleCommandRegistry registry;
-	registry.setNotFoundString(notFoundString);
 	registry.setNArgumentsString(argsString);
 	registry.setErrorString(errorString);
 	
 	RawConsoleCommand cmd("test", {});
 	auto response = registry.handleCommand(cmd);
-	EXPECT_EQ(notFoundString, response);
+	EXPECT_FALSE(response.is_initialized());
 	
 	registry.addHandler("test", [](const std::vector<ConsoleCommandArgument>& args) { return "hi"; }, {});
 	response = registry.handleCommand(cmd);
+	ASSERT_TRUE(response.is_initialized());
 	EXPECT_EQ(std::string("hi"), response);
 	
 	registry.addHandler("test", [](const std::vector<ConsoleCommandArgument>& args)
@@ -84,14 +84,16 @@ TEST(ConsoleTests,testConsoleCommandRegistry)
 	
 	cmd = RawConsoleCommand("test", { "1", "2" });
 	response = registry.handleCommand(cmd);
+	ASSERT_TRUE(response.is_initialized());
 	EXPECT_EQ(std::string("3"), response);
 	
 	cmd = RawConsoleCommand("test", { "1", "2", "3" });
 	response = registry.handleCommand(cmd);
+	ASSERT_TRUE(response.is_initialized());
 	EXPECT_EQ(argsString + " 2", response);
 	
 	cmd = RawConsoleCommand("test", { "1", "sdg" });
 	response = registry.handleCommand(cmd);
+	ASSERT_TRUE(response.is_initialized());
 	EXPECT_EQ(errorString, response);
-	
 }

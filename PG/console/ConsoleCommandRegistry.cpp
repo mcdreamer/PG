@@ -9,8 +9,7 @@ namespace PG {
 
 //--------------------------------------------------------
 ConsoleCommandRegistry::ConsoleCommandRegistry()
-: m_NotFoundString("Command not found"),
-m_NArgumentsString("Incorrect argument count. Requires"),
+: m_NArgumentsString("Incorrect argument count. Requires"),
 m_ErrorString("Error")
 {}
 
@@ -57,7 +56,7 @@ namespace
 }
 
 //--------------------------------------------------------
-std::string ConsoleCommandRegistry::handleCommand(const RawConsoleCommand& command)
+boost::optional<std::string> ConsoleCommandRegistry::handleCommand(const RawConsoleCommand& command)
 {
 	auto handlerIt = m_Handlers.find(command.getCommandName());
 	if (handlerIt != m_Handlers.end())
@@ -82,7 +81,7 @@ std::string ConsoleCommandRegistry::handleCommand(const RawConsoleCommand& comma
 		}
 	}
 	
-	return m_NotFoundString;
+	return boost::none;
 }
 
 }

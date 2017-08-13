@@ -19,8 +19,10 @@
 
 #include "PG/console/ConsoleCommandRegistry.h"
 #include "PG/console/ConsoleCommandArgument.h"
-#include "PG/console/RawConsoleCommand.h"
-#include "PG/console/InputParser.h"
+#include "PG/console/CommandSetHandle.h"
+#include "PG/console/Console.h"
+
+#include <list>
 
 namespace
 {
@@ -53,7 +55,11 @@ struct PhysicsTestScene::GameState
 	PG::BindableValue<int> numHearts;
 	PG::BindableValue<int> numStars;
 	
-	PG::BindableValue<std::string> value;
+	PG::Console						console;
+	PG::NodeHandle					consoleBackground;
+	PG::NodeHandle					consoleInput;
+	std::vector<PG::NodeHandle>		consoleOutput;
+	std::list<PG::BindableValue<std::string>>	consoleOutputLines;
 };
 
 //--------------------------------------------------------
@@ -100,13 +106,52 @@ void PhysicsTestScene::initScene(PG::SceneHandle scene)
 	PG::UIUtils::createTextNodeForValue(PG::Point(20, 20), PG::Colour(255, 0, 0), 20, m_HeartCountNode, m_Scene, m_GameState->numHearts);
 	PG::UIUtils::createTextNodeForValue(PG::Point(20, 40), PG::Colour(0, 128, 255), 20, m_StarsCountNode, m_Scene, m_GameState->numStars);
 	
-	PG::UIUtils::createTextNodeForValue(PG::Point(20, 60), PG::Colour(0, 0, 0), 20, m_LabelNode, m_Scene, m_GameState->value);
-	
 	m_Scene.scene->pushUIElement(new PG::Button(*this, uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
 	
 	generateAndSetupLevelGeometry();
 	generateAndSetupHearts();
 	generateAndSetupStars();
+	
+	// Console ///
+	
+	auto consoleBGNode = PG::NodeCreator::createColourNode(PG::Colour(10, 10, 10), m_Scene.scene->getSceneSize());
+	consoleBGNode->setPosition(uiPosCalc.atCentre());
+	m_GameState->consoleBackground = m_Scene.scene->addChild(consoleBGNode);
+	PG::UIUtils::createTextNodeForValue(PG::Point(20, 220), PG::Colour(255, 255, 200), 20, m_GameState->consoleInput, m_Scene, m_GameState->console.getConsoleInput());
+	PG::ConsoleCommandRegistry physicsSceneCommands;
+	physicsSceneCommands.addHandler("showfps", [](const std::vector<PG::ConsoleCommandArgument>& args) { return "hi"; }, {});
+	physicsSceneCommands.addHandler("addstar", [this](const std::vector<PG::ConsoleCommandArgument>& args) { ++m_GameState->numStars; return "+1"; }, {});
+	m_GameState->console.addCommandSet(physicsSceneCommands);
+	
+	for (int line = 0; line < 10; ++line)
+	{
+		m_GameState->consoleOutput.emplace_back();
+		m_GameState->consoleOutputLines.emplace_back("");
+	}
+	
+	auto lineIt = m_GameState->consoleOutputLines.begin();
+	for (int line = 0; line < 10; ++line, ++lineIt)
+	{
+		PG::UIUtils::createTextNodeForValue(PG::Point(20, (line + 1) * 20), PG::Colour(0, 128, 255), 20, m_GameState->consoleOutput[line], m_Scene, *lineIt);
+	}
+	
+	m_GameState->console.getConsoleOutputSize().setBinding([this](const int& size) {
+		
+		auto lineIt = m_GameState->consoleOutputLines.rbegin();
+		auto outputIt = m_GameState->console.getConsoleOutput().rbegin();
+		for (; lineIt != m_GameState->consoleOutputLines.rend(); ++lineIt)
+		{
+			if (outputIt != m_GameState->console.getConsoleOutput().rend())
+			{
+				*lineIt = *outputIt;
+				++outputIt;
+			}
+			else
+			{
+				*lineIt = "";
+			}
+		}
+	});
 }
 
 //--------------------------------------------------------
@@ -126,131 +171,13 @@ void PhysicsTestScene::update(float dt)
 	m_State->stars.findCollisionsWithBodyInWorld(m_State->bodyAndNode.body, m_State->world, [this](const int& s) { ++m_GameState->numStars; });
 }
 
-namespace
-{
-	//--------------------------------------------------------
-	void addCharacterForKeyCode(const PG::KeyCode& code,
-								std::string& str)
-	{
-		switch (code)
-		{
-			case PG::KeyCode::kA: str += "a"; break;
-			case PG::KeyCode::kB: str += "b"; break;
-			case PG::KeyCode::kC: str += "c"; break;
-			case PG::KeyCode::kD: str += "d"; break;
-			case PG::KeyCode::kE: str += "e"; break;
-			case PG::KeyCode::kF: str += "f"; break;
-			case PG::KeyCode::kG: str += "g"; break;
-			case PG::KeyCode::kH: str += "h"; break;
-			case PG::KeyCode::kI: str += "i"; break;
-			case PG::KeyCode::kJ: str += "j"; break;
-			case PG::KeyCode::kK: str += "k"; break;
-			case PG::KeyCode::kL: str += "l"; break;
-			case PG::KeyCode::kM: str += "m"; break;
-			case PG::KeyCode::kN: str += "n"; break;
-			case PG::KeyCode::kO: str += "o"; break;
-			case PG::KeyCode::kP: str += "p"; break;
-			case PG::KeyCode::kQ: str += "q"; break;
-			case PG::KeyCode::kR: str += "r"; break;
-			case PG::KeyCode::kS: str += "s"; break;
-			case PG::KeyCode::kT: str += "t"; break;
-			case PG::KeyCode::kU: str += "u"; break;
-			case PG::KeyCode::kV: str += "v"; break;
-			case PG::KeyCode::kW: str += "w"; break;
-			case PG::KeyCode::kX: str += "x"; break;
-			case PG::KeyCode::kY: str += "y"; break;
-			case PG::KeyCode::kZ: str += "z"; break;
-			case PG::KeyCode::kSpace: str += " "; break;
-				
-			default:
-				break;
-		}
-	}
-
-	//--------------------------------------------------------
-	void handleBackspace(const PG::KeyCode& code,
-						 std::string& str)
-	{
-		if (code == PG::KeyCode::kBackspace && !str.empty())
-		{
-			str.pop_back();
-		}
-	}
-
-	//--------------------------------------------------------
-	void handleEscape(const PG::KeyCode& code,
-						std::string& str)
-	{
-		if (code == PG::KeyCode::kEscape && !str.empty())
-		{
-			str.clear();
-		}
-	}
-
-	//--------------------------------------------------------
-	class Console
-	{
-	public:
-		Console(PG::BindableValue<int>& numStars)
-		: m_NumStars(numStars)
-		{
-			m_CommandRegistry.addHandler("showFPS", [](const std::vector<PG::ConsoleCommandArgument>& args) { return "hi"; }, {});
-			m_CommandRegistry.addHandler("addstar", [this](const std::vector<PG::ConsoleCommandArgument>& args) { ++m_NumStars; return "+1"; }, {});
-		}
-
-		std::string handleInputAndGetOutput(const std::string& input)
-		{
-			PG::InputParser parser;
-			const auto cmd = parser.parseInput(input);
-			if (cmd.is_initialized())
-			{
-				m_CommandRegistry.handleCommand(cmd.get());
-			}
-
-			return "";
-		}
-
-	private:
-		PG::ConsoleCommandRegistry	m_CommandRegistry;
-
-		PG::BindableValue<int>&		m_NumStars;
-	};
-}
-
 //--------------------------------------------------------
 void PhysicsTestScene::keyDown(PG::KeyCode code, PG::KeyModifier mods)
 {
 	PG::PhysicsBodyInputHandler inputHandler(m_State->bodyAndNode.body);
 	inputHandler.keyDown(code, mods);
 	
-	if (code == PG::KeyCode::kEnter)
-	{
-		auto input = m_GameState->value.get();
-		if (input.length() > 0)
-		{
-			input = input.substr(0, input.length() - 1);
-		}
-
-		Console c(m_GameState->numStars);
-		c.handleInputAndGetOutput(input);
-
-		m_GameState->value.set("");
-	}
-
-	auto existingValue = m_GameState->value.get();
-	
-	if (!existingValue.empty())
-	{
-		existingValue = existingValue.substr(0, existingValue.length() - 1);
-	}
-
-	addCharacterForKeyCode(code, existingValue);
-	handleBackspace(code, existingValue);
-	handleEscape(code, existingValue);
-
-	existingValue += "|";
-
-	m_GameState->value.set(existingValue);
+	m_GameState->console.keyPressed(code);
 }
 
 //--------------------------------------------------------
