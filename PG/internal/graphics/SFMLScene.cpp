@@ -64,7 +64,7 @@ void SFMLScene::pushUIElement(UIElement* uiElement)
 }
 
 //--------------------------------------------------------
-void SFMLScene::update(float dt)
+void SFMLScene::update(double dt)
 {
 	if (m_SceneController)
 	{

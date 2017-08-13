@@ -91,6 +91,6 @@ void BarTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster
 }
 
 //--------------------------------------------------------
-void BarTestScene::update(float dt)
+void BarTestScene::update(double dt)
 {
 }

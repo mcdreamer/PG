@@ -117,7 +117,7 @@ void InventoryTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msg
 }
 
 //--------------------------------------------------------
-void InventoryTestScene::update(float dt)
+void InventoryTestScene::update(double dt)
 {
 }
 

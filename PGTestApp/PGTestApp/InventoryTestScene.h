@@ -23,7 +23,7 @@ public:
 	virtual void keyUp(PG::KeyCode code) override;
 	virtual void keyDown(PG::KeyCode code, PG::KeyModifier mods) override;
 	
-	virtual void update(float dt) override;
+	virtual void update(double dt) override;
 	
 	virtual void receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster) override;
 	

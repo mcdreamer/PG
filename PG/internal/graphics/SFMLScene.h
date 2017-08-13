@@ -32,7 +32,7 @@ public:
     virtual void					receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster) override {}
 	
 	virtual void					clickInScene(PG::Point pt, bool isRightClick) override;
-    virtual void					update(float dt) override;
+    virtual void					update(double dt) override;
 	
 private:
     Size							m_SceneSize;

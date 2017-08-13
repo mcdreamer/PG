@@ -102,10 +102,8 @@ namespace
     }
 
     //--------------------------------------------------------
-    bool draw(sf::RenderWindow& window, const NodePtrArray& nodes)
+    void draw(sf::RenderWindow& window, const NodePtrArray& nodes)
     {
-        bool anyNodesRemoved = false;
-
         for (const auto& child : nodes)
         {
             auto* n = dynamic_cast<Internal::ISFMLNodeProvider*>(child.get());
@@ -117,18 +115,12 @@ namespace
                 view.move((int)-child->getPosition().x, (int)-child->getPosition().y);
                 window.setView(view);
 
-                anyNodesRemoved |= draw(window, n->m_ChildNodes);
+                draw(window, n->m_ChildNodes);
 
                 view.move((int)child->getPosition().x, (int)child->getPosition().y);
                 window.setView(view);
             }
-            else
-            {
-                anyNodesRemoved = true;
-            }
         }
-
-        return anyNodesRemoved;
     }
 
     //--------------------------------------------------------
@@ -150,6 +142,57 @@ namespace
             }
         }
     }
+	
+	//--------------------------------------------------------
+	void performUpdates(IGameController& gameController,
+						sf::RenderWindow& window,
+						Internal::SFMLView& view,
+						const double& timestep,
+						double& unhandledTime)
+	{
+		while (unhandledTime >= timestep)
+		{
+			auto* scene = view.getCurrentScene();
+			auto* rootNode = scene ? dynamic_cast<Internal::ISFMLNodeProvider*>(scene->getRoot().node) : nullptr;
+			
+			if (scene && rootNode)
+			{
+				handleEvents(window, view);
+				
+				scene->update(timestep);
+				
+				removeNodes(rootNode->m_ChildNodes);
+			}
+			
+			gameController.updateFinished();
+			
+			view.updateFinished();
+			
+			unhandledTime -= timestep;
+		}
+	}
+	
+	//--------------------------------------------------------
+	void drawScene(sf::RenderWindow& window,
+				   Internal::SFMLView& view,
+				   sf::Text& fpsLabel)
+	{
+		auto* scene = view.getCurrentScene();
+		auto* rootNode = scene ? dynamic_cast<Internal::ISFMLNodeProvider*>(scene->getRoot().node) : nullptr;
+		
+		if (scene)
+		{
+			window.clear(getsfColorFromPGColor(scene->getBackgroundColour()));
+		}
+		if (rootNode)
+		{
+			draw(window, rootNode->m_ChildNodes);
+		}
+		
+		window.draw(fpsLabel);
+		
+		window.display();
+	}
 
 	//--------------------------------------------------------
 	void runMainLoop(IGameController& gameController,
@@ -161,44 +204,24 @@ namespace
 		sf::Font fpsFont;
 		fpsFont.loadFromFile(resourceHandler.getResourcePath(appConfig.styleSheet.uiFontName, "ttf"));
 
-		sf::Text fps("0", fpsFont, 20);
-		fps.setPosition(window.getSize().x - 25, window.getSize().y - 25);
-		fps.setFillColor(sf::Color(255, 255, 255));
+		sf::Text fpsLabel("0", fpsFont, 20);
+		fpsLabel.setPosition(window.getSize().x - 25, window.getSize().y - 25);
+		fpsLabel.setFillColor(sf::Color(255, 255, 255));
 
 		sf::Clock clock;
+		const double timestep = 1.0 / 60.0;
+		double unhandledTime = 0;
 
 		while (window.isOpen())
 		{
-			float dt = clock.getElapsedTime().asSeconds();
+			const double dt = clock.getElapsedTime().asSeconds();
+			unhandledTime += dt;
 			clock.restart();
-
-			auto* scene = view.getCurrentScene();
-			if (scene)
-			{
-				auto* rootNode = dynamic_cast<Internal::ISFMLNodeProvider*>(scene->getRoot().node);
-
-                handleEvents(window, view);
-
-                scene->update(dt);
-
-                window.clear(getsfColorFromPGColor(scene->getBackgroundColour()));
-
-				const bool anyNodesRemoved = draw(window, rootNode->m_ChildNodes);
-
-                if (anyNodesRemoved)
-                {
-                    removeNodes(rootNode->m_ChildNodes);
-                }
-			}
-
-			fps.setString(std::to_string((int)(1.0 / dt)));
-			window.draw(fps);
-
-			window.display();
-
-			gameController.updateFinished();
-
-			view.updateFinished();
+			fpsLabel.setString(std::to_string((int)(1.0 / dt)));
+			
+			performUpdates(gameController, window, view, timestep, unhandledTime);
+			
+			drawScene(window, view, fpsLabel);
 		}
 	}
 }
@@ -212,7 +235,7 @@ void PGAppHost::runApp(IGameController& gameController)
 							(unsigned int)appConfig.windowSize.height);
 
     sf::RenderWindow window(videoMode, appConfig.windowTitle);
-    window.setFramerateLimit(60);
+	window.setVerticalSyncEnabled(true);
 
     TPlatformServices platformServices;
     TResourceHandler resourceHandler;

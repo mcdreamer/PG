@@ -107,7 +107,7 @@ void PhysicsTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPo
 }
 
 //--------------------------------------------------------
-void PhysicsTestScene::update(float dt)
+void PhysicsTestScene::update(double dt)
 {
 	m_State->world.applyPhysicsForBody(m_State->bodyAndNode.body, m_State->levelGeometry, dt);
 	

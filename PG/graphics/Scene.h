@@ -53,7 +53,7 @@ public:
 	
 	virtual void	initScene(SceneHandle scene)=0;
 	
-    virtual void    update(float dt)=0;
+    virtual void    update(double dt)=0;
     
 	virtual void    keyUp(KeyCode code)=0;
     virtual void    keyDown(KeyCode code, KeyModifier mods)=0;
@@ -84,7 +84,7 @@ public:
 	
 	virtual void					clickInScene(PG::Point pt, bool isRightClick)=0;
 	
-	virtual void					update(float dt)=0;
+	virtual void					update(double dt)=0;
 };
 
 using ScenePtr = std::unique_ptr<IScene>;

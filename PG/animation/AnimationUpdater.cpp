@@ -6,7 +6,7 @@
 namespace PG {
 
 //--------------------------------------------------------
-void AnimationUpdater::updateAnimations(AnimationPtrArray& animations, float dt) const
+void AnimationUpdater::updateAnimations(AnimationPtrArray& animations, double dt) const
 {
 	for (auto& animation : animations)
 	{

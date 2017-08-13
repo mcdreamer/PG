@@ -11,7 +11,7 @@ class IAnimation
 public:
 	virtual ~IAnimation() {}
 
-	virtual void update(float dt)=0;
+	virtual void update(double dt)=0;
 	virtual bool isComplete()=0;
 };
 

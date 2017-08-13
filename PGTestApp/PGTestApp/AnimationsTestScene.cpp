@@ -34,7 +34,7 @@ void AnimationsTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& ms
 }
 
 //--------------------------------------------------------
-void AnimationsTestScene::update(float dt)
+void AnimationsTestScene::update(double dt)
 {
 	PG::AnimationUpdater animUpdater;
 	
