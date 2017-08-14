@@ -86,6 +86,7 @@
 		493ABCB61EFE8B10000C01E4 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49904F281EEC4E18000B5F9F /* json_writer.cpp */; };
 		493ABCBE1EFE8B10000C01E4 /* JsonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493022231ECA449000C143A8 /* JsonUtils.cpp */; };
 		493ABCBF1EFE8B10000C01E4 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493022251ECA449000C143A8 /* Logger.cpp */; };
+		493AFB521F4231D100A952E1 /* Alignment.h in Headers */ = {isa = PBXBuildFile; fileRef = 493AFB511F4231D100A952E1 /* Alignment.h */; };
 		493BC8051EEDAD7D00E10C5F /* IAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 493BC8031EEDAD7D00E10C5F /* IAnimation.h */; };
 		495388D31F122DDD007AC45B /* PhysicsBodyInputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495388D11F122DDD007AC45B /* PhysicsBodyInputHandler.cpp */; };
 		495388D41F122DDD007AC45B /* PhysicsBodyInputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495388D11F122DDD007AC45B /* PhysicsBodyInputHandler.cpp */; };
@@ -229,6 +230,7 @@
 		493022981ECA45AF00C143A8 /* SFMLTextureMeasurer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMLTextureMeasurer.h; sourceTree = "<group>"; };
 		4930229C1ECA45AF00C143A8 /* SFMLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMLView.h; sourceTree = "<group>"; };
 		493022A71ECA45B800C143A8 /* KeyCodeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyCodeUtils.h; sourceTree = "<group>"; };
+		493AFB511F4231D100A952E1 /* Alignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alignment.h; sourceTree = "<group>"; };
 		493BC8031EEDAD7D00E10C5F /* IAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAnimation.h; sourceTree = "<group>"; };
 		495388D11F122DDD007AC45B /* PhysicsBodyInputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsBodyInputHandler.cpp; sourceTree = "<group>"; };
 		495388D21F122DDD007AC45B /* PhysicsBodyInputHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsBodyInputHandler.h; sourceTree = "<group>"; };
@@ -604,6 +606,7 @@
 				4961A61B1F090A5F00652361 /* SizeUtils.cpp */,
 				4961A61C1F090A5F00652361 /* SizeUtils.h */,
 				49E070421F1A52C500381C22 /* BindableValue.h */,
+				493AFB511F4231D100A952E1 /* Alignment.h */,
 			);
 			name = core;
 			path = ../core;
@@ -633,6 +636,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				493AFB521F4231D100A952E1 /* Alignment.h in Headers */,
 				493022791ECA44E200C143A8 /* Rect.h in Headers */,
 				49669EEE1F23C855008488BB /* KeyCode.h in Headers */,
 				4930228D1ECA453E00C143A8 /* MacPlatformServices.h in Headers */,

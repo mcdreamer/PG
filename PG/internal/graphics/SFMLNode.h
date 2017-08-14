@@ -3,6 +3,7 @@
 #include "PG/graphics/Node.h"
 #include "PG/core/Rect.h"
 #include "PG/core/Size.h"
+#include "PG/core/Alignment.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -268,7 +269,7 @@ private:
 class SFMLLabelNode : public SFMLNodeBase<sf::Text>
 {
 public:
-    SFMLLabelNode(const std::string& fontName, int fontSize);
+    SFMLLabelNode(const std::string& fontName, int fontSize, Alignment alignment);
 
     virtual Size getSize() const override
     {
@@ -282,7 +283,18 @@ public:
         auto oldPos = getPosition();
         m_Node.setString(sf::String(text));
         setPosition(oldPos);
-        m_Node.setOrigin((float)getSize().width / 2.0f, (float)getSize().height / 2.0f);
+		
+		float originX = 0.0f;
+		if (m_Alignment == Alignment::kCentre)
+		{
+			originX = (float)getSize().width / 2.0f;
+		}
+		else if (m_Alignment == Alignment::kRight)
+		{
+			originX = (float)getSize().width;
+		}
+		
+        m_Node.setOrigin(originX, (float)getSize().height / 2.0f);
     }
     
     virtual void setPosition(Point point) override
@@ -306,6 +318,9 @@ public:
     {
         m_Node.setFillColor(sf::Color());
     }
+	
+private:
+	Alignment m_Alignment;
 };
 
 }
