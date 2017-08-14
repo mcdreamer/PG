@@ -22,6 +22,7 @@ enum class KeyCode
     kEscape,
     kEnter,
 	kSpace,
+	kComma,
 
 	kA,
 	kB,

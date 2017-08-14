@@ -13,10 +13,10 @@ enum class KeyCode;
 class CommandSetHandle;
 
 //--------------------------------------------------------
-class Console
+class ConsoleController
 {
 public:
-	Console();
+	ConsoleController();
 	
 	void							setCommandNotFoundString(const std::string& notFoundString);
 	CommandSetHandle				addCommandSet(const ConsoleCommandRegistry& registry);
@@ -36,7 +36,9 @@ private:
 	PG::BindableValue<std::string>										m_ConsoleInput;
 	PG::BindableValue<int>												m_ConsoleOutputSize;
 	std::vector<std::string>											m_ConsoleOutput;
-	
+
+	void		addCaret();
+	void		removeCaret();
 	std::string handleInputAndGetOutput(const std::string& input);
 };
 

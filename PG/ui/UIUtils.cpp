@@ -23,9 +23,15 @@ void bindTextNodeToValue(NodeHandle& nodeHandle, BindableValue<std::string>& val
 }
 
 //--------------------------------------------------------
-NodeHandle createTextNode(const Point& pos, const Colour& colour, const int fontSize, SceneHandle& scene)
+NodeHandle createTextNode(const Point& pos,
+						  const Colour& colour,
+						  const int fontSize,
+						  const Alignment alignment,
+						  SceneHandle& scene)
 {
-	auto textNode = NodeCreator::createTextNode(scene.scene->getStyleSheet().uiFontName, fontSize);
+	auto textNode = NodeCreator::createTextNode(scene.scene->getStyleSheet().uiFontName,
+												fontSize,
+												alignment);
 	textNode->setPosition(pos);
 	textNode->setColour(colour);
 	return scene.scene->addChild(textNode);

@@ -17,11 +17,6 @@
 #include "PG/entities/TilePositionCalculator.h"
 #include "PG/core/BindableValue.h"
 
-#include "PG/console/ConsoleCommandRegistry.h"
-#include "PG/console/ConsoleCommandArgument.h"
-#include "PG/console/CommandSetHandle.h"
-#include "PG/console/Console.h"
-
 #include <list>
 
 namespace
@@ -54,12 +49,6 @@ struct PhysicsTestScene::GameState
 
 	PG::BindableValue<int> numHearts;
 	PG::BindableValue<int> numStars;
-	
-	PG::Console						console;
-	PG::NodeHandle					consoleBackground;
-	PG::NodeHandle					consoleInput;
-	std::vector<PG::NodeHandle>		consoleOutput;
-	std::list<PG::BindableValue<std::string>>	consoleOutputLines;
 };
 
 //--------------------------------------------------------
@@ -111,47 +100,6 @@ void PhysicsTestScene::initScene(PG::SceneHandle scene)
 	generateAndSetupLevelGeometry();
 	generateAndSetupHearts();
 	generateAndSetupStars();
-	
-	// Console ///
-	
-	auto consoleBGNode = PG::NodeCreator::createColourNode(PG::Colour(10, 10, 10), m_Scene.scene->getSceneSize());
-	consoleBGNode->setPosition(uiPosCalc.atCentre());
-	m_GameState->consoleBackground = m_Scene.scene->addChild(consoleBGNode);
-	PG::UIUtils::createTextNodeForValue(PG::Point(20, 220), PG::Colour(255, 255, 200), 20, m_GameState->consoleInput, m_Scene, m_GameState->console.getConsoleInput());
-	PG::ConsoleCommandRegistry physicsSceneCommands;
-	physicsSceneCommands.addHandler("showfps", [](const std::vector<PG::ConsoleCommandArgument>& args) { return "hi"; }, {});
-	physicsSceneCommands.addHandler("addstar", [this](const std::vector<PG::ConsoleCommandArgument>& args) { ++m_GameState->numStars; return "+1"; }, {});
-	m_GameState->console.addCommandSet(physicsSceneCommands);
-	
-	for (int line = 0; line < 10; ++line)
-	{
-		m_GameState->consoleOutput.emplace_back();
-		m_GameState->consoleOutputLines.emplace_back("");
-	}
-	
-	auto lineIt = m_GameState->consoleOutputLines.begin();
-	for (int line = 0; line < 10; ++line, ++lineIt)
-	{
-		PG::UIUtils::createTextNodeForValue(PG::Point(20, (line + 1) * 20), PG::Colour(0, 128, 255), 20, m_GameState->consoleOutput[line], m_Scene, *lineIt);
-	}
-	
-	m_GameState->console.getConsoleOutputSize().setBinding([this](const int& size) {
-		
-		auto lineIt = m_GameState->consoleOutputLines.rbegin();
-		auto outputIt = m_GameState->console.getConsoleOutput().rbegin();
-		for (; lineIt != m_GameState->consoleOutputLines.rend(); ++lineIt)
-		{
-			if (outputIt != m_GameState->console.getConsoleOutput().rend())
-			{
-				*lineIt = *outputIt;
-				++outputIt;
-			}
-			else
-			{
-				*lineIt = "";
-			}
-		}
-	});
 }
 
 //--------------------------------------------------------
@@ -176,8 +124,6 @@ void PhysicsTestScene::keyDown(PG::KeyCode code, PG::KeyModifier mods)
 {
 	PG::PhysicsBodyInputHandler inputHandler(m_State->bodyAndNode.body);
 	inputHandler.keyDown(code, mods);
-	
-	m_GameState->console.keyPressed(code);
 }
 
 //--------------------------------------------------------

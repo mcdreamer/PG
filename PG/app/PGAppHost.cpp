@@ -2,6 +2,7 @@
 
 #include "PG/app/PGAppHost.h"
 #include "PG/app/AppConfiguration.h"
+#include "PG/internal/ui/Console.h"
 
 #ifdef __APPLE__
 
@@ -65,142 +66,189 @@ namespace
 		return sf::Color(c.r, c.g, c.b, (unsigned char)c.a);
 	}
 
-    //--------------------------------------------------------
-    void handleEvents(sf::RenderWindow& window, Internal::SFMLView& view)
-    {
-		auto* scene = view.getCurrentScene();
-		auto controller = scene->getController();
-
-		if (!scene || !controller.controller)
-		{
-			return;
-		}
-
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-            {
-                window.close();
-            }
-            else if (event.type == sf::Event::KeyPressed)
-            {
-                controller.controller->keyDown(Internal::KeyCodeUtils::getKeyCode(event.key.code), KeyModifier::kNone);
-            }
-            else if (event.type == sf::Event::KeyReleased)
-            {
-                controller.controller->keyUp(Internal::KeyCodeUtils::getKeyCode(event.key.code));
-            }
-            else if (event.type == sf::Event::MouseButtonPressed)
-            {
-                const PG::Point windowPt(event.mouseButton.x, event.mouseButton.y);
-                const auto scenePt = windowPointToScenePoint(window.getSize(), scene->getSceneSize(), windowPt);
-
-                scene->clickInScene(scenePt, event.mouseButton.button == sf::Mouse::Button::Right);
-            }
-        }
-    }
-
-    //--------------------------------------------------------
-    bool draw(sf::RenderWindow& window, const NodePtrArray& nodes)
-    {
-        bool anyNodesRemoved = false;
-
-        for (const auto& child : nodes)
-        {
-            auto* n = dynamic_cast<Internal::ISFMLNodeProvider*>(child.get());
-            if (!n->isRemoved())
-            {
-                window.draw(*n->getNode());
-
-                auto view = window.getView();
-                view.move((int)-child->getPosition().x, (int)-child->getPosition().y);
-                window.setView(view);
-
-                anyNodesRemoved |= draw(window, n->m_ChildNodes);
-
-                view.move((int)child->getPosition().x, (int)child->getPosition().y);
-                window.setView(view);
-            }
-            else
-            {
-                anyNodesRemoved = true;
-            }
-        }
-
-        return anyNodesRemoved;
-    }
-
-    //--------------------------------------------------------
-    void removeNodes(NodePtrArray& nodes)
-    {
-        auto childIt = nodes.begin();
-        while (childIt != nodes.end())
-        {
-            auto* n = dynamic_cast<Internal::ISFMLNodeProvider*>(childIt->get());
-
-            if (!n->isRemoved())
-            {
-                removeNodes(n->m_ChildNodes);
-                ++childIt;
-            }
-            else
-            {
-                childIt = nodes.erase(childIt);
-            }
-        }
-    }
-
 	//--------------------------------------------------------
-	void runMainLoop(IGameController& gameController,
-					 const AppConfiguration& appConfig,
-					 sf::RenderWindow& window,
-					 Internal::SFMLView& view,
-					 TResourceHandler& resourceHandler)
+	class AppRunner
 	{
-		sf::Font fpsFont;
-		fpsFont.loadFromFile(resourceHandler.getResourcePath(appConfig.styleSheet.uiFontName, "ttf"));
-
-		sf::Text fps("0", fpsFont, 20);
-		fps.setPosition(window.getSize().x - 25, window.getSize().y - 25);
-		fps.setFillColor(sf::Color(255, 255, 255));
-
-		sf::Clock clock;
-
-		while (window.isOpen())
+	public:
+		//--------------------------------------------------------
+		AppRunner(IGameController& gameController,
+				  const AppConfiguration& appConfig,
+				  sf::RenderWindow& window,
+				  Internal::SFMLView& view,
+				  TResourceHandler& resourceHandler)
+		: m_ConsoleActive(false),
+		m_GameController(gameController),
+		m_AppConfig(appConfig),
+		m_Window(window),
+		m_View(view),
+		m_ResourceHandler(resourceHandler)
+		{}
+	
+		//--------------------------------------------------------
+		void runMainLoop()
 		{
-			float dt = clock.getElapsedTime().asSeconds();
-			clock.restart();
+			sf::Font fpsFont;
+			fpsFont.loadFromFile(m_ResourceHandler.getResourcePath(m_AppConfig.styleSheet.uiFontName, "ttf"));
 
-			auto* scene = view.getCurrentScene();
-			if (scene)
+			sf::Text fps("0", fpsFont, 20);
+			fps.setPosition(m_Window.getSize().x - 25, m_Window.getSize().y - 25);
+			fps.setFillColor(sf::Color(255, 255, 255));
+
+			sf::Clock clock;
+
+			while (m_Window.isOpen())
 			{
-				auto* rootNode = dynamic_cast<Internal::ISFMLNodeProvider*>(scene->getRoot().node);
+				float dt = clock.getElapsedTime().asSeconds();
+				clock.restart();
 
-                handleEvents(window, view);
+				auto* scene = m_View.getCurrentScene();
+				if (scene)
+				{
+					auto* rootNode = dynamic_cast<Internal::ISFMLNodeProvider*>(scene->getRoot().node);
 
-                scene->update(dt);
+					handleEvents();
 
-                window.clear(getsfColorFromPGColor(scene->getBackgroundColour()));
+					scene->update(dt);
 
-				const bool anyNodesRemoved = draw(window, rootNode->m_ChildNodes);
+					m_Window.clear(getsfColorFromPGColor(scene->getBackgroundColour()));
 
-                if (anyNodesRemoved)
-                {
-                    removeNodes(rootNode->m_ChildNodes);
-                }
+					const bool anyNodesRemoved = draw(rootNode->m_ChildNodes);
+
+					if (anyNodesRemoved)
+					{
+						removeNodes(rootNode->m_ChildNodes);
+					}
+				}
+
+				fps.setString(std::to_string((int)(1.0 / dt)));
+				m_Window.draw(fps);
+
+				m_Window.display();
+
+				m_GameController.updateFinished();
+
+				m_View.updateFinished();
 			}
-
-			fps.setString(std::to_string((int)(1.0 / dt)));
-			window.draw(fps);
-
-			window.display();
-
-			gameController.updateFinished();
-
-			view.updateFinished();
 		}
-	}
+		
+		//--------------------------------------------------------
+		void handleEvents()
+		{
+			auto* scene = m_View.getCurrentScene();
+			auto controller = scene->getController();
+			
+			if (!scene || !controller.controller)
+			{
+				return;
+			}
+			
+			sf::Event event;
+			while (m_Window.pollEvent(event))
+			{
+				if (event.type == sf::Event::Closed)
+				{
+					m_Window.close();
+				}
+				else if (event.type == sf::Event::KeyPressed)
+				{
+					const auto keyCode = Internal::KeyCodeUtils::getKeyCode(event.key.code);
+					if (keyCode != KeyCode::kComma)
+					{
+						controller.controller->keyDown(keyCode, KeyModifier::kNone);
+					}
+					else
+					{
+						toggleConsole();
+					}
+				}
+				else if (event.type == sf::Event::KeyReleased)
+				{
+					controller.controller->keyUp(Internal::KeyCodeUtils::getKeyCode(event.key.code));
+				}
+				else if (event.type == sf::Event::MouseButtonPressed)
+				{
+					const PG::Point windowPt(event.mouseButton.x, event.mouseButton.y);
+					const auto scenePt = windowPointToScenePoint(m_Window.getSize(), scene->getSceneSize(), windowPt);
+					
+					scene->clickInScene(scenePt, event.mouseButton.button == sf::Mouse::Button::Right);
+				}
+			}
+		}
+		
+		//--------------------------------------------------------
+		bool draw(const NodePtrArray& nodes)
+		{
+			bool anyNodesRemoved = false;
+			
+			for (const auto& child : nodes)
+			{
+				auto* n = dynamic_cast<Internal::ISFMLNodeProvider*>(child.get());
+				if (!n->isRemoved())
+				{
+					m_Window.draw(*n->getNode());
+					
+					auto view = m_Window.getView();
+					view.move((int)-child->getPosition().x, (int)-child->getPosition().y);
+					m_Window.setView(view);
+					
+					anyNodesRemoved |= draw(n->m_ChildNodes);
+					
+					view.move((int)child->getPosition().x, (int)child->getPosition().y);
+					m_Window.setView(view);
+				}
+				else
+				{
+					anyNodesRemoved = true;
+				}
+			}
+			
+			return anyNodesRemoved;
+		}
+		
+		//--------------------------------------------------------
+		void removeNodes(NodePtrArray& nodes)
+		{
+			auto childIt = nodes.begin();
+			while (childIt != nodes.end())
+			{
+				auto* n = dynamic_cast<Internal::ISFMLNodeProvider*>(childIt->get());
+				
+				if (!n->isRemoved())
+				{
+					removeNodes(n->m_ChildNodes);
+					++childIt;
+				}
+				else
+				{
+					childIt = nodes.erase(childIt);
+				}
+			}
+		}
+		
+		//--------------------------------------------------------
+		void toggleConsole()
+		{
+			m_ConsoleActive = !m_ConsoleActive;
+			
+			if (m_ConsoleActive)
+			{
+				std::unique_ptr<ISceneController> consoleScene(new Internal::ConsoleScene);
+				m_View.pushScene(consoleScene);
+			}
+			else
+			{
+				m_View.popScene();
+			}
+		}
+		
+	private:
+		IGameController&		m_GameController;
+		const AppConfiguration&	m_AppConfig;
+		sf::RenderWindow&		m_Window;
+		Internal::SFMLView&		m_View;
+		TResourceHandler&		m_ResourceHandler;
+		bool					m_ConsoleActive;
+	};
 }
 
 //--------------------------------------------------------
@@ -226,7 +274,8 @@ void PGAppHost::runApp(IGameController& gameController)
 
     gameController.start(platformServices, view, resourceHandler);
 
-	runMainLoop(gameController, appConfig, window, view, resourceHandler);
+	AppRunner appRunner(gameController, appConfig, window, view, resourceHandler);
+	appRunner.runMainLoop();
 }
 
 }
