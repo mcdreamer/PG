@@ -9,7 +9,8 @@ IResourceHandler* g_ResourceHandler = nullptr;
 SFMLFontCache* g_FontCache = nullptr;
 
 //--------------------------------------------------------
-SFMLLabelNode::SFMLLabelNode(const std::string& fontName, int fontSize)
+SFMLLabelNode::SFMLLabelNode(const std::string& fontName, int fontSize, Alignment alignment)
+: m_Alignment(alignment)
 {
 	const auto* font = g_FontCache->getOrCreateFont(fontName);
 	if (font)
@@ -42,7 +43,17 @@ NodePtr NodeCreator::createColourNode(const Colour& colour, const Size& size)
 //--------------------------------------------------------
 NodePtr NodeCreator::createTextNode(const std::string& fontName, double fontSize)
 {
-    return std::make_unique<Internal::SFMLLabelNode>(Internal::g_ResourceHandler->getResourcePath(fontName, "ttf"), fontSize);
+    return std::make_unique<Internal::SFMLLabelNode>(Internal::g_ResourceHandler->getResourcePath(fontName, "ttf"),
+													 fontSize,
+													 Alignment::kCentre);
+}
+
+//--------------------------------------------------------
+NodePtr NodeCreator::createTextNode(const std::string& fontName, double fontSize, Alignment alignment)
+{
+	return std::make_unique<Internal::SFMLLabelNode>(Internal::g_ResourceHandler->getResourcePath(fontName, "ttf"),
+													 fontSize,
+													 alignment);
 }
 
 }

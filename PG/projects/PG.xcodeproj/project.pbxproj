@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		49045B6F1EF581AA006ECF48 /* SFMLView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49045B6E1EF581AA006ECF48 /* SFMLView.cpp */; };
+		490A3A451F40A2AA00A967C8 /* KeyCodeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490A3A431F40A2AA00A967C8 /* KeyCodeUtils.cpp */; };
+		490A3A461F40A2AA00A967C8 /* KeyCodeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 490A3A441F40A2AA00A967C8 /* KeyCodeUtils.h */; };
+		490A3A491F40A30800A967C8 /* CommandSetHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490A3A471F40A30800A967C8 /* CommandSetHandle.cpp */; };
+		490A3A4A1F40A30800A967C8 /* CommandSetHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490A3A471F40A30800A967C8 /* CommandSetHandle.cpp */; };
+		490A3A4B1F40A30800A967C8 /* CommandSetHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = 490A3A481F40A30800A967C8 /* CommandSetHandle.h */; };
+		490A3A4E1F40A34900A967C8 /* ConsoleController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490A3A4C1F40A34900A967C8 /* ConsoleController.cpp */; };
+		490A3A4F1F40A34900A967C8 /* ConsoleController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490A3A4C1F40A34900A967C8 /* ConsoleController.cpp */; };
+		490A3A501F40A34900A967C8 /* ConsoleController.h in Headers */ = {isa = PBXBuildFile; fileRef = 490A3A4D1F40A34900A967C8 /* ConsoleController.h */; };
 		490A3D001EDC386B0046A552 /* PhysicsBody.h in Headers */ = {isa = PBXBuildFile; fileRef = 490A3CFF1EDC386B0046A552 /* PhysicsBody.h */; };
 		490A3D031EDC80A40046A552 /* PhysicsWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490A3D011EDC80A40046A552 /* PhysicsWorld.cpp */; };
 		490A3D041EDC80A40046A552 /* PhysicsWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490A3D011EDC80A40046A552 /* PhysicsWorld.cpp */; };
@@ -78,6 +86,10 @@
 		493ABCB61EFE8B10000C01E4 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49904F281EEC4E18000B5F9F /* json_writer.cpp */; };
 		493ABCBE1EFE8B10000C01E4 /* JsonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493022231ECA449000C143A8 /* JsonUtils.cpp */; };
 		493ABCBF1EFE8B10000C01E4 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493022251ECA449000C143A8 /* Logger.cpp */; };
+		493AFB521F4231D100A952E1 /* Alignment.h in Headers */ = {isa = PBXBuildFile; fileRef = 493AFB511F4231D100A952E1 /* Alignment.h */; };
+		493AFB5B1F42419800A952E1 /* Console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493AFB591F42419800A952E1 /* Console.cpp */; };
+		493AFB5C1F42419800A952E1 /* Console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493AFB591F42419800A952E1 /* Console.cpp */; };
+		493AFB5D1F42419800A952E1 /* Console.h in Headers */ = {isa = PBXBuildFile; fileRef = 493AFB5A1F42419800A952E1 /* Console.h */; };
 		493BC8051EEDAD7D00E10C5F /* IAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 493BC8031EEDAD7D00E10C5F /* IAnimation.h */; };
 		495388D31F122DDD007AC45B /* PhysicsBodyInputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495388D11F122DDD007AC45B /* PhysicsBodyInputHandler.cpp */; };
 		495388D41F122DDD007AC45B /* PhysicsBodyInputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495388D11F122DDD007AC45B /* PhysicsBodyInputHandler.cpp */; };
@@ -173,6 +185,12 @@
 
 /* Begin PBXFileReference section */
 		49045B6E1EF581AA006ECF48 /* SFMLView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SFMLView.cpp; sourceTree = "<group>"; };
+		490A3A431F40A2AA00A967C8 /* KeyCodeUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyCodeUtils.cpp; sourceTree = "<group>"; };
+		490A3A441F40A2AA00A967C8 /* KeyCodeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyCodeUtils.h; sourceTree = "<group>"; };
+		490A3A471F40A30800A967C8 /* CommandSetHandle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandSetHandle.cpp; sourceTree = "<group>"; };
+		490A3A481F40A30800A967C8 /* CommandSetHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandSetHandle.h; sourceTree = "<group>"; };
+		490A3A4C1F40A34900A967C8 /* ConsoleController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConsoleController.cpp; sourceTree = "<group>"; };
+		490A3A4D1F40A34900A967C8 /* ConsoleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleController.h; sourceTree = "<group>"; };
 		490A3CFF1EDC386B0046A552 /* PhysicsBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsBody.h; sourceTree = "<group>"; };
 		490A3D011EDC80A40046A552 /* PhysicsWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsWorld.cpp; sourceTree = "<group>"; };
 		490A3D021EDC80A40046A552 /* PhysicsWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsWorld.h; sourceTree = "<group>"; };
@@ -215,6 +233,9 @@
 		493022981ECA45AF00C143A8 /* SFMLTextureMeasurer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMLTextureMeasurer.h; sourceTree = "<group>"; };
 		4930229C1ECA45AF00C143A8 /* SFMLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMLView.h; sourceTree = "<group>"; };
 		493022A71ECA45B800C143A8 /* KeyCodeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyCodeUtils.h; sourceTree = "<group>"; };
+		493AFB511F4231D100A952E1 /* Alignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alignment.h; sourceTree = "<group>"; };
+		493AFB591F42419800A952E1 /* Console.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Console.cpp; sourceTree = "<group>"; };
+		493AFB5A1F42419800A952E1 /* Console.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Console.h; sourceTree = "<group>"; };
 		493BC8031EEDAD7D00E10C5F /* IAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAnimation.h; sourceTree = "<group>"; };
 		495388D11F122DDD007AC45B /* PhysicsBodyInputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsBodyInputHandler.cpp; sourceTree = "<group>"; };
 		495388D21F122DDD007AC45B /* PhysicsBodyInputHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsBodyInputHandler.h; sourceTree = "<group>"; };
@@ -353,6 +374,7 @@
 				493022911ECA458F00C143A8 /* graphics */,
 				493022921ECA459600C143A8 /* input */,
 				493022881ECA452700C143A8 /* platform */,
+				493AFB581F42418200A952E1 /* ui */,
 			);
 			name = internal;
 			path = ../internal;
@@ -390,6 +412,15 @@
 				493022A71ECA45B800C143A8 /* KeyCodeUtils.h */,
 			);
 			path = input;
+			sourceTree = "<group>";
+		};
+		493AFB581F42418200A952E1 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				493AFB591F42419800A952E1 /* Console.cpp */,
+				493AFB5A1F42419800A952E1 /* Console.h */,
+			);
+			path = ui;
 			sourceTree = "<group>";
 		};
 		493BC8011EEDAD5A00E10C5F /* animation */ = {
@@ -523,6 +554,10 @@
 				49BECD7E1F3259EA00778059 /* ConsoleCommandRegistry.h */,
 				49BECD821F325E2B00778059 /* ConsoleCommandArgument.h */,
 				49BECD841F3263CC00778059 /* ConsoleCommandArgumentType.h */,
+				490A3A471F40A30800A967C8 /* CommandSetHandle.cpp */,
+				490A3A481F40A30800A967C8 /* CommandSetHandle.h */,
+				490A3A4C1F40A34900A967C8 /* ConsoleController.cpp */,
+				490A3A4D1F40A34900A967C8 /* ConsoleController.h */,
 			);
 			name = console;
 			path = ../console;
@@ -586,6 +621,7 @@
 				4961A61B1F090A5F00652361 /* SizeUtils.cpp */,
 				4961A61C1F090A5F00652361 /* SizeUtils.h */,
 				49E070421F1A52C500381C22 /* BindableValue.h */,
+				493AFB511F4231D100A952E1 /* Alignment.h */,
 			);
 			name = core;
 			path = ../core;
@@ -601,6 +637,8 @@
 				493022821ECA44E800C143A8 /* PGAppHost.h */,
 				49761EB71EED71D600DD6734 /* AppConfiguration.h */,
 				49761EB91EED71E000DD6734 /* StyleSheet.h */,
+				490A3A431F40A2AA00A967C8 /* KeyCodeUtils.cpp */,
+				490A3A441F40A2AA00A967C8 /* KeyCodeUtils.h */,
 			);
 			name = app;
 			path = ../app;
@@ -613,6 +651,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				493AFB521F4231D100A952E1 /* Alignment.h in Headers */,
 				493022791ECA44E200C143A8 /* Rect.h in Headers */,
 				49669EEE1F23C855008488BB /* KeyCode.h in Headers */,
 				4930228D1ECA453E00C143A8 /* MacPlatformServices.h in Headers */,
@@ -631,6 +670,7 @@
 				493022A61ECA45AF00C143A8 /* SFMLView.h in Headers */,
 				495388D51F122DDD007AC45B /* PhysicsBodyInputHandler.h in Headers */,
 				49BECD851F3263CC00778059 /* ConsoleCommandArgumentType.h in Headers */,
+				493AFB5D1F42419800A952E1 /* Console.h in Headers */,
 				49A7A70B1EEDADC800816F2B /* MoveToAnimation.h in Headers */,
 				493022211ECA441100C143A8 /* IResourceHandler.h in Headers */,
 				493022781ECA44E200C143A8 /* PointUtils.h in Headers */,
@@ -640,6 +680,7 @@
 				49A7A70F1EEDAF0A00816F2B /* AnimationUpdater.h in Headers */,
 				493022621ECA44DC00C143A8 /* View.h in Headers */,
 				49E070431F1A52C500381C22 /* BindableValue.h in Headers */,
+				490A3A4B1F40A30800A967C8 /* CommandSetHandle.h in Headers */,
 				49BECD811F3259EA00778059 /* ConsoleCommandRegistry.h in Headers */,
 				49669EDD1F23C848008488BB /* Dialog.h in Headers */,
 				493BC8051EEDAD7D00E10C5F /* IAnimation.h in Headers */,
@@ -655,6 +696,7 @@
 				49AACADD1ECCD13F003BDC3C /* AttributeConstants.h in Headers */,
 				49669EE41F23C848008488BB /* UIMessage.h in Headers */,
 				493022861ECA44E800C143A8 /* PGAppHost.h in Headers */,
+				490A3A461F40A2AA00A967C8 /* KeyCodeUtils.h in Headers */,
 				49669EE61F23C848008488BB /* UIMessageQueuePoster.h in Headers */,
 				49AACAF11ECCD226003BDC3C /* InventoryItem.h in Headers */,
 				49761EB61EED70F800DD6734 /* Colour.h in Headers */,
@@ -676,6 +718,7 @@
 				49761EB81EED71D600DD6734 /* AppConfiguration.h in Headers */,
 				4930225F1ECA44DC00C143A8 /* Scene.h in Headers */,
 				49761EBA1EED71E000DD6734 /* StyleSheet.h in Headers */,
+				490A3A501F40A34900A967C8 /* ConsoleController.h in Headers */,
 				490A3D001EDC386B0046A552 /* PhysicsBody.h in Headers */,
 				4976AD2E1F23A19F0044B6FB /* GeometryLoader.h in Headers */,
 				49669EE21F23C848008488BB /* UIElement.h in Headers */,
@@ -765,6 +808,7 @@
 				493ABCA21EFE8B10000C01E4 /* TileCoord.cpp in Sources */,
 				4956B5CF1EE4582A00F6A7A4 /* Rect.cpp in Sources */,
 				493ABCA51EFE8B10000C01E4 /* Attributes.cpp in Sources */,
+				490A3A4A1F40A30800A967C8 /* CommandSetHandle.cpp in Sources */,
 				490A3D041EDC80A40046A552 /* PhysicsWorld.cpp in Sources */,
 				493ABCA81EFE8B10000C01E4 /* TilePositionCalculator.cpp in Sources */,
 				493ABCA41EFE8B10000C01E4 /* AttributeConstants.cpp in Sources */,
@@ -787,12 +831,14 @@
 				493ABCB61EFE8B10000C01E4 /* json_writer.cpp in Sources */,
 				493ABCAF1EFE8B10000C01E4 /* SFMLTextureMeasurer.cpp in Sources */,
 				493ABCAA1EFE8B10000C01E4 /* TextureMeasurer.cpp in Sources */,
+				493AFB5C1F42419800A952E1 /* Console.cpp in Sources */,
 				493ABCA01EFE8B10000C01E4 /* PointUtils.cpp in Sources */,
 				493ABCA31EFE8B10000C01E4 /* Colour.cpp in Sources */,
 				493ABC9F1EFE8B10000C01E4 /* Point.cpp in Sources */,
 				4976AD2D1F23A19F0044B6FB /* GeometryLoader.cpp in Sources */,
 				493ABC9B1EFE8B10000C01E4 /* MoveToAnimation.cpp in Sources */,
 				493ABC9D1EFE8B10000C01E4 /* PGAppHost.cpp in Sources */,
+				490A3A4F1F40A34900A967C8 /* ConsoleController.cpp in Sources */,
 				490A3D081EDC84890046A552 /* PhysicsBody.cpp in Sources */,
 				495388D41F122DDD007AC45B /* PhysicsBodyInputHandler.cpp in Sources */,
 				493ABCAC1EFE8B10000C01E4 /* GameConstants.cpp in Sources */,
@@ -809,6 +855,7 @@
 				49A7A70E1EEDAF0A00816F2B /* AnimationUpdater.cpp in Sources */,
 				49669EE11F23C848008488BB /* UIElement.cpp in Sources */,
 				49AACADC1ECCD13F003BDC3C /* AttributeConstants.cpp in Sources */,
+				493AFB5B1F42419800A952E1 /* Console.cpp in Sources */,
 				49669EDF1F23C848008488BB /* UI.cpp in Sources */,
 				49669EE31F23C848008488BB /* UIMessage.cpp in Sources */,
 				49669ED81F23C848008488BB /* Bar.cpp in Sources */,
@@ -825,12 +872,15 @@
 				49669EE71F23C848008488BB /* UIPositionCalculator.cpp in Sources */,
 				49AACAF51ECCD2FC003BDC3C /* Tile.cpp in Sources */,
 				4930228E1ECA453E00C143A8 /* MacPlatformServices.mm in Sources */,
+				490A3A451F40A2AA00A967C8 /* KeyCodeUtils.cpp in Sources */,
 				495388D31F122DDD007AC45B /* PhysicsBodyInputHandler.cpp in Sources */,
 				493022A11ECA45AF00C143A8 /* SFMLTextureMeasurer.cpp in Sources */,
 				49904F2A1EEC4E18000B5F9F /* json_value.cpp in Sources */,
 				493022851ECA44E800C143A8 /* PGAppHost.cpp in Sources */,
+				490A3A4E1F40A34900A967C8 /* ConsoleController.cpp in Sources */,
 				4961A61D1F090A5F00652361 /* SizeUtils.cpp in Sources */,
 				49AACAEF1ECCD226003BDC3C /* Inventory.cpp in Sources */,
+				490A3A491F40A30800A967C8 /* CommandSetHandle.cpp in Sources */,
 				49669EEF1F23C855008488BB /* RectUtils.cpp in Sources */,
 				490A3D031EDC80A40046A552 /* PhysicsWorld.cpp in Sources */,
 				4956B5CE1EE4582A00F6A7A4 /* Rect.cpp in Sources */,

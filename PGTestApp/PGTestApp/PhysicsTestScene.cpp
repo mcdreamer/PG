@@ -17,6 +17,8 @@
 #include "PG/entities/TilePositionCalculator.h"
 #include "PG/core/BindableValue.h"
 
+#include <list>
+
 namespace
 {
 	//--------------------------------------------------------

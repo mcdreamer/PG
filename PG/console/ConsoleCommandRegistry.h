@@ -5,6 +5,8 @@
 #include <vector>
 #include <map>
 
+#include <boost/optional.hpp>
+
 namespace PG {
 
 class RawConsoleCommand;
@@ -30,15 +32,13 @@ public:
 						   const ConsoleCommandHandlerFunc& handlerFunc,
 						   const std::vector<ConsoleCommandArgumentType>& argumentTypes);
 	
-	std::string	handleCommand(const RawConsoleCommand& command);
+	boost::optional<std::string> handleCommand(const RawConsoleCommand& command);
 
-	void		setNotFoundString(const std::string& str) { m_NotFoundString = str; }
 	void		setNArgumentsString(const std::string& str) { m_NArgumentsString = str; }
 	void		setErrorString(const std::string& str) { m_ErrorString = str; }
 
 private:
 	std::map<std::string, CommandInfo>	m_Handlers;
-	std::string							m_NotFoundString;
 	std::string							m_NArgumentsString;
 	std::string							m_ErrorString;
 };

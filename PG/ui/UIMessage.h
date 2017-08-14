@@ -13,7 +13,7 @@ struct UIMessage
     enum Type { kClose, kSendTag, kPushElement };
     
     Type			type;
-    TagReciever*  target;
+    TagReciever*	target;
     int				tag;
     
     static UIMessage close(UIElement* target_);
