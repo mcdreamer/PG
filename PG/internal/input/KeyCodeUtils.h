@@ -57,6 +57,21 @@ KeyCode getKeyCode(const sf::Keyboard::Key& key)
 	}
 }
 
+//--------------------------------------------------------
+KeyModifier getCurrentModifiers()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))
+	{
+		return KeyModifier::kShift;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))
+	{
+		return KeyModifier::kCmd;
+	}
+	
+	return KeyModifier::kNone;
+}
+
 }
 }
 }

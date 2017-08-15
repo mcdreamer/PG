@@ -179,10 +179,11 @@ namespace
 				}
 				else if (event.type == sf::Event::KeyPressed)
 				{
+					const auto keyMod = Internal::KeyCodeUtils::getCurrentModifiers();
 					const auto keyCode = Internal::KeyCodeUtils::getKeyCode(event.key.code);
 					if (keyCode != KeyCode::kComma)
 					{
-						controller.controller->keyDown(keyCode, KeyModifier::kNone);
+						controller.controller->keyDown(keyCode, keyMod);
 					}
 					else
 					{
