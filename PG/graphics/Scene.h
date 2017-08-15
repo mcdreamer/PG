@@ -10,12 +10,12 @@ namespace PG {
 class IScene;
 class ISceneController;
 struct NodeHandle;
-class View;
 class UIElement;
 class Colour;
 class Size;
 class Point;
 struct StyleSheet;
+class ConsoleController;
 
 //--------------------------------------------------------
 struct SceneHandle
@@ -85,6 +85,8 @@ public:
 	virtual void					clickInScene(PG::Point pt, bool isRightClick)=0;
 	
 	virtual void					update(double dt)=0;
+	
+	virtual	ConsoleController&		getConsoleController()=0;
 };
 
 using ScenePtr = std::unique_ptr<IScene>;
@@ -93,7 +95,10 @@ using ScenePtr = std::unique_ptr<IScene>;
 class SceneCreator
 {
 public:
-    static ScenePtr createScene(SceneControllerPtr& controller, const Size& size, const StyleSheet& styleSheet);
+    static ScenePtr createScene(SceneControllerPtr& controller,
+								ConsoleController& consoleController,
+								const Size& size,
+								const StyleSheet& styleSheet);
 };
 
 }

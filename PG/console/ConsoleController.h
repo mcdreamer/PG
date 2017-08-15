@@ -2,6 +2,7 @@
 
 #include "PG/console/ConsoleCommandRegistry.h"
 #include "PG/console/RawConsoleCommand.h"
+#include "PG/console/CommandSetHandle.h"
 #include "PG/core/BindableValue.h"
 
 #include <vector>
@@ -10,7 +11,6 @@
 namespace PG {
 
 enum class KeyCode;
-class CommandSetHandle;
 
 //--------------------------------------------------------
 class ConsoleController

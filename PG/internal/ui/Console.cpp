@@ -19,7 +19,6 @@ namespace Internal {
 //--------------------------------------------------------
 struct ConsoleScene::State
 {
-	ConsoleController						console;
 	NodeHandle								consoleBackground;
 	NodeHandle								consoleInput;
 	std::vector<NodeHandle>					consoleOutput;
@@ -41,11 +40,13 @@ void ConsoleScene::initScene(SceneHandle scene)
 {
 	m_Scene = scene;
 	
+	auto& consoleController = m_Scene.scene->getConsoleController();
+	
 	m_Scene.scene->setBackgroundColour(Colour(20, 20, 20));
 	
 	UIUtils::createTextNodeForValue(Point(20, 220), Colour(255, 255, 200), 20,
 									Alignment::kLeft, m_State->consoleInput, m_Scene,
-									m_State->console.getConsoleInput());
+									consoleController.getConsoleInput());
 	
 	for (int line = 0; line < 10; ++line)
 	{
@@ -61,13 +62,13 @@ void ConsoleScene::initScene(SceneHandle scene)
 										*lineIt);
 	}
 	
-	m_State->console.getConsoleOutputSize().setBinding([this](const int& size) {
+	consoleController.getConsoleOutputSize().setBinding([&, this](const int& size) {
 		
 		auto lineIt = m_State->consoleOutputLines.rbegin();
-		auto outputIt = m_State->console.getConsoleOutput().rbegin();
+		auto outputIt = consoleController.getConsoleOutput().rbegin();
 		for (; lineIt != m_State->consoleOutputLines.rend(); ++lineIt)
 		{
-			if (outputIt != m_State->console.getConsoleOutput().rend())
+			if (outputIt != consoleController.getConsoleOutput().rend())
 			{
 				*lineIt = *outputIt;
 				++outputIt;
@@ -78,10 +79,6 @@ void ConsoleScene::initScene(SceneHandle scene)
 			}
 		}
 	});
-	
-	ConsoleCommandRegistry physicsSceneCommands;
-	physicsSceneCommands.addHandler("showfps", [](const std::vector<ConsoleCommandArgument>& args) { return "hi"; }, {});
-	m_State->console.addCommandSet(physicsSceneCommands);
 }
 
 //--------------------------------------------------------
@@ -92,7 +89,7 @@ void ConsoleScene::update(double dt)
 //--------------------------------------------------------
 void ConsoleScene::keyDown(KeyCode code, KeyModifier mods)
 {
-	m_State->console.keyPressed(code);
+	m_Scene.scene->getConsoleController().keyPressed(code);
 }
 
 }

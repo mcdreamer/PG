@@ -3,16 +3,27 @@
 namespace PG {
 
 //--------------------------------------------------------
-ScenePtr SceneCreator::createScene(SceneControllerPtr& controller, const Size& size, const StyleSheet& styleSheet)
+ScenePtr SceneCreator::createScene(SceneControllerPtr& controller,
+								   ConsoleController& consoleController,
+								   const Size& size,
+								   const StyleSheet& styleSheet)
 {
-    return std::make_unique<Internal::SFMLScene>(controller, size, styleSheet);
+	return std::make_unique<Internal::SFMLScene>(controller,
+												 consoleController,
+												 size,
+												 styleSheet);
 }
 
 namespace Internal {
 
 //--------------------------------------------------------
-SFMLScene::SFMLScene(SceneControllerPtr& controller, const Size& size, const StyleSheet& styleSheet)
-: m_SceneController(controller.release()), m_SceneSize(size)
+SFMLScene::SFMLScene(SceneControllerPtr& controller,
+					 ConsoleController& consoleController,
+					 const Size& size,
+					 const StyleSheet& styleSheet)
+: m_SceneController(controller.release()),
+m_ConsoleController(consoleController),
+m_SceneSize(size)
 {
 	m_Root = NodeCreator::createNode();
 	m_UI.reset(new PG::UI(*this));
@@ -72,6 +83,12 @@ void SFMLScene::update(double dt)
 	}
 	
 	m_UI->update();
+}
+
+//--------------------------------------------------------
+ConsoleController& SFMLScene::getConsoleController()
+{
+	return m_ConsoleController;
 }
 
 }

@@ -22,8 +22,12 @@ class SFMLScene;
 class SFMLView : public IView
 {
 public:
-    SFMLView(sf::RenderWindow* view_, const StyleSheet& styleSheet_)
-    : m_View(view_), m_StyleSheet(styleSheet_)
+    SFMLView(sf::RenderWindow* view_,
+			 ConsoleController& consoleController,
+			 const StyleSheet& styleSheet_)
+    : m_View(view_),
+	m_ConsoleController(consoleController),
+	m_StyleSheet(styleSheet_)
     {}
 	
 	virtual SceneControllerHandle	replaceScene(SceneControllerPtr& sceneController) override;
@@ -49,6 +53,7 @@ private:
 
     sf::RenderWindow*							m_View;
 	std::stack<ScenePtr>						m_SceneStack;
+	ConsoleController&							m_ConsoleController;
 	const StyleSheet							m_StyleSheet;
 	
 	std::vector<ScenePtr>						m_Overlays;

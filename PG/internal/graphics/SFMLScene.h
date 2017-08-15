@@ -10,13 +10,19 @@
 #include "PG/app/StyleSheet.h"
 
 namespace PG {
+
+class ConsoleController;
+
 namespace Internal {
 
 //--------------------------------------------------------
 class SFMLScene : public IScene, public PG::TagReciever
 {
 public:
-    SFMLScene(SceneControllerPtr& controller, const Size& size, const StyleSheet& styleSheet);
+    SFMLScene(SceneControllerPtr& controller,
+			  ConsoleController& m_ConsoleController,
+			  const Size& size,
+			  const StyleSheet& styleSheet);
 	
     virtual NodeHandle				addChild(std::unique_ptr<INode>& node) override;
 	virtual	void					pushUIElement(UIElement* uiElement) override;
@@ -34,12 +40,15 @@ public:
 	virtual void					clickInScene(PG::Point pt, bool isRightClick) override;
     virtual void					update(double dt) override;
 	
+	virtual	ConsoleController&		getConsoleController() override;
+	
 private:
     Size							m_SceneSize;
     NodePtr							m_Root;
     SceneControllerPtr				m_SceneController;
     Colour							m_BackgroundColour;
-    std::unique_ptr<PG::UI>		m_UI;
+    std::unique_ptr<PG::UI>			m_UI;
+	ConsoleController&				m_ConsoleController;
 };
 
 }

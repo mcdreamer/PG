@@ -2,6 +2,7 @@
 
 #include "PG/app/PGAppHost.h"
 #include "PG/app/AppConfiguration.h"
+#include "PG/console/ConsoleController.h"
 #include "PG/internal/ui/Console.h"
 
 #ifdef __APPLE__
@@ -292,7 +293,12 @@ void PGAppHost::runApp(IGameController& gameController)
     TResourceHandler resourceHandler;
     Internal::SFMLFontCache fontCache;
 
-    Internal::SFMLView view(&window, appConfig.styleSheet);
+	ConsoleController consoleController;
+	ConsoleCommandRegistry builtInCommands;
+	builtInCommands.addHandler("version", [](const std::vector<ConsoleCommandArgument>& args) { return "PG Engine v0.1"; }, {});
+	consoleController.addCommandSet(builtInCommands);
+
+    Internal::SFMLView view(&window, consoleController, appConfig.styleSheet);
 
     Internal::g_ResourceHandler = &resourceHandler;
     Internal::g_TileSize = appConfig.tileSize;
