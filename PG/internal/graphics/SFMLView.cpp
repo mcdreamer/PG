@@ -33,22 +33,7 @@ void SFMLView::popScene()
 //--------------------------------------------------------
 SceneControllerHandle SFMLView::addOverlay(SceneControllerPtr& sceneController)
 {
-	const auto size = m_View->getView().getSize();
-
-	m_SceneStack.push(SceneCreator::createScene(m_PendingSceneController,
-												m_ConsoleController,
-												Size(size.x, size.y),
-												m_StyleSheet));
-	
-	auto* scene = getCurrentScene();
-	SceneControllerHandle controllerHandle(scene ? scene->getController() : nullptr);
-	
-	if (controllerHandle.controller)
-	{
-		controllerHandle.controller->initScene(scene);
-	}
-	
-	return controllerHandle;
+	return createAndInitialiseScene(sceneController);
 }
 
 //--------------------------------------------------------
@@ -85,29 +70,37 @@ void SFMLView::presentPendingSceneIfAny()
 	}
 	else if (m_PendingSceneController)
 	{
-		const auto size = m_View->getView().getSize();
-		
 		if (m_PendingSceneOperationType.get() == PendingSceneOperationType::kReplace)
 		{
 			m_SceneStack = std::stack<ScenePtr>();
 		}
 		
-		m_SceneStack.push(SceneCreator::createScene(m_PendingSceneController,
-													m_ConsoleController,
-													Size(size.x, size.y),
-													m_StyleSheet));
-		
-		auto* scene = getCurrentScene();
-		SceneControllerHandle controllerHandle(scene ? scene->getController() : nullptr);
-		
-		if (controllerHandle.controller)
-		{
-			controllerHandle.controller->initScene(scene);
-		}
+		createAndInitialiseScene(m_PendingSceneController);
 	}
 	
 	m_PendingSceneController.release();
 	m_PendingSceneOperationType.reset();
+}
+
+//--------------------------------------------------------
+SceneControllerHandle SFMLView::createAndInitialiseScene(SceneControllerPtr& sceneController)
+{
+	const auto size = m_View->getView().getSize();
+	
+	m_SceneStack.push(SceneCreator::createScene(sceneController,
+												m_ConsoleController,
+												Size(size.x, size.y),
+												m_StyleSheet));
+	
+	auto* scene = getCurrentScene();
+	SceneControllerHandle controllerHandle(scene ? scene->getController() : nullptr);
+	
+	if (controllerHandle.controller)
+	{
+		controllerHandle.controller->initScene(scene);
+	}
+	
+	return controllerHandle;
 }
 
 }

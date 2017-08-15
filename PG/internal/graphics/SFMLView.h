@@ -14,6 +14,9 @@ namespace sf
 };
 
 namespace PG {
+
+struct SceneControllerHandle;
+
 namespace Internal {
 
 class SFMLScene;
@@ -62,6 +65,7 @@ private:
 	boost::optional<PendingSceneOperationType>	m_PendingSceneOperationType;
 	
 	void										presentPendingSceneIfAny();
+	SceneControllerHandle						createAndInitialiseScene(SceneControllerPtr& sceneController);
 };
 
 }

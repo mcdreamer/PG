@@ -67,6 +67,7 @@ namespace
 		return sf::Color(c.r, c.g, c.b, (unsigned char)c.a);
 	}
 
+	// AD: Move this to a new file?
 	//--------------------------------------------------------
 	class AppRunner
 	{
@@ -282,6 +283,18 @@ namespace
 	};
 }
 
+namespace
+{
+	//--------------------------------------------------------
+	ConsoleCommandRegistry getRegistryForBuiltInCommands()
+	{
+		ConsoleCommandRegistry builtInCommands;
+		builtInCommands.addHandler("version", [](const std::vector<ConsoleCommandArgument>& args) { return "PG Engine v0.1"; }, {});
+		
+		return builtInCommands;
+	}
+}
+
 //--------------------------------------------------------
 void PGAppHost::runApp(IGameController& gameController)
 {
@@ -298,9 +311,7 @@ void PGAppHost::runApp(IGameController& gameController)
     Internal::SFMLFontCache fontCache;
 
 	ConsoleController consoleController;
-	ConsoleCommandRegistry builtInCommands;
-	builtInCommands.addHandler("version", [](const std::vector<ConsoleCommandArgument>& args) { return "PG Engine v0.1"; }, {});
-	consoleController.addCommandSet(builtInCommands);
+	consoleController.addCommandSet(getRegistryForBuiltInCommands());
 
     Internal::SFMLView view(&window, consoleController, appConfig.styleSheet);
 
