@@ -181,7 +181,10 @@ namespace
 				{
 					const auto keyMod = Internal::KeyCodeUtils::getCurrentModifiers();
 					const auto keyCode = Internal::KeyCodeUtils::getKeyCode(event.key.code);
-					if (keyCode != KeyCode::kComma)
+				
+					const bool showConsole = (keyMod == KeyModifier::kShift && keyCode == KeyCode::kEscape);
+				
+					if (!showConsole)
 					{
 						controller.controller->keyDown(keyCode, keyMod);
 					}
