@@ -6,6 +6,8 @@
 #include "PG/console/ConsoleCommandArgument.h"
 #include "PG/console/ConsoleCommandArgumentType.h"
 #include "PG/console/ConsoleCommandRegistry.h"
+#include "PG/console/CommandSetRemover.h"
+#include "PG/console/ConsoleController.h"
 
 #include <string>
 
@@ -57,7 +59,6 @@ TEST(ConsoleTests,testInputParser)
 //--------------------------------------------------------
 TEST(ConsoleTests,testConsoleCommandRegistry)
 {
-	const std::string notFoundString("no command");
 	const std::string argsString("arg count required =");
 	const std::string errorString("error");
 
@@ -96,4 +97,29 @@ TEST(ConsoleTests,testConsoleCommandRegistry)
 	response = registry.handleCommand(cmd);
 	ASSERT_TRUE(response.is_initialized());
 	EXPECT_EQ(errorString, response);
+}
+
+//--------------------------------------------------------
+TEST(ConsoleTests,testCommandSetRemover)
+{
+	const std::string notFoundString("not found");
+	
+	ConsoleController consoleController;
+	consoleController.setCommandNotFoundString(notFoundString);
+	
+	ConsoleCommandRegistry registry;
+	registry.addHandler("test", [](const std::vector<ConsoleCommandArgument>& args) { return "hi"; }, {});
+	auto handle = consoleController.addCommandSet(registry);
+	
+	consoleController.handleText("test");
+	ASSERT_EQ((size_t)1, consoleController.getConsoleOutput().size());
+	EXPECT_EQ(std::string("hi"), consoleController.getConsoleOutput()[0]);
+	
+	{
+		CommandSetRemover remover(consoleController, handle);
+	}
+	
+	consoleController.handleText("test");
+	ASSERT_EQ((size_t)2, consoleController.getConsoleOutput().size());
+	EXPECT_EQ(notFoundString, consoleController.getConsoleOutput()[1]);
 }

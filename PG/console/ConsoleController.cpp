@@ -43,6 +43,14 @@ void ConsoleController::removeCommandSet(const CommandSetHandle& setHandle)
 }
 
 //--------------------------------------------------------
+void ConsoleController::handleText(const std::string& command)
+{
+	m_ConsoleInput = command;
+	addCaret();
+	keyPressed(KeyCode::kEnter);
+}
+
+//--------------------------------------------------------
 void ConsoleController::keyPressed(const KeyCode& code)
 {
 	removeCaret();

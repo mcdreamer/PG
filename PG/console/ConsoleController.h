@@ -23,6 +23,7 @@ public:
 	void							removeCommandSet(const CommandSetHandle& setHandle);
 
 	void							keyPressed(const KeyCode& code);
+	void							handleText(const std::string& command);
 	
 	PG::BindableValue<std::string>&	getConsoleInput() { return m_ConsoleInput; }
 	PG::BindableValue<int>&			getConsoleOutputSize() { return m_ConsoleOutputSize; }

@@ -96,6 +96,9 @@
 		495388D51F122DDD007AC45B /* PhysicsBodyInputHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 495388D21F122DDD007AC45B /* PhysicsBodyInputHandler.h */; };
 		4956B5CE1EE4582A00F6A7A4 /* Rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4956B5CD1EE4582A00F6A7A4 /* Rect.cpp */; };
 		4956B5CF1EE4582A00F6A7A4 /* Rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4956B5CD1EE4582A00F6A7A4 /* Rect.cpp */; };
+		495A07021F461E3E00ED6F23 /* CommandSetRemover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495A07001F461E3E00ED6F23 /* CommandSetRemover.cpp */; };
+		495A07031F461E3E00ED6F23 /* CommandSetRemover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495A07001F461E3E00ED6F23 /* CommandSetRemover.cpp */; };
+		495A07041F461E3E00ED6F23 /* CommandSetRemover.h in Headers */ = {isa = PBXBuildFile; fileRef = 495A07011F461E3E00ED6F23 /* CommandSetRemover.h */; };
 		4961A61D1F090A5F00652361 /* SizeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4961A61B1F090A5F00652361 /* SizeUtils.cpp */; };
 		4961A61E1F090A5F00652361 /* SizeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4961A61B1F090A5F00652361 /* SizeUtils.cpp */; };
 		4961A61F1F090A5F00652361 /* SizeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4961A61C1F090A5F00652361 /* SizeUtils.h */; };
@@ -240,6 +243,8 @@
 		495388D11F122DDD007AC45B /* PhysicsBodyInputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsBodyInputHandler.cpp; sourceTree = "<group>"; };
 		495388D21F122DDD007AC45B /* PhysicsBodyInputHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsBodyInputHandler.h; sourceTree = "<group>"; };
 		4956B5CD1EE4582A00F6A7A4 /* Rect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rect.cpp; sourceTree = "<group>"; };
+		495A07001F461E3E00ED6F23 /* CommandSetRemover.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandSetRemover.cpp; sourceTree = "<group>"; };
+		495A07011F461E3E00ED6F23 /* CommandSetRemover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandSetRemover.h; sourceTree = "<group>"; };
 		4961A61B1F090A5F00652361 /* SizeUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SizeUtils.cpp; sourceTree = "<group>"; };
 		4961A61C1F090A5F00652361 /* SizeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeUtils.h; sourceTree = "<group>"; };
 		49669EC51F23C848008488BB /* Bar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bar.cpp; sourceTree = "<group>"; };
@@ -558,6 +563,8 @@
 				490A3A481F40A30800A967C8 /* CommandSetHandle.h */,
 				490A3A4C1F40A34900A967C8 /* ConsoleController.cpp */,
 				490A3A4D1F40A34900A967C8 /* ConsoleController.h */,
+				495A07001F461E3E00ED6F23 /* CommandSetRemover.cpp */,
+				495A07011F461E3E00ED6F23 /* CommandSetRemover.h */,
 			);
 			name = console;
 			path = ../console;
@@ -651,6 +658,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				495A07041F461E3E00ED6F23 /* CommandSetRemover.h in Headers */,
 				493AFB521F4231D100A952E1 /* Alignment.h in Headers */,
 				493022791ECA44E200C143A8 /* Rect.h in Headers */,
 				49669EEE1F23C855008488BB /* KeyCode.h in Headers */,
@@ -811,6 +819,7 @@
 				490A3A4A1F40A30800A967C8 /* CommandSetHandle.cpp in Sources */,
 				490A3D041EDC80A40046A552 /* PhysicsWorld.cpp in Sources */,
 				493ABCA81EFE8B10000C01E4 /* TilePositionCalculator.cpp in Sources */,
+				495A07031F461E3E00ED6F23 /* CommandSetRemover.cpp in Sources */,
 				493ABCA41EFE8B10000C01E4 /* AttributeConstants.cpp in Sources */,
 				493ABCB51EFE8B10000C01E4 /* json_value.cpp in Sources */,
 				49E070581F1A67F700381C22 /* PhysicsBodyCollection.cpp in Sources */,
@@ -882,6 +891,7 @@
 				49AACAEF1ECCD226003BDC3C /* Inventory.cpp in Sources */,
 				490A3A491F40A30800A967C8 /* CommandSetHandle.cpp in Sources */,
 				49669EEF1F23C855008488BB /* RectUtils.cpp in Sources */,
+				495A07021F461E3E00ED6F23 /* CommandSetRemover.cpp in Sources */,
 				490A3D031EDC80A40046A552 /* PhysicsWorld.cpp in Sources */,
 				4956B5CE1EE4582A00F6A7A4 /* Rect.cpp in Sources */,
 				49AACADE1ECCD13F003BDC3C /* Attributes.cpp in Sources */,
