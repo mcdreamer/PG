@@ -14,6 +14,7 @@
 		4937522C1ED0DDC600B4F024 /* dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = 4937522B1ED0DDC600B4F024 /* dialog.png */; };
 		4937522E1ED0DDCC00B4F024 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4937522D1ED0DDCC00B4F024 /* OpenSans-Regular.ttf */; };
 		4947FEFD1F13FF1E0023FB7E /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 4947FEFC1F13FF1E0023FB7E /* heart.png */; };
+		495A07161F46331F00ED6F23 /* sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 495A07151F46331F00ED6F23 /* sound.wav */; };
 		4961A6221F090CB700652361 /* PhysicsTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4961A6201F090CB700652361 /* PhysicsTestScene.cpp */; };
 		496CC9531EED8D0500A901AA /* PGlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 496CC9521EED8D0500A901AA /* PGlogo.png */; };
 		49761EC11EED76F100DD6734 /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49761EBC1EED76F100DD6734 /* sfml-audio.framework */; };
@@ -69,6 +70,7 @@
 		4937522B1ED0DDC600B4F024 /* dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialog.png; sourceTree = "<group>"; };
 		4937522D1ED0DDCC00B4F024 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		4947FEFC1F13FF1E0023FB7E /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		495A07151F46331F00ED6F23 /* sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound.wav; sourceTree = "<group>"; };
 		4961A6201F090CB700652361 /* PhysicsTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsTestScene.cpp; sourceTree = "<group>"; };
 		4961A6211F090CB700652361 /* PhysicsTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsTestScene.h; sourceTree = "<group>"; };
 		496CC9521EED8D0500A901AA /* PGlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PGlogo.png; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		493752271ED0DD9400B4F024 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				495A07131F46330E00ED6F23 /* sounds */,
 				4937522A1ED0DDA700B4F024 /* images */,
 				493752291ED0DD9C00B4F024 /* fonts */,
 			);
@@ -141,6 +144,14 @@
 				4937522B1ED0DDC600B4F024 /* dialog.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		495A07131F46330E00ED6F23 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				495A07151F46331F00ED6F23 /* sound.wav */,
+			);
+			path = sounds;
 			sourceTree = "<group>";
 		};
 		49AACB061ECCE1ED003BDC3C = {
@@ -292,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				495A07161F46331F00ED6F23 /* sound.wav in Resources */,
 				4937522E1ED0DDCC00B4F024 /* OpenSans-Regular.ttf in Resources */,
 				49B63CC61F111AB8000B6297 /* ghost.png in Resources */,
 				496CC9531EED8D0500A901AA /* PGlogo.png in Resources */,

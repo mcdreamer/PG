@@ -99,6 +99,11 @@
 		495A07021F461E3E00ED6F23 /* CommandSetRemover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495A07001F461E3E00ED6F23 /* CommandSetRemover.cpp */; };
 		495A07031F461E3E00ED6F23 /* CommandSetRemover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495A07001F461E3E00ED6F23 /* CommandSetRemover.cpp */; };
 		495A07041F461E3E00ED6F23 /* CommandSetRemover.h in Headers */ = {isa = PBXBuildFile; fileRef = 495A07011F461E3E00ED6F23 /* CommandSetRemover.h */; };
+		495A07071F46224100ED6F23 /* Sound.h in Headers */ = {isa = PBXBuildFile; fileRef = 495A07061F46224100ED6F23 /* Sound.h */; };
+		495A070D1F46247C00ED6F23 /* SoundID.h in Headers */ = {isa = PBXBuildFile; fileRef = 495A070C1F46247C00ED6F23 /* SoundID.h */; };
+		495A070F1F4624C300ED6F23 /* SoundID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495A070E1F4624C300ED6F23 /* SoundID.cpp */; };
+		495A07101F4624C300ED6F23 /* SoundID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495A070E1F4624C300ED6F23 /* SoundID.cpp */; };
+		495A07121F4624EC00ED6F23 /* ISoundController.h in Headers */ = {isa = PBXBuildFile; fileRef = 495A07111F4624EC00ED6F23 /* ISoundController.h */; };
 		4961A61D1F090A5F00652361 /* SizeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4961A61B1F090A5F00652361 /* SizeUtils.cpp */; };
 		4961A61E1F090A5F00652361 /* SizeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4961A61B1F090A5F00652361 /* SizeUtils.cpp */; };
 		4961A61F1F090A5F00652361 /* SizeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4961A61C1F090A5F00652361 /* SizeUtils.h */; };
@@ -245,6 +250,10 @@
 		4956B5CD1EE4582A00F6A7A4 /* Rect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rect.cpp; sourceTree = "<group>"; };
 		495A07001F461E3E00ED6F23 /* CommandSetRemover.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandSetRemover.cpp; sourceTree = "<group>"; };
 		495A07011F461E3E00ED6F23 /* CommandSetRemover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandSetRemover.h; sourceTree = "<group>"; };
+		495A07061F46224100ED6F23 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
+		495A070C1F46247C00ED6F23 /* SoundID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundID.h; sourceTree = "<group>"; };
+		495A070E1F4624C300ED6F23 /* SoundID.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundID.cpp; sourceTree = "<group>"; };
+		495A07111F4624EC00ED6F23 /* ISoundController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISoundController.h; sourceTree = "<group>"; };
 		4961A61B1F090A5F00652361 /* SizeUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SizeUtils.cpp; sourceTree = "<group>"; };
 		4961A61C1F090A5F00652361 /* SizeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeUtils.h; sourceTree = "<group>"; };
 		49669EC51F23C848008488BB /* Bar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bar.cpp; sourceTree = "<group>"; };
@@ -441,6 +450,18 @@
 			path = ../animation;
 			sourceTree = "<group>";
 		};
+		495A07051F46221600ED6F23 /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				495A07061F46224100ED6F23 /* Sound.h */,
+				495A070C1F46247C00ED6F23 /* SoundID.h */,
+				495A070E1F4624C300ED6F23 /* SoundID.cpp */,
+				495A07111F4624EC00ED6F23 /* ISoundController.h */,
+			);
+			name = sound;
+			path = ../sound;
+			sourceTree = "<group>";
+		};
 		4974CB461A595F0F00E109BD = {
 			isa = PBXGroup;
 			children = (
@@ -456,6 +477,7 @@
 				49CEB4051AD99D1400447477 /* io */,
 				493022871ECA450000C143A8 /* internal */,
 				490A3CFE1EDC382C0046A552 /* physics */,
+				495A07051F46221600ED6F23 /* sound */,
 				4929DE691ADAC315006A6BB3 /* thirdparty */,
 				49AE44BD1C653B5500DAF439 /* ui */,
 				49CEB4071AD99DFE00447477 /* util */,
@@ -691,6 +713,7 @@
 				490A3A4B1F40A30800A967C8 /* CommandSetHandle.h in Headers */,
 				49BECD811F3259EA00778059 /* ConsoleCommandRegistry.h in Headers */,
 				49669EDD1F23C848008488BB /* Dialog.h in Headers */,
+				495A070D1F46247C00ED6F23 /* SoundID.h in Headers */,
 				493BC8051EEDAD7D00E10C5F /* IAnimation.h in Headers */,
 				493022761ECA44E200C143A8 /* Point.h in Headers */,
 				4930227D1ECA44E200C143A8 /* TileCoord.h in Headers */,
@@ -714,6 +737,7 @@
 				4961A61F1F090A5F00652361 /* SizeUtils.h in Headers */,
 				49AACAE51ECCD13F003BDC3C /* EntityLoader.h in Headers */,
 				49AACAFA1ECCD462003BDC3C /* TilePositionCalculator.h in Headers */,
+				495A07121F4624EC00ED6F23 /* ISoundController.h in Headers */,
 				49AACAE21ECCD13F003BDC3C /* DataGridUtils.h in Headers */,
 				493022841ECA44E800C143A8 /* IGameController.h in Headers */,
 				49669EDB1F23C848008488BB /* Button.h in Headers */,
@@ -721,6 +745,7 @@
 				49669EE01F23C848008488BB /* UI.h in Headers */,
 				49B63CCB1F121D44000B6297 /* PhysicsBodyAndNode.h in Headers */,
 				490A3D051EDC80A40046A552 /* PhysicsWorld.h in Headers */,
+				495A07071F46224100ED6F23 /* Sound.h in Headers */,
 				4930229E1ECA45AF00C143A8 /* SFMLNode.h in Headers */,
 				49AACAF61ECCD2FC003BDC3C /* Tile.h in Headers */,
 				49761EB81EED71D600DD6734 /* AppConfiguration.h in Headers */,
@@ -822,6 +847,7 @@
 				495A07031F461E3E00ED6F23 /* CommandSetRemover.cpp in Sources */,
 				493ABCA41EFE8B10000C01E4 /* AttributeConstants.cpp in Sources */,
 				493ABCB51EFE8B10000C01E4 /* json_value.cpp in Sources */,
+				495A07101F4624C300ED6F23 /* SoundID.cpp in Sources */,
 				49E070581F1A67F700381C22 /* PhysicsBodyCollection.cpp in Sources */,
 				493ABCA71EFE8B10000C01E4 /* EntityLoader.cpp in Sources */,
 				493ABCBF1EFE8B10000C01E4 /* Logger.cpp in Sources */,
@@ -882,6 +908,7 @@
 				49AACAF51ECCD2FC003BDC3C /* Tile.cpp in Sources */,
 				4930228E1ECA453E00C143A8 /* MacPlatformServices.mm in Sources */,
 				490A3A451F40A2AA00A967C8 /* KeyCodeUtils.cpp in Sources */,
+				495A070F1F4624C300ED6F23 /* SoundID.cpp in Sources */,
 				495388D31F122DDD007AC45B /* PhysicsBodyInputHandler.cpp in Sources */,
 				493022A11ECA45AF00C143A8 /* SFMLTextureMeasurer.cpp in Sources */,
 				49904F2A1EEC4E18000B5F9F /* json_value.cpp in Sources */,
