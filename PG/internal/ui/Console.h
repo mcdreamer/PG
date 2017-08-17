@@ -27,13 +27,19 @@ public:
 	virtual void keyUp(KeyCode code) override {}
 	virtual void keyDown(KeyCode code, KeyModifier mods) override;
 	
-	virtual void update(double dt) override;
+	virtual void update(double dt) override {}
 	
 	virtual void receiveTag(const int tag, UIMessageQueuePoster& msgPoster) override {}
 	
 private:
 	SceneHandle				m_Scene;
 	std::unique_ptr<State>	m_State;
+	
+	void createConsoleOutlineLinesNodes(const std::vector<Point>& linePositions,
+										const int numOutputLines,
+										const int sizePerLine);
+	
+	void updateOutput();
 };
 
 }

@@ -16,6 +16,12 @@
 namespace PG {
 namespace Internal {
 
+const int kSizePerLine = 20;
+const int kLeftPadding = 20;
+const Colour kBackgroundColour(20, 20, 20);
+const Colour kInputLineColour(255, 255, 200);
+const Colour kOutputLineColour(128, 255, 255);
+
 //--------------------------------------------------------
 struct ConsoleScene::State
 {
@@ -42,54 +48,73 @@ void ConsoleScene::initScene(SceneHandle scene)
 	
 	auto& consoleController = m_Scene.scene->getConsoleController();
 	
-	m_Scene.scene->setBackgroundColour(Colour(20, 20, 20));
+	m_Scene.scene->setBackgroundColour(kBackgroundColour);
 	
-	UIUtils::createTextNodeForValue(Point(20, 220), Colour(255, 255, 200), 20,
+	const int numOutputLines = (int)(m_Scene.scene->getSceneSize().height / (double)kSizePerLine) - 2;
+	if (numOutputLines < 1)
+	{
+		return;
+	}
+	
+	UIPositionCalculator posCalc(m_Scene.scene->getSceneSize());
+	const auto linePositions = posCalc.multipleTopToBottom(Point(kLeftPadding, kSizePerLine),
+														   numOutputLines + 1,
+														   kSizePerLine);
+	
+	UIUtils::createTextNodeForValue(linePositions.back(), kInputLineColour, kSizePerLine,
 									Alignment::kLeft, m_State->consoleInput, m_Scene,
 									consoleController.getConsoleInput());
 	
-	for (int line = 0; line < 10; ++line)
-	{
-		m_State->consoleOutput.emplace_back();
-		m_State->consoleOutputLines.emplace_back("");
-	}
+	createConsoleOutlineLinesNodes(linePositions, numOutputLines, kSizePerLine);
 	
-	auto lineIt = m_State->consoleOutputLines.begin();
-	for (size_t line = 0; line < 10; ++line, ++lineIt)
-	{
-		UIUtils::createTextNodeForValue(Point(20, (line + 1) * 20), Colour(128, 255, 255), 20,
-										Alignment::kLeft, m_State->consoleOutput[line], m_Scene,
-										*lineIt);
-	}
-	
-	consoleController.getConsoleOutputSize().setBinding([&, this](const int& size) {
-		
-		auto lineIt = m_State->consoleOutputLines.rbegin();
-		auto outputIt = consoleController.getConsoleOutput().rbegin();
-		for (; lineIt != m_State->consoleOutputLines.rend(); ++lineIt)
-		{
-			if (outputIt != consoleController.getConsoleOutput().rend())
-			{
-				*lineIt = *outputIt;
-				++outputIt;
-			}
-			else
-			{
-				*lineIt = "";
-			}
-		}
-	});
-}
-
-//--------------------------------------------------------
-void ConsoleScene::update(double dt)
-{
+	consoleController.getConsoleOutputSize().setBinding([this](const int& size) { updateOutput(); });
 }
 
 //--------------------------------------------------------
 void ConsoleScene::keyDown(KeyCode code, KeyModifier mods)
 {
 	m_Scene.scene->getConsoleController().keyPressed(code);
+}
+
+//--------------------------------------------------------
+void ConsoleScene::createConsoleOutlineLinesNodes(const std::vector<Point>& linePositions,
+												  const int numOutputLines,
+												  const int sizePerLine)
+{
+	for (int line = 0; line < numOutputLines; ++line)
+	{
+		m_State->consoleOutput.emplace_back();
+		m_State->consoleOutputLines.emplace_back("");
+	}
+	
+	auto lineIt = m_State->consoleOutputLines.begin();
+	for (size_t line = 0; line < (size_t)numOutputLines; ++line, ++lineIt)
+	{
+		UIUtils::createTextNodeForValue(linePositions[line], kOutputLineColour, sizePerLine,
+										Alignment::kLeft, m_State->consoleOutput[line], m_Scene,
+										*lineIt);
+	}
+}
+
+//--------------------------------------------------------
+void ConsoleScene::updateOutput()
+{
+	auto& consoleController = m_Scene.scene->getConsoleController();
+	
+	auto lineIt = m_State->consoleOutputLines.rbegin();
+	auto outputIt = consoleController.getConsoleOutput().rbegin();
+	for (; lineIt != m_State->consoleOutputLines.rend(); ++lineIt)
+	{
+		if (outputIt != consoleController.getConsoleOutput().rend())
+		{
+			*lineIt = *outputIt;
+			++outputIt;
+		}
+		else
+		{
+			*lineIt = "";
+		}
+	}
 }
 
 }
