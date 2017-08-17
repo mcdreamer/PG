@@ -8,6 +8,7 @@
 #include "PG/ui/UIPositionCalculator.h"
 #include "PG/graphics/NodeCreator.h"
 #include "PG/graphics/Scene.h"
+#include "PG/console/ConsoleController.h"
 
 using namespace PG;
 
@@ -92,8 +93,9 @@ namespace
 //--------------------------------------------------------
 TEST(UITests,testClickHandling)
 {
+	ConsoleController consoleController;
 	SceneControllerPtr sceneController;
-	auto scene = SceneCreator::createScene(sceneController, Size(), StyleSheet {});
+	auto scene = SceneCreator::createScene(sceneController, consoleController, Size(), StyleSheet {});
     UI ui(*scene);
 	
 	StyleSheet styleSheet;
