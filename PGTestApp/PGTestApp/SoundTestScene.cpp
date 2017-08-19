@@ -48,12 +48,12 @@ void SoundTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHa
 	m_AppHostServices = &appHostServices;
 	
 	PG::Sound buttonPress("buttonpress");
-	buttonPress.pitchRange = PG::ValueRange<float>(0.9, 1.1);
+	buttonPress.pitchRange = PG::ValueRange<float>(0.9f, 1.1f);
 	buttonPress.volumeRange = PG::ValueRange<float>(80.0f, 100.f);
 	m_GameState->buttonSoundID = m_AppHostServices->getSoundController().registerSound(buttonPress);
 	
 	PG::Sound cymbal("cymbal");
-	cymbal.pitchRange = PG::ValueRange<float>(0.9, 1.1);
+	cymbal.pitchRange = PG::ValueRange<float>(0.9f, 1.1f);
 	cymbal.volumeRange = PG::ValueRange<float>(80.0f, 100.f);
 	m_GameState->cymbalSoundID = m_AppHostServices->getSoundController().registerSound(cymbal);
 	

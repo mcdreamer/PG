@@ -61,6 +61,15 @@
     <Filter Include="console">
       <UniqueIdentifier>{87bf2e87-f165-4499-b35a-b8af8848a726}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sound">
+      <UniqueIdentifier>{8152777c-7ac1-4f6a-9b83-8bd5b1a2fe19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="internal\sound">
+      <UniqueIdentifier>{215d344f-ad07-4f07-9f5c-7e9e50da62a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="internal\ui">
+      <UniqueIdentifier>{27d6cf73-c9e5-43a8-8372-511ce1f3d3d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\util\JsonUtils.cpp">
@@ -206,6 +215,27 @@
     </ClCompile>
     <ClCompile Include="..\console\InputParser.cpp">
       <Filter>console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\console\CommandSetHandle.cpp">
+      <Filter>console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\console\CommandSetRemover.cpp">
+      <Filter>console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\console\ConsoleController.cpp">
+      <Filter>console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sound\SoundID.cpp">
+      <Filter>sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\internal\sound\SFMLSoundController.cpp">
+      <Filter>internal\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\internal\ui\Console.cpp">
+      <Filter>internal\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\app\KeyCodeUtils.cpp">
+      <Filter>app</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -415,6 +445,39 @@
     </ClInclude>
     <ClInclude Include="..\internal\input\KeyCodeUtils.h">
       <Filter>internal\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\console\CommandSetHandle.h">
+      <Filter>console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\console\CommandSetRemover.h">
+      <Filter>console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\console\ConsoleController.h">
+      <Filter>console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sound\ISoundController.h">
+      <Filter>sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sound\Sound.h">
+      <Filter>sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sound\SoundID.h">
+      <Filter>sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\internal\sound\SFMLSoundController.h">
+      <Filter>internal\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\internal\ui\Console.h">
+      <Filter>internal\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\app\AppHostServices.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\app\IPlatformServices.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\app\KeyCodeUtils.h">
+      <Filter>app</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

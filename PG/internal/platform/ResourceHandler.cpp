@@ -24,6 +24,10 @@ std::string ResourceHandler::getResourcePath(const std::string& exeDir,
 	{
 		return baseDir + "fonts/" + nameToUse + ".ttf";
 	}
+	else if (boost::iequals(type, "wav"))
+	{
+		return baseDir + "sounds/" + nameToUse + ".wav";
+	}
 	else
 	{
 		return baseDir + "data/" + nameToUse + ".json";

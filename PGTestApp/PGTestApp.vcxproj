@@ -92,8 +92,8 @@
     <CustomBuildStep>
       <Command>if not exist $(OutDir)resources mkdir $(OutDir)resources
 
-xcopy /i /e /s /y /d $(ProjectDir)\PGTestApp\resources $(OutDir)resources
-</Command>
+xcopy /i /e /s /y /d $(ProjectDir)PGTestApp\resources $(OutDir)resources
+xcopy /d /y "$(ProjectDir)..\PG\internal\sfml\bin\openal32.dll" "$(OutDir)"</Command>
       <Outputs>dummy</Outputs>
     </CustomBuildStep>
     <ProjectReference>
@@ -137,8 +137,8 @@ xcopy /i /e /s /y /d $(ProjectDir)\PGTestApp\resources $(OutDir)resources
     <CustomBuildStep>
       <Command>if not exist $(OutDir)resources mkdir $(OutDir)resources
 
-xcopy /i /e /s /y /d $(ProjectDir)\PGTestApp\resources $(OutDir)resources
-</Command>
+xcopy /i /e /s /y /d $(ProjectDir)PGTestApp\resources $(OutDir)resources
+xcopy /d /y "$(ProjectDir)..\PG\internal\sfml\bin\openal32.dll" "$(OutDir)"</Command>
       <Outputs>dummy</Outputs>
     </CustomBuildStep>
     <ProjectReference>
@@ -154,6 +154,7 @@ xcopy /i /e /s /y /d $(ProjectDir)\PGTestApp\resources $(OutDir)resources
     <ClCompile Include="PGTestApp\main_win.cpp" />
     <ClCompile Include="PGTestApp\PGTestAppController.cpp" />
     <ClCompile Include="PGTestApp\PhysicsTestScene.cpp" />
+    <ClCompile Include="PGTestApp\SoundTestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PGTestApp\AnimationsTestScene.h" />
@@ -163,6 +164,7 @@ xcopy /i /e /s /y /d $(ProjectDir)\PGTestApp\resources $(OutDir)resources
     <ClInclude Include="PGTestApp\MainMenuScene.h" />
     <ClInclude Include="PGTestApp\PGTestAppController.h" />
     <ClInclude Include="PGTestApp\PhysicsTestScene.h" />
+    <ClInclude Include="PGTestApp\SoundTestScene.h" />
     <ClInclude Include="PGTestApp\TagConstants.h" />
   </ItemGroup>
   <ItemGroup>

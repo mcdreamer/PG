@@ -35,6 +35,9 @@
     <ClCompile Include="PGTestApp\InventoryTestScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PGTestApp\SoundTestScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PGTestApp\PGTestAppController.h">
@@ -59,6 +62,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PGTestApp\InventoryTestScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PGTestApp\SoundTestScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

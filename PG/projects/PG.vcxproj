@@ -21,8 +21,12 @@
   <ItemGroup>
     <ClCompile Include="..\animation\AnimationUpdater.cpp" />
     <ClCompile Include="..\animation\MoveToAnimation.cpp" />
+    <ClCompile Include="..\app\KeyCodeUtils.cpp" />
     <ClCompile Include="..\app\PGAppHost.cpp" />
+    <ClCompile Include="..\console\CommandSetHandle.cpp" />
+    <ClCompile Include="..\console\CommandSetRemover.cpp" />
     <ClCompile Include="..\console\ConsoleCommandRegistry.cpp" />
+    <ClCompile Include="..\console\ConsoleController.cpp" />
     <ClCompile Include="..\console\InputParser.cpp" />
     <ClCompile Include="..\core\Colour.cpp" />
     <ClCompile Include="..\core\RectUtils.cpp" />
@@ -48,11 +52,14 @@
     <ClCompile Include="..\internal\graphics\SFMLView.cpp" />
     <ClCompile Include="..\internal\platform\ResourceHandler.cpp" />
     <ClCompile Include="..\internal\platform\WinResourceHandler.cpp" />
+    <ClCompile Include="..\internal\sound\SFMLSoundController.cpp" />
+    <ClCompile Include="..\internal\ui\Console.cpp" />
     <ClCompile Include="..\inventory\Inventory.cpp" />
     <ClCompile Include="..\physics\PhysicsBody.cpp" />
     <ClCompile Include="..\physics\PhysicsBodyCollection.cpp" />
     <ClCompile Include="..\physics\PhysicsBodyInputHandler.cpp" />
     <ClCompile Include="..\physics\PhysicsWorld.cpp" />
+    <ClCompile Include="..\sound\SoundID.cpp" />
     <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_reader.cpp" />
     <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_value.cpp" />
     <ClCompile Include="..\thirdparty\jsoncpp\src\lib_json\json_writer.cpp" />
@@ -73,14 +80,20 @@
     <ClInclude Include="..\animation\IAnimation.h" />
     <ClInclude Include="..\animation\MoveToAnimation.h" />
     <ClInclude Include="..\app\AppConfiguration.h" />
+    <ClInclude Include="..\app\AppHostServices.h" />
     <ClInclude Include="..\app\GameConstants.h" />
     <ClInclude Include="..\app\IAppController.h" />
     <ClInclude Include="..\app\IGameController.h" />
+    <ClInclude Include="..\app\IPlatformServices.h" />
+    <ClInclude Include="..\app\KeyCodeUtils.h" />
     <ClInclude Include="..\app\PGAppHost.h" />
     <ClInclude Include="..\app\StyleSheet.h" />
+    <ClInclude Include="..\console\CommandSetHandle.h" />
+    <ClInclude Include="..\console\CommandSetRemover.h" />
     <ClInclude Include="..\console\ConsoleCommandArgument.h" />
     <ClInclude Include="..\console\ConsoleCommandArgumentType.h" />
     <ClInclude Include="..\console\ConsoleCommandRegistry.h" />
+    <ClInclude Include="..\console\ConsoleController.h" />
     <ClInclude Include="..\console\InputParser.h" />
     <ClInclude Include="..\console\RawConsoleCommand.h" />
     <ClInclude Include="..\core\BindableValue.h" />
@@ -117,6 +130,8 @@
     <ClInclude Include="..\internal\platform\ResourceHandler.h" />
     <ClInclude Include="..\internal\platform\WinPlatformServices.h" />
     <ClInclude Include="..\internal\platform\WinResourceHandler.h" />
+    <ClInclude Include="..\internal\sound\SFMLSoundController.h" />
+    <ClInclude Include="..\internal\ui\Console.h" />
     <ClInclude Include="..\inventory\Inventory.h" />
     <ClInclude Include="..\inventory\InventoryItem.h" />
     <ClInclude Include="..\io\IResourceHandler.h" />
@@ -126,6 +141,9 @@
     <ClInclude Include="..\physics\PhysicsBodyInputHandler.h" />
     <ClInclude Include="..\physics\PhysicsWorld.h" />
     <ClInclude Include="..\physics\PhysicsWorldParams.h" />
+    <ClInclude Include="..\sound\ISoundController.h" />
+    <ClInclude Include="..\sound\Sound.h" />
+    <ClInclude Include="..\sound\SoundID.h" />
     <ClInclude Include="..\ui\Bar.h" />
     <ClInclude Include="..\ui\Button.h" />
     <ClInclude Include="..\ui\Dialog.h" />
