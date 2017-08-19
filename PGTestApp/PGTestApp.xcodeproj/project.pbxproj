@@ -11,10 +11,11 @@
 		49045B821EF5A26C006ECF48 /* ButtonsTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49045B801EF5A26C006ECF48 /* ButtonsTestScene.cpp */; };
 		49045B851EF5A41E006ECF48 /* AnimationsTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49045B831EF5A41E006ECF48 /* AnimationsTestScene.cpp */; };
 		49045B871EF70F14006ECF48 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49045B861EF70F14006ECF48 /* main.cpp */; };
+		490BBF5B1F485FF700726529 /* SoundTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490BBF591F485FF700726529 /* SoundTestScene.cpp */; };
+		490BBF5E1F48627E00726529 /* buttonpress.wav in Resources */ = {isa = PBXBuildFile; fileRef = 490BBF5D1F48627E00726529 /* buttonpress.wav */; };
 		4937522C1ED0DDC600B4F024 /* dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = 4937522B1ED0DDC600B4F024 /* dialog.png */; };
 		4937522E1ED0DDCC00B4F024 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4937522D1ED0DDCC00B4F024 /* OpenSans-Regular.ttf */; };
 		4947FEFD1F13FF1E0023FB7E /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 4947FEFC1F13FF1E0023FB7E /* heart.png */; };
-		495A07161F46331F00ED6F23 /* sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 495A07151F46331F00ED6F23 /* sound.wav */; };
 		4961A6221F090CB700652361 /* PhysicsTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4961A6201F090CB700652361 /* PhysicsTestScene.cpp */; };
 		496CC9531EED8D0500A901AA /* PGlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 496CC9521EED8D0500A901AA /* PGlogo.png */; };
 		49761EC11EED76F100DD6734 /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49761EBC1EED76F100DD6734 /* sfml-audio.framework */; };
@@ -67,10 +68,12 @@
 		49045B831EF5A41E006ECF48 /* AnimationsTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationsTestScene.cpp; sourceTree = "<group>"; };
 		49045B841EF5A41E006ECF48 /* AnimationsTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationsTestScene.h; sourceTree = "<group>"; };
 		49045B861EF70F14006ECF48 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		490BBF591F485FF700726529 /* SoundTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundTestScene.cpp; sourceTree = "<group>"; };
+		490BBF5A1F485FF700726529 /* SoundTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundTestScene.h; sourceTree = "<group>"; };
+		490BBF5D1F48627E00726529 /* buttonpress.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buttonpress.wav; sourceTree = "<group>"; };
 		4937522B1ED0DDC600B4F024 /* dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialog.png; sourceTree = "<group>"; };
 		4937522D1ED0DDCC00B4F024 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		4947FEFC1F13FF1E0023FB7E /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
-		495A07151F46331F00ED6F23 /* sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound.wav; sourceTree = "<group>"; };
 		4961A6201F090CB700652361 /* PhysicsTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsTestScene.cpp; sourceTree = "<group>"; };
 		4961A6211F090CB700652361 /* PhysicsTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsTestScene.h; sourceTree = "<group>"; };
 		496CC9521EED8D0500A901AA /* PGlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PGlogo.png; sourceTree = "<group>"; };
@@ -149,7 +152,7 @@
 		495A07131F46330E00ED6F23 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
-				495A07151F46331F00ED6F23 /* sound.wav */,
+				490BBF5D1F48627E00726529 /* buttonpress.wav */,
 			);
 			path = sounds;
 			sourceTree = "<group>";
@@ -194,6 +197,8 @@
 				497947A31F1BAA7400B01C19 /* InventoryTestScene.h */,
 				497947AF1F1BB8C500B01C19 /* BarTestScene.cpp */,
 				497947B01F1BB8C500B01C19 /* BarTestScene.h */,
+				490BBF591F485FF700726529 /* SoundTestScene.cpp */,
+				490BBF5A1F485FF700726529 /* SoundTestScene.h */,
 			);
 			path = PGTestApp;
 			sourceTree = "<group>";
@@ -303,9 +308,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				495A07161F46331F00ED6F23 /* sound.wav in Resources */,
 				4937522E1ED0DDCC00B4F024 /* OpenSans-Regular.ttf in Resources */,
 				49B63CC61F111AB8000B6297 /* ghost.png in Resources */,
+				490BBF5E1F48627E00726529 /* buttonpress.wav in Resources */,
 				496CC9531EED8D0500A901AA /* PGlogo.png in Resources */,
 				497947A91F1BAFA800B01C19 /* inventorycontainer.png in Resources */,
 				4937522C1ED0DDC600B4F024 /* dialog.png in Resources */,
@@ -324,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49AACB281ECCE2BD003BDC3C /* PGTestAppController.cpp in Sources */,
+				490BBF5B1F485FF700726529 /* SoundTestScene.cpp in Sources */,
 				49045B7F1EF5A25E006ECF48 /* MainMenuScene.cpp in Sources */,
 				49045B821EF5A26C006ECF48 /* ButtonsTestScene.cpp in Sources */,
 				49045B871EF70F14006ECF48 /* main.cpp in Sources */,

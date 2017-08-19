@@ -1,11 +1,11 @@
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
 
 #include "PG/app/PGAppHost.h"
 #include "PG/app/AppConfiguration.h"
 #include "PG/app/AppHostServices.h"
 #include "PG/console/ConsoleController.h"
 #include "PG/internal/ui/Console.h"
+#include "PG/internal/sound/SFMLSoundController.h"
 
 #ifdef __APPLE__
 
@@ -38,11 +38,6 @@ using TResourceHandler = PG::Internal::WinResourceHandler;
 #include "PG/internal/input/KeyCodeUtils.h"
 
 #include "PG/app/IGameController.h"
-
-#include "PG/sound/Sound.h"
-#include "PG/sound/SoundID.h"
-#include "PG/sound/ISoundController.h"
-#include <map>
 
 #include <memory>
 
@@ -302,51 +297,6 @@ namespace
 	}
 }
 
-namespace Internal {
-	//--------------------------------------------------------
-	class SFMLSoundController : public ISoundController
-	{
-	public:
-		SFMLSoundController(IResourceHandler& resourceHandler)
-		: m_ResourceHandler(resourceHandler), m_NextID(0)
-		{}
-	
-		virtual SoundID registerSound(const Sound& sound) override
-		{
-			auto soundPath = m_ResourceHandler.getResourcePath("sound", "wav");
-			
-			const SoundID soundID(m_NextID++);
-			
-			auto& buffer = m_SoundBuffers[soundID];
-			if (!buffer.loadFromFile(soundPath))
-			{
-				std::cerr << "Failed to load sound" << std::endl;
-			}
-			
-			return soundID;
-		}
-		
-		virtual void playSound(const SoundID& soundID) override
-		{
-			auto bufferIt = m_SoundBuffers.find(soundID);
-			
-			if (bufferIt != m_SoundBuffers.end())
-			{
-				m_Sounds.emplace_back();
-				auto& sound = m_Sounds.back();
-				sound.setBuffer(bufferIt->second);
-				sound.play();
-			}
-		}
-		
-	private:
-		std::map<SoundID, sf::SoundBuffer>	m_SoundBuffers;
-		IResourceHandler&					m_ResourceHandler;
-		int									m_NextID;
-		std::vector<sf::Sound>				m_Sounds;
-	};
-}
-
 //--------------------------------------------------------
 void PGAppHost::runApp(IGameController& gameController)
 {
@@ -365,10 +315,7 @@ void PGAppHost::runApp(IGameController& gameController)
 	Internal::g_ResourceHandler = &resourceHandler;
 	Internal::g_TileSize = appConfig.tileSize;
 	Internal::g_FontCache = &fontCache;
-	
 	Internal::SFMLSoundController soundController(resourceHandler);
-	const auto soundID = soundController.registerSound(Sound{});
-	soundController.playSound(soundID);
 
 	ConsoleController consoleController;
 	consoleController.addCommandSet(getRegistryForBuiltInCommands());

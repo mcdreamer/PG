@@ -9,6 +9,10 @@ namespace PG {
 //--------------------------------------------------------
 struct Sound
 {
+	Sound(const std::string& resourceName_)
+	: resourceName(resourceName_)
+	{}
+
 	std::string			resourceName;
 	
 	double				pitchScale = 1.0; //!< scale pitch of sound

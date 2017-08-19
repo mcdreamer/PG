@@ -10,6 +10,7 @@ namespace TagConstants
 		kShowPhysicsTest,
 		kShowInventoryTest,
 		kShowBarTest,
+		kShowSoundTest,
 		kExitApp
 	};
 };

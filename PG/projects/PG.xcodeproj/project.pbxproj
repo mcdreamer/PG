@@ -23,6 +23,9 @@
 		490A3D071EDC84890046A552 /* PhysicsBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490A3D061EDC84890046A552 /* PhysicsBody.cpp */; };
 		490A3D081EDC84890046A552 /* PhysicsBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490A3D061EDC84890046A552 /* PhysicsBody.cpp */; };
 		490BBF461F48523500726529 /* AppHostServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 490BBF451F48523500726529 /* AppHostServices.h */; };
+		490BBF561F485BFA00726529 /* SFMLSoundController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490BBF541F485BFA00726529 /* SFMLSoundController.cpp */; };
+		490BBF571F485BFA00726529 /* SFMLSoundController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490BBF541F485BFA00726529 /* SFMLSoundController.cpp */; };
+		490BBF581F485BFA00726529 /* SFMLSoundController.h in Headers */ = {isa = PBXBuildFile; fileRef = 490BBF551F485BFA00726529 /* SFMLSoundController.h */; };
 		493022211ECA441100C143A8 /* IResourceHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022201ECA441100C143A8 /* IResourceHandler.h */; };
 		493022271ECA449000C143A8 /* JsonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493022231ECA449000C143A8 /* JsonUtils.cpp */; };
 		493022281ECA449000C143A8 /* JsonUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022241ECA449000C143A8 /* JsonUtils.h */; };
@@ -205,6 +208,8 @@
 		490A3D021EDC80A40046A552 /* PhysicsWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsWorld.h; sourceTree = "<group>"; };
 		490A3D061EDC84890046A552 /* PhysicsBody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsBody.cpp; sourceTree = "<group>"; };
 		490BBF451F48523500726529 /* AppHostServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHostServices.h; sourceTree = "<group>"; };
+		490BBF541F485BFA00726529 /* SFMLSoundController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SFMLSoundController.cpp; sourceTree = "<group>"; };
+		490BBF551F485BFA00726529 /* SFMLSoundController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMLSoundController.h; sourceTree = "<group>"; };
 		493022201ECA441100C143A8 /* IResourceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IResourceHandler.h; sourceTree = "<group>"; };
 		493022231ECA449000C143A8 /* JsonUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonUtils.cpp; sourceTree = "<group>"; };
 		493022241ECA449000C143A8 /* JsonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonUtils.h; sourceTree = "<group>"; };
@@ -364,6 +369,15 @@
 			path = ../physics;
 			sourceTree = "<group>";
 		};
+		490BBF531F485BE200726529 /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				490BBF541F485BFA00726529 /* SFMLSoundController.cpp */,
+				490BBF551F485BFA00726529 /* SFMLSoundController.h */,
+			);
+			path = sound;
+			sourceTree = "<group>";
+		};
 		4929DE691ADAC315006A6BB3 /* thirdparty */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +404,7 @@
 				493022911ECA458F00C143A8 /* graphics */,
 				493022921ECA459600C143A8 /* input */,
 				493022881ECA452700C143A8 /* platform */,
+				490BBF531F485BE200726529 /* sound */,
 				493AFB581F42418200A952E1 /* ui */,
 			);
 			name = internal;
@@ -730,6 +745,7 @@
 				4930228F1ECA453E00C143A8 /* MacResourceHandler.h in Headers */,
 				49AACADD1ECCD13F003BDC3C /* AttributeConstants.h in Headers */,
 				49669EE41F23C848008488BB /* UIMessage.h in Headers */,
+				490BBF581F485BFA00726529 /* SFMLSoundController.h in Headers */,
 				493022861ECA44E800C143A8 /* PGAppHost.h in Headers */,
 				490A3A461F40A2AA00A967C8 /* KeyCodeUtils.h in Headers */,
 				49669EE61F23C848008488BB /* UIMessageQueuePoster.h in Headers */,
@@ -874,6 +890,7 @@
 				493ABCA01EFE8B10000C01E4 /* PointUtils.cpp in Sources */,
 				493ABCA31EFE8B10000C01E4 /* Colour.cpp in Sources */,
 				493ABC9F1EFE8B10000C01E4 /* Point.cpp in Sources */,
+				490BBF571F485BFA00726529 /* SFMLSoundController.cpp in Sources */,
 				4976AD2D1F23A19F0044B6FB /* GeometryLoader.cpp in Sources */,
 				493ABC9B1EFE8B10000C01E4 /* MoveToAnimation.cpp in Sources */,
 				493ABC9D1EFE8B10000C01E4 /* PGAppHost.cpp in Sources */,
@@ -893,6 +910,7 @@
 				4930229F1ECA45AF00C143A8 /* SFMLScene.cpp in Sources */,
 				49A7A70E1EEDAF0A00816F2B /* AnimationUpdater.cpp in Sources */,
 				49669EE11F23C848008488BB /* UIElement.cpp in Sources */,
+				490BBF561F485BFA00726529 /* SFMLSoundController.cpp in Sources */,
 				49AACADC1ECCD13F003BDC3C /* AttributeConstants.cpp in Sources */,
 				493AFB5B1F42419800A952E1 /* Console.cpp in Sources */,
 				49669EDF1F23C848008488BB /* UI.cpp in Sources */,

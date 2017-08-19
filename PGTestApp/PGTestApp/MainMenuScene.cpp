@@ -28,15 +28,16 @@ void MainMenuScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHan
 	m_Scene.scene->addChild(textNode);
 	
 	PG::UIPositionCalculator uiPosCalc(sceneSize);
-	const auto btnPts = uiPosCalc.multipleDownCentre(sceneSize.height * 0.4, 6, sceneSize.height * 0.1);
+	const auto btnPts = uiPosCalc.multipleDownCentre(sceneSize.height * 0.35, 7, sceneSize.height * 0.1);
 	
 	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[0], "Buttons Test", TagConstants::kShowButtonsTest));
 	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[1], "Animations Test", TagConstants::kShowAnimationsTest));
 	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[2], "Physics Test", TagConstants::kShowPhysicsTest));
 	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[3], "Inventory Test", TagConstants::kShowInventoryTest));
 	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[4], "Bar Test", TagConstants::kShowBarTest));
+	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[5], "Sound Test", TagConstants::kShowSoundTest));
 	
-	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[5], "Exit", TagConstants::kExitApp));
+	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[6], "Exit", TagConstants::kExitApp));
 }
 
 //--------------------------------------------------------
