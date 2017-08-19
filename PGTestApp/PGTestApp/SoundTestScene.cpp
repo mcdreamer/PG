@@ -23,7 +23,10 @@ namespace
 //--------------------------------------------------------
 struct SoundTestScene::GameState
 {
-	PG::SoundID soundID;
+	PG::SoundID buttonSoundID;
+	PG::SoundID cymbalSoundID;
+	
+	bool		playCymbal = false;
 };
 
 //--------------------------------------------------------
@@ -44,9 +47,15 @@ void SoundTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHa
 	m_Scene = scene;
 	m_AppHostServices = &appHostServices;
 	
-	PG::Sound sound("buttonpress");
+	PG::Sound buttonPress("buttonpress");
+	buttonPress.pitchRange = PG::ValueRange<float>(0.9, 1.1);
+	buttonPress.volumeRange = PG::ValueRange<float>(80.0f, 100.f);
+	m_GameState->buttonSoundID = m_AppHostServices->getSoundController().registerSound(buttonPress);
 	
-	m_GameState->soundID = m_AppHostServices->getSoundController().registerSound(sound);
+	PG::Sound cymbal("cymbal");
+	cymbal.pitchRange = PG::ValueRange<float>(0.9, 1.1);
+	cymbal.volumeRange = PG::ValueRange<float>(80.0f, 100.f);
+	m_GameState->cymbalSoundID = m_AppHostServices->getSoundController().registerSound(cymbal);
 	
 	m_Scene.scene->setBackgroundColour(PG::Colour(100, 150, 10));
 	
@@ -64,15 +73,11 @@ void SoundTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPost
 	switch (tag)
 	{
 		case kPlaySound:
-			m_AppHostServices->getSoundController().playSound(m_GameState->soundID);
+			m_AppHostServices->getSoundController().playSound(m_GameState->playCymbal ? m_GameState->cymbalSoundID : m_GameState->buttonSoundID);
+			m_GameState->playCymbal = !m_GameState->playCymbal;
 			break;
 			
 		default:
 			msgPoster.postMessage(PG::UIMessage::sendTag(&m_AppTagTarget, tag));
 	}
-}
-
-//--------------------------------------------------------
-void SoundTestScene::update(double dt)
-{
 }

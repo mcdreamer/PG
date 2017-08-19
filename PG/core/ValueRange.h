@@ -9,9 +9,9 @@ struct ValueRange
     ValueRange(const T start_, const T end_)
     : start(start_), end(end_)
     {}
-    
-    const T start;
-    const T end;
+	
+    T start;
+    T end;
 	
 	T size() const
 	{

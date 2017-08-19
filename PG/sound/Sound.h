@@ -9,17 +9,17 @@ namespace PG {
 //--------------------------------------------------------
 struct Sound
 {
+	Sound()
+	{}
+
 	Sound(const std::string& resourceName_)
 	: resourceName(resourceName_)
 	{}
 
 	std::string			resourceName;
 	
-	double				pitchScale = 1.0; //!< scale pitch of sound
-	double				volume = 100.0; //!< volume range is 0 - 100
-	
-	ValueRange<double>	pitchScaleDeltaRange = ValueRange<double>(1.0, 1.0);
-	ValueRange<double>	volumnDeltaRange = ValueRange<double>(0.0, 0.0);
+	ValueRange<float>	pitchRange = ValueRange<float>(1.0f, 1.0f); //!< 1 = normal speed
+	ValueRange<float>	volumeRange = ValueRange<float>(100.0f, 100.0f); //!< 0 to 100
 };
 
 }

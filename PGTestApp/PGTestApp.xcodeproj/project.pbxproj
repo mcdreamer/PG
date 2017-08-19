@@ -13,6 +13,7 @@
 		49045B871EF70F14006ECF48 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49045B861EF70F14006ECF48 /* main.cpp */; };
 		490BBF5B1F485FF700726529 /* SoundTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490BBF591F485FF700726529 /* SoundTestScene.cpp */; };
 		490BBF5E1F48627E00726529 /* buttonpress.wav in Resources */ = {isa = PBXBuildFile; fileRef = 490BBF5D1F48627E00726529 /* buttonpress.wav */; };
+		490BBF601F48B30200726529 /* cymbal.wav in Resources */ = {isa = PBXBuildFile; fileRef = 490BBF5F1F48B30200726529 /* cymbal.wav */; };
 		4937522C1ED0DDC600B4F024 /* dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = 4937522B1ED0DDC600B4F024 /* dialog.png */; };
 		4937522E1ED0DDCC00B4F024 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4937522D1ED0DDCC00B4F024 /* OpenSans-Regular.ttf */; };
 		4947FEFD1F13FF1E0023FB7E /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 4947FEFC1F13FF1E0023FB7E /* heart.png */; };
@@ -71,6 +72,7 @@
 		490BBF591F485FF700726529 /* SoundTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundTestScene.cpp; sourceTree = "<group>"; };
 		490BBF5A1F485FF700726529 /* SoundTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundTestScene.h; sourceTree = "<group>"; };
 		490BBF5D1F48627E00726529 /* buttonpress.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buttonpress.wav; sourceTree = "<group>"; };
+		490BBF5F1F48B30200726529 /* cymbal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cymbal.wav; sourceTree = "<group>"; };
 		4937522B1ED0DDC600B4F024 /* dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialog.png; sourceTree = "<group>"; };
 		4937522D1ED0DDCC00B4F024 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		4947FEFC1F13FF1E0023FB7E /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		495A07131F46330E00ED6F23 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				490BBF5F1F48B30200726529 /* cymbal.wav */,
 				490BBF5D1F48627E00726529 /* buttonpress.wav */,
 			);
 			path = sounds;
@@ -314,6 +317,7 @@
 				496CC9531EED8D0500A901AA /* PGlogo.png in Resources */,
 				497947A91F1BAFA800B01C19 /* inventorycontainer.png in Resources */,
 				4937522C1ED0DDC600B4F024 /* dialog.png in Resources */,
+				490BBF601F48B30200726529 /* cymbal.wav in Resources */,
 				4947FEFD1F13FF1E0023FB7E /* heart.png in Resources */,
 				49E070531F1A650700381C22 /* star.png in Resources */,
 				4989D77D1EE44C6A00821078 /* AppIcon.xcassets in Resources */,
