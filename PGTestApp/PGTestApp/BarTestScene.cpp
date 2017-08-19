@@ -43,7 +43,7 @@ BarTestScene::~BarTestScene()
 }
 
 //--------------------------------------------------------
-void BarTestScene::initScene(PG::SceneHandle scene)
+void BarTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHandle scene)
 {
 	m_Scene = scene;
 	

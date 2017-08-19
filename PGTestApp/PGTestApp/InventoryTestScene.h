@@ -5,6 +5,12 @@
 
 #include <memory>
 
+namespace PG {
+
+class AppHostServices;
+
+}
+
 //--------------------------------------------------------
 class InventoryTestScene : public PG::ISceneController, public PG::TagReciever
 {
@@ -14,7 +20,7 @@ public:
 	InventoryTestScene(PG::TagReciever& appTagTarget);
 	~InventoryTestScene();
 	
-	virtual void initScene(PG::SceneHandle scene) override;
+	virtual void initScene(PG::AppHostServices& appHostServices, PG::SceneHandle scene) override;
 	
 	virtual void clickInScene(PG::Point pt, bool isRightClick) override {}
 	virtual void draggedWithOffset(PG::Point pt) override {}
@@ -29,6 +35,7 @@ public:
 	
 private:
 	PG::SceneHandle					m_Scene;
+	PG::AppHostServices*			m_AppHostServices;
 	TagReciever&					m_AppTagTarget;
 	std::unique_ptr<GameState>		m_GameState;
 	

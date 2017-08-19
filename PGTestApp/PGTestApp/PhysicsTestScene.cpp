@@ -13,6 +13,7 @@
 #include "PG/ui/UIPositionCalculator.h"
 #include "PG/app/StyleSheet.h"
 #include "PG/app/GameConstants.h"
+#include "PG/app/AppHostServices.h"
 #include "PG/data/DataGrid.h"
 #include "PG/entities/TilePositionCalculator.h"
 #include "PG/core/BindableValue.h"
@@ -79,7 +80,7 @@ PhysicsTestScene::~PhysicsTestScene()
 }
 
 //--------------------------------------------------------
-void PhysicsTestScene::initScene(PG::SceneHandle scene)
+void PhysicsTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHandle scene)
 {
 	m_Scene = scene;
 	
@@ -92,8 +93,8 @@ void PhysicsTestScene::initScene(PG::SceneHandle scene)
 	
 	PG::UIPositionCalculator uiPosCalc(sceneSize);
 	
-	PG::UIUtils::createTextNodeForValue(PG::Point(20, 20), PG::Colour(255, 0, 0), 20, m_HeartCountNode, m_Scene, m_GameState->numHearts);
-	PG::UIUtils::createTextNodeForValue(PG::Point(20, 40), PG::Colour(0, 128, 255), 20, m_StarsCountNode, m_Scene, m_GameState->numStars);
+	PG::UIUtils::createTextNodeForValue(PG::Point(20, 20), PG::Colour(255, 0, 0), 20, appHostServices.getStyleSheet(), m_HeartCountNode, m_Scene, m_GameState->numHearts);
+	PG::UIUtils::createTextNodeForValue(PG::Point(20, 40), PG::Colour(0, 128, 255), 20, appHostServices.getStyleSheet(), m_StarsCountNode, m_Scene, m_GameState->numStars);
 	
 	m_Scene.scene->pushUIElement(new PG::Button(*this, uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
 	

@@ -6,9 +6,10 @@
 #include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/ui/UIPositionCalculator.h"
 #include "PG/app/StyleSheet.h"
+#include "PG/app/AppHostServices.h"
 
 //--------------------------------------------------------
-void MainMenuScene::initScene(PG::SceneHandle scene)
+void MainMenuScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHandle scene)
 {
 	m_Scene = scene;
 	
@@ -20,7 +21,7 @@ void MainMenuScene::initScene(PG::SceneHandle scene)
 	logoNode->setPosition(PG::Point(30 + (logoNode->getSize().width / 2.0), 30 + (logoNode->getSize().height / 2.0)));
 	m_Scene.scene->addChild(logoNode);
 
-	auto textNode = PG::NodeCreator::createTextNode(m_Scene.scene->getStyleSheet().uiFontName, 120);
+	auto textNode = PG::NodeCreator::createTextNode(appHostServices.getStyleSheet().uiFontName, 120);
 	textNode->setText("Test App");
 	textNode->setColour(PG::Colour(255, 255, 255));
 	textNode->setPosition(PG::Point(sceneSize.width / 2.0, 45 + (textNode->getSize().height / 2.0)));

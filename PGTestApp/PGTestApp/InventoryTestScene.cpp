@@ -3,6 +3,7 @@
 
 #include "PG/graphics/NodeCreator.h"
 #include "PG/app/StyleSheet.h"
+#include "PG/app/AppHostServices.h"
 #include "PG/ui/Button.h"
 #include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/ui/UIUtils.h"
@@ -38,7 +39,8 @@ struct InventoryTestScene::GameState
 //--------------------------------------------------------
 InventoryTestScene::InventoryTestScene(PG::TagReciever& appTagTarget)
 : m_AppTagTarget(appTagTarget), 
-m_GameState(new GameState)
+m_GameState(new GameState),
+m_AppHostServices(nullptr)
 {}
 
 //--------------------------------------------------------
@@ -47,9 +49,10 @@ InventoryTestScene::~InventoryTestScene()
 }
 
 //--------------------------------------------------------
-void InventoryTestScene::initScene(PG::SceneHandle scene)
+void InventoryTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHandle scene)
 {
 	m_Scene = scene;
+	m_AppHostServices = &appHostServices;
 	
 	m_Scene.scene->setBackgroundColour(PG::Colour(239, 247, 197));
 	
@@ -176,7 +179,7 @@ void InventoryTestScene::updateInventory()
 		auto itemNode = PG::NodeCreator::createSpriteNode(inventoryItem.item.getImageName());
 		itemNode->setPosition(btnPt);
 		
-		auto labelNode = PG::NodeCreator::createTextNode(m_Scene.scene->getStyleSheet().uiFontName, 10);
+		auto labelNode = PG::NodeCreator::createTextNode(m_AppHostServices->getStyleSheet().uiFontName, 10);
 		labelNode->setText(inventoryItem.item.getName() + " (" + std::to_string(inventoryItem.count) + ")");
 		labelNode->setColour(PG::Colour(255, 255, 255));
 		labelNode->setPosition(PG::Point(btnPt.x, btnPt.y + itemNode->getSize().height - 10));

@@ -1,4 +1,5 @@
 #include "PG/internal/graphics/SFMLView.h"
+#include "PG/app/AppHostServices.h"
 #include "PG/core/Size.h"
 
 #include <SFML/Graphics.hpp>
@@ -88,16 +89,15 @@ SceneControllerHandle SFMLView::createAndInitialiseScene(SceneControllerPtr& sce
 	const auto size = m_View->getView().getSize();
 	
 	m_SceneStack.push(SceneCreator::createScene(sceneController,
-												m_ConsoleController,
-												Size(size.x, size.y),
-												m_StyleSheet));
+												m_AppHostServices,
+												Size(size.x, size.y)));
 	
 	auto* scene = getCurrentScene();
 	SceneControllerHandle controllerHandle(scene ? scene->getController() : nullptr);
 	
 	if (controllerHandle.controller)
 	{
-		controllerHandle.controller->initScene(scene);
+		controllerHandle.controller->initScene(m_AppHostServices, scene);
 	}
 	
 	return controllerHandle;

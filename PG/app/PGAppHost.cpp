@@ -3,6 +3,7 @@
 
 #include "PG/app/PGAppHost.h"
 #include "PG/app/AppConfiguration.h"
+#include "PG/app/AppHostServices.h"
 #include "PG/console/ConsoleController.h"
 #include "PG/internal/ui/Console.h"
 
@@ -361,20 +362,26 @@ void PGAppHost::runApp(IGameController& gameController)
     TResourceHandler resourceHandler;
     Internal::SFMLFontCache fontCache;
 	
+	Internal::g_ResourceHandler = &resourceHandler;
+	Internal::g_TileSize = appConfig.tileSize;
+	Internal::g_FontCache = &fontCache;
+	
 	Internal::SFMLSoundController soundController(resourceHandler);
 	const auto soundID = soundController.registerSound(Sound{});
 	soundController.playSound(soundID);
 
 	ConsoleController consoleController;
 	consoleController.addCommandSet(getRegistryForBuiltInCommands());
+	
+	AppHostServices appHostServices(appConfig.styleSheet,
+									consoleController,
+									soundController,
+									platformServices,
+									resourceHandler);
+	
+	Internal::SFMLView view(&window, appHostServices);
 
-    Internal::SFMLView view(&window, consoleController, appConfig.styleSheet);
-
-    Internal::g_ResourceHandler = &resourceHandler;
-    Internal::g_TileSize = appConfig.tileSize;
-	Internal::g_FontCache = &fontCache;
-
-    gameController.start(platformServices, view, resourceHandler);
+    gameController.start(appHostServices, view);
 
 	AppRunner appRunner(gameController, appConfig, window, view, resourceHandler);
 	appRunner.runMainLoop();

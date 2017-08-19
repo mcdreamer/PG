@@ -1,28 +1,25 @@
 #include "PG/internal/graphics/SFMLScene.h"
+#include "PG/app/AppHostServices.h"
 
 namespace PG {
 
 //--------------------------------------------------------
 ScenePtr SceneCreator::createScene(SceneControllerPtr& controller,
-								   ConsoleController& consoleController,
-								   const Size& size,
-								   const StyleSheet& styleSheet)
+								   AppHostServices& appHostServices,
+								   const Size& size)
 {
 	return std::make_unique<Internal::SFMLScene>(controller,
-												 consoleController,
 												 size,
-												 styleSheet);
+												 appHostServices.getStyleSheet());
 }
 
 namespace Internal {
 
 //--------------------------------------------------------
 SFMLScene::SFMLScene(SceneControllerPtr& controller,
-					 ConsoleController& consoleController,
 					 const Size& size,
 					 const StyleSheet& styleSheet)
 : m_SceneController(controller.release()),
-m_ConsoleController(consoleController),
 m_SceneSize(size)
 {
 	m_Root = NodeCreator::createNode();
@@ -55,12 +52,6 @@ Point SFMLScene::getWindowPointAsScenePoint(const Point& windowPt, INode* layer)
 }
 
 //--------------------------------------------------------
-const StyleSheet& SFMLScene::getStyleSheet() const
-{
-	return m_UI->getStyleSheet();
-}
-
-//--------------------------------------------------------
 void SFMLScene::clickInScene(PG::Point pt, bool isRightClick)
 {
 	if (!m_UI->handleClick(pt) && m_SceneController)
@@ -83,12 +74,6 @@ void SFMLScene::update(double dt)
 	}
 	
 	m_UI->update();
-}
-
-//--------------------------------------------------------
-ConsoleController& SFMLScene::getConsoleController()
-{
-	return m_ConsoleController;
 }
 
 }

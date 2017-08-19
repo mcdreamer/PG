@@ -1,4 +1,7 @@
 #include "UITests.h"
+#include "TestResourceHandler.h"
+#include "TestSoundController.h"
+#include "TestPlatformServices.h"
 #include "gtest/gtest.h"
 
 #include "PG/core/RectUtils.h"
@@ -9,6 +12,7 @@
 #include "PG/graphics/NodeCreator.h"
 #include "PG/graphics/Scene.h"
 #include "PG/console/ConsoleController.h"
+#include "PG/app/AppHostServices.h"
 
 using namespace PG;
 
@@ -95,10 +99,16 @@ TEST(UITests,testClickHandling)
 {
 	ConsoleController consoleController;
 	SceneControllerPtr sceneController;
-	auto scene = SceneCreator::createScene(sceneController, consoleController, Size(), StyleSheet {});
+	StyleSheet styleSheet;
+	TestResourceHandler resourceHandler;
+	TestSoundController soundController;
+	TestPlatformServices testPlatformServices;
+	
+	AppHostServices appHostServices(styleSheet, consoleController, soundController, testPlatformServices, resourceHandler);
+	
+	auto scene = SceneCreator::createScene(sceneController, appHostServices, Size());
     UI ui(*scene);
 	
-	StyleSheet styleSheet;
 	styleSheet.uiFontName = "OpenSans-Regular";
 	
 	ui.setStyleSheet(styleSheet);

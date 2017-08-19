@@ -8,6 +8,7 @@
 namespace PG {
 
 struct SceneHandle;
+struct StyleSheet;
 
 namespace UIUtils {
 
@@ -26,6 +27,7 @@ NodeHandle createTextNode(const Point& pos,
 						  const Colour& colour,
 						  const int fontSize,
 						  const Alignment alignment,
+						  const PG::StyleSheet& styleSheet,
 						  SceneHandle& scene);
 
 //--------------------------------------------------------
@@ -34,11 +36,12 @@ void createTextNodeForValue(const Point& pos,
 							const Colour& colour,
 							const int fontSize,
 							const Alignment alignment,
+							const PG::StyleSheet& styleSheet,
 							NodeHandle& node,
 							SceneHandle& scene,
 							BindableValue<T>& value)
 {
-	node = createTextNode(pos, colour, fontSize, alignment, scene);
+	node = createTextNode(pos, colour, fontSize, alignment, styleSheet, scene);
 	
 	bindTextNodeToValue(node, value);
 }
@@ -48,6 +51,7 @@ template <typename T>
 void createTextNodeForValue(const Point& pos,
 							const Colour& colour,
 							const int fontSize,
+							const PG::StyleSheet& styleSheet,
 							NodeHandle& node,
 							SceneHandle& scene,
 							BindableValue<T>& value)
@@ -56,6 +60,7 @@ void createTextNodeForValue(const Point& pos,
 						   colour,
 						   fontSize,
 						   Alignment::kCentre,
+						   styleSheet,
 						   node,
 						   scene,
 						   value);

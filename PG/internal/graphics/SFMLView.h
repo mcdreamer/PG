@@ -2,7 +2,6 @@
 
 #include "PG/graphics/View.h"
 #include "PG/graphics/Scene.h"
-#include "PG/app/StyleSheet.h"
 
 #include <boost/optional.hpp>
 
@@ -16,6 +15,7 @@ namespace sf
 namespace PG {
 
 struct SceneControllerHandle;
+class AppHostServices;
 
 namespace Internal {
 
@@ -25,12 +25,10 @@ class SFMLScene;
 class SFMLView : public IView
 {
 public:
-    SFMLView(sf::RenderWindow* view_,
-			 ConsoleController& consoleController,
-			 const StyleSheet& styleSheet_)
-    : m_View(view_),
-	m_ConsoleController(consoleController),
-	m_StyleSheet(styleSheet_)
+    SFMLView(sf::RenderWindow* view,
+			 AppHostServices& appHostServices)
+    : m_View(view),
+	m_AppHostServices(appHostServices)
     {}
 	
 	virtual SceneControllerHandle	replaceScene(SceneControllerPtr& sceneController) override;
@@ -42,7 +40,6 @@ public:
 	
 	sf::RenderWindow*				getRenderWindow() const { return m_View; }
 	IScene*							getCurrentScene() const;
-	const StyleSheet&				getStyleSheet() const { return m_StyleSheet; }
 	
 	void							updateFinished();
 	
@@ -56,8 +53,7 @@ private:
 
     sf::RenderWindow*							m_View;
 	std::stack<ScenePtr>						m_SceneStack;
-	ConsoleController&							m_ConsoleController;
-	const StyleSheet							m_StyleSheet;
+	AppHostServices&							m_AppHostServices;
 	
 	std::vector<ScenePtr>						m_Overlays;
 	

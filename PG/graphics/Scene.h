@@ -15,7 +15,7 @@ class Colour;
 class Size;
 class Point;
 struct StyleSheet;
-class ConsoleController;
+class AppHostServices;
 
 //--------------------------------------------------------
 struct SceneHandle
@@ -51,7 +51,7 @@ class ISceneController
 public:
     virtual ~ISceneController() {}
 	
-	virtual void	initScene(SceneHandle scene)=0;
+	virtual void	initScene(AppHostServices& appHostServices, SceneHandle scene)=0;
 	
     virtual void    update(double dt)=0;
     
@@ -72,7 +72,6 @@ public:
     virtual ~IScene() {}
 	
 	virtual Size					getSceneSize() const=0;
-	virtual const StyleSheet&		getStyleSheet() const=0;
 	virtual	SceneControllerHandle	getController() const=0;
 	virtual NodeHandle				getRoot() const=0;
 	virtual const Colour			getBackgroundColour() const=0;
@@ -85,8 +84,6 @@ public:
 	virtual void					clickInScene(PG::Point pt, bool isRightClick)=0;
 	
 	virtual void					update(double dt)=0;
-	
-	virtual	ConsoleController&		getConsoleController()=0;
 };
 
 using ScenePtr = std::unique_ptr<IScene>;
@@ -96,9 +93,8 @@ class SceneCreator
 {
 public:
     static ScenePtr createScene(SceneControllerPtr& controller,
-								ConsoleController& consoleController,
-								const Size& size,
-								const StyleSheet& styleSheet);
+								AppHostServices& appHostServices,
+								const Size& size);
 };
 
 }

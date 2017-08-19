@@ -5,6 +5,7 @@
 #include "PG/ui/Button.h"
 #include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/app/StyleSheet.h"
+#include "PG/app/AppHostServices.h"
 
 namespace
 {
@@ -16,7 +17,7 @@ namespace
 }
 
 //--------------------------------------------------------
-void ButtonTestScene::initScene(PG::SceneHandle scene)
+void ButtonTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHandle scene)
 {
 	m_Scene = scene;
 	
@@ -26,7 +27,7 @@ void ButtonTestScene::initScene(PG::SceneHandle scene)
 	m_Scene.scene->pushUIElement(new PG::Button(*this, PG::Point(200, 200), "Test Button", kTagTestButton));
 	m_Scene.scene->pushUIElement(new PG::Button(*this, PG::Point(200, 300), "Another Test Button", kTagAnotherTestButton));
 	
-	auto textNode = PG::NodeCreator::createTextNode(m_Scene.scene->getStyleSheet().uiFontName, 30);
+	auto textNode = PG::NodeCreator::createTextNode(appHostServices.getStyleSheet().uiFontName, 30);
 	textNode->setText("Hello");
 	textNode->setColour(PG::Colour(0, 255, 255));
 	textNode->setPosition(PG::Point(200, 400));

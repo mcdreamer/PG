@@ -3,6 +3,7 @@
 
 #include "PG/io/IResourceHandler.h"
 #include "PG/internal/graphics/SFMLNode.h"
+#include "TestResourceHandler.h"
 
 namespace PG {
 namespace Internal {
@@ -12,20 +13,6 @@ extern IResourceHandler* g_ResourceHandler;
 extern SFMLFontCache* g_FontCache;
     
 }
-}
-
-namespace
-{
-    //--------------------------------------------------------
-    class TestResourceHandler : public PG::IResourceHandler
-    {
-    public:
-        //--------------------------------------------------------
-        virtual std::string getResourcePath(const std::string& name, const std::string& type) override
-        {
-            return name + "." + type;
-        }
-    };
 }
 
 //--------------------------------------------------------

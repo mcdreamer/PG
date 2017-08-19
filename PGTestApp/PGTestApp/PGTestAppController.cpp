@@ -9,13 +9,13 @@
 
 #include "PG/app/AppConfiguration.h"
 #include "PG/app/IPlatformServices.h"
+#include "PG/app/AppHostServices.h"
 #include "PG/graphics/View.h"
 
 //--------------------------------------------------------
 PGTestAppController::PGTestAppController()
-: m_PlatformServices(nullptr),
-m_View(nullptr),
-m_ResourceHandler(nullptr)
+: m_AppHostServices(nullptr),
+m_View(nullptr)
 {
 	initialiseConfig();
 }
@@ -45,13 +45,10 @@ PG::AppConfiguration PGTestAppController::getConfiguration()
 }
 
 //--------------------------------------------------------
-void PGTestAppController::start(PG::IPlatformServices& platformServices,
-                                PG::IView& view,
-                                PG::IResourceHandler& resourceHandler)
+void PGTestAppController::start(PG::AppHostServices& appHostServices, PG::IView& view)
 {
-    m_PlatformServices = &platformServices;
+    m_AppHostServices = &appHostServices;
     m_View = &view;
-    m_ResourceHandler = &resourceHandler;
 	
 	std::unique_ptr<PG::ISceneController> mainMenu(new MainMenuScene(*this));
 	m_View->replaceScene(mainMenu);
@@ -99,7 +96,7 @@ void PGTestAppController::receiveTag(const int tag, PG::UIMessageQueuePoster& ms
 		}
 		case TagConstants::kExitApp:
 		{
-			m_PlatformServices->exitApp();
+			m_AppHostServices->getPlatformServices().exitApp();
 			break;
 		}
 		default:

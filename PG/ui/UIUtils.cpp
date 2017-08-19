@@ -27,9 +27,10 @@ NodeHandle createTextNode(const Point& pos,
 						  const Colour& colour,
 						  const int fontSize,
 						  const Alignment alignment,
+						  const PG::StyleSheet& styleSheet,
 						  SceneHandle& scene)
 {
-	auto textNode = NodeCreator::createTextNode(scene.scene->getStyleSheet().uiFontName,
+	auto textNode = NodeCreator::createTextNode(styleSheet.uiFontName,
 												fontSize,
 												alignment);
 	textNode->setPosition(pos);

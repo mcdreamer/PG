@@ -122,6 +122,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		490BBF471F4859F500726529 /* TestResourceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestResourceHandler.h; sourceTree = "<group>"; };
+		490BBF511F485A2700726529 /* TestSoundController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSoundController.h; sourceTree = "<group>"; };
+		490BBF521F485AC400726529 /* TestPlatformServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPlatformServices.h; sourceTree = "<group>"; };
 		4956B5C11EE4514100F6A7A4 /* GeometryTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeometryTests.cpp; sourceTree = "<group>"; };
 		4956B5C21EE4514100F6A7A4 /* GeometryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeometryTests.h; sourceTree = "<group>"; };
 		4961A6241F090EB200652361 /* PhysicsTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsTests.cpp; sourceTree = "<group>"; };
@@ -212,6 +215,9 @@
 				4976AD201F23A09B0044B6FB /* testgeometry.geometry */,
 				49BECD6F1F3252C600778059 /* ConsoleTests.cpp */,
 				49BECD701F3252C600778059 /* ConsoleTests.h */,
+				490BBF471F4859F500726529 /* TestResourceHandler.h */,
+				490BBF511F485A2700726529 /* TestSoundController.h */,
+				490BBF521F485AC400726529 /* TestPlatformServices.h */,
 			);
 			path = PGTests;
 			sourceTree = "<group>";

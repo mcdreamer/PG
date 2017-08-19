@@ -9,7 +9,7 @@
 #include "PG/app/StyleSheet.h"
 
 //--------------------------------------------------------
-void AnimationsTestScene::initScene(PG::SceneHandle scene)
+void AnimationsTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHandle scene)
 {
 	m_Scene = scene;
 	

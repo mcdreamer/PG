@@ -7,6 +7,9 @@
 #include <memory>
 
 namespace PG {
+
+class AppHostServices;
+
 namespace Internal {
 
 //--------------------------------------------------------
@@ -18,7 +21,7 @@ public:
 	ConsoleScene();
 	~ConsoleScene();
 	
-	virtual void initScene(SceneHandle scene) override;
+	virtual void initScene(AppHostServices& appHostServices, SceneHandle scene) override;
 	
 	virtual void clickInScene(Point pt, bool isRightClick) override {}
 	virtual void draggedWithOffset(Point pt) override {}
@@ -33,6 +36,7 @@ public:
 	
 private:
 	SceneHandle				m_Scene;
+	AppHostServices*		m_AppHostServices;
 	std::unique_ptr<State>	m_State;
 	
 	void createConsoleOutlineLinesNodes(const std::vector<Point>& linePositions,

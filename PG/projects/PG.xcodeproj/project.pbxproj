@@ -22,6 +22,7 @@
 		490A3D051EDC80A40046A552 /* PhysicsWorld.h in Headers */ = {isa = PBXBuildFile; fileRef = 490A3D021EDC80A40046A552 /* PhysicsWorld.h */; };
 		490A3D071EDC84890046A552 /* PhysicsBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490A3D061EDC84890046A552 /* PhysicsBody.cpp */; };
 		490A3D081EDC84890046A552 /* PhysicsBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490A3D061EDC84890046A552 /* PhysicsBody.cpp */; };
+		490BBF461F48523500726529 /* AppHostServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 490BBF451F48523500726529 /* AppHostServices.h */; };
 		493022211ECA441100C143A8 /* IResourceHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022201ECA441100C143A8 /* IResourceHandler.h */; };
 		493022271ECA449000C143A8 /* JsonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493022231ECA449000C143A8 /* JsonUtils.cpp */; };
 		493022281ECA449000C143A8 /* JsonUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 493022241ECA449000C143A8 /* JsonUtils.h */; };
@@ -203,6 +204,7 @@
 		490A3D011EDC80A40046A552 /* PhysicsWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsWorld.cpp; sourceTree = "<group>"; };
 		490A3D021EDC80A40046A552 /* PhysicsWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsWorld.h; sourceTree = "<group>"; };
 		490A3D061EDC84890046A552 /* PhysicsBody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsBody.cpp; sourceTree = "<group>"; };
+		490BBF451F48523500726529 /* AppHostServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHostServices.h; sourceTree = "<group>"; };
 		493022201ECA441100C143A8 /* IResourceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IResourceHandler.h; sourceTree = "<group>"; };
 		493022231ECA449000C143A8 /* JsonUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonUtils.cpp; sourceTree = "<group>"; };
 		493022241ECA449000C143A8 /* JsonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonUtils.h; sourceTree = "<group>"; };
@@ -668,6 +670,7 @@
 				49761EB91EED71E000DD6734 /* StyleSheet.h */,
 				490A3A431F40A2AA00A967C8 /* KeyCodeUtils.cpp */,
 				490A3A441F40A2AA00A967C8 /* KeyCodeUtils.h */,
+				490BBF451F48523500726529 /* AppHostServices.h */,
 			);
 			name = app;
 			path = ../app;
@@ -718,6 +721,7 @@
 				493022761ECA44E200C143A8 /* Point.h in Headers */,
 				4930227D1ECA44E200C143A8 /* TileCoord.h in Headers */,
 				49BECD7C1F32536E00778059 /* RawConsoleCommand.h in Headers */,
+				490BBF461F48523500726529 /* AppHostServices.h in Headers */,
 				4930227E1ECA44E200C143A8 /* ValueRange.h in Headers */,
 				49669EEA1F23C848008488BB /* UIUtils.h in Headers */,
 				49AACAE31ECCD13F003BDC3C /* EntityHandle.h in Headers */,

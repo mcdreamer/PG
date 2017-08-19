@@ -21,7 +21,7 @@ public:
 	PhysicsTestScene(PG::TagReciever& appTagTarget);
 	~PhysicsTestScene();
 	
-	virtual void initScene(PG::SceneHandle scene) override;
+	virtual void initScene(PG::AppHostServices& appHostServices, PG::SceneHandle scene) override;
 	
 	virtual void clickInScene(PG::Point pt, bool isRightClick) override {}
 	virtual void draggedWithOffset(PG::Point pt) override {}
