@@ -7,6 +7,7 @@
 #include "InventoryTestScene.h"
 #include "BarTestScene.h"
 #include "SoundTestScene.h"
+#include "CameraTestScene.h"
 
 #include "PG/app/AppConfiguration.h"
 #include "PG/app/IPlatformServices.h"
@@ -98,6 +99,12 @@ void PGTestAppController::receiveTag(const int tag, PG::UIMessageQueuePoster& ms
 		case TagConstants::kShowSoundTest:
 		{
 			std::unique_ptr<PG::ISceneController> barTest(new SoundTestScene(*this));
+			m_View->pushScene(barTest);
+			break;
+		}
+		case TagConstants::kShowCameraTest:
+		{
+			std::unique_ptr<PG::ISceneController> barTest(new CameraTestScene(*this));
 			m_View->pushScene(barTest);
 			break;
 		}

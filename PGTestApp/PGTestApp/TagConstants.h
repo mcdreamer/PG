@@ -11,6 +11,7 @@ namespace TagConstants
 		kShowInventoryTest,
 		kShowBarTest,
 		kShowSoundTest,
+		kShowCameraTest,
 		kExitApp
 	};
 };

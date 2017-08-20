@@ -1,0 +1,166 @@
+#include "CameraTestScene.h"
+#include "CameraTestScene.h"
+#include "TagConstants.h"
+
+#include "PG/physics/PhysicsWorld.h"
+#include "PG/physics/PhysicsBody.h"
+#include "PG/physics/PhysicsBodyAndNode.h"
+#include "PG/physics/PhysicsBodyInputHandler.h"
+#include "PG/physics/PhysicsBodyCollection.h"
+#include "PG/graphics/NodeCreator.h"
+#include "PG/ui/Button.h"
+#include "PG/ui/UIMessageQueuePoster.h"
+#include "PG/ui/UIUtils.h"
+#include "PG/ui/UIPositionCalculator.h"
+#include "PG/app/StyleSheet.h"
+#include "PG/app/GameConstants.h"
+#include "PG/app/AppHostServices.h"
+#include "PG/data/DataGrid.h"
+#include "PG/entities/TilePositionCalculator.h"
+#include "PG/core/BindableValue.h"
+
+#include <list>
+
+namespace
+{
+	//--------------------------------------------------------
+	PG::PhysicsWorldParams getWorldParams()
+	{
+		PG::PhysicsWorldParams params;
+		
+		params.gravity = PG::Size(0, 1000);
+		params.jumpForce = PG::Point(0, -420);
+		params.friction = 0.78;
+		
+		const double speed = 400;
+		params.minMovement = PG::Point(-speed, -4850);
+		params.maxMovement = PG::Point(speed, 1000);
+		
+		params.forward = PG::Point(3000, 0);
+		
+		return params;
+	}
+}
+
+//--------------------------------------------------------
+struct CameraTestScene::PhysicsState
+{
+	PhysicsState(const PG::Rect& bodyRect)
+	: world(getWorldParams()), bodyAndNode(bodyRect), levelGeometry(100, 10)
+	{}
+	
+	PG::PhysicsWorld			world;
+	PG::PhysicsBodyAndNode		bodyAndNode;
+	PG::DataGrid<bool>			levelGeometry;
+};
+
+//--------------------------------------------------------
+CameraTestScene::CameraTestScene(PG::TagReciever& appTagTarget)
+: m_AppTagTarget(appTagTarget),
+m_State(new PhysicsState(PG::Rect(PG::Point(32, 0), PG::Size(PG::GameConstants::tileSize(), PG::GameConstants::tileSize()))))
+{}
+
+//--------------------------------------------------------
+CameraTestScene::~CameraTestScene()
+{
+}
+
+//--------------------------------------------------------
+void CameraTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHandle scene)
+{
+	m_Scene = scene;
+	
+	m_Scene.scene->setBackgroundColour(PG::Colour(197, 239, 247));
+	
+	const auto sceneSize = m_Scene.scene->getSceneSize();
+	
+	auto ghostNode = PG::NodeCreator::createSpriteNode("ghost");
+	m_State->bodyAndNode.node = m_Scene.scene->addChild(ghostNode);
+	
+	PG::UIPositionCalculator uiPosCalc(sceneSize);
+	
+	m_Scene.scene->pushUIElement(new PG::Button(*this, uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
+	
+	generateAndSetupLevelGeometry();
+}
+
+//--------------------------------------------------------
+void CameraTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
+{
+	msgPoster.postMessage(PG::UIMessage::sendTag(&m_AppTagTarget, tag));
+}
+
+namespace PG
+{
+	//--------------------------------------------------------
+	class Camera
+	{
+	public:
+		Camera(const PG::Size& viewSize)
+		: m_ViewSize(viewSize)
+		{}
+		
+		PG::Point calculateCameraPoint(const PG::Point& controllingPt) const
+		{
+			return PG::Point(-controllingPt.x + 100, -controllingPt.y + 100);
+		}
+		
+	private:
+		PG::Size	m_ViewSize;
+	};
+}
+
+//--------------------------------------------------------
+void CameraTestScene::update(double dt)
+{
+	m_State->world.applyPhysicsForBody(m_State->bodyAndNode.body, m_State->levelGeometry, dt);
+	
+	m_State->bodyAndNode.node.node->setPosition(m_State->bodyAndNode.body.bounds.origin);
+	
+	
+	
+	PG::Camera camera(m_Scene.scene->getSceneSize()); // View size?
+	
+	m_Scene.scene->getRoot().node->setPosition(camera.calculateCameraPoint(m_State->bodyAndNode.node.node->getPosition()));
+	
+}
+
+//--------------------------------------------------------
+void CameraTestScene::keyDown(PG::KeyCode code, PG::KeyModifier mods)
+{
+	PG::PhysicsBodyInputHandler inputHandler(m_State->bodyAndNode.body);
+	inputHandler.keyDown(code, mods);
+}
+
+//--------------------------------------------------------
+void CameraTestScene::keyUp(PG::KeyCode code)
+{
+	PG::PhysicsBodyInputHandler inputHandler(m_State->bodyAndNode.body);
+	inputHandler.keyUp(code);
+}
+
+//--------------------------------------------------------
+void CameraTestScene::generateAndSetupLevelGeometry()
+{
+	PG::TilePositionCalculator tilePosCalc;
+	
+	for (int y = 0; y < 10; ++y)
+	{
+		for (int x = 0; x < 100; ++x)
+		{
+			if (y == 9 || (y == 8 && (x % 5) == 0))
+			{
+				m_State->levelGeometry.set(x, y, true);
+				
+				auto blockNode = PG::NodeCreator::createSpriteNode("block");
+				blockNode->setPosition(tilePosCalc.calculatePoint(PG::TileCoord(x, y)));
+				m_Scene.scene->addChild(blockNode);
+			}
+			else
+			{
+				m_State->levelGeometry.set(x, y, false);
+			}
+		}
+	}
+}
+

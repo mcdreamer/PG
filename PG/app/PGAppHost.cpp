@@ -154,7 +154,16 @@ namespace
 			}
 			if (rootNode)
 			{
+				const auto nodePos = scene->getRoot().node->getPosition();
+			
+				auto sfmlView = m_Window.getView();
+				sfmlView.move((int)-nodePos.x, (int)-nodePos.y);
+				m_Window.setView(sfmlView);
+				
 				draw(rootNode->m_ChildNodes);
+				
+				sfmlView.move((int)nodePos.x, (int)nodePos.y);
+				m_Window.setView(sfmlView);
 			}
 			
 			m_Window.draw(fpsLabel);
@@ -211,33 +220,25 @@ namespace
 		}
 		
 		//--------------------------------------------------------
-		bool draw(const NodePtrArray& nodes)
+		void draw(const NodePtrArray& nodes)
 		{
-			bool anyNodesRemoved = false;
-			
 			for (const auto& child : nodes)
 			{
-				auto* n = dynamic_cast<Internal::ISFMLNodeProvider*>(child.get());
+				auto* n = dynamic_cast<Internal::ISFMLNodeProvider*>(child.get()); // remove this
 				if (!n->isRemoved())
 				{
 					m_Window.draw(*n->getNode());
 					
-					auto view = m_Window.getView();
-					view.move((int)-child->getPosition().x, (int)-child->getPosition().y);
-					m_Window.setView(view);
+					auto sfmlView = m_Window.getView();
+					sfmlView.move((int)-child->getPosition().x, (int)-child->getPosition().y);
+					m_Window.setView(sfmlView);
 					
-					anyNodesRemoved |= draw(n->m_ChildNodes);
+					draw(n->m_ChildNodes);
 					
-					view.move((int)child->getPosition().x, (int)child->getPosition().y);
-					m_Window.setView(view);
-				}
-				else
-				{
-					anyNodesRemoved = true;
+					sfmlView.move((int)child->getPosition().x, (int)child->getPosition().y);
+					m_Window.setView(sfmlView);
 				}
 			}
-			
-			return anyNodesRemoved;
 		}
 		
 		//--------------------------------------------------------
