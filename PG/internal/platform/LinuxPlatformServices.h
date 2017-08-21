@@ -9,7 +9,8 @@ namespace Internal {
 class LinuxPlatformServices : public IPlatformServices
 {
 public:
-    virtual void exitApp() override;
+    virtual void 	exitApp() override;
+		virtual float	getDisplayScale() override;
 };
 
 }

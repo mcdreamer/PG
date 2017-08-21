@@ -55,8 +55,8 @@ namespace
 {
     //--------------------------------------------------------
     PG::Point windowPointToScenePoint(const sf::Vector2u& windowSize,
-                                        const PG::Size& sceneSize,
-                                        const PG::Point& point)
+									  const PG::Size& sceneSize,
+									  const PG::Point& point)
     {
         return PG::Point(point.x / ((double)windowSize.x / sceneSize.width),
                            point.y / ((double)windowSize.y / sceneSize.height));
@@ -302,14 +302,22 @@ namespace
 void PGAppHost::runApp(IGameController& gameController)
 {
 	const auto appConfig = gameController.getConfiguration();
+	
+	TPlatformServices platformServices;
+	const auto displayScale = platformServices.getDisplayScale();
 
-    sf::VideoMode videoMode((unsigned int)appConfig.windowSize.width,
-							(unsigned int)appConfig.windowSize.height);
+    sf::VideoMode videoMode((unsigned int)(appConfig.windowSize.width * displayScale),
+							(unsigned int)(appConfig.windowSize.height * displayScale));
 
     sf::RenderWindow window(videoMode, appConfig.windowTitle);
 	window.setVerticalSyncEnabled(true);
+	
+	sf::View sfmlView(sf::FloatRect(0.0f,
+									0.0f,
+									(float)appConfig.windowSize.width,
+									(float)appConfig.windowSize.height));
+	window.setView(sfmlView);
 
-    TPlatformServices platformServices;
     TResourceHandler resourceHandler;
     Internal::SFMLFontCache fontCache;
 	
