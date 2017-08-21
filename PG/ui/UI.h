@@ -26,7 +26,7 @@ public:
 	
 private:
     PGUIMessageQueue    m_MessageQueue;
-    UIElementArray    m_UIStack;
+    UIElementArray		m_UIStack;
     IScene&             m_Scene;
 	StyleSheet			m_StyleSheet;
 };

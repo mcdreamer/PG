@@ -22,7 +22,7 @@ class UIElement : public TagReciever
 public:
     virtual ~UIElement() {}
     
-    void                show(IScene& scene, const StyleSheet& styleSheet);
+//    void                show(IScene& scene, const StyleSheet& styleSheet);
     void                show(NodeHandle parent, const StyleSheet& styleSheet);
     void                close();
     

@@ -27,6 +27,7 @@ public:
 	virtual Size					getSceneSize() const override;
 	virtual	SceneControllerHandle	getController() const override { return m_SceneController.get(); }
 	virtual NodeHandle				getRoot() const override { return m_Root.get(); }
+	virtual NodeHandle				getUIRoot() const override { return m_UIRoot.get(); }
 	virtual const Colour			getBackgroundColour() const override { return m_BackgroundColour; }
 	virtual Point					getWindowPointAsScenePoint(const Point& windowPt, INode* layer) const override;
 	
@@ -38,6 +39,7 @@ public:
 private:
     Size							m_SceneSize;
     NodePtr							m_Root;
+	NodePtr							m_UIRoot;
     SceneControllerPtr				m_SceneController;
     Colour							m_BackgroundColour;
     std::unique_ptr<PG::UI>			m_UI;

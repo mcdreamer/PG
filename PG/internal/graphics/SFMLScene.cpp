@@ -23,6 +23,7 @@ SFMLScene::SFMLScene(SceneControllerPtr& controller,
 m_SceneSize(size)
 {
 	m_Root = NodeCreator::createNode();
+	m_UIRoot = NodeCreator::createNode();
 	m_UI.reset(new PG::UI(*this));
 	m_UI->setStyleSheet(styleSheet);
 }

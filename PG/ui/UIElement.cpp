@@ -7,14 +7,14 @@
 
 namespace PG {
 
-//--------------------------------------------------------
-void UIElement::show(IScene& scene, const StyleSheet& styleSheet)
-{
-    auto root = NodeCreator::createNode();
-    m_Root = scene.addChild(root);
-    
-    initUIElement(styleSheet);
-}
+////--------------------------------------------------------
+//void UIElement::show(IScene& scene, const StyleSheet& styleSheet)
+//{
+//    auto root = NodeCreator::createNode();
+//    m_Root = scene.addChild(root);
+//    
+//    initUIElement(styleSheet);
+//}
 
 //--------------------------------------------------------
 void UIElement::show(NodeHandle parent, const StyleSheet& styleSheet)

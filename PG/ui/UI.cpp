@@ -10,7 +10,7 @@ namespace PG {
 void UI::pushElement(UIElement* element)
 {
     m_UIStack.emplace_back(element);
-    m_UIStack.back()->show(m_Scene, m_StyleSheet);
+    m_UIStack.back()->show(m_Scene.getUIRoot(), m_StyleSheet);
 }
 
 //--------------------------------------------------------

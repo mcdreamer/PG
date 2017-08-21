@@ -147,6 +147,7 @@ namespace
 		{
 			auto* scene = m_View.getCurrentScene();
 			auto* rootNode = scene ? dynamic_cast<Internal::ISFMLNodeProvider*>(scene->getRoot().node) : nullptr;
+			auto* uiRootNode = scene ? dynamic_cast<Internal::ISFMLNodeProvider*>(scene->getUIRoot().node) : nullptr;
 			
 			if (scene)
 			{
@@ -157,13 +158,17 @@ namespace
 				const auto nodePos = scene->getRoot().node->getPosition();
 			
 				auto sfmlView = m_Window.getView();
-				sfmlView.move((int)-nodePos.x, (int)-nodePos.y);
+				sfmlView.move((float)-nodePos.x, (float)-nodePos.y);
 				m_Window.setView(sfmlView);
 				
 				draw(rootNode->m_ChildNodes);
 				
-				sfmlView.move((int)nodePos.x, (int)nodePos.y);
+				sfmlView.move((float)nodePos.x, (float)nodePos.y);
 				m_Window.setView(sfmlView);
+			}
+			if (uiRootNode)
+			{
+				draw(uiRootNode->m_ChildNodes);
 			}
 			
 			m_Window.draw(fpsLabel);
