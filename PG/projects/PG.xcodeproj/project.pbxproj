@@ -177,6 +177,9 @@
 		49BECD811F3259EA00778059 /* ConsoleCommandRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BECD7E1F3259EA00778059 /* ConsoleCommandRegistry.h */; };
 		49BECD831F325E2B00778059 /* ConsoleCommandArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BECD821F325E2B00778059 /* ConsoleCommandArgument.h */; };
 		49BECD851F3263CC00778059 /* ConsoleCommandArgumentType.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BECD841F3263CC00778059 /* ConsoleCommandArgumentType.h */; };
+		49D520DF1F4B7795004F7C0A /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49D520DD1F4B7795004F7C0A /* Camera.cpp */; };
+		49D520E01F4B7795004F7C0A /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49D520DD1F4B7795004F7C0A /* Camera.cpp */; };
+		49D520E11F4B7795004F7C0A /* Camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 49D520DE1F4B7795004F7C0A /* Camera.h */; };
 		49E070431F1A52C500381C22 /* BindableValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E070421F1A52C500381C22 /* BindableValue.h */; };
 		49E070571F1A67F700381C22 /* PhysicsBodyCollection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49E070551F1A67F700381C22 /* PhysicsBodyCollection.cpp */; };
 		49E070581F1A67F700381C22 /* PhysicsBodyCollection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49E070551F1A67F700381C22 /* PhysicsBodyCollection.cpp */; };
@@ -328,6 +331,8 @@
 		49BECD7E1F3259EA00778059 /* ConsoleCommandRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleCommandRegistry.h; sourceTree = "<group>"; };
 		49BECD821F325E2B00778059 /* ConsoleCommandArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleCommandArgument.h; sourceTree = "<group>"; };
 		49BECD841F3263CC00778059 /* ConsoleCommandArgumentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleCommandArgumentType.h; sourceTree = "<group>"; };
+		49D520DD1F4B7795004F7C0A /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		49D520DE1F4B7795004F7C0A /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		49E070421F1A52C500381C22 /* BindableValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindableValue.h; sourceTree = "<group>"; };
 		49E070551F1A67F700381C22 /* PhysicsBodyCollection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsBodyCollection.cpp; sourceTree = "<group>"; };
 		49E070561F1A67F700381C22 /* PhysicsBodyCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsBodyCollection.h; sourceTree = "<group>"; };
@@ -627,6 +632,8 @@
 				4930225A1ECA44DC00C143A8 /* TextureMeasurer.cpp */,
 				4930225B1ECA44DC00C143A8 /* TextureMeasurer.h */,
 				4930225C1ECA44DC00C143A8 /* View.h */,
+				49D520DD1F4B7795004F7C0A /* Camera.cpp */,
+				49D520DE1F4B7795004F7C0A /* Camera.h */,
 			);
 			name = graphics;
 			path = ../graphics;
@@ -769,6 +776,7 @@
 				4930229E1ECA45AF00C143A8 /* SFMLNode.h in Headers */,
 				49AACAF61ECCD2FC003BDC3C /* Tile.h in Headers */,
 				49761EB81EED71D600DD6734 /* AppConfiguration.h in Headers */,
+				49D520E11F4B7795004F7C0A /* Camera.h in Headers */,
 				4930225F1ECA44DC00C143A8 /* Scene.h in Headers */,
 				49761EBA1EED71E000DD6734 /* StyleSheet.h in Headers */,
 				490A3A501F40A34900A967C8 /* ConsoleController.h in Headers */,
@@ -873,6 +881,7 @@
 				493ABCBF1EFE8B10000C01E4 /* Logger.cpp in Sources */,
 				493ABCA61EFE8B10000C01E4 /* DataGrid.cpp in Sources */,
 				493ABCB01EFE8B10000C01E4 /* SFMLView.cpp in Sources */,
+				49D520E01F4B7795004F7C0A /* Camera.cpp in Sources */,
 				493ABCAE1EFE8B10000C01E4 /* SFMLScene.cpp in Sources */,
 				493ABCAB1EFE8B10000C01E4 /* Inventory.cpp in Sources */,
 				493ABCBE1EFE8B10000C01E4 /* JsonUtils.cpp in Sources */,
@@ -942,6 +951,7 @@
 				49669EEF1F23C855008488BB /* RectUtils.cpp in Sources */,
 				495A07021F461E3E00ED6F23 /* CommandSetRemover.cpp in Sources */,
 				490A3D031EDC80A40046A552 /* PhysicsWorld.cpp in Sources */,
+				49D520DF1F4B7795004F7C0A /* Camera.cpp in Sources */,
 				4956B5CE1EE4582A00F6A7A4 /* Rect.cpp in Sources */,
 				49AACADE1ECCD13F003BDC3C /* Attributes.cpp in Sources */,
 				493022601ECA44DC00C143A8 /* TextureMeasurer.cpp in Sources */,

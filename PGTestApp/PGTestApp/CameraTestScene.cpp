@@ -8,6 +8,7 @@
 #include "PG/physics/PhysicsBodyInputHandler.h"
 #include "PG/physics/PhysicsBodyCollection.h"
 #include "PG/graphics/NodeCreator.h"
+#include "PG/graphics/Camera.h"
 #include "PG/ui/Button.h"
 #include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/ui/UIUtils.h"
@@ -19,7 +20,7 @@
 #include "PG/entities/TilePositionCalculator.h"
 #include "PG/core/BindableValue.h"
 
-#include <list>
+#include <iostream>
 
 namespace
 {
@@ -79,7 +80,7 @@ void CameraTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneH
 	
 	PG::UIPositionCalculator uiPosCalc(sceneSize);
 	
-	m_Scene.scene->pushUIElement(new PG::Button(*this, uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
+	m_Scene.scene->pushUIElement(new PG::Button(*this, uiPosCalc.fromBottomLeftCorner(PG::Size(50, 30)), "Back", TagConstants::kPopScene));
 	
 	generateAndSetupLevelGeometry();
 }
@@ -90,26 +91,6 @@ void CameraTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPos
 	msgPoster.postMessage(PG::UIMessage::sendTag(&m_AppTagTarget, tag));
 }
 
-namespace PG
-{
-	//--------------------------------------------------------
-	class Camera
-	{
-	public:
-		Camera(const PG::Size& viewSize)
-		: m_ViewSize(viewSize)
-		{}
-		
-		PG::Point calculateCameraPoint(const PG::Point& controllingPt) const
-		{
-			return PG::Point(-controllingPt.x + 100, -controllingPt.y + 100);
-		}
-		
-	private:
-		PG::Size	m_ViewSize;
-	};
-}
-
 //--------------------------------------------------------
 void CameraTestScene::update(double dt)
 {
@@ -117,11 +98,15 @@ void CameraTestScene::update(double dt)
 	
 	m_State->bodyAndNode.node.node->setPosition(m_State->bodyAndNode.body.bounds.origin);
 	
-	
-	
-	PG::Camera camera(m_Scene.scene->getSceneSize()); // View size?
-	
-	m_Scene.scene->getRoot().node->setPosition(camera.calculateCameraPoint(m_State->bodyAndNode.node.node->getPosition()));
+	auto* sceneRoot = m_Scene.scene->getRoot().node;
+	if (sceneRoot)
+	{
+		PG::Camera camera(m_Scene.scene->getSceneSize(), PG::Rect(PG::Point(0, 0), PG::Size(300, 100)));
+		
+		const auto currPosition = sceneRoot->getPosition();
+		sceneRoot->setPosition(camera.calculateCameraPoint(currPosition,
+														   m_State->bodyAndNode.node.node->getPosition()));
+	}
 	
 }
 
@@ -148,7 +133,7 @@ void CameraTestScene::generateAndSetupLevelGeometry()
 	{
 		for (int x = 0; x < 100; ++x)
 		{
-			if (y == 9 || (y == 8 && (x % 5) == 0))
+			if (y == 9 || (y == 8 && (x % 10) == 0))
 			{
 				m_State->levelGeometry.set(x, y, true);
 				

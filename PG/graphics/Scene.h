@@ -74,6 +74,7 @@ public:
 	virtual Size					getSceneSize() const=0;
 	virtual	SceneControllerHandle	getController() const=0;
 	virtual NodeHandle				getRoot() const=0;
+	virtual NodeHandle				getUIRoot() const=0;
 	virtual const Colour			getBackgroundColour() const=0;
 	virtual Point					getWindowPointAsScenePoint(const Point& windowPt, INode* layer) const=0;
 	
