@@ -32,20 +32,30 @@ namespace
 }
 	
 //--------------------------------------------------------
-Point Camera::calculateCameraPoint(const Point& currentCameraPt,
-						   const Point& controllingPt) const
+Point Camera::calculateCameraPoint(const Size& viewSize,
+								   const Point& currentCameraPt) const
 {
+	if (!m_ControllingNode.node)
+	{
+		return currentCameraPt;
+	}
+
+	const auto controllingPt = m_ControllingNode.node->getPosition();
+
+	const Rect staticRect(Point(0, 0),
+						  Size(m_StaticZone.width * viewSize.width, m_StaticZone.height * viewSize.height));
+
 	const auto xToSet = getValueToSetOnAxis(currentCameraPt.x,
 											controllingPt.x,
-											m_ViewSize.width,
-											m_StaticZone.left(),
-											m_StaticZone.right());
+											viewSize.width,
+											staticRect.left(),
+											staticRect.right());
 	
 	const auto yToSet = getValueToSetOnAxis(currentCameraPt.y,
 											controllingPt.y,
-											m_ViewSize.height,
-											m_StaticZone.top(),
-											m_StaticZone.bottom());
+											viewSize.height,
+											staticRect.top(),
+											staticRect.bottom());
 	
 	return Point(xToSet, yToSet);
 }

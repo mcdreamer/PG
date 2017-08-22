@@ -16,6 +16,7 @@ class Size;
 class Point;
 struct StyleSheet;
 class AppHostServices;
+class Camera;
 
 //--------------------------------------------------------
 struct SceneHandle
@@ -77,10 +78,12 @@ public:
 	virtual NodeHandle				getUIRoot() const=0;
 	virtual const Colour			getBackgroundColour() const=0;
 	virtual Point					getWindowPointAsScenePoint(const Point& windowPt, INode* layer) const=0;
+	virtual Camera					getCamera() const=0;
 	
 	virtual NodeHandle				addChild(std::unique_ptr<INode>& node)=0;
 	virtual void					pushUIElement(UIElement* uiElement)=0;
 	virtual void					setBackgroundColour(const Colour& colour)=0;
+	virtual void					setCamera(const Camera& camera)=0;
 	
 	virtual void					clickInScene(PG::Point pt, bool isRightClick)=0;
 	

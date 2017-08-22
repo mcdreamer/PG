@@ -82,6 +82,9 @@ void CameraTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneH
 	
 	m_Scene.scene->pushUIElement(new PG::Button(*this, uiPosCalc.fromBottomLeftCorner(PG::Size(50, 30)), "Back", TagConstants::kPopScene));
 	
+	const PG::Camera camera(PG::Size(0.3, 0.1), m_State->bodyAndNode.node);
+	m_Scene.scene->setCamera(camera);
+	
 	generateAndSetupLevelGeometry();
 }
 
@@ -97,17 +100,6 @@ void CameraTestScene::update(double dt)
 	m_State->world.applyPhysicsForBody(m_State->bodyAndNode.body, m_State->levelGeometry, dt);
 	
 	m_State->bodyAndNode.node.node->setPosition(m_State->bodyAndNode.body.bounds.origin);
-	
-	auto* sceneRoot = m_Scene.scene->getRoot().node;
-	if (sceneRoot)
-	{
-		PG::Camera camera(m_Scene.scene->getSceneSize(), PG::Rect(PG::Point(0, 0), PG::Size(300, 100)));
-		
-		const auto currPosition = sceneRoot->getPosition();
-		sceneRoot->setPosition(camera.calculateCameraPoint(currPosition,
-														   m_State->bodyAndNode.node.node->getPosition()));
-	}
-	
 }
 
 //--------------------------------------------------------

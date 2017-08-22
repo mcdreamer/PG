@@ -2,6 +2,7 @@
 
 #include "PG/core/Size.h"
 #include "PG/core/Rect.h"
+#include "PG/graphics/Node.h"
 
 namespace PG {
 
@@ -11,17 +12,21 @@ class Point;
 class Camera
 {
 public:
-	Camera(const Size& viewSize, const Rect& staticZone)
-	: m_ViewSize(viewSize),
-	m_StaticZone(staticZone)
+	Camera()
 	{}
 	
-	Point calculateCameraPoint(const Point& currentCameraPt,
-							   const Point& controllingPt) const;
+	Camera(const Size& staticZone,
+		   const NodeHandle& controllingNode)
+	: m_StaticZone(staticZone),
+	m_ControllingNode(controllingNode)
+	{}
+	
+	Point calculateCameraPoint(const Size& viewSize,
+							   const Point& currentCameraPt) const;
 	
 private:
-	Size	m_ViewSize;
-	Rect	m_StaticZone;
+	Size		m_StaticZone;
+	NodeHandle	m_ControllingNode;
 };
 
 }

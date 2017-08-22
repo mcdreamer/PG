@@ -35,6 +35,12 @@ void SFMLScene::setBackgroundColour(const Colour& colour)
 }
 
 //--------------------------------------------------------
+void SFMLScene::setCamera(const Camera& camera)
+{
+	m_Camera = camera;
+}
+
+//--------------------------------------------------------
 NodeHandle SFMLScene::addChild(std::unique_ptr<INode>& node)
 {
 	return m_Root->addChild(node);
@@ -72,6 +78,12 @@ void SFMLScene::update(double dt)
 	if (m_SceneController)
 	{
 		m_SceneController->update(dt);
+		
+		if (m_Root)
+		{
+			m_Root->setPosition(m_Camera.calculateCameraPoint(getSceneSize(),
+															  m_Root->getPosition()));
+		}
 	}
 	
 	m_UI->update();
