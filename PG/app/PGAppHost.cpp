@@ -40,6 +40,7 @@ using TResourceHandler = PG::Internal::WinResourceHandler;
 #include "PG/app/IGameController.h"
 
 #include <memory>
+#include <cmath>
 
 namespace PG {
 
@@ -66,7 +67,7 @@ namespace
 	//--------------------------------------------------------
 	sf::Color getsfColorFromPGColor(const PG::Colour& c)
 	{
-		return sf::Color(c.r, c.g, c.b, (unsigned char)c.a);
+		return sf::Color(c.r, c.g, c.b, (unsigned char)255 * c.a);
 	}
 
 	// AD: Move this to a new file?
@@ -88,9 +89,19 @@ namespace
 		m_ResourceHandler(resourceHandler)
 		{}
 	
+		sf::RenderTexture	m_RenderTexture;
+		sf::Shader			m_LightingShader;
+	
 		//--------------------------------------------------------
 		void runMainLoop()
 		{
+			m_RenderTexture.create(m_Window.getSize().x, m_Window.getSize().y);
+			const auto lightingShaderPath = m_ResourceHandler.getResourcePath("lighting", "shader");
+			if (!m_LightingShader.loadFromFile(lightingShaderPath, sf::Shader::Fragment))
+			{
+				std::cerr << "Error loading lighting shader" << std::endl;
+			}
+			
 			sf::Font fpsFont;
 			fpsFont.loadFromFile(m_ResourceHandler.getResourcePath(m_AppConfig.styleSheet.uiFontName, "ttf"));
 			
@@ -111,7 +122,7 @@ namespace
 				
 				performUpdates(timestep, unhandledTime);
 				
-				drawScene(fpsLabel);
+				drawScene(timestep, fpsLabel);
 			}
 		}
 		
@@ -142,36 +153,83 @@ namespace
 			}
 		}
 		
+		float x = 0;
+		
 		//--------------------------------------------------------
-		void drawScene(sf::Text& fpsLabel)
+		void drawScene(const double& timestep, sf::Text& fpsLabel)
 		{
 			auto* scene = m_View.getCurrentScene();
 			auto* rootNode = scene ? dynamic_cast<Internal::ISFMLNodeProvider*>(scene->getRoot().node) : nullptr;
 			auto* uiRootNode = scene ? dynamic_cast<Internal::ISFMLNodeProvider*>(scene->getUIRoot().node) : nullptr;
 			
-			if (scene)
-			{
-				m_Window.clear(getsfColorFromPGColor(scene->getBackgroundColour()));
-			}
+			m_Window.clear();
+			m_RenderTexture.clear();
+				
+//			if (scene)
+//			{
+//				sf::RectangleShape backgroundRect(sf::Vector2f(800, 600));
+//				backgroundRect.setOrigin(400, 300);
+//				backgroundRect.setFillColor(getsfColorFromPGColor(scene->getBackgroundColour()));
+//				m_RenderTexture.draw(backgroundRect);
+//			}
+			
 			if (rootNode)
 			{
 				const auto nodePos = scene->getRoot().node->getPosition();
 			
-				auto sfmlView = m_Window.getView();
+				auto sfmlView = m_RenderTexture.getView();
 				sfmlView.move((float)-nodePos.x, (float)-nodePos.y);
-				m_Window.setView(sfmlView);
+				m_RenderTexture.setView(sfmlView);
 				
-				draw(rootNode->m_ChildNodes);
+				if (scene)
+				{
+					sf::RectangleShape backgroundRect(sf::Vector2f(800, 600));
+					backgroundRect.setOrigin(nodePos.x, nodePos.y);
+					backgroundRect.setFillColor(getsfColorFromPGColor(scene->getBackgroundColour()));
+					m_RenderTexture.draw(backgroundRect);
+				}
+				
+				draw(rootNode->m_ChildNodes, m_RenderTexture);
 				
 				sfmlView.move((float)nodePos.x, (float)nodePos.y);
-				m_Window.setView(sfmlView);
+				m_RenderTexture.setView(sfmlView);
 			}
-			if (uiRootNode)
+
+			m_RenderTexture.display();
+			
+			sf::Sprite s(m_RenderTexture.getTexture());
+			m_LightingShader.setUniform("texture", sf::Shader::CurrentTexture);
+			m_LightingShader.setUniform("ambientLight", 0.5f);
+			
+			sf::Glsl::Vec2 lightPts[3];
+			float lightRadii[3];
+			lightPts[0] = sf::Glsl::Vec2(450.0f, 350.0f);
+			lightPts[1] = sf::Glsl::Vec2(60.0f, 350.0f);
+			lightPts[2] = sf::Glsl::Vec2(60.0f, 140.0f);
+			lightRadii[0] = 260.0f;// + (std::sin(x) * 100.0f);
+			lightRadii[1] = 260.0f;
+			lightRadii[2] = 300.0f;
+			x += timestep;
+			
+			m_LightingShader.setUniformArray("lightPts", lightPts, 3);
+			m_LightingShader.setUniformArray("lightRadii", lightRadii, 3);
+			
+			if (scene && scene->getRoot().node)
 			{
-				draw(uiRootNode->m_ChildNodes);
+				m_LightingShader.setUniform("sceneOffset", sf::Glsl::Vec2(((float)scene->getRoot().node->getPosition().x),
+																		  ((float)scene->getRoot().node->getPosition().y)));
+				
+				m_LightingShader.setUniform("sceneSize", sf::Glsl::Vec2(scene->getSceneSize().width, scene->getSceneSize().height));
 			}
 			
-			m_Window.draw(fpsLabel);
+			m_Window.draw(s, &m_LightingShader);
+			
+			if (uiRootNode)
+			{
+				draw(uiRootNode->m_ChildNodes, m_Window);
+				
+				m_Window.draw(fpsLabel);
+			}
 			
 			m_Window.display();
 		}
@@ -225,23 +283,23 @@ namespace
 		}
 		
 		//--------------------------------------------------------
-		void draw(const NodePtrArray& nodes)
+		void draw(const NodePtrArray& nodes, sf::RenderTarget& renderTarget)
 		{
 			for (const auto& child : nodes)
 			{
 				auto* n = dynamic_cast<Internal::ISFMLNodeProvider*>(child.get()); // remove this
 				if (!n->isRemoved())
 				{
-					m_Window.draw(*n->getNode());
+					renderTarget.draw(*n->getNode());
 					
-					auto sfmlView = m_Window.getView();
+					auto sfmlView = renderTarget.getView();
 					sfmlView.move((int)-child->getPosition().x, (int)-child->getPosition().y);
-					m_Window.setView(sfmlView);
+					renderTarget.setView(sfmlView);
 					
-					draw(n->m_ChildNodes);
+					draw(n->m_ChildNodes, renderTarget);
 					
 					sfmlView.move((int)child->getPosition().x, (int)child->getPosition().y);
-					m_Window.setView(sfmlView);
+					renderTarget.setView(sfmlView);
 				}
 			}
 		}
@@ -309,7 +367,7 @@ void PGAppHost::runApp(IGameController& gameController)
 	const auto appConfig = gameController.getConfiguration();
 	
 	TPlatformServices platformServices;
-	const auto displayScale = platformServices.getDisplayScale();
+	const auto displayScale = 1.0f;//platformServices.getDisplayScale();
 
     sf::VideoMode videoMode((unsigned int)(appConfig.windowSize.width * displayScale),
 							(unsigned int)(appConfig.windowSize.height * displayScale));

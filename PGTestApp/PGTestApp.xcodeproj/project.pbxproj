@@ -17,6 +17,7 @@
 		490BBF691F49740500726529 /* CameraTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490BBF671F49740500726529 /* CameraTestScene.cpp */; };
 		4937522C1ED0DDC600B4F024 /* dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = 4937522B1ED0DDC600B4F024 /* dialog.png */; };
 		4937522E1ED0DDCC00B4F024 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4937522D1ED0DDCC00B4F024 /* OpenSans-Regular.ttf */; };
+		49471FFB1F51626700F491FA /* lighting.shader in Resources */ = {isa = PBXBuildFile; fileRef = 49471FFA1F51626700F491FA /* lighting.shader */; };
 		4947FEFD1F13FF1E0023FB7E /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 4947FEFC1F13FF1E0023FB7E /* heart.png */; };
 		4961A6221F090CB700652361 /* PhysicsTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4961A6201F090CB700652361 /* PhysicsTestScene.cpp */; };
 		496CC9531EED8D0500A901AA /* PGlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 496CC9521EED8D0500A901AA /* PGlogo.png */; };
@@ -78,6 +79,7 @@
 		490BBF681F49740500726529 /* CameraTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraTestScene.h; sourceTree = "<group>"; };
 		4937522B1ED0DDC600B4F024 /* dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialog.png; sourceTree = "<group>"; };
 		4937522D1ED0DDCC00B4F024 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		49471FFA1F51626700F491FA /* lighting.shader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lighting.shader; sourceTree = "<group>"; };
 		4947FEFC1F13FF1E0023FB7E /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		4961A6201F090CB700652361 /* PhysicsTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsTestScene.cpp; sourceTree = "<group>"; };
 		4961A6211F090CB700652361 /* PhysicsTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsTestScene.h; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		493752271ED0DD9400B4F024 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				49471FFA1F51626700F491FA /* lighting.shader */,
 				495A07131F46330E00ED6F23 /* sounds */,
 				4937522A1ED0DDA700B4F024 /* images */,
 				493752291ED0DD9C00B4F024 /* fonts */,
@@ -322,6 +325,7 @@
 				496CC9531EED8D0500A901AA /* PGlogo.png in Resources */,
 				497947A91F1BAFA800B01C19 /* inventorycontainer.png in Resources */,
 				4937522C1ED0DDC600B4F024 /* dialog.png in Resources */,
+				49471FFB1F51626700F491FA /* lighting.shader in Resources */,
 				490BBF601F48B30200726529 /* cymbal.wav in Resources */,
 				4947FEFD1F13FF1E0023FB7E /* heart.png in Resources */,
 				49E070531F1A650700381C22 /* star.png in Resources */,
