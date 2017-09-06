@@ -36,22 +36,47 @@ void main()
 			a += 360.0;
 		}
 
-		if (a > 45.0 && a < 135.0)
-		{
+		//if (a > 200.0 && a < 300.0)
+		// {
 			float distance = (lightRadii[i] - length(toLight));
 			if (distance > 0.0)
 			{
-				float lighting = 0.8;
+				bool blocked = false;
 
-				// float smoothDistance = 20.0;
-				// if (distance < smoothDistance)
+				for (float x = 0.0; x < 1.0 && !blocked; x += 0.1)
+				{
+					vec2 p = x * toLight;
+					if (p.x > 0.5)
+					{
+						blocked = true;
+					}
+				}
+
+				// for (float y = coords.y; y < coords.y + toLight.y; ++y)
 				// {
-				// 	lighting *= distance / smoothDistance;
+				// 		for (float x = coords.x; x < coords.x + toLight.x; ++x)
+				// 		{
+				// 			if (x > 0.5)
+				// 			{
+				// 				blocked = true;
+				// 			}
+				// 		}
 				// }
 
-				l = l + lighting;
+				if (!blocked)
+				{
+					float lighting = 0.8;
+
+					// float smoothDistance = 20.0;
+					// if (distance < smoothDistance)
+					// {
+					// 	lighting *= distance / smoothDistance;
+					// }
+
+					l = l + lighting;
+				}
 			}
-		}
+		// }
 	}
 
 	// gl_FragColor = blur5(texture, gl_TexCoord[0].xy, sceneSize, vec2(1, 1));//gl_Color * pixel * max(clamp(l, 0.0, 1.0), ambientLight);
