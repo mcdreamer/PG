@@ -200,9 +200,9 @@ public:
 		const auto moveX = (m_Node.getTextureRect().width / 2.0) - (rect.size.width / 2.0);
 		const auto moveY = (m_Node.getTextureRect().height / 2.0) - (rect.size.height / 2.0);
 	
-		m_Node.setTextureRect(sf::IntRect(rect.left(), rect.top(), rect.size.width, rect.size.height));
+		m_Node.setTextureRect(sf::IntRect((int)rect.left(), (int)rect.top(), (int)rect.size.width, (int)rect.size.height));
 		
-		m_Node.move(moveX, moveY);
+		m_Node.move((float)moveX, (float)moveY);
 	}
 
     virtual void setColour(const Colour& colour) override

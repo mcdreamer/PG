@@ -22,6 +22,7 @@ private:
 	TextureAnimationDefinition 	m_AnimationDef;
 	NodeHandle					m_Node;
 	int							m_FrameCount;
+	int							m_FramesPerRow;
 	double						m_Time;
 	
 	Rect getRectForFrame(const int frame) const;

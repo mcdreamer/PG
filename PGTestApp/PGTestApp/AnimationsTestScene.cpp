@@ -28,9 +28,14 @@ void AnimationsTestScene::initScene(PG::AppHostServices& appHostServices, PG::Sc
 	
 	PG::UIPositionCalculator uiPosCalc(sceneSize);
 	
-	PG::TextureAnimationUtils::createAndAddAnimatedTexture(PG::TextureAnimationDefinition(1.0 / 14.0, 8, PG::Size(32.0, 32.0)),
+	PG::TextureAnimationUtils::createAndAddAnimatedTexture(PG::TextureAnimationDefinition(1.0 / 14.0, 10, PG::Size(32.0, 32.0)),
 														   "bouncingball",
 														   uiPosCalc.fromTopMid(PG::Size(0, 32)),
+														   m_Scene);
+
+	PG::TextureAnimationUtils::createAndAddAnimatedTexture(PG::TextureAnimationDefinition(1.0 / 14.0, 10, PG::Size(32.0, 32.0)),
+														   "bouncingball2",
+														   uiPosCalc.fromTopMid(PG::Size(50, 32)),
 														   m_Scene);
 	
 	m_Scene.scene->pushUIElement(new PG::Button(*this, uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
