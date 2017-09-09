@@ -47,9 +47,9 @@ public:
 
     virtual NodeType            getType() const=0;
 
-    virtual Point             getPosition() const=0;
-    virtual Size              getSize() const=0;
-    virtual Rect              getRect() const=0;
+    virtual Point               getPosition() const=0;
+    virtual Size                getSize() const=0;
+    virtual Rect                getRect() const=0;
     
     virtual NodeHandle          addChild(std::unique_ptr<INode>& node)=0;
     virtual std::vector<INode*> getChildren()=0;
@@ -66,7 +66,9 @@ public:
     virtual void                removeFromParent()=0;
     
 	virtual std::vector<INode*> findNodesAtPoint(double x, double y) = 0;
-    
+	
+	virtual void				setTextureRect(Rect rect)=0;
+	
     virtual void                setText(const std::string& text)=0;
     
     virtual void                setColour(const Colour& colour)=0;

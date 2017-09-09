@@ -143,6 +143,13 @@
 		49904F291EEC4E18000B5F9F /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49904F261EEC4E18000B5F9F /* json_reader.cpp */; };
 		49904F2A1EEC4E18000B5F9F /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49904F271EEC4E18000B5F9F /* json_value.cpp */; };
 		49904F2B1EEC4E18000B5F9F /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49904F281EEC4E18000B5F9F /* json_writer.cpp */; };
+		49A00D8E1F642EB800C5B4BF /* TextureAnimationDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 49A00D8D1F642EB800C5B4BF /* TextureAnimationDefinition.h */; };
+		49A00D911F642EEB00C5B4BF /* TextureAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A00D8F1F642EEB00C5B4BF /* TextureAnimation.cpp */; };
+		49A00D921F642EEB00C5B4BF /* TextureAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A00D8F1F642EEB00C5B4BF /* TextureAnimation.cpp */; };
+		49A00D931F642EEB00C5B4BF /* TextureAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 49A00D901F642EEB00C5B4BF /* TextureAnimation.h */; };
+		49A00D961F642F9800C5B4BF /* TextureAnimationUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A00D941F642F9800C5B4BF /* TextureAnimationUtils.cpp */; };
+		49A00D971F642F9800C5B4BF /* TextureAnimationUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A00D941F642F9800C5B4BF /* TextureAnimationUtils.cpp */; };
+		49A00D981F642F9800C5B4BF /* TextureAnimationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 49A00D951F642F9800C5B4BF /* TextureAnimationUtils.h */; };
 		49A7A70A1EEDADC800816F2B /* MoveToAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A7081EEDADC800816F2B /* MoveToAnimation.cpp */; };
 		49A7A70B1EEDADC800816F2B /* MoveToAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 49A7A7091EEDADC800816F2B /* MoveToAnimation.h */; };
 		49A7A70E1EEDAF0A00816F2B /* AnimationUpdater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A70C1EEDAF0A00816F2B /* AnimationUpdater.cpp */; };
@@ -299,6 +306,11 @@
 		49904F261EEC4E18000B5F9F /* json_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_reader.cpp; path = src/lib_json/json_reader.cpp; sourceTree = "<group>"; };
 		49904F271EEC4E18000B5F9F /* json_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_value.cpp; path = src/lib_json/json_value.cpp; sourceTree = "<group>"; };
 		49904F281EEC4E18000B5F9F /* json_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_writer.cpp; path = src/lib_json/json_writer.cpp; sourceTree = "<group>"; };
+		49A00D8D1F642EB800C5B4BF /* TextureAnimationDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureAnimationDefinition.h; sourceTree = "<group>"; };
+		49A00D8F1F642EEB00C5B4BF /* TextureAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureAnimation.cpp; sourceTree = "<group>"; };
+		49A00D901F642EEB00C5B4BF /* TextureAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureAnimation.h; sourceTree = "<group>"; };
+		49A00D941F642F9800C5B4BF /* TextureAnimationUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureAnimationUtils.cpp; sourceTree = "<group>"; };
+		49A00D951F642F9800C5B4BF /* TextureAnimationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureAnimationUtils.h; sourceTree = "<group>"; };
 		49A7A7081EEDADC800816F2B /* MoveToAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoveToAnimation.cpp; sourceTree = "<group>"; };
 		49A7A7091EEDADC800816F2B /* MoveToAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveToAnimation.h; sourceTree = "<group>"; };
 		49A7A70C1EEDAF0A00816F2B /* AnimationUpdater.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationUpdater.cpp; sourceTree = "<group>"; };
@@ -467,6 +479,11 @@
 				49A7A7091EEDADC800816F2B /* MoveToAnimation.h */,
 				49A7A70C1EEDAF0A00816F2B /* AnimationUpdater.cpp */,
 				49A7A70D1EEDAF0A00816F2B /* AnimationUpdater.h */,
+				49A00D8D1F642EB800C5B4BF /* TextureAnimationDefinition.h */,
+				49A00D8F1F642EEB00C5B4BF /* TextureAnimation.cpp */,
+				49A00D901F642EEB00C5B4BF /* TextureAnimation.h */,
+				49A00D941F642F9800C5B4BF /* TextureAnimationUtils.cpp */,
+				49A00D951F642F9800C5B4BF /* TextureAnimationUtils.h */,
 			);
 			name = animation;
 			path = ../animation;
@@ -708,11 +725,14 @@
 				495A07041F461E3E00ED6F23 /* CommandSetRemover.h in Headers */,
 				493AFB521F4231D100A952E1 /* Alignment.h in Headers */,
 				493022791ECA44E200C143A8 /* Rect.h in Headers */,
+				49A00D8E1F642EB800C5B4BF /* TextureAnimationDefinition.h in Headers */,
 				49669EEE1F23C855008488BB /* KeyCode.h in Headers */,
 				4930228D1ECA453E00C143A8 /* MacPlatformServices.h in Headers */,
 				493022A21ECA45AF00C143A8 /* SFMLTextureMeasurer.h in Headers */,
 				4930225E1ECA44DC00C143A8 /* NodeCreator.h in Headers */,
 				49AACAE11ECCD13F003BDC3C /* DataGrid.h in Headers */,
+				49A00D931F642EEB00C5B4BF /* TextureAnimation.h in Headers */,
+				49A00D981F642F9800C5B4BF /* TextureAnimationUtils.h in Headers */,
 				49669EE81F23C848008488BB /* UIPositionCalculator.h in Headers */,
 				49669EDE1F23C848008488BB /* TagReceiver.h in Headers */,
 				493022831ECA44E800C143A8 /* IPlatformServices.h in Headers */,
@@ -873,7 +893,9 @@
 				490A3D041EDC80A40046A552 /* PhysicsWorld.cpp in Sources */,
 				493ABCA81EFE8B10000C01E4 /* TilePositionCalculator.cpp in Sources */,
 				495A07031F461E3E00ED6F23 /* CommandSetRemover.cpp in Sources */,
+				49A00D971F642F9800C5B4BF /* TextureAnimationUtils.cpp in Sources */,
 				493ABCA41EFE8B10000C01E4 /* AttributeConstants.cpp in Sources */,
+				49A00D921F642EEB00C5B4BF /* TextureAnimation.cpp in Sources */,
 				493ABCB51EFE8B10000C01E4 /* json_value.cpp in Sources */,
 				495A07101F4624C300ED6F23 /* SoundID.cpp in Sources */,
 				49E070581F1A67F700381C22 /* PhysicsBodyCollection.cpp in Sources */,
@@ -928,6 +950,7 @@
 				49BECD6C1F3252B300778059 /* InputParser.cpp in Sources */,
 				4930229D1ECA45AF00C143A8 /* SFMLNode.cpp in Sources */,
 				49904F2B1EEC4E18000B5F9F /* json_writer.cpp in Sources */,
+				49A00D911F642EEB00C5B4BF /* TextureAnimation.cpp in Sources */,
 				49BECD7F1F3259EA00778059 /* ConsoleCommandRegistry.cpp in Sources */,
 				493022901ECA453E00C143A8 /* MacResourceHandler.mm in Sources */,
 				49669EDC1F23C848008488BB /* Dialog.cpp in Sources */,
@@ -957,6 +980,7 @@
 				493022601ECA44DC00C143A8 /* TextureMeasurer.cpp in Sources */,
 				49AACAF91ECCD462003BDC3C /* TilePositionCalculator.cpp in Sources */,
 				49A7A70A1EEDADC800816F2B /* MoveToAnimation.cpp in Sources */,
+				49A00D961F642F9800C5B4BF /* TextureAnimationUtils.cpp in Sources */,
 				493022271ECA449000C143A8 /* JsonUtils.cpp in Sources */,
 				493022771ECA44E200C143A8 /* PointUtils.cpp in Sources */,
 				49AACAE41ECCD13F003BDC3C /* EntityLoader.cpp in Sources */,

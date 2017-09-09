@@ -29,6 +29,7 @@
 		497947A91F1BAFA800B01C19 /* inventorycontainer.png in Resources */ = {isa = PBXBuildFile; fileRef = 497947A81F1BAFA800B01C19 /* inventorycontainer.png */; };
 		497947B11F1BB8C500B01C19 /* BarTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497947AF1F1BB8C500B01C19 /* BarTestScene.cpp */; };
 		4989D77D1EE44C6A00821078 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4989D77C1EE44C6A00821078 /* AppIcon.xcassets */; };
+		49A00D7D1F6088B100C5B4BF /* bouncingball.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A00D7C1F6088B100C5B4BF /* bouncingball.png */; };
 		49AACB281ECCE2BD003BDC3C /* PGTestAppController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AACB261ECCE2BD003BDC3C /* PGTestAppController.cpp */; };
 		49AACB321ECCE50C003BDC3C /* libPGLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AACB2F1ECCE4F8003BDC3C /* libPGLib.a */; };
 		49AACB351ECCE582003BDC3C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AACB341ECCE582003BDC3C /* Cocoa.framework */; };
@@ -93,6 +94,7 @@
 		497947AF1F1BB8C500B01C19 /* BarTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BarTestScene.cpp; sourceTree = "<group>"; };
 		497947B01F1BB8C500B01C19 /* BarTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarTestScene.h; sourceTree = "<group>"; };
 		4989D77C1EE44C6A00821078 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = AppIcon.xcassets; path = PGTestApp/AppIcon.xcassets; sourceTree = "<group>"; };
+		49A00D7C1F6088B100C5B4BF /* bouncingball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bouncingball.png; sourceTree = "<group>"; };
 		49AACB0F1ECCE1ED003BDC3C /* PG Test App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PG Test App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AACB201ECCE1ED003BDC3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49AACB261ECCE2BD003BDC3C /* PGTestAppController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PGTestAppController.cpp; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		4937522A1ED0DDA700B4F024 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				49A00D7C1F6088B100C5B4BF /* bouncingball.png */,
 				497947A81F1BAFA800B01C19 /* inventorycontainer.png */,
 				49E070521F1A650700381C22 /* star.png */,
 				4947FEFC1F13FF1E0023FB7E /* heart.png */,
@@ -327,6 +330,7 @@
 				49E070531F1A650700381C22 /* star.png in Resources */,
 				4989D77D1EE44C6A00821078 /* AppIcon.xcassets in Resources */,
 				49B63CC51F111AB8000B6297 /* block.png in Resources */,
+				49A00D7D1F6088B100C5B4BF /* bouncingball.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

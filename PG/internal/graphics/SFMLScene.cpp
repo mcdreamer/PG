@@ -1,5 +1,6 @@
 #include "PG/internal/graphics/SFMLScene.h"
 #include "PG/app/AppHostServices.h"
+#include "PG/animation/AnimationUpdater.h"
 
 namespace PG {
 
@@ -41,6 +42,12 @@ void SFMLScene::setCamera(const Camera& camera)
 }
 
 //--------------------------------------------------------
+void SFMLScene::addAnimation(std::unique_ptr<IAnimation>& animation)
+{
+	m_Animations.emplace_back(animation.release());
+}
+
+//--------------------------------------------------------
 NodeHandle SFMLScene::addChild(std::unique_ptr<INode>& node)
 {
 	return m_Root->addChild(node);
@@ -77,6 +84,10 @@ void SFMLScene::update(double dt)
 {
 	if (m_SceneController)
 	{
+		AnimationUpdater animUpdater;
+		animUpdater.updateAnimations(m_Animations, dt);
+		animUpdater.removeCompletedAnimations(m_Animations);
+		
 		m_SceneController->update(dt);
 		
 		if (m_Root)

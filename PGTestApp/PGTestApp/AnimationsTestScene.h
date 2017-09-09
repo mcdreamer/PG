@@ -2,7 +2,6 @@
 
 #include "PG/graphics/Scene.h"
 #include "PG/ui/TagReceiver.h"
-#include "PG/animation/MoveToAnimation.h"
 
 //--------------------------------------------------------
 class AnimationsTestScene : public PG::ISceneController, public PG::TagReciever
@@ -28,5 +27,4 @@ public:
 private:
 	PG::SceneHandle			m_Scene;
 	TagReciever&			m_AppTagTarget;
-	PG::AnimationPtrArray	m_Animations;
 };

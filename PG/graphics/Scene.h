@@ -17,6 +17,7 @@ class Point;
 struct StyleSheet;
 class AppHostServices;
 class Camera;
+class IAnimation;
 
 //--------------------------------------------------------
 struct SceneHandle
@@ -84,6 +85,7 @@ public:
 	virtual void					pushUIElement(UIElement* uiElement)=0;
 	virtual void					setBackgroundColour(const Colour& colour)=0;
 	virtual void					setCamera(const Camera& camera)=0;
+	virtual void					addAnimation(std::unique_ptr<IAnimation>& animation)=0;
 	
 	virtual void					clickInScene(PG::Point pt, bool isRightClick)=0;
 	

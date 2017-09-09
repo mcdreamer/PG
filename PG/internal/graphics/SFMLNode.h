@@ -145,6 +145,8 @@ public:
     {
         return {};
     }
+	
+	virtual void setTextureRect(Rect rect) override {}
     
     virtual void setText(const std::string& text) override {}
 
@@ -192,6 +194,16 @@ public:
     }
 
     virtual NodeType getType() const override { return NodeType::kSprite; }
+
+	virtual void setTextureRect(Rect rect) override
+	{
+		const auto moveX = (m_Node.getTextureRect().width / 2.0) - (rect.size.width / 2.0);
+		const auto moveY = (m_Node.getTextureRect().height / 2.0) - (rect.size.height / 2.0);
+	
+		m_Node.setTextureRect(sf::IntRect(rect.left(), rect.top(), rect.size.width, rect.size.height));
+		
+		m_Node.move(moveX, moveY);
+	}
 
     virtual void setColour(const Colour& colour) override
     {

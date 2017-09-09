@@ -9,6 +9,7 @@
 #include "PG/ui/UI.h"
 #include "PG/ui/TagReceiver.h"
 #include "PG/app/StyleSheet.h"
+#include "PG/animation/IAnimation.h"
 
 namespace PG {
 namespace Internal {
@@ -25,6 +26,7 @@ public:
 	virtual	void					pushUIElement(UIElement* uiElement) override;
 	virtual void					setBackgroundColour(const Colour& colour) override;
 	virtual void					setCamera(const Camera& camera) override;
+	virtual void					addAnimation(std::unique_ptr<IAnimation>& animation) override;
 	
 	virtual Size					getSceneSize() const override;
 	virtual	SceneControllerHandle	getController() const override { return m_SceneController.get(); }
@@ -46,6 +48,7 @@ private:
     SceneControllerPtr				m_SceneController;
     Colour							m_BackgroundColour;
 	Camera							m_Camera;
+	AnimationPtrArray				m_Animations;
     std::unique_ptr<PG::UI>			m_UI;
 };
 
