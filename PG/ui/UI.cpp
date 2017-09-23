@@ -18,7 +18,7 @@ bool UI::handleClick(const Point& screenPt)
 {
     if (!m_UIStack.empty())
     {
-        UIMessageQueuePoster msgPoster(m_MessageQueue);
+		auto msgPoster = getMessagePoster();
 
         for (auto elementIt = m_UIStack.rbegin(); elementIt != m_UIStack.rend(); ++elementIt)
         {
@@ -90,6 +90,12 @@ void UI::setStyleSheet(const StyleSheet& styleSheet)
 const StyleSheet& UI::getStyleSheet() const
 {
 	return m_StyleSheet;
+}
+
+//--------------------------------------------------------
+UIMessageQueuePoster UI::getMessagePoster()
+{
+	return UIMessageQueuePoster(m_MessageQueue);
 }
 
 }

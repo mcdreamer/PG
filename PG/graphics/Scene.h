@@ -11,6 +11,7 @@ class IScene;
 class ISceneController;
 struct NodeHandle;
 class UIElement;
+class UIMessageQueuePoster;
 class Colour;
 class Size;
 class Point;
@@ -83,6 +84,7 @@ public:
 	
 	virtual NodeHandle				addChild(std::unique_ptr<INode>& node)=0;
 	virtual void					pushUIElement(UIElement* uiElement)=0;
+	virtual UIMessageQueuePoster	getUIMessagePoster()=0;
 	virtual void					setBackgroundColour(const Colour& colour)=0;
 	virtual void					setCamera(const Camera& camera)=0;
 	virtual void					addAnimation(std::unique_ptr<IAnimation>& animation)=0;

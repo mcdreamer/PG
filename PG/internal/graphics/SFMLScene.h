@@ -24,6 +24,7 @@ public:
 	
     virtual NodeHandle				addChild(std::unique_ptr<INode>& node) override;
 	virtual	void					pushUIElement(UIElement* uiElement) override;
+	virtual UIMessageQueuePoster	getUIMessagePoster() override;
 	virtual void					setBackgroundColour(const Colour& colour) override;
 	virtual void					setCamera(const Camera& camera) override;
 	virtual void					addAnimation(std::unique_ptr<IAnimation>& animation) override;

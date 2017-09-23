@@ -8,6 +8,7 @@ namespace PG {
 
 class IScene;
 struct StyleSheet;
+class UIMessageQueuePoster;
 
 //--------------------------------------------------------
 class UI
@@ -17,18 +18,19 @@ public:
     : m_Scene(scene)
     {}
     
-	void				setStyleSheet(const StyleSheet& styleSheet);
-	const StyleSheet&	getStyleSheet() const;
+	void					setStyleSheet(const StyleSheet& styleSheet);
+	const StyleSheet&		getStyleSheet() const;
+	UIMessageQueuePoster	getMessagePoster();
 	
-	void				pushElement(UIElement* element);
-    bool				handleClick(const Point& screenPt);
-    void				update();
+	void					pushElement(UIElement* element);
+    bool					handleClick(const Point& screenPt);
+    void					update();
 	
 private:
-    PGUIMessageQueue    m_MessageQueue;
-    UIElementArray		m_UIStack;
-    IScene&             m_Scene;
-	StyleSheet			m_StyleSheet;
+    PGUIMessageQueue    	m_MessageQueue;
+    UIElementArray			m_UIStack;
+    IScene&             	m_Scene;
+	StyleSheet				m_StyleSheet;
 };
 
 }

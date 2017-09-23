@@ -1,6 +1,7 @@
 #include "PG/internal/graphics/SFMLScene.h"
 #include "PG/app/AppHostServices.h"
 #include "PG/animation/AnimationUpdater.h"
+#include "PG/ui/UIMessageQueuePoster.h"
 
 namespace PG {
 
@@ -77,6 +78,12 @@ void SFMLScene::clickInScene(PG::Point pt, bool isRightClick)
 void SFMLScene::pushUIElement(UIElement* uiElement)
 {
 	m_UI->pushElement(uiElement);
+}
+
+//--------------------------------------------------------
+UIMessageQueuePoster SFMLScene::getUIMessagePoster()
+{
+	return m_UI->getMessagePoster();
 }
 
 //--------------------------------------------------------
