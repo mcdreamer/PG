@@ -23,7 +23,7 @@ public:
     }
     
     //--------------------------------------------------------
-    T& at(int x, int y)
+    T at(int x, int y)
     {
         auto i = getIndex(x, y);
         return m_Data[i];
@@ -39,8 +39,8 @@ public:
     const int       getHeight() const { return m_Height; }
 
 private:
-    const int       m_Width;
-    const int       m_Height;
+    int				m_Width;
+    int		       	m_Height;
     std::vector<T>  m_Data;
     
     //--------------------------------------------------------
