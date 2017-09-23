@@ -16,7 +16,10 @@ struct PhysicsBody
 	jumpToConsume(false),
 	onGround(false),
 	movingLeft(false),
-	movingRight(false)
+	movingRight(false),
+	movingUp(false),
+	movingDown(false),
+	isFreeMoving(false)
 	{}
 
 	void		setPosition(const Point& newPosition);
@@ -30,6 +33,10 @@ struct PhysicsBody
 	bool		onGround;
 	bool		movingLeft;
 	bool		movingRight;
+	bool		movingUp;
+	bool		movingDown;
+	
+	bool		isFreeMoving;
 	
     void hasHitGround(bool hitGround);
 };

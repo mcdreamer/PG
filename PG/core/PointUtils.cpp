@@ -35,5 +35,11 @@ Point subtractPoints(Point pt1, Point pt2)
 	return Point(pt1.x - pt2.x, pt1.y - pt2.y);
 }
 
+//--------------------------------------------------------
+Point swapValues(Point pt)
+{
+	return Point(pt.y, pt.x);
+}
+
 }
 }

@@ -6,30 +6,71 @@ namespace PG {
 //--------------------------------------------------------
 void PhysicsBodyInputHandler::keyDown(PG::KeyCode code, PG::KeyModifier mods)
 {
-	if (code == PG::KeyCode::kRight)
+	handleHorizontalMovement(code, true);
+	
+	if (!m_Body.isFreeMoving)
 	{
-		m_Body.movingRight = true;
+		handleNonFreeVerticalMovement(code, true);
 	}
-	else if (code == PG::KeyCode::kLeft)
+	else
 	{
-		m_Body.movingLeft = true;
-	}
-	else if (code == PG::KeyCode::kUp && m_Body.onGround)
-	{
-		m_Body.jumpToConsume = true;
+		handleFreeVerticalMovement(code, true);
 	}
 }
 
 //--------------------------------------------------------
 void PhysicsBodyInputHandler::keyUp(PG::KeyCode code)
 {
-	if (code == PG::KeyCode::kRight)
+	handleHorizontalMovement(code, false);
+	
+	if (!m_Body.isFreeMoving)
 	{
-		m_Body.movingRight = false;
+		handleNonFreeVerticalMovement(code, false);
 	}
-	else if (code == PG::KeyCode::kLeft)
+	else
 	{
-		m_Body.movingLeft = false;
+		handleFreeVerticalMovement(code, false);
+	}
+}
+
+//--------------------------------------------------------
+void PhysicsBodyInputHandler::handleHorizontalMovement(PG::KeyCode code, bool isMoving)
+{
+	switch (code)
+	{
+		case PG::KeyCode::kRight:
+			m_Body.movingRight = isMoving;
+			break;
+		case PG::KeyCode::kLeft:
+			m_Body.movingLeft = isMoving;
+			break;
+		default:
+			break;
+	}
+}
+
+//--------------------------------------------------------
+void PhysicsBodyInputHandler::handleNonFreeVerticalMovement(PG::KeyCode code, bool isMoving)
+{
+	if (isMoving && code == PG::KeyCode::kUp && m_Body.onGround)
+	{
+		m_Body.jumpToConsume = true;
+	}
+}
+
+//--------------------------------------------------------
+void PhysicsBodyInputHandler::handleFreeVerticalMovement(PG::KeyCode code, bool isMoving)
+{
+	switch (code)
+	{
+		case PG::KeyCode::kUp:
+			m_Body.movingUp = isMoving;
+			break;
+		case PG::KeyCode::kDown:
+			m_Body.movingDown = isMoving;
+			break;
+		default:
+			break;
 	}
 }
 

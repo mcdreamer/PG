@@ -19,6 +19,10 @@ public:
 	
 private:
 	PhysicsBody& m_Body;
+	
+	void handleHorizontalMovement(PG::KeyCode code, bool isMoving);
+	void handleNonFreeVerticalMovement(PG::KeyCode code, bool isMoving);
+	void handleFreeVerticalMovement(PG::KeyCode code, bool isMoving);
 };
 
 }

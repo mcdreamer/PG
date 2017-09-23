@@ -123,18 +123,35 @@ namespace
 		const auto gravityStep = SizeUtils::scaleSize(params.gravity, dt);
 		const auto forwardStep = PointUtils::scalePoint(params.forward, dt);
 		
-		// Gravity and X friction
-		body.velocity = PointUtils::addToPoint(body.velocity, gravityStep);
-		body.velocity = Point(body.velocity.x * params.friction, body.velocity.y);
-		
-		// Modify state
-		if (body.jumpToConsume && body.onGround)
+		// Gravity and X friction followed by movement
+		if (!body.isFreeMoving)
 		{
-			body.velocity = PointUtils::addPoints(body.velocity, params.jumpForce);
-			body.jumpToConsume = false;
-			body.onGround = false;
+			body.velocity = PointUtils::addToPoint(body.velocity, gravityStep);
+			body.velocity = Point(body.velocity.x * params.friction, body.velocity.y);
+			
+			if (body.jumpToConsume && body.onGround)
+			{
+				body.velocity = PointUtils::addPoints(body.velocity, params.jumpForce);
+				body.jumpToConsume = false;
+				body.onGround = false;
+			}
 		}
-		
+		else
+		{
+			body.velocity = Point(body.velocity.x * params.friction, body.velocity.y * params.friction);
+			
+			if (body.movingUp)
+			{
+				body.velocity = PointUtils::subtractPoints(body.velocity, PointUtils::swapValues(forwardStep));
+			}
+			
+			if (body.movingDown)
+			{
+				body.velocity = PointUtils::addPoints(body.velocity, PointUtils::swapValues(forwardStep));
+			}
+		}
+
+		// Horizontal movement always the same
 		if (body.movingRight)
 		{
 			body.velocity = PointUtils::addPoints(body.velocity, forwardStep);
