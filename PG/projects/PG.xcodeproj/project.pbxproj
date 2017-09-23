@@ -851,7 +851,7 @@
 		4974CB471A595F0F00E109BD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Andrew Dodman";
 				TargetAttributes = {
 					496F09FD1A5960E900DC93A8 = {
@@ -1070,6 +1070,7 @@
 					../thirdparty/jsoncpp/include,
 					../internal/sfml/include,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -1111,6 +1112,7 @@
 					../thirdparty/jsoncpp/include,
 					../internal/sfml/include,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};

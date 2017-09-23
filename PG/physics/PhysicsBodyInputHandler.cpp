@@ -14,7 +14,7 @@ void PhysicsBodyInputHandler::keyDown(PG::KeyCode code, PG::KeyModifier mods)
 	{
 		m_Body.movingLeft = true;
 	}
-	else if (code == PG::KeyCode::kUp)
+	else if (code == PG::KeyCode::kUp && m_Body.onGround)
 	{
 		m_Body.jumpToConsume = true;
 	}

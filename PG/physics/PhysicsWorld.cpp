@@ -132,6 +132,7 @@ namespace
 		{
 			body.velocity = PointUtils::addPoints(body.velocity, params.jumpForce);
 			body.jumpToConsume = false;
+			body.onGround = false;
 		}
 		
 		if (body.movingRight)
