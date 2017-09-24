@@ -48,6 +48,12 @@ public:
 		m_ValueChangedFuncs.push_back(func);
 		func(m_Value);
 	}
+	
+	//--------------------------------------------------------
+	void clearBindings()
+	{
+		m_ValueChangedFuncs.clear();
+	}
 
 	//--------------------------------------------------------
 	BindableValue<T>& operator++()
@@ -76,6 +82,12 @@ public:
 	{
 		set(v);
 		return *this;
+	}
+	
+	//--------------------------------------------------------
+	bool operator<=(const T& v)
+	{
+		return m_Value <= v;
 	}
 
 private:
