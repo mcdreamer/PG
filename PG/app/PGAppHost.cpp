@@ -66,7 +66,7 @@ namespace
 	//--------------------------------------------------------
 	sf::Color getsfColorFromPGColor(const PG::Colour& c)
 	{
-		return sf::Color(c.r, c.g, c.b, (unsigned char)c.a);
+		return sf::Color(c.r, c.g, c.b, (unsigned char)(255 * c.a));
 	}
 
 	// AD: Move this to a new file?
@@ -88,9 +88,13 @@ namespace
 		m_ResourceHandler(resourceHandler)
 		{}
 	
+		sf::RenderTexture	m_RenderTexture;
+	
 		//--------------------------------------------------------
 		void runMainLoop()
 		{
+			m_RenderTexture.create(m_Window.getSize().x, m_Window.getSize().y);
+			
 			sf::Font fpsFont;
 			fpsFont.loadFromFile(m_ResourceHandler.getResourcePath(m_AppConfig.styleSheet.uiFontName, "ttf"));
 			
@@ -111,7 +115,7 @@ namespace
 				
 				performUpdates(timestep, unhandledTime);
 				
-				drawScene(fpsLabel);
+				drawScene(timestep, fpsLabel);
 			}
 		}
 		
@@ -143,35 +147,49 @@ namespace
 		}
 		
 		//--------------------------------------------------------
-		void drawScene(sf::Text& fpsLabel)
+		void drawScene(const double& timestep, sf::Text& fpsLabel)
 		{
 			auto* scene = m_View.getCurrentScene();
 			auto* rootNode = scene ? dynamic_cast<Internal::ISFMLNodeProvider*>(scene->getRoot().node) : nullptr;
 			auto* uiRootNode = scene ? dynamic_cast<Internal::ISFMLNodeProvider*>(scene->getUIRoot().node) : nullptr;
 			
-			if (scene)
-			{
-				m_Window.clear(getsfColorFromPGColor(scene->getBackgroundColour()));
-			}
+			m_Window.clear();
+			m_RenderTexture.clear();
+			
 			if (rootNode)
 			{
 				const auto nodePos = scene->getRoot().node->getPosition();
 			
-				auto sfmlView = m_Window.getView();
+				auto sfmlView = m_RenderTexture.getView();
 				sfmlView.move((float)-nodePos.x, (float)-nodePos.y);
-				m_Window.setView(sfmlView);
+				m_RenderTexture.setView(sfmlView);
 				
-				draw(rootNode->m_ChildNodes);
+				if (scene)
+				{
+					// Draw background
+					sf::RectangleShape backgroundRect(sf::Vector2f(m_Window.getSize().x, m_Window.getSize().y));
+					backgroundRect.setOrigin((float)nodePos.x, (float)nodePos.y);
+					backgroundRect.setFillColor(getsfColorFromPGColor(scene->getBackgroundColour()));
+					m_RenderTexture.draw(backgroundRect);
+				}
+				
+				draw(rootNode->m_ChildNodes, m_RenderTexture);
 				
 				sfmlView.move((float)nodePos.x, (float)nodePos.y);
-				m_Window.setView(sfmlView);
+				m_RenderTexture.setView(sfmlView);
 			}
+
+			m_RenderTexture.display();
+			
+			sf::Sprite renderTextureSprite(m_RenderTexture.getTexture());
+			m_Window.draw(renderTextureSprite);
+			
 			if (uiRootNode)
 			{
-				draw(uiRootNode->m_ChildNodes);
+				draw(uiRootNode->m_ChildNodes, m_Window);
+				
+				m_Window.draw(fpsLabel);
 			}
-			
-			m_Window.draw(fpsLabel);
 			
 			m_Window.display();
 		}
@@ -224,24 +242,25 @@ namespace
 			}
 		}
 		
+		
 		//--------------------------------------------------------
-		void draw(const NodePtrArray& nodes)
+		void draw(const NodePtrArray& nodes, sf::RenderTarget& renderTarget)
 		{
 			for (const auto& child : nodes)
 			{
 				auto* n = dynamic_cast<Internal::ISFMLNodeProvider*>(child.get()); // remove this
 				if (!n->isRemoved())
 				{
-					m_Window.draw(*n->getNode());
+					renderTarget.draw(*n->getNode());
 					
-					auto sfmlView = m_Window.getView();
+					auto sfmlView = renderTarget.getView();
 					sfmlView.move((int)-child->getPosition().x, (int)-child->getPosition().y);
-					m_Window.setView(sfmlView);
+					renderTarget.setView(sfmlView);
 					
-					draw(n->m_ChildNodes);
+					draw(n->m_ChildNodes, renderTarget);
 					
 					sfmlView.move((int)child->getPosition().x, (int)child->getPosition().y);
-					m_Window.setView(sfmlView);
+					renderTarget.setView(sfmlView);
 				}
 			}
 		}
