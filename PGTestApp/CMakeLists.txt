@@ -35,18 +35,39 @@ set(SRCS
   PGTestApp/TagConstants.h
 )
 
-add_executable(PGTestApp "${SRCS}")
-
-target_link_libraries(PGTestApp PG sfml-system sfml-graphics sfml-window)
-
 file(GLOB RESOURCES_FONTS "PGTestApp/resources/fonts/*")
-file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/resources/fonts")
-file(COPY ${RESOURCES_FONTS} DESTINATION "${CMAKE_BINARY_DIR}/resources/fonts/")
-
 file(GLOB RESOURCES_IMAGES "PGTestApp/resources/images/*")
-file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/resources/images")
-file(COPY ${RESOURCES_IMAGES} DESTINATION "${CMAKE_BINARY_DIR}/resources/images/")
+file(GLOB RESOURCES_SOUNDS "PGTestApp/resources/sounds/*")
 
-file(GLOB RESOURCES_DATA "PGTestApp/resources/data/*")
-file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/resources/data")
-file(COPY ${RESOURCES_DATA} DESTINATION "${CMAKE_BINARY_DIR}/resources/data/")
+set_source_files_properties(${RESOURCES_FONTS} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+set_source_files_properties(${RESOURCES_IMAGES} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+set_source_files_properties(${RESOURCES_SOUNDS} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+
+add_executable(PGTestApp "${SRCS}" ${RESOURCES_FONTS} ${RESOURCES_IMAGES} ${RESOURCES_SOUNDS})
+
+find_library(SFMLAUDIO sfml-audio)
+if (NOT SFMLAUDIO)
+    message(FATAL_ERROR "sfml-audio not found")
+endif()
+
+find_library(SFMLSYSTEM sfml-system)
+if (NOT SFMLSYSTEM)
+    message(FATAL_ERROR "sfml-system not found")
+endif()
+
+find_library(SFMLGRAPHICS sfml-graphics)
+if (NOT SFMLGRAPHICS)
+    message(FATAL_ERROR "sfml-graphics not found")
+endif()
+
+find_library(SFMLWINDOW sfml-window)
+if (NOT SFMLWINDOW)
+    message(FATAL_ERROR "sfml-window not found")
+endif()
+
+target_link_libraries(PGTestApp PG ${SFMLAUDIO} ${SFMLSYSTEM} ${SFMLGRAPHICS} ${SFMLWINDOW} "-framework Foundation" "-framework Cocoa" objc)
+
+set_target_properties(PGTestApp PROPERTIES
+  MACOSX_BUNDLE TRUE
+  MACOSX_FRAMEWORK_IDENTIFIER com.mcdreamer.pgtestapp
+)
