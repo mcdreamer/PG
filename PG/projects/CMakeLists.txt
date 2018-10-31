@@ -17,19 +17,40 @@ set(SRCS
   ../../PG/animation/IAnimation.h
   ../../PG/animation/MoveToAnimation.cpp
   ../../PG/animation/MoveToAnimation.h
+  ../../PG/animation/TextureAnimation.cpp
+  ../../PG/animation/TextureAnimation.h
+  ../../PG/animation/TextureAnimationDefinition.h
+  ../../PG/animation/TextureAnimationUtils.cpp
+  ../../PG/animation/TextureAnimationUtils.h
+  ../../PG/app/AppConfiguration.h
+  ../../PG/app/AppHostServices.h
   ../../PG/app/GameConstants.h
   ../../PG/app/IPlatformServices.h
   ../../PG/app/IGameController.h
+  ../../PG/app/KeyCodeUtils.cpp
+  ../../PG/app/KeyCodeUtils.h
   ../../PG/app/PGAppHost.cpp
   ../../PG/app/PGAppHost.h
   ../../PG/app/StyleSheet.h
-  ../../PG/app/AppConfiguration.h
+  ../../PG/console/CommandSetHandle.cpp
+  ../../PG/console/CommandSetHandle.h
+  ../../PG/console/CommandSetRemover.cpp
+  ../../PG/console/CommandSetRemover.h
+  ../../PG/console/ConsoleCommandArgument.h
+  ../../PG/console/ConsoleCommandArgumentType.h
+  ../../PG/console/ConsoleCommandRegistry.cpp
+  ../../PG/console/ConsoleCommandRegistry.h
+  ../../PG/console/ConsoleController.cpp
+  ../../PG/console/ConsoleController.h
+  ../../PG/console/InputParser.cpp
+  ../../PG/console/InputParser.h
+  ../../PG/console/RawConsoleCommand.h
   ../../PG/core/Colour.cpp
   ../../PG/core/Colour.h
   ../../PG/core/MathsUtils.h
-  ../../PG/core/PGKeyCode.h
-  ../../PG/core/PGRectUtils.cpp
-  ../../PG/core/PGRectUtils.h
+  ../../PG/core/KeyCode.h
+  ../../PG/core/RectUtils.cpp
+  ../../PG/core/RectUtils.h
   ../../PG/core/Point.cpp
   ../../PG/core/Point.h
   ../../PG/core/PointUtils.cpp
@@ -59,6 +80,8 @@ set(SRCS
   ../../PG/entities/Tile.h
   ../../PG/entities/TilePositionCalculator.cpp
   ../../PG/entities/TilePositionCalculator.h
+  ../../PG/graphics/Camera.cpp
+  ../../PG/graphics/Camera.h
   ../../PG/graphics/Node.h
   ../../PG/graphics/NodeCreator.h
   ../../PG/graphics/Scene.h
@@ -74,42 +97,54 @@ set(SRCS
   ../../PG/internal/graphics/SFMLTextureMeasurer.h
   ../../PG/internal/graphics/SFMLView.cpp
   ../../PG/internal/graphics/SFMLView.h
-  ../../PG/internal/platform/LinuxPlatformServices.cpp
-  ../../PG/internal/platform/LinuxPlatformServices.h
-  ../../PG/internal/platform/LinuxResourceHandler.cpp
-  ../../PG/internal/platform/LinuxResourceHandler.h
+  ../../PG/internal/input/KeyCodeUtils.h
+  ../../PG/internal/platform/MacPlatformServices.mm
+  ../../PG/internal/platform/MacPlatformServices.h
+  ../../PG/internal/platform/MacResourceHandler.mm
+  ../../PG/internal/platform/MacResourceHandler.h
   ../../PG/internal/platform/ResourceHandler.cpp
   ../../PG/internal/platform/ResourceHandler.h
-  ../../PG/internal/input/PGKeyCodeUtils.h
+  ../../PG/internal/sound/SFMLSoundController.cpp
+  ../../PG/internal/sound/SFMLSoundController.h
+  ../../PG/internal/ui/Console.cpp
+  ../../PG/internal/ui/Console.h
   ../../PG/inventory/Inventory.cpp
   ../../PG/inventory/Inventory.h
   ../../PG/inventory/InventoryItem.h
   ../../PG/io/IResourceHandler.h
-  ../../PG/menu/MenuLayer.cpp
-  ../../PG/menu/MenuLayer.h
-  ../../PG/menu/MenuManager.cpp
-  ../../PG/menu/MenuManager.h
-  ../../PG/menu/MenuNode.cpp
-  ../../PG/menu/MenuNode.h
   ../../PG/physics/PhysicsBody.cpp
   ../../PG/physics/PhysicsBody.h
+  ../../PG/physics/PhysicsBodyAndNode.h
+  ../../PG/physics/PhysicsBodyCollection.cpp
+  ../../PG/physics/PhysicsBodyCollection.h
+  ../../PG/physics/PhysicsBodyInputHandler.cpp
+  ../../PG/physics/PhysicsBodyInputHandler.h
   ../../PG/physics/PhysicsWorld.cpp
   ../../PG/physics/PhysicsWorld.h
-  ../../PG/ui/PGButton.cpp
-  ../../PG/ui/PGButton.h
-  ../../PG/ui/PGDialog.cpp
-  ../../PG/ui/PGDialog.h
-  ../../PG/ui/PGUI.cpp
-  ../../PG/ui/PGUI.h
-  ../../PG/ui/PGUIElement.cpp
-  ../../PG/ui/PGUIElement.h
-  ../../PG/ui/PGUIMessage.cpp
-  ../../PG/ui/PGUIMessage.h
-  ../../PG/ui/PGTagReceiver.h
-  ../../PG/ui/PGUIMessageQueuePoster.cpp
-  ../../PG/ui/PGUIMessageQueuePoster.h
-  ../../PG/ui/PGUIUtils.cpp
-  ../../PG/ui/PGUIUtils.h
+  ../../PG/physics/PhysicsWorldParams.h
+  ../../PG/sound/ISoundController.h
+  ../../PG/sound/Sound.h
+  ../../PG/sound/SoundID.cpp
+  ../../PG/sound/SoundID.h
+  ../../PG/ui/Bar.cpp
+  ../../PG/ui/Bar.h
+  ../../PG/ui/Button.cpp
+  ../../PG/ui/Button.h
+  ../../PG/ui/Dialog.cpp
+  ../../PG/ui/Dialog.h
+  ../../PG/ui/TagReceiver.h
+  ../../PG/ui/UI.cpp
+  ../../PG/ui/UI.h
+  ../../PG/ui/UIElement.cpp
+  ../../PG/ui/UIElement.h
+  ../../PG/ui/UIMessage.cpp
+  ../../PG/ui/UIMessage.h
+  ../../PG/ui/UIMessageQueuePoster.cpp
+  ../../PG/ui/UIMessageQueuePoster.h
+  ../../PG/ui/UIPositionCalculator.cpp
+  ../../PG/ui/UIPositionCalculator.h
+  ../../PG/ui/UIUtils.cpp
+  ../../PG/ui/UIUtils.h
   ../../PG/util/JsonUtils.cpp
   ../../PG/util/JsonUtils.h
   ../../PG/util/Logger.cpp
