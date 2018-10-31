@@ -15,10 +15,18 @@ include_directories(
 set(SRCS
   PGTestApp/AnimationsTestScene.cpp
   PGTestApp/AnimationsTestScene.h
+  PGTestApp/BarTestScene.cpp
+  PGTestApp/BarTestScene.h
+  PGTestApp/CameraTestScene.cpp
+  PGTestApp/CameraTestScene.h
   PGTestApp/ButtonsTestScene.cpp
   PGTestApp/ButtonsTestScene.h
+  PGTestApp/InventoryTestScene.cpp
+  PGTestApp/InventoryTestScene.h
   PGTestApp/PhysicsTestScene.cpp
   PGTestApp/PhysicsTestScene.h  
+  PGTestApp/SoundTestScene.cpp
+  PGTestApp/SoundTestScene.h
   PGTestApp/main.cpp
   PGTestApp/MainMenuScene.cpp
   PGTestApp/MainMenuScene.h
