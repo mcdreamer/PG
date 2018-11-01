@@ -7,6 +7,8 @@
 #include "PG/internal/ui/Console.h"
 #include "PG/internal/sound/SFMLSoundController.h"
 
+#include "stockpile/include/stockpile.h"
+
 #ifdef __APPLE__
 
 #include "PG/internal/platform/MacPlatformServices.h"
@@ -96,7 +98,11 @@ namespace
 			m_RenderTexture.create(m_Window.getSize().x, m_Window.getSize().y);
 			
 			sf::Font fpsFont;
-			fpsFont.loadFromFile(m_ResourceHandler.getResourcePath(m_AppConfig.styleSheet.uiFontName, "ttf"));
+			const auto uiFontData = m_ResourceHandler.getResourceData(m_AppConfig.styleSheet.uiFontName);
+			if (uiFontData.data)
+			{
+				fpsFont.loadFromMemory(uiFontData.data, uiFontData.size);
+			}
 			
 			sf::Text fpsLabel("0", fpsFont, 20);
 			fpsLabel.setPosition(m_Window.getSize().x - 25, m_Window.getSize().y - 25);
@@ -342,7 +348,13 @@ void PGAppHost::runApp(IGameController& gameController)
 									(float)appConfig.windowSize.height));
 	window.setView(sfmlView);
 
-    TResourceHandler resourceHandler;
+	auto resourceData = stockpile::loadPile("/Users/adodman/mcdreamer/pg/PGTestApp/PGTestApp/resources/pgtestapp.pile");
+	if (!resourceData)
+	{
+		return;
+	}
+
+    TResourceHandler resourceHandler(*resourceData);
     Internal::SFMLFontCache fontCache;
 	
 	Internal::g_ResourceHandler = &resourceHandler;

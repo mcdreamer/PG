@@ -9,10 +9,10 @@ IResourceHandler* g_ResourceHandler = nullptr;
 SFMLFontCache* g_FontCache = nullptr;
 
 //--------------------------------------------------------
-SFMLLabelNode::SFMLLabelNode(const std::string& fontName, int fontSize, Alignment alignment)
+SFMLLabelNode::SFMLLabelNode(const std::string& fontName, const char* data, const size_t size, int fontSize, Alignment alignment)
 : m_Alignment(alignment)
 {
-	const auto* font = g_FontCache->getOrCreateFont(fontName);
+	const auto* font = g_FontCache->getOrCreateFont(fontName, data, size);
 	if (font)
 	{
 		m_Node = sf::Text("", *font, (unsigned int)fontSize);
@@ -31,7 +31,13 @@ NodePtr NodeCreator::createNode()
 //--------------------------------------------------------
 NodePtr NodeCreator::createSpriteNode(const std::string& imageName)
 {
-    return std::make_unique<Internal::SFMLSpriteNode>(Internal::g_ResourceHandler->getResourcePath(imageName, "png"));
+	const auto imageData = Internal::g_ResourceHandler->getResourceData(imageName);
+	if (imageData.data)
+	{
+		return std::make_unique<Internal::SFMLSpriteNode>(imageData.data, imageData.size);
+	}
+
+	return {};
 }
 
 //--------------------------------------------------------
@@ -43,17 +49,33 @@ NodePtr NodeCreator::createColourNode(const Colour& colour, const Size& size)
 //--------------------------------------------------------
 NodePtr NodeCreator::createTextNode(const std::string& fontName, double fontSize)
 {
-    return std::make_unique<Internal::SFMLLabelNode>(Internal::g_ResourceHandler->getResourcePath(fontName, "ttf"),
-													 fontSize,
-													 Alignment::kCentre);
+	const auto fontData = Internal::g_ResourceHandler->getResourceData(fontName);
+	if (fontData.data)
+	{
+		return std::make_unique<Internal::SFMLLabelNode>(fontName,
+														fontData.data,
+														fontData.size,
+														fontSize,
+														Alignment::kCentre);
+	}
+
+	return {};
 }
 
 //--------------------------------------------------------
 NodePtr NodeCreator::createTextNode(const std::string& fontName, double fontSize, Alignment alignment)
 {
-	return std::make_unique<Internal::SFMLLabelNode>(Internal::g_ResourceHandler->getResourcePath(fontName, "ttf"),
-													 fontSize,
-													 alignment);
+	const auto fontData = Internal::g_ResourceHandler->getResourceData(fontName);
+	if (fontData.data)
+	{
+		return std::make_unique<Internal::SFMLLabelNode>(fontName,
+														fontData.data,
+														fontData.size,
+														fontSize,
+														alignment);
+	}
+
+	return {};
 }
 
 }

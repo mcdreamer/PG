@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 2.6)
 project(PGTestApp)
 
 add_subdirectory("../../PG/PG/projects" "./PG")
+add_subdirectory("../../PG/PG/thirdparty/stockpile/stockpile/lib" "./stockpile")
+add_subdirectory("../../PG/PG/thirdparty/stockpile/thirdparty/snappy" "./snappy")
+
+set(SNAPPY_BUILD_TESTS OFF CACHE BOOL "")
 
 set(CMAKE_BUILD_TYPE RELEASE)
 set(CMAKE_CXX_COMPILER "g++")
@@ -65,7 +69,7 @@ if (NOT SFMLWINDOW)
     message(FATAL_ERROR "sfml-window not found")
 endif()
 
-target_link_libraries(PGTestApp PG ${SFMLAUDIO} ${SFMLSYSTEM} ${SFMLGRAPHICS} ${SFMLWINDOW} "-framework Foundation" "-framework Cocoa" objc)
+target_link_libraries(PGTestApp PG pile snappy ${SFMLAUDIO} ${SFMLSYSTEM} ${SFMLGRAPHICS} ${SFMLWINDOW} "-framework Foundation" "-framework Cocoa" objc)
 
 set_target_properties(PGTestApp PROPERTIES
   MACOSX_BUNDLE TRUE

@@ -5,12 +5,19 @@
 namespace PG {
 
 //--------------------------------------------------------
+struct ResourceData
+{
+    const char* data = nullptr;
+    size_t size = 0;
+};
+
+//--------------------------------------------------------
 class IResourceHandler
 {
 public:
     virtual ~IResourceHandler() {}
 
-    virtual std::string getResourcePath(const std::string& name, const std::string& type)=0;
+    virtual ResourceData getResourceData(const std::string& resourcePath)=0;
 };
 
 }

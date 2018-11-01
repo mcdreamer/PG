@@ -1,34 +1,23 @@
 #include "MacResourceHandler.h"
-
-#import <Foundation/Foundation.h>
+#include "stockpile/include/stockpile.h"
 
 namespace PG {
 namespace Internal {
 
-namespace
-{
-    //--------------------------------------------------------
-    std::string nsStringToStdString(NSString* nsString)
-    {
-        return nsString ? [nsString UTF8String] : std::string();
-    }
-
-    //--------------------------------------------------------
-    NSString* stdStringToNSString(const std::string& string)
-    {
-        return [NSString stringWithUTF8String:string.c_str()];
-    }
-}
-
 //--------------------------------------------------------
-std::string MacResourceHandler::getResourcePath(const std::string& name, const std::string& type)
+ResourceData MacResourceHandler::getResourceData(const std::string& resourcePath)
 {
-    NSString* f = stdStringToNSString(name);
-    NSString* t = stdStringToNSString(type);
-    
-    NSBundle* mainBundle = [NSBundle mainBundle];
+    const auto* chunk = m_Pile.getChunk(stockpile::ResourcePath("test"));
+    if (chunk)
+    {
+        auto data = chunk->getResource(stockpile::ResourcePath(resourcePath));
+        if (!data.empty())
+        {
+            return { data.getData(), (size_t)data.getSize() };
+        }
+    }
 
-    return nsStringToStdString([mainBundle pathForResource:f ofType:t]);
+    return {};
 }
 
 }

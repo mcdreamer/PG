@@ -37,12 +37,18 @@ public:
 	//--------------------------------------------------------
 	SoundID registerSound(const Sound& sound)
 	{
-		const auto soundPath = m_ResourceHandler.getResourcePath(sound.resourceName, "wav");
+		const auto soundData = m_ResourceHandler.getResourceData(sound.resourceName);
+		if (!soundData.data)
+		{
+			std::cerr << "Failed to load sound resource data " << sound.resourceName << std::endl;
+			
+			return SoundID();
+		}
 		
-		sf::SoundBuffer* buffer = getOrLoadBufferForPath(soundPath);
+		sf::SoundBuffer* buffer = getOrLoadBufferForPath(sound.resourceName, soundData.data, soundData.size);
 		if (!buffer)
 		{
-			std::cerr << "Failed to load sound " << soundPath << std::endl;
+			std::cerr << "Failed to load sound " << sound.resourceName << std::endl;
 			
 			return SoundID();
 		}
@@ -81,13 +87,13 @@ private:
 	IResourceHandler&						m_ResourceHandler;
 	
 	//--------------------------------------------------------
-	sf::SoundBuffer* getOrLoadBufferForPath(const std::string& soundPath)
+	sf::SoundBuffer* getOrLoadBufferForPath(const std::string& soundPath, const char* data, const size_t size)
 	{
 		auto bufferIt = m_SoundBuffers.find(soundPath);
 		if (bufferIt == m_SoundBuffers.end())
 		{
 			auto& buffer = m_SoundBuffers[soundPath];
-			if (!buffer.loadFromFile(soundPath))
+			if (!buffer.loadFromMemory(data, size))
 			{
 				return nullptr;
 			}

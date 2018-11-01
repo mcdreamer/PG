@@ -9,6 +9,7 @@ include_directories(
   "../.."
   "../internal/sfml/include"
   "../thirdparty/boost"
+  "../thirdparty/stockpile"
 )
 
 set(SRCS

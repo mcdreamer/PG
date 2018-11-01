@@ -179,9 +179,9 @@ public:
 class SFMLSpriteNode : public SFMLNodeBase<sf::Sprite>
 {
 public:
-    SFMLSpriteNode(const std::string& imageName)
+    SFMLSpriteNode(const char* data, const size_t size)
     {
-        if (texture.loadFromFile(imageName))
+        if (texture.loadFromMemory(data, size))
         {
             m_Node = sf::Sprite(texture);
             m_Node.setOrigin((float)getSize().width / 2.0f, (float)getSize().height / 2.0f);
@@ -258,7 +258,7 @@ class SFMLFontCache
 {
 public:
 	//--------------------------------------------------------
-	const sf::Font* getOrCreateFont(const std::string& fontName)
+	const sf::Font* getOrCreateFont(const std::string& fontName, const char* data, const size_t size)
 	{
 		auto fontIt = std::find_if(m_Fonts.begin(), m_Fonts.end(), [&](const auto& font) { return font.first == fontName; });
 		if (fontIt != m_Fonts.end())
@@ -268,7 +268,7 @@ public:
 
 		m_Fonts.emplace_back(fontName, sf::Font());
 		auto* font = &m_Fonts.back().second;
-		font->loadFromFile(fontName);
+		font->loadFromMemory(data, size);
 
 		return font;
 	}
@@ -281,7 +281,7 @@ private:
 class SFMLLabelNode : public SFMLNodeBase<sf::Text>
 {
 public:
-    SFMLLabelNode(const std::string& fontName, int fontSize, Alignment alignment);
+    SFMLLabelNode(const std::string& fontName, const char* data, const size_t size, int fontSize, Alignment alignment);
 
     virtual Size getSize() const override
     {
