@@ -4,3 +4,6 @@
 [submodule "PG/thirdparty/jsoncpp"]
 	path = PG/thirdparty/jsoncpp
 	url = https://github.com/open-source-parsers/jsoncpp.git
+[submodule "PG/thirdparty/stockpile"]
+	path = PG/thirdparty/stockpile
+	url = https://github.com/mcdreamer/stockpile.git
