@@ -10,8 +10,8 @@ class TextureAnimationDefinition
 public:
 	TextureAnimationDefinition(const double frameDuration, const int frameCount, const Size& frameSize)
 	: m_FrameDuration(frameDuration),
-	m_FrameSize(frameSize),
-	m_FrameCount(frameCount)
+	m_FrameCount(frameCount),
+	m_FrameSize(frameSize)
 	{}
 	
 	double		getFrameDuration() const { return m_FrameDuration; }

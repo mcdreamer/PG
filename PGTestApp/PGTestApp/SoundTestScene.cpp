@@ -31,9 +31,9 @@ struct SoundTestScene::GameState
 
 //--------------------------------------------------------
 SoundTestScene::SoundTestScene(PG::TagReciever& appTagTarget)
-: m_AppTagTarget(appTagTarget),
-m_GameState(new GameState),
-m_AppHostServices(nullptr)
+: m_AppHostServices(nullptr),
+m_AppTagTarget(appTagTarget),
+m_GameState(new GameState)
 {}
 
 //--------------------------------------------------------

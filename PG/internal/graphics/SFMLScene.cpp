@@ -21,8 +21,8 @@ namespace Internal {
 SFMLScene::SFMLScene(SceneControllerPtr& controller,
 					 const Size& size,
 					 const StyleSheet& styleSheet)
-: m_SceneController(controller.release()),
-m_SceneSize(size)
+: m_SceneSize(size),
+m_SceneController(controller.release())
 {
 	m_Root = NodeCreator::createNode();
 	m_UIRoot = NodeCreator::createNode();

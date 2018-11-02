@@ -23,7 +23,7 @@ public:
 private:
     TagReciever&	m_Target;
     Point         m_Point;
-    Size          m_ForcedSize;
+    Size			m_ForcedSize;
     std::string     m_Label;
     int             m_Tag;
 };

@@ -8,7 +8,7 @@ namespace PG {
 
 //--------------------------------------------------------
 Button::Button(TagReciever& target, const Point& point, const std::string& label, int tag, const Size& forcedSize)
-: m_Target(target), m_Point(point), m_Label(label), m_Tag(tag), m_ForcedSize(forcedSize)
+: m_Target(target), m_Point(point), m_ForcedSize(forcedSize), m_Label(label), m_Tag(tag)
 {}
 
 //--------------------------------------------------------

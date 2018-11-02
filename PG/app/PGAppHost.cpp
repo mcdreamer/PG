@@ -82,12 +82,12 @@ namespace
 				  sf::RenderWindow& window,
 				  Internal::SFMLView& view,
 				  TResourceHandler& resourceHandler)
-		: m_ConsoleActive(false),
-		m_GameController(gameController),
+		: m_GameController(gameController),
 		m_AppConfig(appConfig),
 		m_Window(window),
 		m_View(view),
-		m_ResourceHandler(resourceHandler)
+		m_ResourceHandler(resourceHandler),
+		m_ConsoleActive(false)
 		{}
 	
 		sf::RenderTexture	m_RenderTexture;

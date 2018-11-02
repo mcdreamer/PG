@@ -34,7 +34,8 @@ struct ConsoleScene::State
 
 //--------------------------------------------------------
 ConsoleScene::ConsoleScene()
-: m_State(new State), m_AppHostServices(nullptr)
+: m_AppHostServices(nullptr),
+m_State(new State)
 {}
 
 //--------------------------------------------------------

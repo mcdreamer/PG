@@ -7,8 +7,8 @@ TextureAnimation::TextureAnimation(const TextureAnimationDefinition& animationDe
 								   const NodeHandle& node)
 : m_AnimationDef(animationDef),
 m_Node(node),
-m_Time(0.0),
-m_FramesPerRow((int)(node.node->getSize().width / animationDef.getFrameSize().width))
+m_FramesPerRow((int)(node.node->getSize().width / animationDef.getFrameSize().width)),
+m_Time(0.0)
 {
 	m_Node.node->setTextureRect(getRectForFrame(0));
 }
