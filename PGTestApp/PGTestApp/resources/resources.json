@@ -1,0 +1,24 @@
+{
+	"chunks":
+	[
+		{
+			"name": "test",
+			"resources":
+			[
+				{ "file": "fonts/LICENSE.TXT", "path": "" },
+				{ "file": "fonts/OpenSans-Regular.ttf", "path": "OpenSans-Regular" },
+				{ "file": "images/PGlogo.png", "path": "PGlogo" },
+				{ "file": "images/block.png", "path": "block" },
+				{ "file": "images/bouncingball.png", "path": "bouncingball" },
+				{ "file": "images/bouncingball2.png", "path": "bouncingball2" },
+				{ "file": "images/dialog.png", "path": "dialog" },
+				{ "file": "images/ghost.png", "path": "ghost" },
+				{ "file": "images/heart.png", "path": "heart" },
+				{ "file": "images/inventorycontainer.png", "path": "inventorycontainer" },
+				{ "file": "images/star.png", "path": "star" },
+				{ "file": "sounds/buttonpress.wav", "path": "buttonpress" },
+				{ "file": "sounds/cymbal.wav", "path": "cymbal" }
+			]
+		}
+	]
+}

@@ -42,12 +42,14 @@ set(SRCS
 file(GLOB RESOURCES_FONTS "PGTestApp/resources/fonts/*")
 file(GLOB RESOURCES_IMAGES "PGTestApp/resources/images/*")
 file(GLOB RESOURCES_SOUNDS "PGTestApp/resources/sounds/*")
+file(GLOB RESOURCES_PILE "PGTestApp/resources/pgtestapp.pile")
 
 set_source_files_properties(${RESOURCES_FONTS} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
 set_source_files_properties(${RESOURCES_IMAGES} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
 set_source_files_properties(${RESOURCES_SOUNDS} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+set_source_files_properties(${RESOURCES_PILE} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
 
-add_executable(PGTestApp "${SRCS}" ${RESOURCES_FONTS} ${RESOURCES_IMAGES} ${RESOURCES_SOUNDS})
+add_executable(PGTestApp "${SRCS}" ${RESOURCES_FONTS} ${RESOURCES_IMAGES} ${RESOURCES_SOUNDS} ${RESOURCES_PILE})
 
 find_library(SFMLAUDIO sfml-audio)
 if (NOT SFMLAUDIO)

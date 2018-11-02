@@ -348,7 +348,7 @@ void PGAppHost::runApp(IGameController& gameController)
 									(float)appConfig.windowSize.height));
 	window.setView(sfmlView);
 
-	auto resourceData = stockpile::loadPile("/Users/adodman/mcdreamer/pg/PGTestApp/PGTestApp/resources/pgtestapp.pile");
+	auto resourceData = stockpile::loadPile(platformServices.getResourcesFilePath() + "/" + appConfig.resourcesFilename);
 	if (!resourceData)
 	{
 		return;

@@ -38,6 +38,8 @@ void PGTestAppController::initialiseConfig()
 	m_AppConfig.styleSheet.buttonBackgroundColour = PG::Colour(150, 150, 200);
 	m_AppConfig.styleSheet.buttonTextColour = PG::Colour::white();
 	m_AppConfig.styleSheet.buttonPadding = 8;
+	
+	m_AppConfig.resourcesFilename = "pgtestapp.pile";
 }
 
 //--------------------------------------------------------
