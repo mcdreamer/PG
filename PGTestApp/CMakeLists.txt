@@ -1,11 +1,14 @@
 cmake_minimum_required(VERSION 3.0)
 project(PGTestApp)
 
+set(SNAPPY_BUILD_TESTS OFF CACHE BOOL "")
+
 add_subdirectory("../../PG/PG/projects" "./PG")
 add_subdirectory("../../PG/PG/thirdparty/stockpile/stockpile/lib" "./stockpile")
 add_subdirectory("../../PG/PG/thirdparty/stockpile/thirdparty/snappy" "./snappy")
 
-set(SNAPPY_BUILD_TESTS OFF CACHE BOOL "")
+include("stockpile_cmake.txt")
+include("pg_cmake.txt")
 
 set(CMAKE_BUILD_TYPE RELEASE)
 set(CMAKE_CXX_COMPILER "g++")
@@ -39,39 +42,20 @@ set(SRCS
   PGTestApp/TagConstants.h
 )
 
-file(GLOB RESOURCES_FONTS "PGTestApp/resources/fonts/*")
-file(GLOB RESOURCES_IMAGES "PGTestApp/resources/images/*")
-file(GLOB RESOURCES_SOUNDS "PGTestApp/resources/sounds/*")
-file(GLOB RESOURCES_PILE "PGTestApp/resources/pgtestapp.pile")
+set(PILEOUTPUT pgtestapp.pile)
 
-set_source_files_properties(${RESOURCES_FONTS} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
-set_source_files_properties(${RESOURCES_IMAGES} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
-set_source_files_properties(${RESOURCES_SOUNDS} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
-set_source_files_properties(${RESOURCES_PILE} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+build_pile(../../PG/thirdparty/stockpile/stockpile/tool/build/stockpile
+    ../PGTestApp/resources/resources.json
+    ../PGTestApp/resources
+    ${PILEOUTPUT})
 
-add_executable(PGTestApp "${SRCS}" ${RESOURCES_FONTS} ${RESOURCES_IMAGES} ${RESOURCES_SOUNDS} ${RESOURCES_PILE})
+set_source_files_properties(${PILEOUTPUT} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
 
-find_library(SFMLAUDIO sfml-audio)
-if (NOT SFMLAUDIO)
-    message(FATAL_ERROR "sfml-audio not found")
-endif()
+add_executable(PGTestApp "${SRCS}" ${PILEOUTPUT})
 
-find_library(SFMLSYSTEM sfml-system)
-if (NOT SFMLSYSTEM)
-    message(FATAL_ERROR "sfml-system not found")
-endif()
+pg_set_app_link_libs()
 
-find_library(SFMLGRAPHICS sfml-graphics)
-if (NOT SFMLGRAPHICS)
-    message(FATAL_ERROR "sfml-graphics not found")
-endif()
-
-find_library(SFMLWINDOW sfml-window)
-if (NOT SFMLWINDOW)
-    message(FATAL_ERROR "sfml-window not found")
-endif()
-
-target_link_libraries(PGTestApp PG pile snappy ${SFMLAUDIO} ${SFMLSYSTEM} ${SFMLGRAPHICS} ${SFMLWINDOW} "-framework Foundation" "-framework Cocoa" objc)
+target_link_libraries(PGTestApp ${APP_LINK_LIBS})
 
 set_target_properties(PGTestApp PROPERTIES
   MACOSX_BUNDLE TRUE
