@@ -348,7 +348,7 @@ void PGAppHost::runApp(IGameController& gameController)
 									(float)appConfig.windowSize.height));
 	window.setView(sfmlView);
 
-	auto resourceData = stockpile::loadPile(platformServices.getResourcesFilePath() + "/" + appConfig.resourcesFilename);
+	auto resourceData = stockpile::loadPile(platformServices.getResourcesFilePath() + "/resources.pile");
 	if (!resourceData)
 	{
 		return;

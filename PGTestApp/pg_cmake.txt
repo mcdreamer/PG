@@ -32,3 +32,45 @@ endif()
 set(APP_LINK_LIBS ${BASE_APP_LINK_LIBS} ${SFMLAUDIO} ${SFMLSYSTEM} ${SFMLGRAPHICS} ${SFMLWINDOW} "-framework Foundation" "-framework Cocoa" objc PARENT_SCOPE)
 
 endfunction()
+
+
+
+function(build_pg_app SRCS RESOURCES_DIR RESOURCES_JSON APP_NAME APP_ID)
+
+set(SNAPPY_BUILD_TESTS OFF CACHE BOOL "")
+
+add_subdirectory("../../PG/PG/projects" "./PG")
+add_subdirectory("../../PG/PG/thirdparty/stockpile/stockpile/tool" "./stockpiletool")
+
+include("stockpile_cmake.txt")
+
+set(CMAKE_BUILD_TYPE RELEASE)
+set(CMAKE_CXX_FLAGS "-std=c++14")
+
+include_directories(
+  "../"
+  "../PG/thirdparty/boost"
+)
+
+set(PILE_OUTPUT resources.pile)
+
+build_pile(
+  stockpiletool
+  ${RESOURCES_DIR}/${RESOURCES_JSON}
+  ${RESOURCES_DIR}
+  ${PILE_OUTPUT}
+)
+
+set_source_files_properties(${PILE_OUTPUT} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+
+add_executable(${APP_NAME} "${SRCS}" ${PILE_OUTPUT})
+
+pg_set_app_link_libs()
+target_link_libraries(${APP_NAME} ${APP_LINK_LIBS})
+
+set_target_properties(${APP_NAME} PROPERTIES
+  MACOSX_BUNDLE TRUE
+  MACOSX_FRAMEWORK_IDENTIFIER ${APP_ID}
+)
+
+endfunction()
