@@ -4,8 +4,7 @@ project(PGTestApp)
 set(SNAPPY_BUILD_TESTS OFF CACHE BOOL "")
 
 add_subdirectory("../../PG/PG/projects" "./PG")
-add_subdirectory("../../PG/PG/thirdparty/stockpile/stockpile/lib" "./stockpile")
-add_subdirectory("../../PG/PG/thirdparty/stockpile/thirdparty/snappy" "./snappy")
+add_subdirectory("../../PG/PG/thirdparty/stockpile/stockpile/tool" "./stockpiletool")
 
 include("stockpile_cmake.txt")
 include("pg_cmake.txt")
@@ -44,10 +43,12 @@ set(SRCS
 
 set(PILEOUTPUT pgtestapp.pile)
 
-build_pile(../../PG/thirdparty/stockpile/stockpile/tool/build/stockpile
-    ../PGTestApp/resources/resources.json
-    ../PGTestApp/resources
-    ${PILEOUTPUT})
+build_pile(
+  stockpiletool
+  ../PGTestApp/resources/resources.json
+  ../PGTestApp/resources
+  ${PILEOUTPUT}
+)
 
 set_source_files_properties(${PILEOUTPUT} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
 
