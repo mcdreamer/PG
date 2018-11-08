@@ -4,7 +4,7 @@ project(PGTestApp)
 set(CMAKE_BUILD_TYPE RELEASE)
 set(CMAKE_CXX_FLAGS "-std=c++14")
 
-include("pg_cmake.txt")
+include("../PG/projects/pg_cmake.txt")
 
 set(SRCS
   PGTestApp/AnimationsTestScene.cpp

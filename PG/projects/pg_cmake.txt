@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.0)
 project(pg_app)
 
+set(PG_CMAKE_DIR ${CMAKE_CURRENT_LIST_DIR})
+
 function(pg_set_app_link_libs)
 
 set(BASE_APP_LINK_LIBS PG pile snappy)
@@ -37,12 +39,14 @@ endfunction()
 
 function(build_pg_app SRCS RESOURCES_DIR RESOURCES_JSON APP_NAME APP_ID)
 
+set(STOCKPILE_DIR "${PG_CMAKE_DIR}/../thirdparty/stockpile/stockpile")
+
 set(SNAPPY_BUILD_TESTS OFF CACHE BOOL "")
 
-add_subdirectory("../../PG/PG/projects" "./PG")
-add_subdirectory("../../PG/PG/thirdparty/stockpile/stockpile/tool" "./stockpiletool")
+add_subdirectory(${PG_CMAKE_DIR} "./PG")
+add_subdirectory("${STOCKPILE_DIR}/tool" "./stockpiletool")
 
-include("stockpile_cmake.txt")
+include("${STOCKPILE_DIR}/build/stockpile_cmake.txt")
 
 set(CMAKE_BUILD_TYPE RELEASE)
 set(CMAKE_CXX_FLAGS "-std=c++14")
