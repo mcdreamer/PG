@@ -1,0 +1,13 @@
+{
+	"chunks":
+	[
+		{
+			"name": "test",
+			"resources":
+			[
+				{ "file": "fonts/LICENSE.TXT", "path": "" },
+				{ "file": "fonts/OpenSans-Regular.ttf", "path": "OpenSans-Regular" }
+			]
+		}
+	]
+}
