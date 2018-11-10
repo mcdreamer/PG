@@ -28,10 +28,10 @@ using TResourceHandler = PG::Internal::LinuxResourceHandler;
 #else
 
 #include "PG/internal/platform/WinPlatformServices.h"
-#include "PG/internal/platform/WinResourceHandler.h"
+#include "PG/internal/platform/MacResourceHandler.h"
 
 using TPlatformServices = PG::Internal::WinPlatformServices;
-using TResourceHandler = PG::Internal::WinResourceHandler;
+using TResourceHandler = PG::Internal::MacResourceHandler;
 
 #endif
 
@@ -40,6 +40,8 @@ using TResourceHandler = PG::Internal::WinResourceHandler;
 #include "PG/internal/input/KeyCodeUtils.h"
 
 #include "PG/app/IGameController.h"
+
+#include <boost/filesystem.hpp>
 
 #include <memory>
 
@@ -348,9 +350,12 @@ void PGAppHost::runApp(IGameController& gameController)
 									(float)appConfig.windowSize.height));
 	window.setView(sfmlView);
 
-	auto resourceData = stockpile::loadPile(platformServices.getResourcesFilePath() + "/resources.pile");
+	boost::filesystem::path resourcesPath = platformServices.getResourcesFilePath();
+	resourcesPath /= "resources.pile";
+	auto resourceData = stockpile::loadPile(resourcesPath.string());
 	if (!resourceData)
 	{
+		std::cout << "Couldn't load resources" << std::endl;
 		return;
 	}
 
@@ -363,7 +368,7 @@ void PGAppHost::runApp(IGameController& gameController)
 	Internal::SFMLSoundController soundController(resourceHandler);
 
 	ConsoleController consoleController;
-	consoleController.addCommandSet(getRegistryForBuiltInCommands());
+	consoleController.addCommandSet(getRegistryForBuiltInCommands());	
 	
 	AppHostServices appHostServices(appConfig.styleSheet,
 									consoleController,

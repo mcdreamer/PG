@@ -18,6 +18,21 @@ set(PLATFORM_LIBS "objc -framework Foundation -framework Cocoa")
 
 endif()
 
+if (WIN32)
+
+SET(SFMLAUDIO "${PG_CMAKE_DIR}/../internal/sfml/lib/sfml-audio.lib")
+SET(SFMLSYSTEM "${PG_CMAKE_DIR}/../internal/sfml/lib/sfml-system.lib")
+SET(SFMLGRAPHICS "${PG_CMAKE_DIR}/../internal/sfml/lib/sfml-graphics.lib")
+SET(SFMLWINDOW "${PG_CMAKE_DIR}/../internal/sfml/lib/sfml-window.lib")
+
+file(COPY "${PG_CMAKE_DIR}/../internal/sfml/bin/sfml-audio-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY "${PG_CMAKE_DIR}/../internal/sfml/bin/sfml-system-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY "${PG_CMAKE_DIR}/../internal/sfml/bin/sfml-graphics-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY "${PG_CMAKE_DIR}/../internal/sfml/bin/sfml-window-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY "${PG_CMAKE_DIR}/../internal/sfml/bin/openal32.dll" DESTINATION "${CMAKE_BINARY_DIR}")
+
+endif()
+
 set(APP_LINK_LIBS ${BASE_APP_LINK_LIBS} ${PLATFORM_LIBS} ${SFMLAUDIO} ${SFMLSYSTEM} ${SFMLGRAPHICS} ${SFMLWINDOW} PARENT_SCOPE)
 
 endfunction()
@@ -30,19 +45,23 @@ set(STOCKPILE_DIR "${PG_CMAKE_DIR}/../thirdparty/stockpile/stockpile")
 
 set(SNAPPY_BUILD_TESTS OFF CACHE BOOL "")
 
+set(CMAKE_BUILD_TYPE RELEASE)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 add_subdirectory(${PG_CMAKE_DIR} "./PG")
 add_subdirectory("${STOCKPILE_DIR}/tool" "./stockpiletool")
 
 include("${STOCKPILE_DIR}/build/stockpile_cmake.txt")
 
-set(CMAKE_BUILD_TYPE RELEASE)
-set(CMAKE_CXX_FLAGS "-std=c++14")
-
-set(BOOST_DIR $ENV{BOOST_DIR})
+set(BOOST_ROOT $ENV{BOOST_DIR})
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTITHREADED ON)
+find_package(Boost COMPONENTS filesystem system REQUIRED)
 
 include_directories(
   "../"
-  ${BOOST_DIR}
+  ${Boost_INCLUDE_DIRS}
 )
 
 set(PILE_OUTPUT resources.pile)
@@ -59,7 +78,7 @@ set_source_files_properties(${PILE_OUTPUT} PROPERTIES MACOSX_PACKAGE_LOCATION Re
 add_executable(${APP_NAME} "${SRCS}" ${PILE_OUTPUT})
 
 pg_set_app_link_libs()
-target_link_libraries(${APP_NAME} ${APP_LINK_LIBS})
+target_link_libraries(${APP_NAME} ${APP_LINK_LIBS} ${Boost_LIBRARIES})
 
 set_target_properties(${APP_NAME} PROPERTIES
   MACOSX_BUNDLE TRUE
