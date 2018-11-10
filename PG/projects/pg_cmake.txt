@@ -9,29 +9,16 @@ set(BASE_APP_LINK_LIBS PG pile snappy)
 
 if (APPLE)
 
-find_library(SFMLAUDIO sfml-audio)
-if (NOT SFMLAUDIO)
-    message(FATAL_ERROR "sfml-audio not found")
-endif()
+SET(SFMLAUDIO "${PG_CMAKE_DIR}/../internal/sfml/Frameworks/sfml-audio.framework")
+SET(SFMLSYSTEM "${PG_CMAKE_DIR}/../internal/sfml/Frameworks/sfml-system.framework")
+SET(SFMLGRAPHICS "${PG_CMAKE_DIR}/../internal/sfml/Frameworks/sfml-graphics.framework")
+SET(SFMLWINDOW "${PG_CMAKE_DIR}/../internal/sfml/Frameworks/sfml-window.framework")
 
-find_library(SFMLSYSTEM sfml-system)
-if (NOT SFMLSYSTEM)
-    message(FATAL_ERROR "sfml-system not found")
-endif()
-
-find_library(SFMLGRAPHICS sfml-graphics)
-if (NOT SFMLGRAPHICS)
-    message(FATAL_ERROR "sfml-graphics not found")
-endif()
-
-find_library(SFMLWINDOW sfml-window)
-if (NOT SFMLWINDOW)
-    message(FATAL_ERROR "sfml-window not found")
-endif()
+set(PLATFORM_LIBS "objc -framework Foundation -framework Cocoa")
 
 endif()
 
-set(APP_LINK_LIBS ${BASE_APP_LINK_LIBS} ${SFMLAUDIO} ${SFMLSYSTEM} ${SFMLGRAPHICS} ${SFMLWINDOW} "-framework Foundation" "-framework Cocoa" objc PARENT_SCOPE)
+set(APP_LINK_LIBS ${BASE_APP_LINK_LIBS} ${PLATFORM_LIBS} ${SFMLAUDIO} ${SFMLSYSTEM} ${SFMLGRAPHICS} ${SFMLWINDOW} PARENT_SCOPE)
 
 endfunction()
 
@@ -78,5 +65,4 @@ set_target_properties(${APP_NAME} PROPERTIES
   MACOSX_BUNDLE TRUE
   MACOSX_FRAMEWORK_IDENTIFIER ${APP_ID}
 )
-
 endfunction()
