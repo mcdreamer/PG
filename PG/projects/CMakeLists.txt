@@ -104,8 +104,8 @@ set(SRCS
 	../../PG/internal/graphics/SFMLView.cpp
 	../../PG/internal/graphics/SFMLView.h
 	../../PG/internal/input/KeyCodeUtils.h
-	../../PG/internal/platform/MacResourceHandler.mm
-	../../PG/internal/platform/MacResourceHandler.h
+	../../PG/internal/platform/PileResourceHandler.cpp
+	../../PG/internal/platform/PileResourceHandler.h
 	../../PG/internal/platform/ResourceHandler.cpp
 	../../PG/internal/platform/ResourceHandler.h
 	../../PG/internal/sound/SFMLSoundController.cpp
@@ -164,7 +164,7 @@ endif()
 
 if(WIN32)
 set(PLATFORM_SRCS
-	../../PG/internal/app/WinPlatformServices.cpp  
+	../../PG/internal/platform/WinPlatformServices.cpp  
 	../../PG/internal/platform/WinPlatformServices.h
 )
 endif()

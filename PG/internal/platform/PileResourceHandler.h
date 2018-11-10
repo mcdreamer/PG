@@ -12,10 +12,10 @@ namespace PG {
 namespace Internal {
 
 //--------------------------------------------------------
-class MacResourceHandler : public IResourceHandler
+class PileResourceHandler : public IResourceHandler
 {
 public:
-    MacResourceHandler(const stockpile::Pile& pile)
+    PileResourceHandler(const stockpile::Pile& pile)
     : m_Pile(pile)
     {}
 

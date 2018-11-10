@@ -6,16 +6,17 @@
 #include "PG/console/ConsoleController.h"
 #include "PG/internal/ui/Console.h"
 #include "PG/internal/sound/SFMLSoundController.h"
+#include "PG/internal/platform/PileResourceHandler.h"
 
 #include "stockpile/include/stockpile.h"
+
+using TResourceHandler = PG::Internal::PileResourceHandler;
 
 #ifdef __APPLE__
 
 #include "PG/internal/platform/MacPlatformServices.h"
-#include "PG/internal/platform/MacResourceHandler.h"
 
 using TPlatformServices = PG::Internal::MacPlatformServices;
-using TResourceHandler = PG::Internal::MacResourceHandler;
 
 #elif __linux__
 
@@ -23,15 +24,12 @@ using TResourceHandler = PG::Internal::MacResourceHandler;
 #include "PG/internal/platform/LinuxResourceHandler.h"
 
 using TPlatformServices = PG::Internal::LinuxPlatformServices;
-using TResourceHandler = PG::Internal::LinuxResourceHandler;
 
 #else
 
 #include "PG/internal/platform/WinPlatformServices.h"
-#include "PG/internal/platform/MacResourceHandler.h"
 
 using TPlatformServices = PG::Internal::WinPlatformServices;
-using TResourceHandler = PG::Internal::MacResourceHandler;
 
 #endif
 
@@ -355,7 +353,7 @@ void PGAppHost::runApp(IGameController& gameController)
 	auto resourceData = stockpile::loadPile(resourcesPath.string());
 	if (!resourceData)
 	{
-		std::cout << "Couldn't load resources" << std::endl;
+		std::cerr << "Couldn't load resources" << std::endl;
 		return;
 	}
 
