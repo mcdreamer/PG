@@ -2,13 +2,14 @@ cmake_minimum_required(VERSION 3.0)
 project(PG)
 
 set(CMAKE_BUILD_TYPE RELEASE)
-set(CMAKE_CXX_COMPILER "g++")
 set(CMAKE_CXX_FLAGS "-std=c++14")
+
+set(BOOST_DIR $ENV{BOOST_DIR})
 
 include_directories(
   "../.."
   "../internal/sfml/include"
-  "../thirdparty/boost"
+  ${BOOST_DIR}
   "../thirdparty/stockpile"
 )
 

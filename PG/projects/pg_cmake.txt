@@ -51,9 +51,11 @@ include("${STOCKPILE_DIR}/build/stockpile_cmake.txt")
 set(CMAKE_BUILD_TYPE RELEASE)
 set(CMAKE_CXX_FLAGS "-std=c++14")
 
+set(BOOST_DIR $ENV{BOOST_DIR})
+
 include_directories(
   "../"
-  "../PG/thirdparty/boost"
+  ${BOOST_DIR}
 )
 
 set(PILE_OUTPUT resources.pile)

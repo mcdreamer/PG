@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.0)
 project(PGTests)
 
 set(CMAKE_BUILD_TYPE RELEASE)
-set(CMAKE_CXX_COMPILER "clang++")
 set(CMAKE_CXX_FLAGS "-std=c++14 -stdlib=libc++")
 
 add_definitions(-DSFML_STATIC)
