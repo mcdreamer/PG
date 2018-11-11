@@ -7,8 +7,8 @@ class TestResourceHandler : public PG::IResourceHandler
 {
 public:
 	//--------------------------------------------------------
-	virtual std::string getResourcePath(const std::string& name, const std::string& type) override
+	virtual PG::ResourceData getResourceData(const std::string& resourcePath) override
 	{
-		return name + "." + type;
+		return PG::ResourceData();
 	}
 };

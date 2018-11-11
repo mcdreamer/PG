@@ -2,7 +2,8 @@
 #include "PG/data/Attributes.h"
 #include "PG/data/AttributeConstants.h"
 #include "PG/util/JsonUtils.h"
-#include "PG/thirdparty/jsoncpp/include/json/json.h"
+
+#include <json/json.h>
 
 #include <fstream>
 #include <iostream>

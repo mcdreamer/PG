@@ -32,10 +32,24 @@ file(COPY "${PG_CMAKE_DIR}/../internal/sfml/bin/openal32.dll" DESTINATION "${CMA
 
 endif()
 
+set(INTERNAL_LINK_LIBS ${SFMLAUDIO} ${SFMLSYSTEM} ${SFMLGRAPHICS} ${SFMLWINDOW} PARENT_SCOPE)
 set(APP_LINK_LIBS ${BASE_APP_LINK_LIBS} ${PLATFORM_LIBS} ${SFMLAUDIO} ${SFMLSYSTEM} ${SFMLGRAPHICS} ${SFMLWINDOW} PARENT_SCOPE)
 
 endfunction()
 
+
+function(pg_setup)
+
+set(JSON_CPP "${PG_CMAKE_DIR}/../thirdparty/jsoncpp/dist/jsoncpp.cpp")
+
+execute_process(
+  WORKING_DIRECTORY "${PG_CMAKE_DIR}/../thirdparty/jsoncpp/"
+  COMMAND python amalgamate.py
+)
+
+set(INTERNAL_CPP ${JSON_CPP} PARENT_SCOPE)
+
+endfunction()
 
 
 function(build_pg_app SRCS RESOURCES_DIR RESOURCES_JSON APP_NAME APP_ID)
@@ -74,9 +88,11 @@ build_pile(
 
 set_source_files_properties(${PILE_OUTPUT} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
 
-add_executable(${APP_NAME} "${SRCS}" ${PILE_OUTPUT})
-
+pg_setup()
 pg_set_app_link_libs()
+
+add_executable(${APP_NAME} "${INTERNAL_CPP}" "${SRCS}" ${PILE_OUTPUT})
+
 target_link_libraries(${APP_NAME} ${APP_LINK_LIBS} ${Boost_LIBRARIES})
 
 set_target_properties(${APP_NAME} PROPERTIES

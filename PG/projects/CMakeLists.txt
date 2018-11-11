@@ -15,6 +15,7 @@ include_directories(
 	"../internal/sfml/include"
 	${Boost_INCLUDE_DIRS}
 	"../thirdparty/stockpile"
+	"../thirdparty/jsoncpp/dist"
 )
 
 set(SRCS
@@ -82,6 +83,8 @@ set(SRCS
 	../../PG/data/EntityHandle.h
 	../../PG/data/EntityLoader.cpp
 	../../PG/data/EntityLoader.h
+	../../PG/data/GeometryLoader.cpp
+	../../PG/data/GeometryLoader.h
 	../../PG/entities/Tile.cpp
 	../../PG/entities/Tile.h
 	../../PG/entities/TilePositionCalculator.cpp

@@ -1,6 +1,7 @@
 #include "PG/util/JsonUtils.h"
 #include "PG/core/Point.h"
-#include "PG/thirdparty/jsoncpp/include/json/json.h"
+
+#include <json/json.h>
 
 namespace PG {
 namespace JsonUtils
