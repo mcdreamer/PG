@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 
 set(PG_CMAKE_DIR ${CMAKE_CURRENT_LIST_DIR})
+set(SFML_DIR ${PG_CMAKE_DIR}/../internal/sfml)
 
 function(pg_set_app_link_libs)
 
@@ -8,10 +9,10 @@ set(BASE_APP_LINK_LIBS PG pile snappy)
 
 if (APPLE)
 
-SET(SFMLAUDIO "${PG_CMAKE_DIR}/../internal/sfml/Frameworks/sfml-audio.framework")
-SET(SFMLSYSTEM "${PG_CMAKE_DIR}/../internal/sfml/Frameworks/sfml-system.framework")
-SET(SFMLGRAPHICS "${PG_CMAKE_DIR}/../internal/sfml/Frameworks/sfml-graphics.framework")
-SET(SFMLWINDOW "${PG_CMAKE_DIR}/../internal/sfml/Frameworks/sfml-window.framework")
+set(SFMLAUDIO "${SFML_DIR}/Frameworks/sfml-audio.framework")
+set(SFMLSYSTEM "${SFML_DIR}/Frameworks/sfml-system.framework")
+set(SFMLGRAPHICS "${SFML_DIR}/Frameworks/sfml-graphics.framework")
+set(SFMLWINDOW "${SFML_DIR}/Frameworks/sfml-window.framework")
 
 set(PLATFORM_LIBS "objc -framework Foundation -framework Cocoa")
 
@@ -19,16 +20,16 @@ endif()
 
 if (WIN32)
 
-SET(SFMLAUDIO "${PG_CMAKE_DIR}/../internal/sfml/lib/sfml-audio.lib")
-SET(SFMLSYSTEM "${PG_CMAKE_DIR}/../internal/sfml/lib/sfml-system.lib")
-SET(SFMLGRAPHICS "${PG_CMAKE_DIR}/../internal/sfml/lib/sfml-graphics.lib")
-SET(SFMLWINDOW "${PG_CMAKE_DIR}/../internal/sfml/lib/sfml-window.lib")
+set(SFMLAUDIO "${SFML_DIR}/lib/sfml-audio.lib")
+set(SFMLSYSTEM "${SFML_DIR}/lib/sfml-system.lib")
+set(SFMLGRAPHICS "${SFML_DIR}/lib/sfml-graphics.lib")
+set(SFMLWINDOW "${SFML_DIR}/lib/sfml-window.lib")
 
-file(COPY "${PG_CMAKE_DIR}/../internal/sfml/bin/sfml-audio-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
-file(COPY "${PG_CMAKE_DIR}/../internal/sfml/bin/sfml-system-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
-file(COPY "${PG_CMAKE_DIR}/../internal/sfml/bin/sfml-graphics-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
-file(COPY "${PG_CMAKE_DIR}/../internal/sfml/bin/sfml-window-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
-file(COPY "${PG_CMAKE_DIR}/../internal/sfml/bin/openal32.dll" DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY "${SFML_DIR}/bin/sfml-audio-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY "${SFML_DIR}/bin/sfml-system-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY "${SFML_DIR}/bin/sfml-graphics-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY "${SFML_DIR}/bin/sfml-window-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY "${SFML_DIR}/openal32.dll" DESTINATION "${CMAKE_BINARY_DIR}")
 
 endif()
 
