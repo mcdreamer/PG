@@ -96,8 +96,30 @@ add_executable(${APP_NAME} "${INTERNAL_CPP}" "${SRCS}" ${PILE_OUTPUT})
 
 target_link_libraries(${APP_NAME} ${APP_LINK_LIBS} ${Boost_LIBRARIES})
 
+if(APPLE)
+
 set_target_properties(${APP_NAME} PROPERTIES
   MACOSX_BUNDLE TRUE
   MACOSX_FRAMEWORK_IDENTIFIER ${APP_ID}
 )
+
+set_target_properties(${APP_NAME}
+  PROPERTIES BUILD_WITH_INSTALL_RPATH 1
+             INSTALL_NAME_DIR "@rpath"
+             INSTALL_RPATH "@executable_path/../Frameworks"
+)
+
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+set(OUTPUT_FRAMEWORKS_DIR ${CMAKE_BINARY_DIR}/${APP_NAME}.app/Contents/Frameworks)
+
+add_custom_command(
+  TARGET ${APP_NAME}
+  POST_BUILD
+  COMMAND mkdir -p ${OUTPUT_FRAMEWORKS_DIR}
+  COMMAND rsync -ra ${SFML_DIR}/Frameworks/sfml-* ${OUTPUT_FRAMEWORKS_DIR}
+)
+
+endif()
+
 endfunction()
