@@ -79,11 +79,13 @@ namespace
 		//--------------------------------------------------------
 		AppRunner(IGameController& gameController,
 				  const AppConfiguration& appConfig,
+				  AppHostServices& appHostServices,
 				  sf::RenderWindow& window,
 				  Internal::SFMLView& view,
 				  TResourceHandler& resourceHandler)
 		: m_GameController(gameController),
 		m_AppConfig(appConfig),
+		m_AppHostServices(appHostServices),
 		m_Window(window),
 		m_View(view),
 		m_ResourceHandler(resourceHandler),
@@ -105,7 +107,9 @@ namespace
 			}
 			
 			sf::Text fpsLabel("0", fpsFont, 20);
-			fpsLabel.setPosition(m_Window.getSize().x - 25, m_Window.getSize().y - 25);
+			const auto displayScale = m_AppHostServices.getPlatformServices().getDisplayScale();
+			fpsLabel.setPosition((m_Window.getSize().x / displayScale) - 25,
+								 (m_Window.getSize().y / displayScale) - 25);
 			fpsLabel.setFillColor(sf::Color(255, 255, 255));
 			
 			sf::Clock clock;
@@ -309,6 +313,7 @@ namespace
 		
 		IGameController&		m_GameController;
 		const AppConfiguration&	m_AppConfig;
+		AppHostServices&		m_AppHostServices;
 		sf::RenderWindow&		m_Window;
 		Internal::SFMLView&		m_View;
 		TResourceHandler&		m_ResourceHandler;
@@ -378,7 +383,7 @@ void PGAppHost::runApp(IGameController& gameController)
 
     gameController.start(appHostServices, view);
 
-	AppRunner appRunner(gameController, appConfig, window, view, resourceHandler);
+	AppRunner appRunner(gameController, appConfig, appHostServices, window, view, resourceHandler);
 	appRunner.runMainLoop();
 }
 
