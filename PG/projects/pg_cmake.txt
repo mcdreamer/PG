@@ -29,7 +29,7 @@ file(COPY "${SFML_DIR}/bin/sfml-audio-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
 file(COPY "${SFML_DIR}/bin/sfml-system-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
 file(COPY "${SFML_DIR}/bin/sfml-graphics-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
 file(COPY "${SFML_DIR}/bin/sfml-window-2.dll" DESTINATION "${CMAKE_BINARY_DIR}")
-file(COPY "${SFML_DIR}/openal32.dll" DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY "${SFML_DIR}/bin/openal32.dll" DESTINATION "${CMAKE_BINARY_DIR}")
 
 endif()
 
