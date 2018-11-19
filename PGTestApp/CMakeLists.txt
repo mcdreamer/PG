@@ -35,4 +35,5 @@ build_pg_app(
   ../PGTestApp/resources
   resources.json
   PGTestApp
-  com.mcdreamer.pgtestapp)
+  com.mcdreamer.pgtestapp
+  ../PGTestApp/Info.plist)

@@ -20,4 +20,5 @@ build_pg_app(
   ../PGTemplateApp/resources
   resources.json
   PGTemplateApp
-  com.mcdreamer.pgtemplateapp)
+  com.mcdreamer.pgtemplateapp
+  ../PGTemplateApp/Info.plist)
