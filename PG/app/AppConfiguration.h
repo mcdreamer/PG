@@ -15,7 +15,6 @@ struct AppConfiguration
 	
 	int			tileSize = 32;
 	
-	std::string	resourcesFilename;
 	StyleSheet	styleSheet;
 };
 
