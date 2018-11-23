@@ -52,69 +52,69 @@ void PGTestAppController::start(PG::AppHostServices& appHostServices, PG::IView&
     m_AppHostServices = &appHostServices;
     m_View = &view;
 	
-	std::unique_ptr<PG::ISceneController> mainMenu(new MainMenuScene(*this));
+	std::unique_ptr<PG::ISceneController> mainMenu(new MainMenuScene);
 	m_View->replaceScene(mainMenu);
 }
 
 //--------------------------------------------------------
-void PGTestAppController::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
+bool PGTestAppController::receiveTag(const int tag)
 {
 	switch (tag)
 	{
 		case TagConstants::kPopScene:
 		{
 			m_View->popScene();
-			break;
+			return true;
 		}
 		case TagConstants::kShowButtonsTest:
 		{
-			std::unique_ptr<PG::ISceneController> buttonTest(new ButtonTestScene(*this));
+			std::unique_ptr<PG::ISceneController> buttonTest(new ButtonTestScene);
 			m_View->pushScene(buttonTest);
-			break;
+			return true;
 		}
 		case TagConstants::kShowAnimationsTest:
 		{
-			std::unique_ptr<PG::ISceneController> animationsTest(new AnimationsTestScene(*this));
+			std::unique_ptr<PG::ISceneController> animationsTest(new AnimationsTestScene);
 			m_View->pushScene(animationsTest);
-			break;
+			return true;
 		}
 		case TagConstants::kShowPhysicsTest:
 		{
-			std::unique_ptr<PG::ISceneController> physicsTest(new PhysicsTestScene(*this));
+			std::unique_ptr<PG::ISceneController> physicsTest(new PhysicsTestScene);
 			m_View->pushScene(physicsTest);
-			break;
+			return true;
 		}
 		case TagConstants::kShowInventoryTest:
 		{
-			std::unique_ptr<PG::ISceneController> inventoryTest(new InventoryTestScene(*this));
+			std::unique_ptr<PG::ISceneController> inventoryTest(new InventoryTestScene);
 			m_View->pushScene(inventoryTest);
-			break;
+			return true;
 		}
 		case TagConstants::kShowBarTest:
 		{
-			std::unique_ptr<PG::ISceneController> barTest(new BarTestScene(*this));
+			std::unique_ptr<PG::ISceneController> barTest(new BarTestScene);
 			m_View->pushScene(barTest);
-			break;
+			return true;
 		}
 		case TagConstants::kShowSoundTest:
 		{
-			std::unique_ptr<PG::ISceneController> barTest(new SoundTestScene(*this));
+			std::unique_ptr<PG::ISceneController> barTest(new SoundTestScene);
 			m_View->pushScene(barTest);
-			break;
+			return true;
 		}
 		case TagConstants::kShowCameraTest:
 		{
-			std::unique_ptr<PG::ISceneController> barTest(new CameraTestScene(*this));
+			std::unique_ptr<PG::ISceneController> barTest(new CameraTestScene);
 			m_View->pushScene(barTest);
-			break;
+			return true;
 		}
 		case TagConstants::kExitApp:
 		{
 			m_AppHostServices->getPlatformServices().exitApp();
-			break;
+			return true;
 		}
 		default:
-			break;
+			return false;
 	}
 }
 

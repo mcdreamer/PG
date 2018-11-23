@@ -63,7 +63,7 @@ void UI::update()
                 if (msg.target)
                 {
                     UIMessageQueuePoster msgPoster(m_MessageQueue);
-                    msg.target->receiveTag(msg.tag, msgPoster);
+                    msg.target->receiveTag(msg.tag);
                 }
                 break;
 

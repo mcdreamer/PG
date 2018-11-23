@@ -32,8 +32,6 @@ public:
 	
 	virtual void update(double dt) override {}
 	
-	virtual void receiveTag(const int tag, UIMessageQueuePoster& msgPoster) override {}
-	
 private:
 	SceneHandle				m_Scene;
 	AppHostServices*		m_AppHostServices;

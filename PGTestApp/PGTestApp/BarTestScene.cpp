@@ -32,9 +32,8 @@ struct BarTestScene::GameState
 };
 
 //--------------------------------------------------------
-BarTestScene::BarTestScene(PG::TagReciever& appTagTarget)
-: m_AppTagTarget(appTagTarget),
-m_GameState(new GameState)
+BarTestScene::BarTestScene()
+: m_GameState(new GameState)
 {}
 
 //--------------------------------------------------------
@@ -73,20 +72,20 @@ void BarTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHand
 }
 
 //--------------------------------------------------------
-void BarTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
+bool BarTestScene::receiveTag(const int tag)
 {
 	switch (tag)
 	{
 		case kTagIncrease:
 			++m_GameState->value;
-			break;
+			return true;
 			
 		case kTagDecrease:
 			--m_GameState->value;
-			break;
+			return true;
 			
 		default:
-			msgPoster.postMessage(PG::UIMessage::sendTag(&m_AppTagTarget, tag));
+			return false;
 	}
 }
 

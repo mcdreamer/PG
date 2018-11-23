@@ -18,7 +18,7 @@ class PhysicsTestScene : public PG::ISceneController, public PG::TagReciever
 	struct GameState;
 	
 public:
-	PhysicsTestScene(PG::TagReciever& appTagTarget);
+	PhysicsTestScene();
 	~PhysicsTestScene();
 	
 	virtual void initScene(PG::AppHostServices& appHostServices, PG::SceneHandle scene) override;
@@ -32,13 +32,10 @@ public:
 	
 	virtual void update(double dt) override;
 	
-	virtual void receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster) override;
-	
 private:
 	PG::SceneHandle					m_Scene;
 	PG::NodeHandle					m_HeartCountNode;
 	PG::NodeHandle					m_StarsCountNode;
-	TagReciever&					m_AppTagTarget;
 	std::unique_ptr<PhysicsState>	m_State;
 	std::unique_ptr<GameState>		m_GameState;
 	

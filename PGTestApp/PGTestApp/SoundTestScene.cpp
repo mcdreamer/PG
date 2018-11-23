@@ -3,7 +3,6 @@
 
 #include "PG/graphics/NodeCreator.h"
 #include "PG/ui/Button.h"
-#include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/ui/UIUtils.h"
 #include "PG/ui/UIPositionCalculator.h"
 #include "PG/app/AppHostServices.h"
@@ -30,9 +29,8 @@ struct SoundTestScene::GameState
 };
 
 //--------------------------------------------------------
-SoundTestScene::SoundTestScene(PG::TagReciever& appTagTarget)
+SoundTestScene::SoundTestScene()
 : m_AppHostServices(nullptr),
-m_AppTagTarget(appTagTarget),
 m_GameState(new GameState)
 {}
 
@@ -68,16 +66,16 @@ void SoundTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHa
 }
 
 //--------------------------------------------------------
-void SoundTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
+bool SoundTestScene::receiveTag(const int tag)
 {
 	switch (tag)
 	{
 		case kPlaySound:
 			m_AppHostServices->getSoundController().playSound(m_GameState->playCymbal ? m_GameState->cymbalSoundID : m_GameState->buttonSoundID);
 			m_GameState->playCymbal = !m_GameState->playCymbal;
-			break;
+			return true;
 			
 		default:
-			msgPoster.postMessage(PG::UIMessage::sendTag(&m_AppTagTarget, tag));
+			return false;
 	}
 }

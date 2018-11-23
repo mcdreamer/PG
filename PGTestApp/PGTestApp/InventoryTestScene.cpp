@@ -5,7 +5,6 @@
 #include "PG/app/StyleSheet.h"
 #include "PG/app/AppHostServices.h"
 #include "PG/ui/Button.h"
-#include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/ui/UIUtils.h"
 #include "PG/ui/UIPositionCalculator.h"
 #include "PG/data/DataGrid.h"
@@ -37,9 +36,8 @@ struct InventoryTestScene::GameState
 };
 
 //--------------------------------------------------------
-InventoryTestScene::InventoryTestScene(PG::TagReciever& appTagTarget)
+InventoryTestScene::InventoryTestScene()
 : m_AppHostServices(nullptr),
-m_AppTagTarget(appTagTarget),
 m_GameState(new GameState)
 {}
 
@@ -90,32 +88,32 @@ namespace
 }
 
 //--------------------------------------------------------
-void InventoryTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
+bool InventoryTestScene::receiveTag(const int tag)
 {
 	switch (tag)
 	{
 		case kTagAddHeart:
 			m_GameState->inventory.addItem(PG::InventoryItem("Heart", "heart", PG::Attributes()));
 			updateInventory();
-			break;
+			return true;
 			
 		case kTagRemoveHeart:
 			findAndRemoveInventoryItem(m_GameState->inventory, "Heart");
 			updateInventory();
-			break;
+			return true;
 
 		case kTagAddStar:
 			m_GameState->inventory.addItem(PG::InventoryItem("Star", "star", PG::Attributes()));
 			updateInventory();
-			break;
+			return true;
 
 		case kTagRemoveStar:
 			findAndRemoveInventoryItem(m_GameState->inventory, "Star");
 			updateInventory();
-			break;
+			return true;
 
 		default:
-			msgPoster.postMessage(PG::UIMessage::sendTag(&m_AppTagTarget, tag));
+			return false;
 	}
 }
 

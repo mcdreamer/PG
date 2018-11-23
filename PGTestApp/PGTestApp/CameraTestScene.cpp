@@ -56,9 +56,8 @@ struct CameraTestScene::PhysicsState
 };
 
 //--------------------------------------------------------
-CameraTestScene::CameraTestScene(PG::TagReciever& appTagTarget)
-: m_AppTagTarget(appTagTarget),
-m_State(new PhysicsState(PG::Rect(PG::Point(32, 0), PG::Size(PG::GameConstants::tileSize(), PG::GameConstants::tileSize()))))
+CameraTestScene::CameraTestScene()
+: m_State(new PhysicsState(PG::Rect(PG::Point(32, 0), PG::Size(PG::GameConstants::tileSize(), PG::GameConstants::tileSize()))))
 {}
 
 //--------------------------------------------------------
@@ -86,12 +85,6 @@ void CameraTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneH
 	m_Scene.scene->setCamera(camera);
 	
 	generateAndSetupLevelGeometry();
-}
-
-//--------------------------------------------------------
-void CameraTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
-{
-	msgPoster.postMessage(PG::UIMessage::sendTag(&m_AppTagTarget, tag));
 }
 
 //--------------------------------------------------------

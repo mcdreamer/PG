@@ -16,7 +16,7 @@ public:
 	virtual void					updateFinished() override;
     virtual PG::AppConfiguration	getConfiguration() override;
 	
-	virtual void					receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster) override;
+	virtual bool 					receiveTag(const int tag) override;
 	
 private:
     PG::AppHostServices*			m_AppHostServices;

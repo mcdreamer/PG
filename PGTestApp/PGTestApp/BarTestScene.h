@@ -11,7 +11,7 @@ class BarTestScene : public PG::ISceneController, public PG::TagReciever
 	struct GameState;
 	
 public:
-	BarTestScene(PG::TagReciever& appTagTarget);
+	BarTestScene();
 	~BarTestScene();
 	
 	virtual void initScene(PG::AppHostServices& appHostServices, PG::SceneHandle scene) override;
@@ -25,10 +25,9 @@ public:
 	
 	virtual void update(double dt) override;
 	
-	virtual void receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster) override;
+	virtual bool receiveTag(const int tag) override;
 	
 private:
 	PG::SceneHandle					m_Scene;
-	TagReciever&					m_AppTagTarget;
 	std::unique_ptr<GameState>		m_GameState;
 };

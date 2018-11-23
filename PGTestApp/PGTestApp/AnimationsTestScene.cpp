@@ -6,7 +6,6 @@
 #include "PG/animation/TextureAnimationDefinition.h"
 #include "PG/graphics/NodeCreator.h"
 #include "PG/ui/Button.h"
-#include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/ui/UIPositionCalculator.h"
 #include "PG/app/StyleSheet.h"
 #include "PG/app/GameConstants.h"
@@ -39,12 +38,6 @@ void AnimationsTestScene::initScene(PG::AppHostServices& appHostServices, PG::Sc
 														   m_Scene);
 	
 	m_Scene.scene->pushUIElement(new PG::Button(*this, uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
-}
-
-//--------------------------------------------------------
-void AnimationsTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
-{
-	msgPoster.postMessage(PG::UIMessage::sendTag(&m_AppTagTarget, tag));
 }
 
 //--------------------------------------------------------

@@ -26,7 +26,6 @@ public:
 		BindableValue<int>& value);
 
 	virtual void	initUIElement(const StyleSheet& styleSheet) override;
-	virtual void	receiveTag(const int tag, UIMessageQueuePoster& msgPoster) override {}
 
 private:
 	Point					m_Position;

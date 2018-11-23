@@ -8,7 +8,6 @@
 #include "PG/physics/PhysicsBodyCollection.h"
 #include "PG/graphics/NodeCreator.h"
 #include "PG/ui/Button.h"
-#include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/ui/UIUtils.h"
 #include "PG/ui/UIPositionCalculator.h"
 #include "PG/app/StyleSheet.h"
@@ -68,9 +67,8 @@ struct PhysicsTestScene::PhysicsState
 };
 
 //--------------------------------------------------------
-PhysicsTestScene::PhysicsTestScene(PG::TagReciever& appTagTarget)
-: m_AppTagTarget(appTagTarget),
-m_State(new PhysicsState(PG::Rect(PG::Point(32, 0), PG::Size(PG::GameConstants::tileSize(), PG::GameConstants::tileSize())))),
+PhysicsTestScene::PhysicsTestScene()
+: m_State(new PhysicsState(PG::Rect(PG::Point(32, 0), PG::Size(PG::GameConstants::tileSize(), PG::GameConstants::tileSize())))),
 m_GameState(new GameState)
 {}
 
@@ -101,12 +99,6 @@ void PhysicsTestScene::initScene(PG::AppHostServices& appHostServices, PG::Scene
 	generateAndSetupLevelGeometry();
 	generateAndSetupHearts();
 	generateAndSetupStars();
-}
-
-//--------------------------------------------------------
-void PhysicsTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
-{
-	msgPoster.postMessage(PG::UIMessage::sendTag(&m_AppTagTarget, tag));
 }
 
 //--------------------------------------------------------

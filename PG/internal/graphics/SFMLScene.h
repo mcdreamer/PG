@@ -37,8 +37,6 @@ public:
 	virtual Point					getWindowPointAsScenePoint(const Point& windowPt, INode* layer) const override;
 	virtual Camera					getCamera() const override { return m_Camera; }
 	
-    virtual void					receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster) override {}
-	
 	virtual void					clickInScene(PG::Point pt, bool isRightClick) override;
     virtual void					update(double dt) override;
 	

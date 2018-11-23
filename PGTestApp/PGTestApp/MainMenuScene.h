@@ -7,10 +7,6 @@
 class MainMenuScene : public PG::ISceneController, public PG::TagReciever
 {
 public:
-	MainMenuScene(PG::TagReciever& appTagTarget)
-	: m_AppTagTarget(appTagTarget)
-	{}
-	
 	virtual void initScene(PG::AppHostServices& appHostServices, PG::SceneHandle scene) override;
 
 	virtual void clickInScene(PG::Point pt, bool isRightClick) override {}
@@ -22,9 +18,6 @@ public:
 	
 	virtual void update(double dt) override {}
 	
-	virtual void receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster) override;
-	
 private:
-	PG::SceneHandle			m_Scene;
-	TagReciever&			m_AppTagTarget;
+	PG::SceneHandle	m_Scene;
 };

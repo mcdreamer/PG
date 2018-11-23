@@ -3,7 +3,6 @@
 
 #include "PG/graphics/NodeCreator.h"
 #include "PG/ui/Button.h"
-#include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/app/StyleSheet.h"
 #include "PG/app/AppHostServices.h"
 
@@ -48,20 +47,19 @@ void ButtonTestScene::keyDown(PG::KeyCode code, PG::KeyModifier mods)
 }
 
 //--------------------------------------------------------
-void ButtonTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
+bool ButtonTestScene::receiveTag(const int tag)
 {
 	switch (tag)
 	{
 		case kTagTestButton:
 			m_Text.node->setText("Clicked!");
-			break;
+			return true;
 			
 		case kTagAnotherTestButton:
 			m_Text.node->setText("Another Clicked!");
-			break;
+			return true;
 
 		default:
-			msgPoster.postMessage(PG::UIMessage::sendTag(&m_AppTagTarget, TagConstants::kPopScene));
-			break;
+			return false;
 	}
 }

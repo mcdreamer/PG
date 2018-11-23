@@ -10,7 +10,7 @@ class TagReciever
 public:
 	virtual ~TagReciever() {}
 	
-	virtual void receiveTag(const int tag, UIMessageQueuePoster& msgPoster)=0;
+	virtual bool receiveTag(const int tag) { return false; }
 };
 
 }

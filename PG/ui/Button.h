@@ -18,8 +18,6 @@ public:
     virtual void initUIElement(const StyleSheet& styleSheet) override;
     virtual void clicked(UIMessageQueuePoster& msgPoster) override;
  
-	virtual void receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster) override {}
-	
 private:
     TagReciever&	m_Target;
     Point         m_Point;

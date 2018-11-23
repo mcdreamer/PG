@@ -17,7 +17,7 @@ class SoundTestScene : public PG::ISceneController, public PG::TagReciever
 	struct GameState;
 	
 public:
-	SoundTestScene(PG::TagReciever& appTagTarget);
+	SoundTestScene();
 	~SoundTestScene();
 	
 	virtual void initScene(PG::AppHostServices& appHostServices, PG::SceneHandle scene) override;
@@ -31,11 +31,10 @@ public:
 	
 	virtual void update(double dt) override {}
 	
-	virtual void receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster) override;
+	virtual bool receiveTag(const int tag) override;
 	
 private:
 	PG::SceneHandle					m_Scene;
 	PG::AppHostServices*			m_AppHostServices;
-	TagReciever&					m_AppTagTarget;
 	std::unique_ptr<GameState>		m_GameState;
 };

@@ -3,7 +3,6 @@
 
 #include "PG/graphics/NodeCreator.h"
 #include "PG/ui/Button.h"
-#include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/ui/UIPositionCalculator.h"
 #include "PG/app/StyleSheet.h"
 #include "PG/app/AppHostServices.h"
@@ -39,10 +38,4 @@ void MainMenuScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHan
 	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[6], "Camera Test", TagConstants::kShowCameraTest));
 	
 	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[7], "Exit", TagConstants::kExitApp));
-}
-
-//--------------------------------------------------------
-void MainMenuScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
-{
-	msgPoster.postMessage(PG::UIMessage::sendTag(&m_AppTagTarget, tag));
 }
