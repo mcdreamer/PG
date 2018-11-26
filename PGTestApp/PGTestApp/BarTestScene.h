@@ -6,7 +6,7 @@
 #include <memory>
 
 //--------------------------------------------------------
-class BarTestScene : public PG::ISceneController, public PG::TagReciever
+class BarTestScene : public PG::ISceneController, public PG::TagReceiver
 {
 	struct GameState;
 	

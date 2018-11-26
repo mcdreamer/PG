@@ -12,7 +12,7 @@ Bar::Bar(const Point& position,
 		 BindableValue<int>& value)
 : m_Position(position),
 m_Size(size),
-m_BarStyle(barStyle),
+//m_BarStyle(barStyle),
 m_Range(range),
 m_Value(value)
 {

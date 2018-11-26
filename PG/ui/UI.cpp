@@ -61,7 +61,8 @@ namespace
 }
 
 //--------------------------------------------------------
-void UI::update(UILayer& activeLayer)
+void UI::update(UILayer& activeLayer,
+				const std::vector<TagReceiver*>& parents)
 {
 	while (!m_MessageQueue.empty())
 	{
@@ -73,16 +74,26 @@ void UI::update(UILayer& activeLayer)
 				if (msg.target)
 				{
 					auto* uiElement = dynamic_cast<UIElement*>(msg.target);
-					uiElement->close();
-					removeElement(uiElement, activeLayer.m_UIStack);
+					if (uiElement)
+					{
+						uiElement->close();
+						removeElement(uiElement, activeLayer.m_UIStack);
+					}
 				}
 				break;
 				
 			case UIMessage::kSendTag:
-				if (msg.target)
+				if (!msg.target || !msg.target->receiveTag(msg.tag))
 				{
-					UIMessageQueuePoster msgPoster(m_MessageQueue);
-					msg.target->receiveTag(msg.tag);
+					for (auto parentIt = parents.begin();
+						 parentIt != parents.end();
+						 ++parentIt)
+					{
+						if ((*parentIt)->receiveTag(msg.tag))
+						{
+							break;
+						}
+					}
 				}
 				break;
 				

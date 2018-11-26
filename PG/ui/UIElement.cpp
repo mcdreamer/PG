@@ -1,20 +1,10 @@
 #include "PG/ui/UIElement.h"
 #include "PG/ui/UIUtils.h"
-#include "PG/graphics/Scene.h"
 #include "PG/graphics/NodeCreator.h"
 #include "PG/core/Rect.h"
 #include "PG/core/RectUtils.h"
 
 namespace PG {
-
-////--------------------------------------------------------
-//void UIElement::show(IScene& scene, const StyleSheet& styleSheet)
-//{
-//    auto root = NodeCreator::createNode();
-//    m_Root = scene.addChild(root);
-//    
-//    initUIElement(styleSheet);
-//}
 
 //--------------------------------------------------------
 void UIElement::show(NodeHandle parent, const StyleSheet& styleSheet)

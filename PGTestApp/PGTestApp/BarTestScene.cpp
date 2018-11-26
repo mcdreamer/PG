@@ -65,10 +65,10 @@ void BarTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHand
 	m_Scene.scene->pushUIElement(new PG::Bar(btnPts[3], PG::Size(200, 10),
 											 PG::BarStyle::kBasic, PG::ValueRange<int>(0, 100), m_GameState->value));
 	
-	m_Scene.scene->pushUIElement(new PG::Button(*this, PG::Point(sceneSize.width * 0.4, sceneSize.height * 0.8), "+", ButtonTags::kTagIncrease));
-	m_Scene.scene->pushUIElement(new PG::Button(*this, PG::Point(sceneSize.width * 0.6, sceneSize.height * 0.8), "-", ButtonTags::kTagDecrease));
+	m_Scene.scene->pushUIElement(new PG::Button(PG::Point(sceneSize.width * 0.4, sceneSize.height * 0.8), "+", ButtonTags::kTagIncrease));
+	m_Scene.scene->pushUIElement(new PG::Button(PG::Point(sceneSize.width * 0.6, sceneSize.height * 0.8), "-", ButtonTags::kTagDecrease));
 	
-	m_Scene.scene->pushUIElement(new PG::Button(*this, PG::Point(sceneSize.width / 2.0, sceneSize.height * 0.95), "Back", TagConstants::kPopScene));
+	m_Scene.scene->pushUIElement(new PG::Button(PG::Point(sceneSize.width / 2.0, sceneSize.height * 0.95), "Back", TagConstants::kPopScene));
 }
 
 //--------------------------------------------------------

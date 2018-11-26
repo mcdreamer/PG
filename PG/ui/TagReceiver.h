@@ -5,10 +5,10 @@ namespace PG {
 class UIMessageQueuePoster;
 
 //--------------------------------------------------------
-class TagReciever
+class TagReceiver
 {
 public:
-	virtual ~TagReciever() {}
+	virtual ~TagReceiver() {}
 	
 	virtual bool receiveTag(const int tag) { return false; }
 };

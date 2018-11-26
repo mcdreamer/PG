@@ -6,7 +6,7 @@
 #include "PG/ui/TagReceiver.h"
 
 //--------------------------------------------------------
-class PGTestAppController : public PG::IGameController, public PG::TagReciever
+class PGTestAppController : public PG::IGameController, public PG::TagReceiver
 {
 public:
     PGTestAppController();

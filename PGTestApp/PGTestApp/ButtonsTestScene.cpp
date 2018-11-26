@@ -22,9 +22,9 @@ void ButtonTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneH
 	
 	m_Scene.scene->setBackgroundColour(PG::Colour(0, 0, 0));
 	
-	m_Scene.scene->pushUIElement(new PG::Button(*this, PG::Point(200, 100), "Back", TagConstants::kPopScene));
-	m_Scene.scene->pushUIElement(new PG::Button(*this, PG::Point(200, 200), "Test Button", kTagTestButton));
-	m_Scene.scene->pushUIElement(new PG::Button(*this, PG::Point(200, 300), "Another Test Button", kTagAnotherTestButton));
+	m_Scene.scene->pushUIElement(new PG::Button(PG::Point(200, 100), "Back", TagConstants::kPopScene));
+	m_Scene.scene->pushUIElement(new PG::Button(PG::Point(200, 200), "Test Button", kTagTestButton));
+	m_Scene.scene->pushUIElement(new PG::Button(PG::Point(200, 300), "Another Test Button", kTagAnotherTestButton));
 	
 	auto textNode = PG::NodeCreator::createTextNode(appHostServices.getStyleSheet().uiFontName, 30);
 	textNode->setText("Hello");

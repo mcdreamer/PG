@@ -61,8 +61,8 @@ void SoundTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHa
 	PG::UIPositionCalculator uiPosCalc(sceneSize);
 	const auto btnPts = uiPosCalc.multipleDownCentre(sceneSize.height * 0.40, 2, sceneSize.height * 0.1);
 	
-	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[0], "Sound", ButtonTags::kPlaySound));
-	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[1], "Back", TagConstants::kPopScene));
+	m_Scene.scene->pushUIElement(new PG::Button(btnPts[0], "Sound", ButtonTags::kPlaySound));
+	m_Scene.scene->pushUIElement(new PG::Button(btnPts[1], "Back", TagConstants::kPopScene));
 }
 
 //--------------------------------------------------------

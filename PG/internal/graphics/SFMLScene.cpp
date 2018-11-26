@@ -1,18 +1,16 @@
 #include "PG/internal/graphics/SFMLScene.h"
 #include "PG/app/AppHostServices.h"
 #include "PG/animation/AnimationUpdater.h"
-#include "PG/ui/UIMessageQueuePoster.h"
+#include "PG/ui/UI.h"
 
 namespace PG {
 
 //--------------------------------------------------------
 ScenePtr SceneCreator::createScene(SceneControllerPtr& controller,
 								   AppHostServices& appHostServices,
-								   UI& ui,
 								   const Size& size)
 {
 	return std::make_unique<Internal::SFMLScene>(controller,
-												 ui,
 												 size,
 												 appHostServices.getStyleSheet());
 }
@@ -21,12 +19,10 @@ namespace Internal {
 
 //--------------------------------------------------------
 SFMLScene::SFMLScene(SceneControllerPtr& controller,
-					 UI& ui,
 					 const Size& size,
 					 const StyleSheet& styleSheet)
 : m_SceneSize(size),
-m_SceneController(controller.release()),
-m_UI(ui)
+m_SceneController(controller.release())
 {
 	m_Root = NodeCreator::createNode();
 	m_UIRoot = NodeCreator::createNode();
@@ -35,6 +31,10 @@ m_UI(ui)
 	m_UILayer->setStyleSheet(styleSheet);
 }
 
+//--------------------------------------------------------
+SFMLScene::~SFMLScene()
+{}
+	
 //--------------------------------------------------------
 void SFMLScene::setBackgroundColour(const Colour& colour)
 {
@@ -68,7 +68,7 @@ Size SFMLScene::getSceneSize() const
 //--------------------------------------------------------
 void SFMLScene::clickInScene(Point pt, bool isRightClick)
 {
-	if (!m_UI.handleClick(*m_UILayer, pt) && m_SceneController)
+	if (m_SceneController)
 	{
 		m_SceneController->clickInScene(pt, isRightClick);
 	}

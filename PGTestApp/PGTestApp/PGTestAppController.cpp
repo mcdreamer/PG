@@ -17,7 +17,8 @@
 //--------------------------------------------------------
 PGTestAppController::PGTestAppController()
 : m_AppHostServices(nullptr),
-m_View(nullptr)
+m_View(nullptr),
+m_AppConfig(this)
 {
 	initialiseConfig();
 }

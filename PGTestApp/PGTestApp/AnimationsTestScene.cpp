@@ -37,7 +37,7 @@ void AnimationsTestScene::initScene(PG::AppHostServices& appHostServices, PG::Sc
 														   uiPosCalc.fromTopMid(PG::Size(50, 32)),
 														   m_Scene);
 	
-	m_Scene.scene->pushUIElement(new PG::Button(*this, uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
+	m_Scene.scene->pushUIElement(new PG::Button(uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
 }
 
 //--------------------------------------------------------

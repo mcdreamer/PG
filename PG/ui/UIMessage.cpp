@@ -10,7 +10,7 @@ UIMessage UIMessage::close(UIElement* target_)
 }
 
 //--------------------------------------------------------
-UIMessage UIMessage::sendTag(TagReciever* target_, int tag_)
+UIMessage UIMessage::sendTag(TagReceiver* target_, int tag_)
 {
 	return UIMessage { kSendTag, target_, tag_ };
 }

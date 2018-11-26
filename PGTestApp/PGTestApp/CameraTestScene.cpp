@@ -79,7 +79,7 @@ void CameraTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneH
 	
 	PG::UIPositionCalculator uiPosCalc(sceneSize);
 	
-	m_Scene.scene->pushUIElement(new PG::Button(*this, uiPosCalc.fromBottomLeftCorner(PG::Size(50, 30)), "Back", TagConstants::kPopScene));
+	m_Scene.scene->pushUIElement(new PG::Button(uiPosCalc.fromBottomLeftCorner(PG::Size(50, 30)), "Back", TagConstants::kPopScene));
 	
 	const PG::Camera camera(PG::Size(0.3, 0.1), m_State->bodyAndNode.node);
 	m_Scene.scene->setCamera(camera);

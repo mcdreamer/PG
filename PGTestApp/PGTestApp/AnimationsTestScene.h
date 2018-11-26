@@ -4,7 +4,7 @@
 #include "PG/ui/TagReceiver.h"
 
 //--------------------------------------------------------
-class AnimationsTestScene : public PG::ISceneController, public PG::TagReciever
+class AnimationsTestScene : public PG::ISceneController, public PG::TagReceiver
 {
 public:
 	virtual void initScene(PG::AppHostServices& appHostServices, PG::SceneHandle scene) override;

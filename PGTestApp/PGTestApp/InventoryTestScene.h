@@ -12,7 +12,7 @@ class AppHostServices;
 }
 
 //--------------------------------------------------------
-class InventoryTestScene : public PG::ISceneController, public PG::TagReciever
+class InventoryTestScene : public PG::ISceneController, public PG::TagReceiver
 {
 	struct GameState;
 	

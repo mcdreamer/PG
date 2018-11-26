@@ -13,7 +13,7 @@ class AppHostServices;
 namespace Internal {
 
 //--------------------------------------------------------
-class ConsoleScene : public ISceneController, public TagReciever
+class ConsoleScene : public ISceneController, public TagReceiver
 {
 	struct State;
 	

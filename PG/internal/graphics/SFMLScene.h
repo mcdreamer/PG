@@ -6,8 +6,6 @@
 #include "PG/graphics/Node.h"
 #include "PG/graphics/NodeCreator.h"
 #include "PG/graphics/Camera.h"
-#include "PG/ui/UI.h"
-#include "PG/ui/TagReceiver.h"
 #include "PG/app/StyleSheet.h"
 #include "PG/animation/IAnimation.h"
 
@@ -15,17 +13,17 @@ namespace PG {
 namespace Internal {
 
 //--------------------------------------------------------
-class SFMLScene : public IScene, public PG::TagReciever
+class SFMLScene : public IScene
 {
 public:
     SFMLScene(SceneControllerPtr& controller,
-			  UI& ui,
 			  const Size& size,
 			  const StyleSheet& styleSheet);
 
+	~SFMLScene();
+	
 	virtual void					pushUIElement(UIElement* uiElement) override;
 	virtual UILayer&				getUILayer() override { return *m_UILayer; }
-	
 	
     virtual NodeHandle				addChild(std::unique_ptr<INode>& node) override;
 	virtual void					setBackgroundColour(const Colour& colour) override;
@@ -50,7 +48,6 @@ private:
 	Camera							m_Camera;
 	AnimationPtrArray				m_Animations;
 	
-	UI&								m_UI;
     std::unique_ptr<UILayer>		m_UILayer;
 };
 

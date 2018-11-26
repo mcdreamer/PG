@@ -94,7 +94,7 @@ void PhysicsTestScene::initScene(PG::AppHostServices& appHostServices, PG::Scene
 	PG::UIUtils::createTextNodeForValue(PG::Point(20, 20), PG::Colour(255, 0, 0), 20, appHostServices.getStyleSheet(), m_HeartCountNode, m_Scene, m_GameState->numHearts);
 	PG::UIUtils::createTextNodeForValue(PG::Point(20, 40), PG::Colour(0, 128, 255), 20, appHostServices.getStyleSheet(), m_StarsCountNode, m_Scene, m_GameState->numStars);
 	
-	m_Scene.scene->pushUIElement(new PG::Button(*this, uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
+	m_Scene.scene->pushUIElement(new PG::Button(uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
 	
 	generateAndSetupLevelGeometry();
 	generateAndSetupHearts();

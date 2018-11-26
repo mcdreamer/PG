@@ -5,7 +5,7 @@
 namespace PG {
 
 class UIElement;
-class TagReciever;
+class TagReceiver;
 
 //--------------------------------------------------------
 struct UIMessage
@@ -13,11 +13,11 @@ struct UIMessage
     enum Type { kClose, kSendTag, kPushElement };
     
     Type			type;
-    TagReciever*	target;
+    TagReceiver*	target;
     int				tag;
     
     static UIMessage close(UIElement* target_);
-    static UIMessage sendTag(TagReciever* target_, int tag_);
+    static UIMessage sendTag(TagReceiver* target_, int tag_);
     static UIMessage pushElement(UIElement* target_);
 };
 

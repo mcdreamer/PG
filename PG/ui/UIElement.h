@@ -8,7 +8,6 @@
 
 namespace PG {
 
-class IScene;
 class Rect;
 struct StyleSheet;
 
@@ -17,12 +16,11 @@ class UIElement;
 using UIElementArray = std::vector<std::unique_ptr<UIElement>>;
 
 //--------------------------------------------------------
-class UIElement : public TagReciever
+class UIElement : public TagReceiver
 {
 public:
     virtual ~UIElement() {}
     
-//    void                show(IScene& scene, const StyleSheet& styleSheet);
     void                show(NodeHandle parent, const StyleSheet& styleSheet);
     void                close();
     
@@ -31,7 +29,7 @@ public:
     
     bool                handleClick(const Point& parentRelPt, UIMessageQueuePoster& msgPoster);
     
-    virtual Rect      getElementRect() const;
+    virtual Rect		getElementRect() const;
     
     virtual void        initUIElement(const StyleSheet& styleSheet)=0;
     virtual void        clicked(UIMessageQueuePoster& msgPoster) {}
@@ -40,7 +38,7 @@ protected:
     NodeHandle          m_Root;
     
 private:
-    UIElementArray    m_Children;
+    UIElementArray		m_Children;
 };
 
 }

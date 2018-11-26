@@ -7,15 +7,23 @@
 
 namespace PG {
 	
+class TagReceiver;
+	
 //--------------------------------------------------------
 struct AppConfiguration
 {
-	std::string	windowTitle;
-	Size		windowSize;
+	AppConfiguration(TagReceiver* uiParent_)
+	: uiParent(uiParent_)
+	{}
 	
-	int			tileSize = 32;
+	std::string		windowTitle;
+	Size			windowSize;
 	
-	StyleSheet	styleSheet;
+	int				tileSize = 32;
+	
+	StyleSheet		styleSheet;
+	
+	TagReceiver*	uiParent;
 };
 
 }

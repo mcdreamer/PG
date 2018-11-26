@@ -61,7 +61,10 @@ void SFMLView::clickInView(Point pt, bool isRightClick)
 	auto* scene = getCurrentScene();
 	if (scene)
 	{
-		scene->clickInScene(pt, isRightClick);
+		if (!m_UI->handleClick(scene->getUILayer(), pt))
+		{
+			scene->clickInScene(pt, isRightClick);
+		}
 	}
 }
 
@@ -73,7 +76,19 @@ void SFMLView::update(double dt)
 	{
 		scene->update(dt);
 		
-		m_UI->update(scene->getUILayer());
+		std::vector<TagReceiver*> parents;
+		parents.reserve(2);
+		auto* sceneController = dynamic_cast<TagReceiver*>(scene->getController().controller);
+		if (sceneController)
+		{
+			parents.push_back(sceneController);
+		}
+		if (m_AppHostServices.getUIParent())
+		{
+			parents.push_back(m_AppHostServices.getUIParent());
+		}
+		
+		m_UI->update(scene->getUILayer(), parents);
 	}
 }
 
@@ -125,7 +140,6 @@ SceneControllerHandle SFMLView::createAndInitialiseScene(SceneControllerPtr& sce
 	
 	m_SceneStack.push(SceneCreator::createScene(sceneController,
 												m_AppHostServices,
-												*m_UI,
 												Size(size.x, size.y)));
 	
 	auto* scene = getCurrentScene();

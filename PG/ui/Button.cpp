@@ -7,8 +7,14 @@
 namespace PG {
 
 //--------------------------------------------------------
-Button::Button(TagReciever& target, const Point& point, const std::string& label, int tag, const Size& forcedSize)
-: m_Target(target), m_Point(point), m_ForcedSize(forcedSize), m_Label(label), m_Tag(tag)
+Button::Button(const Point& point,
+			   const std::string& label,
+			   int tag,
+			   const Size& forcedSize)
+: m_Point(point),
+m_ForcedSize(forcedSize),
+m_Label(label),
+m_Tag(tag)
 {}
 
 //--------------------------------------------------------
@@ -31,7 +37,7 @@ void Button::initUIElement(const StyleSheet& styleSheet)
 //--------------------------------------------------------
 void Button::clicked(UIMessageQueuePoster& msgPoster)
 {
-    msgPoster.postMessage(UIMessage::sendTag(&m_Target, m_Tag));
+    msgPoster.postMessage(UIMessage::sendTag(nullptr, m_Tag));
 }
 
 }

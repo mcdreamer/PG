@@ -30,7 +30,7 @@ public:
 private:
 	Point					m_Position;
 	Size					m_Size;
-	const BarStyle			m_BarStyle;
+//	const BarStyle			m_BarStyle;
 	const ValueRange<int>	m_Range;
 	BindableValue<int>&		m_Value;
 	NodeHandle				m_Bar;

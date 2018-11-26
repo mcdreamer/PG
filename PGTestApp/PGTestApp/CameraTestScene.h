@@ -12,7 +12,7 @@ namespace PG {
 }
 
 //--------------------------------------------------------
-class CameraTestScene : public PG::ISceneController, public PG::TagReciever
+class CameraTestScene : public PG::ISceneController, public PG::TagReceiver
 {
 	struct PhysicsState;
 	

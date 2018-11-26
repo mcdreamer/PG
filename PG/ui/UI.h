@@ -20,7 +20,7 @@ public:
     {}
 	
 	NodeHandle             	getUIRoot() { return m_UIRoot; }
-    
+	
 	void					setStyleSheet(const StyleSheet& styleSheet);
 	const StyleSheet&		getStyleSheet() const;
 	
@@ -29,11 +29,13 @@ public:
 private:
 	friend class UI;
 	
+	NodeHandle             	m_UIRoot;
     UIElementArray			m_UIStack;
-    NodeHandle             	m_UIRoot;
 	StyleSheet				m_StyleSheet;
 };
 
+	
+	
 //--------------------------------------------------------
 class UI
 {
@@ -41,7 +43,8 @@ public:
 	UIMessageQueuePoster	getMessagePoster();
 	
 	bool					handleClick(UILayer& activeLayer, const Point& screenPt);
-	void					update(UILayer& activeLayer);
+	void					update(UILayer& activeLayer,
+								   const std::vector<TagReceiver*>& parents);
 	
 private:
 	PGUIMessageQueue    	m_MessageQueue;

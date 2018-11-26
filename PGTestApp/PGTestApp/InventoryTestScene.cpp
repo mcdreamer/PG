@@ -61,12 +61,12 @@ void InventoryTestScene::initScene(PG::AppHostServices& appHostServices, PG::Sce
 	PG::UIPositionCalculator uiPosCalc(sceneSize);
 	const auto btnPts = uiPosCalc.multipleDownCentre(sceneSize.height * 0.50, 5, sceneSize.height * 0.1);
 	
-	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[0], "+ Heart", ButtonTags::kTagAddHeart));
-	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[1], "- Heart", ButtonTags::kTagRemoveHeart));
-	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[2], "+ Star", ButtonTags::kTagAddStar));
-	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[3], "- Star", ButtonTags::kTagRemoveStar));
+	m_Scene.scene->pushUIElement(new PG::Button(btnPts[0], "+ Heart", ButtonTags::kTagAddHeart));
+	m_Scene.scene->pushUIElement(new PG::Button(btnPts[1], "- Heart", ButtonTags::kTagRemoveHeart));
+	m_Scene.scene->pushUIElement(new PG::Button(btnPts[2], "+ Star", ButtonTags::kTagAddStar));
+	m_Scene.scene->pushUIElement(new PG::Button(btnPts[3], "- Star", ButtonTags::kTagRemoveStar));
 
-	m_Scene.scene->pushUIElement(new PG::Button(*this, btnPts[4], "Back", TagConstants::kPopScene));
+	m_Scene.scene->pushUIElement(new PG::Button(btnPts[4], "Back", TagConstants::kPopScene));
 }
 
 namespace

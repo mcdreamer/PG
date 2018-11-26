@@ -102,7 +102,6 @@ class SceneCreator
 public:
     static ScenePtr createScene(SceneControllerPtr& controller,
 								AppHostServices& appHostServices,
-								UI& ui,
 								const Size& size);
 };
 

@@ -12,7 +12,7 @@ struct TileCoord;
 }
 
 //--------------------------------------------------------
-class PhysicsTestScene : public PG::ISceneController, public PG::TagReciever
+class PhysicsTestScene : public PG::ISceneController, public PG::TagReceiver
 {
 	struct PhysicsState;
 	struct GameState;

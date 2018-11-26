@@ -12,7 +12,7 @@ class AppHostServices;
 }
 
 //--------------------------------------------------------
-class SoundTestScene : public PG::ISceneController, public PG::TagReciever
+class SoundTestScene : public PG::ISceneController, public PG::TagReceiver
 {
 	struct GameState;
 	

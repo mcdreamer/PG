@@ -4,6 +4,7 @@
 #include "PG/app/AppConfiguration.h"
 #include "PG/app/AppHostServices.h"
 #include "PG/console/ConsoleController.h"
+#include "PG/ui/UI.h"
 #include "PG/internal/ui/Console.h"
 #include "PG/internal/sound/SFMLSoundController.h"
 #include "PG/internal/platform/PileResourceHandler.h"
@@ -372,7 +373,8 @@ void PGAppHost::runApp(IGameController& gameController)
 	ConsoleController consoleController;
 	consoleController.addCommandSet(getRegistryForBuiltInCommands());	
 	
-	AppHostServices appHostServices(appConfig.styleSheet,
+	AppHostServices appHostServices(appConfig.uiParent,
+									appConfig.styleSheet,
 									consoleController,
 									soundController,
 									platformServices,
