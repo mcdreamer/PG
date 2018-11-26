@@ -1,0 +1,16 @@
+Language: Cpp
+
+PointerAlignment: Left
+AlignAfterOpenBracket: true
+AlignTrailingComments: true
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortCaseLabelsOnASingleLine: false
+BinPackArguments: false
+BreakBeforeBraces: Allman
+DerivePointerAlignment: false
+ColumnLimit: 100
+FixNamespaceComments: true
+IndentWidth: 4
+NamespaceIndentation: None
+TabWidth: 4
+UseTab: Always
