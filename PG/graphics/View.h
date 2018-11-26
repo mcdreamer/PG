@@ -5,6 +5,8 @@
 #include <memory>
 
 namespace PG {
+	
+class Point;
 
 //--------------------------------------------------------
 class IView
@@ -18,6 +20,10 @@ public:
 	
 	virtual SceneControllerHandle	addOverlay(SceneControllerPtr& sceneController)=0;
 	virtual void					removeOverlay(const SceneControllerHandle& sceneController)=0;
+	
+	virtual void 					clickInView(Point pt, bool isRightClick)=0;
+	
+	virtual void					update(double dt)=0;
 };
 
 }

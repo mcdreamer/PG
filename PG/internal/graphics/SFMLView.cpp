@@ -1,12 +1,25 @@
 #include "PG/internal/graphics/SFMLView.h"
 #include "PG/app/AppHostServices.h"
+#include "PG/ui/UI.h"
 #include "PG/core/Size.h"
 
 #include <SFML/Graphics.hpp>
 
 namespace PG {
 namespace Internal {
-
+	
+//-----------------------------------------------------------------
+SFMLView::SFMLView(sf::RenderWindow* view,
+				   AppHostServices& appHostServices)
+: m_View(view),
+m_AppHostServices(appHostServices),
+m_UI(new UI)
+{}
+	
+//-----------------------------------------------------------------
+SFMLView::~SFMLView()
+{}
+	
 //--------------------------------------------------------
 SceneControllerHandle SFMLView::replaceScene(SceneControllerPtr& sceneController)
 {
@@ -40,6 +53,28 @@ SceneControllerHandle SFMLView::addOverlay(SceneControllerPtr& sceneController)
 //--------------------------------------------------------
 void SFMLView::removeOverlay(const SceneControllerHandle& sceneController)
 {
+}
+	
+//-----------------------------------------------------------------
+void SFMLView::clickInView(Point pt, bool isRightClick)
+{
+	auto* scene = getCurrentScene();
+	if (scene)
+	{
+		scene->clickInScene(pt, isRightClick);
+	}
+}
+
+//-----------------------------------------------------------------
+void SFMLView::update(double dt)
+{
+	auto* scene = getCurrentScene();
+	if (scene)
+	{
+		scene->update(dt);
+		
+		m_UI->update(scene->getUILayer());
+	}
 }
 
 //--------------------------------------------------------
@@ -90,6 +125,7 @@ SceneControllerHandle SFMLView::createAndInitialiseScene(SceneControllerPtr& sce
 	
 	m_SceneStack.push(SceneCreator::createScene(sceneController,
 												m_AppHostServices,
+												*m_UI,
 												Size(size.x, size.y)));
 	
 	auto* scene = getCurrentScene();

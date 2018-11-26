@@ -8,9 +8,11 @@ namespace PG {
 //--------------------------------------------------------
 ScenePtr SceneCreator::createScene(SceneControllerPtr& controller,
 								   AppHostServices& appHostServices,
+								   UI& ui,
 								   const Size& size)
 {
 	return std::make_unique<Internal::SFMLScene>(controller,
+												 ui,
 												 size,
 												 appHostServices.getStyleSheet());
 }
@@ -19,15 +21,18 @@ namespace Internal {
 
 //--------------------------------------------------------
 SFMLScene::SFMLScene(SceneControllerPtr& controller,
+					 UI& ui,
 					 const Size& size,
 					 const StyleSheet& styleSheet)
 : m_SceneSize(size),
-m_SceneController(controller.release())
+m_SceneController(controller.release()),
+m_UI(ui)
 {
 	m_Root = NodeCreator::createNode();
 	m_UIRoot = NodeCreator::createNode();
-	m_UI.reset(new PG::UI(*this));
-	m_UI->setStyleSheet(styleSheet);
+	
+	m_UILayer.reset(new UILayer(m_UIRoot.get()));
+	m_UILayer->setStyleSheet(styleSheet);
 }
 
 //--------------------------------------------------------
@@ -61,15 +66,9 @@ Size SFMLScene::getSceneSize() const
 }
 
 //--------------------------------------------------------
-Point SFMLScene::getWindowPointAsScenePoint(const Point& windowPt, INode* layer) const
+void SFMLScene::clickInScene(Point pt, bool isRightClick)
 {
-	return windowPt;
-}
-
-//--------------------------------------------------------
-void SFMLScene::clickInScene(PG::Point pt, bool isRightClick)
-{
-	if (!m_UI->handleClick(pt) && m_SceneController)
+	if (!m_UI.handleClick(*m_UILayer, pt) && m_SceneController)
 	{
 		m_SceneController->clickInScene(pt, isRightClick);
 	}
@@ -77,13 +76,7 @@ void SFMLScene::clickInScene(PG::Point pt, bool isRightClick)
 //--------------------------------------------------------
 void SFMLScene::pushUIElement(UIElement* uiElement)
 {
-	m_UI->pushElement(uiElement);
-}
-
-//--------------------------------------------------------
-UIMessageQueuePoster SFMLScene::getUIMessagePoster()
-{
-	return m_UI->getMessagePoster();
+	m_UILayer->pushElement(uiElement);
 }
 
 //--------------------------------------------------------
@@ -103,8 +96,6 @@ void SFMLScene::update(double dt)
 															  m_Root->getPosition()));
 		}
 	}
-	
-	m_UI->update();
 }
 
 }

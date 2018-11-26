@@ -3,34 +3,48 @@
 #include "PG/ui/UIMessage.h"
 #include "PG/ui/UIElement.h"
 #include "PG/app/StyleSheet.h"
+#include "PG/graphics/Node.h"
 
 namespace PG {
 
-class IScene;
 struct StyleSheet;
 class UIMessageQueuePoster;
+struct NodeHandle;
+	
+//--------------------------------------------------------
+class UILayer
+{
+public:
+    UILayer(NodeHandle uiRoot)
+    : m_UIRoot(uiRoot)
+    {}
+	
+	NodeHandle             	getUIRoot() { return m_UIRoot; }
+    
+	void					setStyleSheet(const StyleSheet& styleSheet);
+	const StyleSheet&		getStyleSheet() const;
+	
+	void					pushElement(UIElement* element);
+	
+private:
+	friend class UI;
+	
+    UIElementArray			m_UIStack;
+    NodeHandle             	m_UIRoot;
+	StyleSheet				m_StyleSheet;
+};
 
 //--------------------------------------------------------
 class UI
 {
 public:
-    UI(IScene& scene)
-    : m_Scene(scene)
-    {}
-    
-	void					setStyleSheet(const StyleSheet& styleSheet);
-	const StyleSheet&		getStyleSheet() const;
 	UIMessageQueuePoster	getMessagePoster();
 	
-	void					pushElement(UIElement* element);
-    bool					handleClick(const Point& screenPt);
-    void					update();
+	bool					handleClick(UILayer& activeLayer, const Point& screenPt);
+	void					update(UILayer& activeLayer);
 	
 private:
-    PGUIMessageQueue    	m_MessageQueue;
-    UIElementArray			m_UIStack;
-    IScene&             	m_Scene;
-	StyleSheet				m_StyleSheet;
+	PGUIMessageQueue    	m_MessageQueue;
 };
-
+	
 }

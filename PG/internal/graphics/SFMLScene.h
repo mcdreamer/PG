@@ -19,12 +19,15 @@ class SFMLScene : public IScene, public PG::TagReciever
 {
 public:
     SFMLScene(SceneControllerPtr& controller,
+			  UI& ui,
 			  const Size& size,
 			  const StyleSheet& styleSheet);
+
+	virtual void					pushUIElement(UIElement* uiElement) override;
+	virtual UILayer&				getUILayer() override { return *m_UILayer; }
+	
 	
     virtual NodeHandle				addChild(std::unique_ptr<INode>& node) override;
-	virtual	void					pushUIElement(UIElement* uiElement) override;
-	virtual UIMessageQueuePoster	getUIMessagePoster() override;
 	virtual void					setBackgroundColour(const Colour& colour) override;
 	virtual void					setCamera(const Camera& camera) override;
 	virtual void					addAnimation(std::unique_ptr<IAnimation>& animation) override;
@@ -32,12 +35,10 @@ public:
 	virtual Size					getSceneSize() const override;
 	virtual	SceneControllerHandle	getController() const override { return m_SceneController.get(); }
 	virtual NodeHandle				getRoot() const override { return m_Root.get(); }
-	virtual NodeHandle				getUIRoot() const override { return m_UIRoot.get(); }
 	virtual const Colour			getBackgroundColour() const override { return m_BackgroundColour; }
-	virtual Point					getWindowPointAsScenePoint(const Point& windowPt, INode* layer) const override;
 	virtual Camera					getCamera() const override { return m_Camera; }
 	
-	virtual void					clickInScene(PG::Point pt, bool isRightClick) override;
+	virtual void					clickInScene(Point pt, bool isRightClick) override;
     virtual void					update(double dt) override;
 	
 private:
@@ -48,7 +49,9 @@ private:
     Colour							m_BackgroundColour;
 	Camera							m_Camera;
 	AnimationPtrArray				m_Animations;
-    std::unique_ptr<PG::UI>			m_UI;
+	
+	UI&								m_UI;
+    std::unique_ptr<UILayer>		m_UILayer;
 };
 
 }

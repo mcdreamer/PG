@@ -19,6 +19,8 @@ struct StyleSheet;
 class AppHostServices;
 class Camera;
 class IAnimation;
+class UI;
+class UILayer;
 
 //--------------------------------------------------------
 struct SceneHandle
@@ -77,14 +79,12 @@ public:
 	virtual Size					getSceneSize() const=0;
 	virtual	SceneControllerHandle	getController() const=0;
 	virtual NodeHandle				getRoot() const=0;
-	virtual NodeHandle				getUIRoot() const=0;
+	virtual UILayer&				getUILayer()=0;
 	virtual const Colour			getBackgroundColour() const=0;
-	virtual Point					getWindowPointAsScenePoint(const Point& windowPt, INode* layer) const=0;
 	virtual Camera					getCamera() const=0;
 	
 	virtual NodeHandle				addChild(std::unique_ptr<INode>& node)=0;
 	virtual void					pushUIElement(UIElement* uiElement)=0;
-	virtual UIMessageQueuePoster	getUIMessagePoster()=0;
 	virtual void					setBackgroundColour(const Colour& colour)=0;
 	virtual void					setCamera(const Camera& camera)=0;
 	virtual void					addAnimation(std::unique_ptr<IAnimation>& animation)=0;
@@ -102,6 +102,7 @@ class SceneCreator
 public:
     static ScenePtr createScene(SceneControllerPtr& controller,
 								AppHostServices& appHostServices,
+								UI& ui,
 								const Size& size);
 };
 

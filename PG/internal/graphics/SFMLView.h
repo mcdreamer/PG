@@ -16,6 +16,7 @@ namespace PG {
 
 struct SceneControllerHandle;
 class AppHostServices;
+class UI;
 
 namespace Internal {
 
@@ -25,11 +26,9 @@ class SFMLScene;
 class SFMLView : public IView
 {
 public:
-    SFMLView(sf::RenderWindow* view,
-			 AppHostServices& appHostServices)
-    : m_View(view),
-	m_AppHostServices(appHostServices)
-    {}
+	SFMLView(sf::RenderWindow* view,
+			 AppHostServices& appHostServices);
+	~SFMLView();
 	
 	virtual SceneControllerHandle	replaceScene(SceneControllerPtr& sceneController) override;
 	virtual SceneControllerHandle	pushScene(SceneControllerPtr& sceneController) override;
@@ -37,6 +36,9 @@ public:
 	
 	virtual SceneControllerHandle	addOverlay(SceneControllerPtr& sceneController)  override;
 	virtual void					removeOverlay(const SceneControllerHandle& sceneController) override;
+	
+	virtual void 					clickInView(Point pt, bool isRightClick) override;
+	virtual void					update(double dt) override;
 	
 	sf::RenderWindow*				getRenderWindow() const { return m_View; }
 	IScene*							getCurrentScene() const;
@@ -54,6 +56,8 @@ private:
     sf::RenderWindow*							m_View;
 	std::stack<ScenePtr>						m_SceneStack;
 	AppHostServices&							m_AppHostServices;
+	
+	std::unique_ptr<UI>							m_UI;
 	
 	std::vector<ScenePtr>						m_Overlays;
 	

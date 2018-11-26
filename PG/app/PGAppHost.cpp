@@ -56,7 +56,7 @@ extern SFMLFontCache* g_FontCache;
 namespace
 {
     //--------------------------------------------------------
-    PG::Point windowPointToScenePoint(const sf::Vector2u& windowSize,
+    PG::Point windowPointToViewPoint(const sf::Vector2u& windowSize,
 									  const PG::Size& sceneSize,
 									  const PG::Point& point)
     {
@@ -143,7 +143,7 @@ namespace
 				{
 					handleEvents();
 					
-					scene->update(timestep);
+					m_View.update(timestep);
 					
 					removeNodes(rootNode->m_ChildNodes);
 				}
@@ -161,7 +161,7 @@ namespace
 		{
 			auto* scene = m_View.getCurrentScene();
 			auto* rootNode = scene ? dynamic_cast<Internal::ISFMLNodeProvider*>(scene->getRoot().node) : nullptr;
-			auto* uiRootNode = scene ? dynamic_cast<Internal::ISFMLNodeProvider*>(scene->getUIRoot().node) : nullptr;
+			auto* uiRootNode = scene ? dynamic_cast<Internal::ISFMLNodeProvider*>(scene->getUILayer().getUIRoot().node) : nullptr;
 			
 			m_Window.clear();
 			m_RenderTexture.clear();
@@ -208,7 +208,7 @@ namespace
 		void handleEvents()
 		{
 			auto* scene = m_View.getCurrentScene();
-			auto controller = scene->getController();
+			auto controller = scene ? scene->getController() : SceneControllerHandle();
 			
 			if (!scene || !controller.controller)
 			{
@@ -244,10 +244,9 @@ namespace
 				}
 				else if (event.type == sf::Event::MouseButtonPressed)
 				{
-					const PG::Point windowPt(event.mouseButton.x, event.mouseButton.y);
-					const auto scenePt = windowPointToScenePoint(m_Window.getSize(), scene->getSceneSize(), windowPt);
-					
-					scene->clickInScene(scenePt, event.mouseButton.button == sf::Mouse::Button::Right);
+					const Point windowPt(event.mouseButton.x, event.mouseButton.y);
+					const auto scenePt = windowPointToViewPoint(m_Window.getSize(), scene->getSceneSize(), windowPt);
+					m_View.clickInView(scenePt, event.mouseButton.button == sf::Mouse::Button::Right);
 				}
 			}
 		}
