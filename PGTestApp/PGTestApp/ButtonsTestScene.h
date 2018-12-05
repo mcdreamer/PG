@@ -13,7 +13,7 @@ public:
 	virtual void mouseMoved(PG::Point pt) override {}
 	
 	virtual void keyUp(PG::KeyCode code) override {}
-	virtual void keyDown(PG::KeyCode code, PG::KeyModifier mods) override;
+	virtual void keyDown(PG::KeyCode code, PG::KeyModifier mods) override {}
 	
 	virtual void update(double dt) override {}
 	

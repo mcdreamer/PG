@@ -34,19 +34,6 @@ void ButtonTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneH
 }
 
 //--------------------------------------------------------
-void ButtonTestScene::keyDown(PG::KeyCode code, PG::KeyModifier mods)
-{
-	if (code == PG::KeyCode::kUp)
-	{
-		m_Text.node->setPosition(PG::Point(m_Text.node->getPosition().x, m_Text.node->getPosition().y - 1));
-	}
-	else if (code == PG::KeyCode::kDown)
-	{
-		m_Text.node->setPosition(PG::Point(m_Text.node->getPosition().x, m_Text.node->getPosition().y + 1));
-	}
-}
-
-//--------------------------------------------------------
 bool ButtonTestScene::receiveTag(const int tag)
 {
 	switch (tag)
