@@ -2,6 +2,7 @@
 
 #include "PG/core/KeyCode.h"
 #include "PG/graphics/Node.h"
+#include "PG/ui/TagReceiver.h"
 
 #include <memory>
 
@@ -51,7 +52,7 @@ struct SceneControllerHandle
 };
 
 //--------------------------------------------------------
-class ISceneController
+class ISceneController : public TagReceiver
 {
 public:
     virtual ~ISceneController() {}

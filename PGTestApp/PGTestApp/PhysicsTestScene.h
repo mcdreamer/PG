@@ -2,7 +2,6 @@
 
 #include "PG/graphics/Node.h"
 #include "PG/graphics/Scene.h"
-#include "PG/ui/TagReceiver.h"
 
 #include <memory>
 
@@ -12,7 +11,7 @@ struct TileCoord;
 }
 
 //--------------------------------------------------------
-class PhysicsTestScene : public PG::ISceneController, public PG::TagReceiver
+class PhysicsTestScene : public PG::ISceneController
 {
 	struct PhysicsState;
 	struct GameState;

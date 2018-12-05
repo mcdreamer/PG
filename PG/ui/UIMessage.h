@@ -18,6 +18,7 @@ struct UIMessage
     
     static UIMessage close(UIElement* target_);
     static UIMessage sendTag(TagReceiver* target_, int tag_);
+	static UIMessage sendTag(int tag_);
     static UIMessage pushElement(UIElement* target_);
 };
 

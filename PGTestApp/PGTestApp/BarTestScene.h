@@ -1,12 +1,11 @@
 #pragma once
 
 #include "PG/graphics/Scene.h"
-#include "PG/ui/TagReceiver.h"
 
 #include <memory>
 
 //--------------------------------------------------------
-class BarTestScene : public PG::ISceneController, public PG::TagReceiver
+class BarTestScene : public PG::ISceneController
 {
 	struct GameState;
 	

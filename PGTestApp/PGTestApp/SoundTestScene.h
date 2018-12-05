@@ -1,7 +1,6 @@
 #pragma once
 
 #include "PG/graphics/Scene.h"
-#include "PG/ui/TagReceiver.h"
 
 #include <memory>
 
@@ -12,7 +11,7 @@ class AppHostServices;
 }
 
 //--------------------------------------------------------
-class SoundTestScene : public PG::ISceneController, public PG::TagReceiver
+class SoundTestScene : public PG::ISceneController
 {
 	struct GameState;
 	

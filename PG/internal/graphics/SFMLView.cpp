@@ -13,7 +13,7 @@ SFMLView::SFMLView(sf::RenderWindow* view,
 				   AppHostServices& appHostServices)
 : m_View(view),
 m_AppHostServices(appHostServices),
-m_UI(new UI)
+m_UI(new UI(appHostServices.getUIParent()))
 {}
 	
 //-----------------------------------------------------------------
@@ -76,19 +76,7 @@ void SFMLView::update(double dt)
 	{
 		scene->update(dt);
 		
-		std::vector<TagReceiver*> parents;
-		parents.reserve(2);
-		auto* sceneController = dynamic_cast<TagReceiver*>(scene->getController().controller);
-		if (sceneController)
-		{
-			parents.push_back(sceneController);
-		}
-		if (m_AppHostServices.getUIParent())
-		{
-			parents.push_back(m_AppHostServices.getUIParent());
-		}
-		
-		m_UI->update(scene->getUILayer(), parents);
+		m_UI->update(scene->getUILayer());
 	}
 }
 
@@ -117,14 +105,19 @@ void SFMLView::presentPendingSceneIfAny()
 		if (!m_SceneStack.empty())
 		{
 			m_SceneStack.pop();
+			m_UI->popReceiver();
 		}
 	}
 	else if (m_PendingSceneController)
 	{
-		if (m_PendingSceneOperationType.get() == PendingSceneOperationType::kReplace)
+		const bool isReplace = m_PendingSceneOperationType.get() == PendingSceneOperationType::kReplace;
+		
+		if (isReplace)
 		{
 			m_SceneStack = std::stack<ScenePtr>();
 		}
+		
+		m_UI->pushReceiver(m_PendingSceneController.get(), isReplace);
 		
 		createAndInitialiseScene(m_PendingSceneController);
 	}

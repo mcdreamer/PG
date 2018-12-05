@@ -37,7 +37,7 @@ void Button::initUIElement(const StyleSheet& styleSheet)
 //--------------------------------------------------------
 void Button::clicked(UIMessageQueuePoster& msgPoster)
 {
-    msgPoster.postMessage(UIMessage::sendTag(nullptr, m_Tag));
+    msgPoster.postMessage(UIMessage::sendTag(m_Tag));
 }
 
 }

@@ -14,6 +14,12 @@ UIMessage UIMessage::sendTag(TagReceiver* target_, int tag_)
 {
 	return UIMessage { kSendTag, target_, tag_ };
 }
+	
+//--------------------------------------------------------
+UIMessage UIMessage::sendTag(int tag_)
+{
+	return UIMessage { kSendTag, nullptr, tag_ };
+}
 
 //--------------------------------------------------------
 UIMessage UIMessage::pushElement(UIElement* target_)

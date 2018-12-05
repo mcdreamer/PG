@@ -373,7 +373,7 @@ void PGAppHost::runApp(IGameController& gameController)
 	ConsoleController consoleController;
 	consoleController.addCommandSet(getRegistryForBuiltInCommands());	
 	
-	AppHostServices appHostServices(appConfig.uiParent,
+	AppHostServices appHostServices(&gameController,
 									appConfig.styleSheet,
 									consoleController,
 									soundController,

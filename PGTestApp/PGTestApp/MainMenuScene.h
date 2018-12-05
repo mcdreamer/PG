@@ -1,10 +1,9 @@
 #pragma once
 
 #include "PG/graphics/Scene.h"
-#include "PG/ui/TagReceiver.h"
 
 //--------------------------------------------------------
-class MainMenuScene : public PG::ISceneController, public PG::TagReceiver
+class MainMenuScene : public PG::ISceneController
 {
 public:
 	virtual void initScene(PG::AppHostServices& appHostServices, PG::SceneHandle scene) override;

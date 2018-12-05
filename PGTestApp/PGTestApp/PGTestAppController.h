@@ -3,10 +3,9 @@
 #include "PG/core/Size.h"
 #include "PG/app/IGameController.h"
 #include "PG/app/AppConfiguration.h"
-#include "PG/ui/TagReceiver.h"
 
 //--------------------------------------------------------
-class PGTestAppController : public PG::IGameController, public PG::TagReceiver
+class PGTestAppController : public PG::IGameController
 {
 public:
     PGTestAppController();

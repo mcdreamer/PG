@@ -2,8 +2,6 @@
 
 namespace PG {
 
-class UIMessageQueuePoster;
-
 //--------------------------------------------------------
 class TagReceiver
 {

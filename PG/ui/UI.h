@@ -5,6 +5,8 @@
 #include "PG/app/StyleSheet.h"
 #include "PG/graphics/Node.h"
 
+#include <stack>
+
 namespace PG {
 
 struct StyleSheet;
@@ -35,19 +37,27 @@ private:
 };
 
 	
-	
+
 //--------------------------------------------------------
 class UI
 {
 public:
-	UIMessageQueuePoster	getMessagePoster();
+	UI(TagReceiver* uiParent)
+	: m_UIParent(uiParent)
+	{}
 	
-	bool					handleClick(UILayer& activeLayer, const Point& screenPt);
-	void					update(UILayer& activeLayer,
-								   const std::vector<TagReceiver*>& parents);
+	UIMessageQueuePoster		getMessagePoster();
+	
+	bool						handleClick(UILayer& activeLayer, const Point& screenPt);
+	void						update(UILayer& activeLayer);
+	
+	void 						pushReceiver(TagReceiver* receiver, const bool replace);
+	void 						popReceiver();
 	
 private:
-	PGUIMessageQueue    	m_MessageQueue;
+	PGUIMessageQueue    		m_MessageQueue;
+	TagReceiver* 				m_UIParent;
+	std::stack<TagReceiver*>	m_ReceiverStack;
 };
 	
 }

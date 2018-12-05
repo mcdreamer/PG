@@ -1,5 +1,7 @@
 #pragma once
 
+#include "PG/ui/TagReceiver.h"
+
 #include <string>
 
 namespace PG {
@@ -9,7 +11,7 @@ class IView;
 struct AppConfiguration;
 
 //--------------------------------------------------------
-class IGameController
+class IGameController : public TagReceiver
 {
 public:
     virtual ~IGameController() {}

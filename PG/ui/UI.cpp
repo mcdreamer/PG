@@ -61,8 +61,7 @@ namespace
 }
 
 //--------------------------------------------------------
-void UI::update(UILayer& activeLayer,
-				const std::vector<TagReceiver*>& parents)
+void UI::update(UILayer& activeLayer)
 {
 	while (!m_MessageQueue.empty())
 	{
@@ -83,20 +82,25 @@ void UI::update(UILayer& activeLayer,
 				break;
 				
 			case UIMessage::kSendTag:
-				if (!msg.target || !msg.target->receiveTag(msg.tag))
+			{
+				bool handled = false;
+				
+				if (msg.target)
 				{
-					for (auto parentIt = parents.begin();
-						 parentIt != parents.end();
-						 ++parentIt)
-					{
-						if ((*parentIt)->receiveTag(msg.tag))
-						{
-							break;
-						}
-					}
+					handled = msg.target->receiveTag(msg.tag);
+				}
+				
+				if (!handled && !m_ReceiverStack.empty() && m_ReceiverStack.top())
+				{
+					handled = m_ReceiverStack.top()->receiveTag(msg.tag);
+				}
+				
+				if (!handled && m_UIParent)
+				{
+					handled = m_UIParent->receiveTag(msg.tag);
 				}
 				break;
-				
+			}
 			case UIMessage::kPushElement:
 				if (msg.target)
 				{
@@ -107,6 +111,26 @@ void UI::update(UILayer& activeLayer,
 		}
 		
 		m_MessageQueue.pop();
+	}
+}
+	
+//-----------------------------------------------------------------
+void UI::pushReceiver(TagReceiver* receiver, const bool replace)
+{
+	if (replace)
+	{
+		m_ReceiverStack = std::stack<TagReceiver*>();
+	}
+	
+	m_ReceiverStack.push(receiver);
+}
+	
+//-----------------------------------------------------------------
+void UI::popReceiver()
+{
+	if (!m_ReceiverStack.empty())
+	{
+		m_ReceiverStack.pop();
 	}
 }
 	

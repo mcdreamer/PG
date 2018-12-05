@@ -2,7 +2,6 @@
 
 #include "PG/graphics/Node.h"
 #include "PG/graphics/Scene.h"
-#include "PG/ui/TagReceiver.h"
 
 #include <memory>
 
@@ -13,7 +12,7 @@ class AppHostServices;
 namespace Internal {
 
 //--------------------------------------------------------
-class ConsoleScene : public ISceneController, public TagReceiver
+class ConsoleScene : public ISceneController
 {
 	struct State;
 	
