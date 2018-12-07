@@ -74,9 +74,10 @@ void SFMLView::update(double dt)
 	auto* scene = getCurrentScene();
 	if (scene)
 	{
-		scene->update(dt);
-		
-		m_UI->update(scene->getUILayer());
+		if (!m_UI->update(scene->getUILayer()))
+		{
+			scene->update(dt);
+		}
 	}
 }
 
@@ -90,6 +91,12 @@ void SFMLView::updateFinished()
 IScene*	SFMLView::getCurrentScene() const
 {
 	return !m_SceneStack.empty() ? m_SceneStack.top().get() : nullptr;
+}
+	
+//-----------------------------------------------------------------
+UI* SFMLView::getUI() const
+{
+	return m_UI.get();
 }
 
 //--------------------------------------------------------

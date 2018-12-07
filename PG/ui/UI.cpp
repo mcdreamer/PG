@@ -1,15 +1,33 @@
 #include "PG/ui/UI.h"
 #include "PG/ui/UIMessageQueuePoster.h"
+#include "PG/graphics/NodeCreator.h"
 
 #include <algorithm>
 
 namespace PG {
 
 //--------------------------------------------------------
+UILayer::UILayer(const Size& size)
+: m_Size(size),
+m_UIRoot(NodeCreator::createNode())
+{}
+	
+//--------------------------------------------------------
 void UILayer::pushElement(UIElement* element)
 {
+	if (isShowingModalElement())
+	{
+		return;
+	}
+	
     m_UIStack.emplace_back(element);
-    m_UIStack.back()->show(m_UIRoot, m_StyleSheet);
+    m_UIStack.back()->show(m_UIRoot.get(), m_Size, m_StyleSheet);
+}
+
+//--------------------------------------------------------
+bool UILayer::isShowingModalElement() const
+{
+	return !m_UIStack.empty() && m_UIStack.front()->isModal();
 }
 
 //--------------------------------------------------------
@@ -41,14 +59,16 @@ bool UI::handleClick(UILayer& activeLayer, const Point& screenPt)
 			 elementIt != activeLayer.m_UIStack.rend();
 			 ++elementIt)
 		{
-			if ((*elementIt)->handleClick(screenPt, msgPoster))
+			auto& element = **elementIt;
+			
+			if (element.handleClick(screenPt, msgPoster) || element.isModal())
 			{
 				return true;
 			}
 		}
 	}
 	
-	return false;
+	return activeLayer.isShowingModalElement();
 }
 
 namespace
@@ -61,8 +81,10 @@ namespace
 }
 
 //--------------------------------------------------------
-void UI::update(UILayer& activeLayer)
+bool UI::update(UILayer& activeLayer)
 {
+	auto msgPoster = getMessagePoster();
+	
 	while (!m_MessageQueue.empty())
 	{
 		auto msg = m_MessageQueue.front();
@@ -87,31 +109,26 @@ void UI::update(UILayer& activeLayer)
 				
 				if (msg.target)
 				{
-					handled = msg.target->receiveTag(msg.tag);
+					handled = msg.target->receiveTag(msg.tag, msgPoster);
 				}
 				
 				if (!handled && !m_ReceiverStack.empty() && m_ReceiverStack.top())
 				{
-					handled = m_ReceiverStack.top()->receiveTag(msg.tag);
+					handled = m_ReceiverStack.top()->receiveTag(msg.tag, msgPoster);
 				}
 				
 				if (!handled && m_UIParent)
 				{
-					handled = m_UIParent->receiveTag(msg.tag);
+					handled = m_UIParent->receiveTag(msg.tag, msgPoster);
 				}
 				break;
 			}
-			case UIMessage::kPushElement:
-				if (msg.target)
-				{
-					auto* uiElement = dynamic_cast<UIElement*>(msg.target);
-					activeLayer.pushElement(uiElement);
-				}
-				break;
 		}
 		
 		m_MessageQueue.pop();
 	}
+	
+	return activeLayer.isShowingModalElement();
 }
 	
 //-----------------------------------------------------------------

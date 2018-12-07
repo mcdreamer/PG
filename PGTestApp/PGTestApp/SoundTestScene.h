@@ -30,7 +30,7 @@ public:
 	
 	virtual void update(double dt) override {}
 	
-	virtual bool receiveTag(const int tag) override;
+	virtual bool receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster) override;
 	
 private:
 	PG::SceneHandle					m_Scene;

@@ -21,24 +21,26 @@ class UIElement : public TagReceiver
 public:
     virtual ~UIElement() {}
     
-    void                show(NodeHandle parent, const StyleSheet& styleSheet);
+    void                show(NodeHandle parent, const Size& parentSize, const StyleSheet& styleSheet);
     void                close();
     
-    void                addChild(UIElement* element, const StyleSheet& styleSheet);
-    void                addChild(std::unique_ptr<UIElement>& element, const StyleSheet& styleSheet);
-    
-    bool                handleClick(const Point& parentRelPt, UIMessageQueuePoster& msgPoster);
-    
-    virtual Rect		getElementRect() const;
-    
-    virtual void        initUIElement(const StyleSheet& styleSheet)=0;
-    virtual void        clicked(UIMessageQueuePoster& msgPoster) {}
+    void                addChild(UIElement* element, const Size& parentSize, const StyleSheet& styleSheet);
+    void                addChild(std::unique_ptr<UIElement>& element, const Size& parentSize, const StyleSheet& styleSheet);
+
+	bool                handleClick(const Point& parentRelPt, UIMessageQueuePoster& msgPoster);
+	
+	virtual void        initUIElement(const Size& parentSize, const StyleSheet& styleSheet)=0;
+	virtual void        clicked(UIMessageQueuePoster& msgPoster) {}
+	
+	virtual	bool		isModal() const { return false; }
 	
 protected:
     NodeHandle          m_Root;
     
 private:
     UIElementArray		m_Children;
+	
+	Rect				getElementRect() const;
 };
 
 }

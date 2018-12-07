@@ -1,5 +1,6 @@
 #include "PG/internal/graphics/SFMLScene.h"
 #include "PG/app/AppHostServices.h"
+#include "PG/graphics/NodeCreator.h"
 #include "PG/animation/AnimationUpdater.h"
 #include "PG/ui/UI.h"
 
@@ -25,9 +26,8 @@ SFMLScene::SFMLScene(SceneControllerPtr& controller,
 m_SceneController(controller.release())
 {
 	m_Root = NodeCreator::createNode();
-	m_UIRoot = NodeCreator::createNode();
 	
-	m_UILayer.reset(new UILayer(m_UIRoot.get()));
+	m_UILayer.reset(new UILayer(size));
 	m_UILayer->setStyleSheet(styleSheet);
 }
 

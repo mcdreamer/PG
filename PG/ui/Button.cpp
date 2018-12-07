@@ -11,14 +11,25 @@ Button::Button(const Point& point,
 			   const std::string& label,
 			   int tag,
 			   const Size& forcedSize)
-: m_Point(point),
+: Button(nullptr, point, label, tag, forcedSize)
+{}
+
+//-----------------------------------------------------------------
+Button::Button(TagReceiver* parent,
+			   const Point& point,
+			   const std::string& label,
+			   int tag,
+			   const Size& forcedSize)
+: m_Parent(parent),
+m_Point(point),
 m_ForcedSize(forcedSize),
 m_Label(label),
 m_Tag(tag)
 {}
 
 //--------------------------------------------------------
-void Button::initUIElement(const StyleSheet& styleSheet)
+void Button::initUIElement(const Size& parentSize,
+						   const StyleSheet& styleSheet)
 {
     auto text = NodeCreator::createTextNode(styleSheet.uiFontName, styleSheet.buttonFontSize);
     text->setText(m_Label);
@@ -37,7 +48,7 @@ void Button::initUIElement(const StyleSheet& styleSheet)
 //--------------------------------------------------------
 void Button::clicked(UIMessageQueuePoster& msgPoster)
 {
-    msgPoster.postMessage(UIMessage::sendTag(m_Tag));
+    msgPoster.postMessage(UIMessage::sendTag(m_Parent, m_Tag));
 }
 
 }

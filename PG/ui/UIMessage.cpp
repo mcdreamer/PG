@@ -21,10 +21,4 @@ UIMessage UIMessage::sendTag(int tag_)
 	return UIMessage { kSendTag, nullptr, tag_ };
 }
 
-//--------------------------------------------------------
-UIMessage UIMessage::pushElement(UIElement* target_)
-{
-	return UIMessage { kPushElement, target_, 0 };
-}
-
 }

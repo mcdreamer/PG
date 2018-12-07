@@ -4,7 +4,6 @@
 #include "PG/internal/graphics/SFMLView.h"
 #include "PG/graphics/Scene.h"
 #include "PG/graphics/Node.h"
-#include "PG/graphics/NodeCreator.h"
 #include "PG/graphics/Camera.h"
 #include "PG/app/StyleSheet.h"
 #include "PG/animation/IAnimation.h"
@@ -42,7 +41,6 @@ public:
 private:
     Size							m_SceneSize;
     NodePtr							m_Root;
-	NodePtr							m_UIRoot;
     SceneControllerPtr				m_SceneController;
     Colour							m_BackgroundColour;
 	Camera							m_Camera;

@@ -1,6 +1,8 @@
 #pragma once
 
 namespace PG {
+	
+class UIMessageQueuePoster;
 
 //--------------------------------------------------------
 class TagReceiver
@@ -8,7 +10,7 @@ class TagReceiver
 public:
 	virtual ~TagReceiver() {}
 	
-	virtual bool receiveTag(const int tag) { return false; }
+	virtual bool receiveTag(const int tag, UIMessageQueuePoster& msgPoster) { return false; }
 };
 
 }

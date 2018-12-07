@@ -7,13 +7,13 @@
 namespace PG {
 
 //--------------------------------------------------------
-void UIElement::show(NodeHandle parent, const StyleSheet& styleSheet)
+void UIElement::show(NodeHandle parent, const Size& parentSize, const StyleSheet& styleSheet)
 {
     auto root = NodeCreator::createNode();
     
     m_Root = parent.node->addChild(root);
     
-    initUIElement(styleSheet);
+    initUIElement(parentSize, styleSheet);
 }
 
 //--------------------------------------------------------
@@ -23,17 +23,17 @@ void UIElement::close()
 }
 
 //--------------------------------------------------------
-void UIElement::addChild(UIElement* element, const StyleSheet& styleSheet)
+void UIElement::addChild(UIElement* element, const Size& parentSize, const StyleSheet& styleSheet)
 {
-    element->show(m_Root, styleSheet);
+    element->show(m_Root, parentSize, styleSheet);
     
     m_Children.emplace_back(element);
 }
 
 //--------------------------------------------------------
-void UIElement::addChild(std::unique_ptr<UIElement>& element, const StyleSheet& styleSheet)
+void UIElement::addChild(std::unique_ptr<UIElement>& element, const Size& parentSize, const StyleSheet& styleSheet)
 {
-    element->show(m_Root, styleSheet);
+    element->show(m_Root, parentSize, styleSheet);
     
     m_Children.emplace_back(element.release());
 }

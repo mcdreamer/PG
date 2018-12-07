@@ -20,7 +20,7 @@ m_Value(value)
 }
 
 //--------------------------------------------------------
-void Bar::initUIElement(const StyleSheet& styleSheet)
+void Bar::initUIElement(const Size& parentSize, const StyleSheet& styleSheet)
 {
 	auto bg = NodeCreator::createColourNode(PG::Colour(255, 255, 255), m_Size);
 	bg->setPosition(m_Position);

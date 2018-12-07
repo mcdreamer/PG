@@ -88,7 +88,7 @@ namespace
 }
 
 //--------------------------------------------------------
-bool InventoryTestScene::receiveTag(const int tag)
+bool InventoryTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
 {
 	switch (tag)
 	{

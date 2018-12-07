@@ -58,7 +58,7 @@ void PGTestAppController::start(PG::AppHostServices& appHostServices, PG::IView&
 }
 
 //--------------------------------------------------------
-bool PGTestAppController::receiveTag(const int tag)
+bool PGTestAppController::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
 {
 	switch (tag)
 	{

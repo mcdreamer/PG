@@ -42,6 +42,7 @@ public:
 	
 	sf::RenderWindow*				getRenderWindow() const { return m_View; }
 	IScene*							getCurrentScene() const;
+	UI*								getUI() const;
 	
 	void							updateFinished();
 	

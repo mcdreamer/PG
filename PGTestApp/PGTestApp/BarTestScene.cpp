@@ -72,7 +72,7 @@ void BarTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHand
 }
 
 //--------------------------------------------------------
-bool BarTestScene::receiveTag(const int tag)
+bool BarTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
 {
 	switch (tag)
 	{

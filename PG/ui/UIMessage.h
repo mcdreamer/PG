@@ -10,7 +10,7 @@ class TagReceiver;
 //--------------------------------------------------------
 struct UIMessage
 {
-    enum Type { kClose, kSendTag, kPushElement };
+    enum Type { kClose, kSendTag };
     
     Type			type;
     TagReceiver*	target;
@@ -19,7 +19,6 @@ struct UIMessage
     static UIMessage close(UIElement* target_);
     static UIMessage sendTag(TagReceiver* target_, int tag_);
 	static UIMessage sendTag(int tag_);
-    static UIMessage pushElement(UIElement* target_);
 };
 
 using PGUIMessageQueue = std::queue<UIMessage>;

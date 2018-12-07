@@ -25,9 +25,9 @@ public:
 		const ValueRange<int>& range,
 		BindableValue<int>& value);
 
-	virtual void	initUIElement(const StyleSheet& styleSheet) override;
-
 private:
+	virtual void			initUIElement(const Size& parentSize, const StyleSheet& styleSheet) override;
+
 	Point					m_Position;
 	Size					m_Size;
 //	const BarStyle			m_BarStyle;

@@ -66,7 +66,7 @@ void SoundTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHa
 }
 
 //--------------------------------------------------------
-bool SoundTestScene::receiveTag(const int tag)
+bool SoundTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPoster)
 {
 	switch (tag)
 	{

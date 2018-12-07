@@ -11,32 +11,30 @@ namespace PG {
 
 struct StyleSheet;
 class UIMessageQueuePoster;
-struct NodeHandle;
 	
 //--------------------------------------------------------
 class UILayer
 {
 public:
-    UILayer(NodeHandle uiRoot)
-    : m_UIRoot(uiRoot)
-    {}
+    UILayer(const Size& size);
 	
-	NodeHandle             	getUIRoot() { return m_UIRoot; }
+	NodeHandle             	getUIRoot() { return m_UIRoot.get(); }
 	
 	void					setStyleSheet(const StyleSheet& styleSheet);
 	const StyleSheet&		getStyleSheet() const;
 	
 	void					pushElement(UIElement* element);
 	
+	bool 					isShowingModalElement() const;
+	
 private:
 	friend class UI;
 	
-	NodeHandle             	m_UIRoot;
+	Size					m_Size;
+	NodePtr             	m_UIRoot;
     UIElementArray			m_UIStack;
 	StyleSheet				m_StyleSheet;
 };
-
-	
 
 //--------------------------------------------------------
 class UI
@@ -49,7 +47,7 @@ public:
 	UIMessageQueuePoster		getMessagePoster();
 	
 	bool						handleClick(UILayer& activeLayer, const Point& screenPt);
-	void						update(UILayer& activeLayer);
+	bool						update(UILayer& activeLayer);
 	
 	void 						pushReceiver(TagReceiver* receiver, const bool replace);
 	void 						popReceiver();
@@ -57,7 +55,7 @@ public:
 private:
 	PGUIMessageQueue    		m_MessageQueue;
 	TagReceiver* 				m_UIParent;
-	std::stack<TagReceiver*>	m_ReceiverStack;
+	std::stack<TagReceiver*>	m_ReceiverStack;	
 };
 	
 }
