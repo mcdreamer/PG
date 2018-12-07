@@ -7,6 +7,7 @@
 #include "PG/ui/Button.h"
 #include "PG/ui/UIUtils.h"
 #include "PG/ui/UIPositionCalculator.h"
+#include "PG/ui/UI.h"
 #include "PG/data/DataGrid.h"
 #include "PG/entities/TilePositionCalculator.h"
 #include "PG/core/BindableValue.h"
@@ -61,12 +62,13 @@ void InventoryTestScene::initScene(PG::AppHostServices& appHostServices, PG::Sce
 	PG::UIPositionCalculator uiPosCalc(sceneSize);
 	const auto btnPts = uiPosCalc.multipleDownCentre(sceneSize.height * 0.50, 5, sceneSize.height * 0.1);
 	
-	m_Scene.scene->pushUIElement(new PG::Button(btnPts[0], "+ Heart", ButtonTags::kTagAddHeart));
-	m_Scene.scene->pushUIElement(new PG::Button(btnPts[1], "- Heart", ButtonTags::kTagRemoveHeart));
-	m_Scene.scene->pushUIElement(new PG::Button(btnPts[2], "+ Star", ButtonTags::kTagAddStar));
-	m_Scene.scene->pushUIElement(new PG::Button(btnPts[3], "- Star", ButtonTags::kTagRemoveStar));
+	auto& ui = m_Scene.scene->getUILayer();
+	ui.pushElement(new PG::Button(btnPts[0], "+ Heart", ButtonTags::kTagAddHeart));
+	ui.pushElement(new PG::Button(btnPts[1], "- Heart", ButtonTags::kTagRemoveHeart));
+	ui.pushElement(new PG::Button(btnPts[2], "+ Star", ButtonTags::kTagAddStar));
+	ui.pushElement(new PG::Button(btnPts[3], "- Star", ButtonTags::kTagRemoveStar));
 
-	m_Scene.scene->pushUIElement(new PG::Button(btnPts[4], "Back", TagConstants::kPopScene));
+	ui.pushElement(new PG::Button(btnPts[4], "Back", TagConstants::kPopScene));
 }
 
 namespace

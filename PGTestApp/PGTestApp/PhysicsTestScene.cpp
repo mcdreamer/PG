@@ -10,6 +10,7 @@
 #include "PG/ui/Button.h"
 #include "PG/ui/UIUtils.h"
 #include "PG/ui/UIPositionCalculator.h"
+#include "PG/ui/UI.h"
 #include "PG/app/StyleSheet.h"
 #include "PG/app/GameConstants.h"
 #include "PG/app/AppHostServices.h"
@@ -94,7 +95,8 @@ void PhysicsTestScene::initScene(PG::AppHostServices& appHostServices, PG::Scene
 	PG::UIUtils::createTextNodeForValue(PG::Point(20, 20), PG::Colour(255, 0, 0), 20, appHostServices.getStyleSheet(), m_HeartCountNode, m_Scene, m_GameState->numHearts);
 	PG::UIUtils::createTextNodeForValue(PG::Point(20, 40), PG::Colour(0, 128, 255), 20, appHostServices.getStyleSheet(), m_StarsCountNode, m_Scene, m_GameState->numStars);
 	
-	m_Scene.scene->pushUIElement(new PG::Button(uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
+	auto& ui = m_Scene.scene->getUILayer();
+	ui.pushElement(new PG::Button(uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
 	
 	generateAndSetupLevelGeometry();
 	generateAndSetupHearts();

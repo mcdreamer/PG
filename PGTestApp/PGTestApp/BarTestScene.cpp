@@ -7,6 +7,7 @@
 #include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/ui/UIUtils.h"
 #include "PG/ui/UIPositionCalculator.h"
+#include "PG/ui/UI.h"
 #include "PG/data/DataGrid.h"
 #include "PG/entities/TilePositionCalculator.h"
 #include "PG/core/BindableValue.h"
@@ -53,22 +54,23 @@ void BarTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHand
 	PG::UIPositionCalculator uiPosCalc(sceneSize);
 	const auto btnPts = uiPosCalc.multipleDownCentre(sceneSize.height * 0.40, 4, sceneSize.height * 0.1);
 
-	m_Scene.scene->pushUIElement(new PG::Bar(btnPts[0], PG::Size(50, 40),
-											 PG::BarStyle::kBasic, PG::ValueRange<int>(0, 100), m_GameState->value));
-
-	m_Scene.scene->pushUIElement(new PG::Bar(btnPts[1], PG::Size(300, 20),
-											 PG::BarStyle::kBasic, PG::ValueRange<int>(0, 100), m_GameState->value));
+	auto& ui = m_Scene.scene->getUILayer();
+	ui.pushElement(new PG::Bar(btnPts[0], PG::Size(50, 40),
+							   PG::BarStyle::kBasic, PG::ValueRange<int>(0, 100), m_GameState->value));
 	
-	m_Scene.scene->pushUIElement(new PG::Bar(btnPts[2], PG::Size(100, 5),
-											 PG::BarStyle::kBasic, PG::ValueRange<int>(0, 100), m_GameState->value));
+	ui.pushElement(new PG::Bar(btnPts[1], PG::Size(300, 20),
+							   PG::BarStyle::kBasic, PG::ValueRange<int>(0, 100), m_GameState->value));
 	
-	m_Scene.scene->pushUIElement(new PG::Bar(btnPts[3], PG::Size(200, 10),
-											 PG::BarStyle::kBasic, PG::ValueRange<int>(0, 100), m_GameState->value));
+	ui.pushElement(new PG::Bar(btnPts[2], PG::Size(100, 5),
+							   PG::BarStyle::kBasic, PG::ValueRange<int>(0, 100), m_GameState->value));
 	
-	m_Scene.scene->pushUIElement(new PG::Button(PG::Point(sceneSize.width * 0.4, sceneSize.height * 0.8), "+", ButtonTags::kTagIncrease));
-	m_Scene.scene->pushUIElement(new PG::Button(PG::Point(sceneSize.width * 0.6, sceneSize.height * 0.8), "-", ButtonTags::kTagDecrease));
+	ui.pushElement(new PG::Bar(btnPts[3], PG::Size(200, 10),
+							   PG::BarStyle::kBasic, PG::ValueRange<int>(0, 100), m_GameState->value));
 	
-	m_Scene.scene->pushUIElement(new PG::Button(PG::Point(sceneSize.width / 2.0, sceneSize.height * 0.95), "Back", TagConstants::kPopScene));
+	ui.pushElement(new PG::Button(PG::Point(sceneSize.width * 0.4, sceneSize.height * 0.8), "+", ButtonTags::kTagIncrease));
+	ui.pushElement(new PG::Button(PG::Point(sceneSize.width * 0.6, sceneSize.height * 0.8), "-", ButtonTags::kTagDecrease));
+	
+	ui.pushElement(new PG::Button(PG::Point(sceneSize.width / 2.0, sceneSize.height * 0.95), "Back", TagConstants::kPopScene));
 }
 
 //--------------------------------------------------------

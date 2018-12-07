@@ -7,6 +7,7 @@
 #include "PG/graphics/NodeCreator.h"
 #include "PG/ui/Button.h"
 #include "PG/ui/UIPositionCalculator.h"
+#include "PG/ui/UI.h"
 #include "PG/app/StyleSheet.h"
 #include "PG/app/GameConstants.h"
 
@@ -37,7 +38,8 @@ void AnimationsTestScene::initScene(PG::AppHostServices& appHostServices, PG::Sc
 														   uiPosCalc.fromTopMid(PG::Size(50, 32)),
 														   m_Scene);
 	
-	m_Scene.scene->pushUIElement(new PG::Button(uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
+	auto& ui = m_Scene.scene->getUILayer();
+	ui.pushElement(new PG::Button(uiPosCalc.fromBottomMid(PG::Size(0, sceneSize.height * 0.25)), "Back", TagConstants::kPopScene));
 }
 
 //--------------------------------------------------------

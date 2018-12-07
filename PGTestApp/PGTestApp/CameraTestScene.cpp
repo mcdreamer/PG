@@ -13,6 +13,7 @@
 #include "PG/ui/UIMessageQueuePoster.h"
 #include "PG/ui/UIUtils.h"
 #include "PG/ui/UIPositionCalculator.h"
+#include "PG/ui/UI.h"
 #include "PG/app/StyleSheet.h"
 #include "PG/app/GameConstants.h"
 #include "PG/app/AppHostServices.h"
@@ -79,7 +80,8 @@ void CameraTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneH
 	
 	PG::UIPositionCalculator uiPosCalc(sceneSize);
 	
-	m_Scene.scene->pushUIElement(new PG::Button(uiPosCalc.fromBottomLeftCorner(PG::Size(50, 30)), "Back", TagConstants::kPopScene));
+	auto& ui = m_Scene.scene->getUILayer();
+	ui.pushElement(new PG::Button(uiPosCalc.fromBottomLeftCorner(PG::Size(50, 30)), "Back", TagConstants::kPopScene));
 	
 	const PG::Camera camera(PG::Size(0.3, 0.1), m_State->bodyAndNode.node);
 	m_Scene.scene->setCamera(camera);

@@ -5,6 +5,7 @@
 #include "PG/ui/Button.h"
 #include "PG/ui/UIUtils.h"
 #include "PG/ui/UIPositionCalculator.h"
+#include "PG/ui/UI.h"
 #include "PG/app/AppHostServices.h"
 #include "PG/sound/Sound.h"
 #include "PG/sound/SoundID.h"
@@ -61,8 +62,9 @@ void SoundTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneHa
 	PG::UIPositionCalculator uiPosCalc(sceneSize);
 	const auto btnPts = uiPosCalc.multipleDownCentre(sceneSize.height * 0.40, 2, sceneSize.height * 0.1);
 	
-	m_Scene.scene->pushUIElement(new PG::Button(btnPts[0], "Sound", ButtonTags::kPlaySound));
-	m_Scene.scene->pushUIElement(new PG::Button(btnPts[1], "Back", TagConstants::kPopScene));
+	auto& ui = m_Scene.scene->getUILayer();
+	ui.pushElement(new PG::Button(btnPts[0], "Sound", ButtonTags::kPlaySound));
+	ui.pushElement(new PG::Button(btnPts[1], "Back", TagConstants::kPopScene));
 }
 
 //--------------------------------------------------------

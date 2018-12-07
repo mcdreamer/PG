@@ -76,22 +76,21 @@ class IScene
 {
 public:
     virtual ~IScene() {}
+
+	virtual UILayer&				getUILayer()=0;
 	
 	virtual Size					getSceneSize() const=0;
 	virtual	SceneControllerHandle	getController() const=0;
 	virtual NodeHandle				getRoot() const=0;
-	virtual UILayer&				getUILayer()=0;
 	virtual const Colour			getBackgroundColour() const=0;
 	virtual Camera					getCamera() const=0;
 	
 	virtual NodeHandle				addChild(std::unique_ptr<INode>& node)=0;
-	virtual void					pushUIElement(UIElement* uiElement)=0;
 	virtual void					setBackgroundColour(const Colour& colour)=0;
 	virtual void					setCamera(const Camera& camera)=0;
 	virtual void					addAnimation(std::unique_ptr<IAnimation>& animation)=0;
 	
-	virtual void					clickInScene(PG::Point pt, bool isRightClick)=0;
-	
+	virtual void					clickInScene(Point pt, bool isRightClick)=0;
 	virtual void					update(double dt)=0;
 };
 

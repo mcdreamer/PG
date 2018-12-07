@@ -73,11 +73,6 @@ void SFMLScene::clickInScene(Point pt, bool isRightClick)
 		m_SceneController->clickInScene(pt, isRightClick);
 	}
 }
-//--------------------------------------------------------
-void SFMLScene::pushUIElement(UIElement* uiElement)
-{
-	m_UILayer->pushElement(uiElement);
-}
 
 //--------------------------------------------------------
 void SFMLScene::update(double dt)

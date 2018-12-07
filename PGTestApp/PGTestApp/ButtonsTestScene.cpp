@@ -4,6 +4,7 @@
 #include "PG/graphics/NodeCreator.h"
 #include "PG/ui/Button.h"
 #include "PG/ui/Dialog.h"
+#include "PG/ui/UI.h"
 #include "PG/app/StyleSheet.h"
 #include "PG/app/AppHostServices.h"
 
@@ -24,10 +25,11 @@ void ButtonTestScene::initScene(PG::AppHostServices& appHostServices, PG::SceneH
 	
 	m_Scene.scene->setBackgroundColour(PG::Colour(0, 0, 0));
 	
-	m_Scene.scene->pushUIElement(new PG::Button(PG::Point(200, 100), "Back", TagConstants::kPopScene));
-	m_Scene.scene->pushUIElement(new PG::Button(PG::Point(200, 200), "Test Button", kTagTestButton));
-	m_Scene.scene->pushUIElement(new PG::Button(PG::Point(200, 300), "Another Test Button", kTagAnotherTestButton));
-	m_Scene.scene->pushUIElement(new PG::Button(PG::Point(200, 400), "Dialog", kTagShowDialog));
+	auto& ui = m_Scene.scene->getUILayer();
+	ui.pushElement(new PG::Button(PG::Point(200, 100), "Back", TagConstants::kPopScene));
+	ui.pushElement(new PG::Button(PG::Point(200, 200), "Test Button", kTagTestButton));
+	ui.pushElement(new PG::Button(PG::Point(200, 300), "Another Test Button", kTagAnotherTestButton));
+	ui.pushElement(new PG::Button(PG::Point(200, 400), "Dialog", kTagShowDialog));
 	
 	auto textNode = PG::NodeCreator::createTextNode(appHostServices.getStyleSheet().uiFontName, 30);
 	textNode->setText("Hello");
@@ -51,9 +53,9 @@ bool ButtonTestScene::receiveTag(const int tag, PG::UIMessageQueuePoster& msgPos
 			
 		case kTagShowDialog:
 			m_Text.node->setText("Dialog");
-			m_Scene.scene->pushUIElement(new PG::Dialog("This is a dialog",
-														{ PG::Dialog::Item("Yes", 101), PG::Dialog::Item("No", 102) },
-														[this](int ret) { m_Text.node->setText(std::to_string(ret)); }));
+			m_Scene.scene->getUILayer().pushElement(new PG::Dialog("This is a dialog",
+																   { PG::Dialog::Item("Yes", 101), PG::Dialog::Item("No", 102) },
+																   [this](int ret) { m_Text.node->setText(std::to_string(ret)); }));
 			return true;
 
 		default:

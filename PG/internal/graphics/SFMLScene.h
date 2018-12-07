@@ -21,7 +21,6 @@ public:
 
 	~SFMLScene();
 	
-	virtual void					pushUIElement(UIElement* uiElement) override;
 	virtual UILayer&				getUILayer() override { return *m_UILayer; }
 	
     virtual NodeHandle				addChild(std::unique_ptr<INode>& node) override;
