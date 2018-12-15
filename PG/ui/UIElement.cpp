@@ -9,11 +9,17 @@ namespace PG {
 //--------------------------------------------------------
 void UIElement::show(NodeHandle parent, const Size& parentSize, const StyleSheet& styleSheet)
 {
-    auto root = NodeCreator::createNode();
+    auto root = createRoot(parentSize, styleSheet);
     
     m_Root = parent.node->addChild(root);
     
     initUIElement(parentSize, styleSheet);
+}
+
+//--------------------------------------------------------
+NodePtr UIElement::createRoot(const Size& parentSize, const StyleSheet& styleSheet)
+{
+	return NodeCreator::createNode();
 }
 
 //--------------------------------------------------------
@@ -41,7 +47,7 @@ void UIElement::addChild(std::unique_ptr<UIElement>& element, const Size& parent
 //--------------------------------------------------------
 Rect UIElement::getElementRect() const
 {
-    Rect combinedChildNodeRect;
+    Rect combinedChildNodeRect = m_Root.node->getRect();
     for (const auto* childNode : m_Root.node->getChildren())
     {
         combinedChildNodeRect = RectUtils::combineRects(combinedChildNodeRect, childNode->getRect());
@@ -57,7 +63,7 @@ bool UIElement::handleClick(const Point& parentRelPt, UIMessageQueuePoster& msgP
 {
     auto elementLocalPt = UIUtils::calculateNodeRelativePoint(parentRelPt, m_Root);
     
-    const auto elementRect = getElementRect();
+    const auto elementRect = getElementRect(); // the return value of this is wrong
     const bool elementRootIsInvisible = RectUtils::isEmpty(elementRect.size);
 
     if (elementRootIsInvisible || RectUtils::containsPoint(elementRect, elementLocalPt))

@@ -2,6 +2,8 @@
 #include "gtest/gtest.h"
 
 #include "PG/core/BindableValue.h"
+#include "PG/core/Rect.h"
+#include "PG/core/RectUtils.h"
 
 #include <string>
 
@@ -46,4 +48,14 @@ TEST(CoreTests,testBindableValue_string)
 	
 	v.set("Hello");
 	EXPECT_EQ("Hello", x);
+}
+
+//--------------------------------------------------------
+TEST(CoreTests,testRectUtils)
+{
+	const Rect r1(Point(0, 0), Size(10, 10));
+	const Rect r2(Point(5, 0), Size(10, 10));
+
+	EXPECT_EQ(r1, RectUtils::getIntersection(r1, r1));
+	EXPECT_EQ(Rect(Point(5, 0), Size(5, 10)), RectUtils::getIntersection(r1, r2));
 }

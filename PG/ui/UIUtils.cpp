@@ -11,7 +11,7 @@ namespace UIUtils {
 //--------------------------------------------------------
 Point calculateNodeRelativePoint(const Point& parentRelPt, const NodeHandle& node)
 {
-	auto nodePos = node.node->getPosition();
+	auto nodePos = node.node->getRect().topLeft();
 
 	return Point(parentRelPt.x - nodePos.x, parentRelPt.y - nodePos.y);
 }

@@ -43,6 +43,7 @@ private:
 	std::vector<Item>	m_Items;
 	CallbackFunc 		m_Callback;
 	
+	virtual NodePtr createRoot(const Size& parentSize, const StyleSheet& styleSheet) override;
 	virtual void initUIElement(const Size& parentSize, const StyleSheet& styleSheet) override final;
 	virtual bool receiveTag(const int tag, UIMessageQueuePoster& msgPoster) override;
 	virtual	bool isModal() const override final;

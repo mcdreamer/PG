@@ -58,18 +58,16 @@ TEST(UITests,testPointMapping)
     EXPECT_EQ(Size(0, 0), rootSize);
     EXPECT_EQ(Point(0, 0), root.node->getPosition());
 
-    auto mappedRootPt = UIUtils::calculateNodeRelativePoint(Point(20, 21), root);
-    EXPECT_EQ(Point(20, 21), mappedRootPt);
+    auto mappedRootPt = UIUtils::calculateNodeRelativePoint(Point(10, 11), root);
+    EXPECT_EQ(Point(10, 11), mappedRootPt);
     EXPECT_TRUE(RectUtils::isEmpty(root.node->getRect()));
     
     auto mappedDlgPt = UIUtils::calculateNodeRelativePoint(mappedRootPt, dialogRoot);
-
-    EXPECT_EQ(Point(10, 11), mappedDlgPt);
+    EXPECT_EQ(Point(7.5, 8.5), mappedDlgPt);
     EXPECT_TRUE(RectUtils::containsPoint(dialogRoot.node->getRect(), mappedDlgPt));
     
     auto mappedChildPt = UIUtils::calculateNodeRelativePoint(mappedDlgPt, child);
-    
-    EXPECT_EQ(Point(5, 6), mappedChildPt);
+    EXPECT_EQ(Point(5.5, 6.5), mappedChildPt);
     EXPECT_TRUE(RectUtils::containsPoint(child.node->getRect(), mappedChildPt));
 }
 
@@ -83,11 +81,13 @@ namespace
         : m_LastReceivedTag(-1)
         {}
     
-        virtual void initUIElement(const StyleSheet& styleSheet) override {}
+        virtual void initUIElement(const Size& parentSize, const StyleSheet& styleSheet) override {}
 
-        virtual void receiveTag(const int tag, UIMessageQueuePoster& msgPoster) override
+        virtual bool receiveTag(const int tag, UIMessageQueuePoster& msgPoster) override
         {
             m_LastReceivedTag = tag;
+
+            return true;
         }
         
         int m_LastReceivedTag;

@@ -36,7 +36,9 @@ public:
 	
 protected:
     NodeHandle          m_Root;
-    
+	
+	virtual NodePtr		createRoot(const Size& parentSize, const StyleSheet& styleSheet);
+	
 private:
     UIElementArray		m_Children;
 	

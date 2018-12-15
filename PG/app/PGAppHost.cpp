@@ -169,24 +169,24 @@ namespace
 			
 			if (rootNode)
 			{
-				const auto nodePos = scene->getRoot().node->getPosition();
+				const auto nodeLocalOrigin = scene->getRoot().node->getRect().topLeft();
 			
 				auto sfmlView = m_RenderTexture.getView();
-				sfmlView.move((float)-nodePos.x, (float)-nodePos.y);
+				sfmlView.move((float)-nodeLocalOrigin.x, (float)-nodeLocalOrigin.y);
 				m_RenderTexture.setView(sfmlView);
 				
 				if (scene)
 				{
 					// Draw background
 					sf::RectangleShape backgroundRect(sf::Vector2f(m_Window.getSize().x, m_Window.getSize().y));
-					backgroundRect.setOrigin((float)nodePos.x, (float)nodePos.y);
+					backgroundRect.setOrigin((float)nodeLocalOrigin.x, (float)nodeLocalOrigin.y);
 					backgroundRect.setFillColor(getsfColorFromPGColor(scene->getBackgroundColour()));
 					m_RenderTexture.draw(backgroundRect);
 				}
 				
 				draw(rootNode->m_ChildNodes, m_RenderTexture);
 				
-				sfmlView.move((float)nodePos.x, (float)nodePos.y);
+				sfmlView.move((float)nodeLocalOrigin.x, (float)nodeLocalOrigin.y);
 				m_RenderTexture.setView(sfmlView);
 			}
 
@@ -263,13 +263,15 @@ namespace
 				{
 					renderTarget.draw(*n->getNode());
 					
+					const auto nodeLocalOrigin = child->getRect().topLeft();
+					
 					auto sfmlView = renderTarget.getView();
-					sfmlView.move((int)-child->getPosition().x, (int)-child->getPosition().y);
+					sfmlView.move((int)-nodeLocalOrigin.x, (int)-nodeLocalOrigin.y);
 					renderTarget.setView(sfmlView);
 					
 					draw(n->m_ChildNodes, renderTarget);
 					
-					sfmlView.move((int)child->getPosition().x, (int)child->getPosition().y);
+					sfmlView.move((int)nodeLocalOrigin.x, (int)nodeLocalOrigin.y);
 					renderTarget.setView(sfmlView);
 				}
 			}
@@ -346,6 +348,7 @@ void PGAppHost::runApp(IGameController& gameController)
 
     sf::RenderWindow window(videoMode, appConfig.windowTitle);
 	window.setVerticalSyncEnabled(true);
+	window.setFramerateLimit(60);
 	
 	sf::View sfmlView(sf::FloatRect(0.0f,
 									0.0f,

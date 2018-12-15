@@ -9,27 +9,35 @@
 namespace PG {
 
 //--------------------------------------------------------
+NodePtr Dialog::createRoot(const Size& parentSize, const StyleSheet& styleSheet)
+{
+	auto dialogRoot = NodeCreator::createColourNode(styleSheet.dialogBackgroundColour, styleSheet.dialogSize);
+	dialogRoot->setPosition(UIPositionCalculator(parentSize).atCentre());
+	
+	return dialogRoot;
+}
+	
+//--------------------------------------------------------
 void Dialog::initUIElement(const Size& parentSize, const StyleSheet& styleSheet)
 {
 	UIPositionCalculator dialogCalc(styleSheet.dialogSize);
-	
-    auto dialogRoot = NodeCreator::createColourNode(styleSheet.dialogBackgroundColour, styleSheet.dialogSize);
-    m_Root.node->setPosition(UIPositionCalculator(parentSize).atCentre());
-	auto root = m_Root.node->addChild(dialogRoot);
 
+	const auto titlePos = dialogCalc.fromTopMid(PG::Size(0, 40));
 	auto messageNode = NodeCreator::createTextNode(styleSheet.uiFontName, styleSheet.dialogFontSize);
 	messageNode->setText(m_Message);
-	messageNode->setPosition(Point(0, -50));
+	messageNode->setPosition(titlePos);
 	messageNode->setColour(styleSheet.dialogTextColour);
-	root.node->addChild(messageNode);
+	m_Root.node->addChild(messageNode);
 	
-	int n = 0;
+	const auto buttonPositions = dialogCalc.multipleDownCentre(styleSheet.dialogSize.height / 2.0, m_Items.size(), 40);
+	
+	int nthButton = 0;
 	for (const auto& item : m_Items)
 	{
-		addChild(new Button(this, Point(0, n * 50), item.getText(), item.getTag()),
+		addChild(new Button(this, buttonPositions[nthButton], item.getText(), item.getTag()),
 				 parentSize,
 				 styleSheet);
-		n++;
+		nthButton++;
 	}
 }
 
